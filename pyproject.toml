@@ -1,0 +1,118 @@
+[project]
+name = "pdfsmith"
+version = "0.1.0"
+description = "PDF to Markdown conversion with multiple backend support"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Applied AI", email = "info@applied-ai.com" }]
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["pdf", "markdown", "text extraction", "document processing", "ocr"]
+
+dependencies = []
+
+[project.optional-dependencies]
+# Lightweight backends (no ML dependencies)
+pypdf = ["pypdf>=4.0"]
+pdfplumber = ["pdfplumber>=0.10"]
+pymupdf = ["pymupdf>=1.23"]
+pdfminer = ["pdfminer.six>=20221105"]
+pypdfium2 = ["pypdfium2>=4.0"]
+
+# Medium-weight backends
+pymupdf4llm = ["pymupdf4llm>=0.0.10"]
+unstructured = ["unstructured>=0.10"]
+kreuzberg = ["kreuzberg>=3.0"]
+extractous = ["extractous>=0.1"]
+
+# Heavy backends (ML/deep learning)
+docling = ["docling>=2.0"]
+marker = ["marker-pdf>=1.0"]
+
+# Bundles
+light = ["pypdf>=4.0", "pdfplumber>=0.10", "pymupdf>=1.23"]
+recommended = [
+    "pypdf>=4.0",
+    "pdfplumber>=0.10",
+    "pymupdf4llm>=0.0.10",
+    "kreuzberg>=3.0",
+]
+all = [
+    "pypdf>=4.0",
+    "pdfplumber>=0.10",
+    "pymupdf>=1.23",
+    "pdfminer.six>=20221105",
+    "pypdfium2>=4.0",
+    "pymupdf4llm>=0.0.10",
+    "unstructured>=0.10",
+    "kreuzberg>=3.0",
+    "extractous>=0.1",
+    "docling>=2.0",
+]
+
+# Development
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "pre-commit>=3.0",
+    "reportlab>=4.0",  # For creating test PDFs
+]
+
+[project.urls]
+Homepage = "https://github.com/applied-artificial-intelligence/pdfsmith"
+Documentation = "https://github.com/applied-artificial-intelligence/pdfsmith#readme"
+Repository = "https://github.com/applied-artificial-intelligence/pdfsmith"
+Issues = "https://github.com/applied-artificial-intelligence/pdfsmith/issues"
+
+[project.scripts]
+pdfsmith = "pdfsmith.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pdfsmith"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+strict_optional = true
+files = ["src/pdfsmith"]
+
+[tool.coverage.run]
+source = ["src/pdfsmith"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
