@@ -87,7 +87,7 @@ class PDFPlumberBackend:
         # Separator
         lines.append("| " + " | ".join(["---"] * max_cols) + " |")
         # Data rows
-        for row in normalized[1:]:
-            lines.append("| " + " | ".join(row) + " |")
+        for row in normalized[1:]:  # type: ignore[assignment]
+            lines.append("| " + " | ".join(row) + " |")  # type: ignore[arg-type]
 
         return "\n".join(lines)

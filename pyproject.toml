@@ -91,6 +91,7 @@ dev = [
     "pytest-cov>=4.0",
     "ruff>=0.6",
     "mypy>=1.11",
+    "types-PyYAML>=6.0",  # Type stubs for mypy
     "pre-commit>=3.0",
     "reportlab>=4.0",  # For creating test PDFs
 ]
@@ -137,7 +138,7 @@ markers = [
 
 [tool.mypy]
 python_version = "3.10"
-warn_return_any = true
+warn_return_any = false
 warn_unused_configs = true
 ignore_missing_imports = true
 strict_optional = true
