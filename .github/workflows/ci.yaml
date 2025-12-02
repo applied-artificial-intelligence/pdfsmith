@@ -19,7 +19,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Install dependencies
-        run: uv sync --dev
+        run: uv sync --extra dev
 
       - name: Run ruff check
         run: uv run ruff check src tests
@@ -46,7 +46,7 @@ jobs:
         run: uv python install ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: uv sync --dev --extra light
+        run: uv sync --extra dev --extra light
 
       - name: Run tests
         run: uv run pytest tests/ -v --tb=short
@@ -67,7 +67,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Install dependencies with backend
-        run: uv sync --dev --extra ${{ matrix.backend }}
+        run: uv sync --extra dev --extra ${{ matrix.backend }}
 
       - name: Run backend-specific tests
         run: uv run pytest tests/ -v --tb=short -k "test_${{ matrix.backend }} or test_api"
