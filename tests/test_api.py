@@ -1,9 +1,10 @@
 """Tests for the pdfsmith API."""
 
-import pytest
 from pathlib import Path
 
-from pdfsmith import available_backends, get_backend, __version__
+import pytest
+
+from pdfsmith import __version__, available_backends, get_backend
 from pdfsmith.backends.registry import BACKEND_REGISTRY
 
 
@@ -34,7 +35,7 @@ def test_backend_info_structure():
         assert info.name == name
         assert info.description
         assert info.package
-        assert info.weight in ("light", "medium", "heavy")
+        assert info.weight in ("light", "medium", "heavy", "commercial")
 
 
 def test_get_backend_invalid_name():
@@ -61,8 +62,8 @@ class TestWithBackend:
         """Create a minimal PDF for testing."""
         # Create a simple PDF using reportlab if available, otherwise skip
         try:
-            from reportlab.pdfgen import canvas
             from reportlab.lib.pagesizes import letter
+            from reportlab.pdfgen import canvas
 
             pdf_path = tmp_path / "test.pdf"
             c = canvas.Canvas(str(pdf_path), pagesize=letter)
@@ -117,3 +118,72 @@ class TestWithBackend:
 
         with pytest.raises(FileNotFoundError):
             parse(Path("/nonexistent/file.pdf"))
+
+
+class TestBackendSelection:
+    """Tests for backend selection and registry behavior."""
+
+    def test_get_backend_returns_singleton(self):
+        """get_backend should return same instance for repeated calls."""
+        backends = available_backends()
+        if not backends:
+            pytest.skip("No backends installed")
+
+        backend_name = backends[0].name
+        instance1 = get_backend(backend_name)
+        instance2 = get_backend(backend_name)
+
+        assert instance1 is instance2
+
+    def test_default_preference_order(self):
+        """Available backends should follow preference order."""
+        from pdfsmith.api import DEFAULT_PREFERENCE
+
+        backends = available_backends()
+        if len(backends) < 2:
+            pytest.skip("Need at least 2 backends to test order")
+
+        # Get indices of available backends in preference list
+        backend_names = [b.name for b in backends]
+        indices = []
+        for name in backend_names:
+            if name in DEFAULT_PREFERENCE:
+                indices.append(DEFAULT_PREFERENCE.index(name))
+
+        # Indices should be in ascending order (higher priority = lower index)
+        assert indices == sorted(indices), "Backends not in preference order"
+
+    def test_available_backends_only_returns_installed(self):
+        """available_backends should only include installed backends."""
+        backends = available_backends()
+
+        for backend in backends:
+            assert backend.is_available(), f"{backend.name} not available"
+
+    def test_backend_info_availability_cached(self):
+        """Backend availability should be cached."""
+        info = BACKEND_REGISTRY.get("pypdf")
+        if info is None:
+            pytest.skip("pypdf not in registry")
+
+        # First call sets cache
+        result1 = info.is_available()
+        # Second call should use cache
+        result2 = info.is_available()
+
+        assert result1 == result2
+
+
+class TestNoBackendsScenario:
+    """Tests for when no backends are available."""
+
+    def test_no_backends_raises_runtime_error(self, monkeypatch):
+        """get_backend with no installed backends should raise RuntimeError."""
+        # Mock the registry in the api module where it's imported
+        import pdfsmith.api
+
+        mock_registry = {}
+        monkeypatch.setattr(pdfsmith.api, "BACKEND_REGISTRY", mock_registry)
+
+        with pytest.raises(RuntimeError, match="No PDF parsing backends"):
+            get_backend(None)

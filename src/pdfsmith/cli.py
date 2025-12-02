@@ -4,7 +4,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from pdfsmith import parse, available_backends, __version__
+from pdfsmith import __version__, available_backends, parse
 
 
 def main() -> int:

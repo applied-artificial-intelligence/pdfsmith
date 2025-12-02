@@ -57,7 +57,8 @@ def get_backend(name: BackendName | None = None):
     """
     if name is not None:
         if name not in BACKEND_REGISTRY:
-            raise ValueError(f"Unknown backend: {name}. Available: {list(BACKEND_REGISTRY.keys())}")
+            available = list(BACKEND_REGISTRY.keys())
+            raise ValueError(f"Unknown backend: {name}. Available: {available}")
         info = BACKEND_REGISTRY[name]
         if not info.is_available():
             raise ImportError(
@@ -75,7 +76,7 @@ def get_backend(name: BackendName | None = None):
 
     raise RuntimeError(
         "No PDF parsing backends are installed. "
-        "Install at least one with: pip install pdfsmith[light] or pdfsmith[recommended]"
+        "Install with: pip install pdfsmith[light] or pdfsmith[recommended]"
     )
 
 
