@@ -14,6 +14,7 @@ from pathlib import Path
 
 try:
     from kreuzberg import ExtractionConfig, extract_file
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

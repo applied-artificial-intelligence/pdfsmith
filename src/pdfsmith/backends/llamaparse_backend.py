@@ -24,6 +24,7 @@ from pathlib import Path
 
 try:
     from llama_parse import LlamaParse
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

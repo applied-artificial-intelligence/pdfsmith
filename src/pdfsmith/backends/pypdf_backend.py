@@ -4,6 +4,7 @@ from pathlib import Path
 
 try:
     import importlib.util
+
     AVAILABLE = importlib.util.find_spec("pypdf") is not None
 except ImportError:
     AVAILABLE = False

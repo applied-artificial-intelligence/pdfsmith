@@ -25,12 +25,14 @@ def main() -> int:
     parse_parser = subparsers.add_parser("parse", help="Parse a PDF file to Markdown")
     parse_parser.add_argument("pdf_file", type=Path, help="Path to PDF file")
     parse_parser.add_argument(
-        "-o", "--output",
+        "-o",
+        "--output",
         type=Path,
         help="Output file (default: stdout)",
     )
     parse_parser.add_argument(
-        "-b", "--backend",
+        "-b",
+        "--backend",
         help="Backend to use (default: auto-select)",
     )
 

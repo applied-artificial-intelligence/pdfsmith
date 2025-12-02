@@ -17,7 +17,7 @@ class BackendInfo:
     name: str
     description: str
     package: str  # PyPI package name for installation
-    weight: str   # "light", "medium", "heavy"
+    weight: str  # "light", "medium", "heavy"
     loader: Callable[[], Any]  # Function to load the backend class
 
     _instance: Any = None
@@ -30,6 +30,7 @@ class BackendInfo:
                 backend_class = self.loader()
                 # Check the AVAILABLE flag if it exists
                 import importlib
+
                 mod = importlib.import_module(backend_class.__module__)
                 self._available = getattr(mod, "AVAILABLE", True)
             except ImportError:
@@ -56,61 +57,73 @@ class BaseBackend:
 
 def _load_pypdf():
     from pdfsmith.backends.pypdf_backend import PyPDFBackend
+
     return PyPDFBackend
 
 
 def _load_pdfplumber():
     from pdfsmith.backends.pdfplumber_backend import PDFPlumberBackend
+
     return PDFPlumberBackend
 
 
 def _load_pymupdf():
     from pdfsmith.backends.pymupdf_backend import PyMuPDFBackend
+
     return PyMuPDFBackend
 
 
 def _load_pymupdf4llm():
     from pdfsmith.backends.pymupdf4llm_backend import PyMuPDF4LLMBackend
+
     return PyMuPDF4LLMBackend
 
 
 def _load_pdfminer():
     from pdfsmith.backends.pdfminer_backend import PDFMinerBackend
+
     return PDFMinerBackend
 
 
 def _load_pypdfium2():
     from pdfsmith.backends.pypdfium2_backend import PyPDFium2Backend
+
     return PyPDFium2Backend
 
 
 def _load_unstructured():
     from pdfsmith.backends.unstructured_backend import UnstructuredBackend
+
     return UnstructuredBackend
 
 
 def _load_kreuzberg():
     from pdfsmith.backends.kreuzberg_backend import KreuzbergBackend
+
     return KreuzbergBackend
 
 
 def _load_extractous():
     from pdfsmith.backends.extractous_backend import ExtractousBackend
+
     return ExtractousBackend
 
 
 def _load_docling():
     from pdfsmith.backends.docling_backend import DoclingBackend
+
     return DoclingBackend
 
 
 def _load_marker():
     from pdfsmith.backends.marker_backend import MarkerBackend
+
     return MarkerBackend
 
 
 def _load_aws_textract():
     from pdfsmith.backends.aws_textract_backend import AWSTextractBackend
+
     return AWSTextractBackend
 
 
@@ -118,36 +131,43 @@ def _load_azure_document_intelligence():
     from pdfsmith.backends.azure_document_intelligence_backend import (
         AzureDocumentIntelligenceBackend,
     )
+
     return AzureDocumentIntelligenceBackend
 
 
 def _load_google_document_ai():
     from pdfsmith.backends.google_document_ai_backend import GoogleDocumentAIBackend
+
     return GoogleDocumentAIBackend
 
 
 def _load_databricks():
     from pdfsmith.backends.databricks_backend import DatabricksBackend
+
     return DatabricksBackend
 
 
 def _load_llamaparse():
     from pdfsmith.backends.llamaparse_backend import LlamaParseBackend
+
     return LlamaParseBackend
 
 
 def _load_anthropic():
     from pdfsmith.backends.anthropic_backend import AnthropicBackend
+
     return AnthropicBackend
 
 
 def _load_openai():
     from pdfsmith.backends.openai_backend import OpenAIBackend
+
     return OpenAIBackend
 
 
 def _load_gemini():
     from pdfsmith.backends.gemini_backend import GeminiBackend
+
     return GeminiBackend
 
 

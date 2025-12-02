@@ -102,8 +102,7 @@ class GeminiBackend:
         """
         if not AVAILABLE:
             raise ImportError(
-                "google-genai is required. "
-                "Install with: pip install pdfsmith[gemini]"
+                "google-genai is required. Install with: pip install pdfsmith[gemini]"
             )
 
         self.api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")

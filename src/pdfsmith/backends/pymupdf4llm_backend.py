@@ -4,6 +4,7 @@ from pathlib import Path
 
 try:
     import pymupdf4llm
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

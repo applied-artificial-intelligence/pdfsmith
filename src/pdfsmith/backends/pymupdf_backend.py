@@ -4,6 +4,7 @@ from pathlib import Path
 
 try:
     import fitz  # PyMuPDF
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

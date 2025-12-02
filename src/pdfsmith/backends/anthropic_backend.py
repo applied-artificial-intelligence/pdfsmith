@@ -105,8 +105,7 @@ class AnthropicBackend:
         """
         if not AVAILABLE:
             raise ImportError(
-                "anthropic is required. "
-                "Install with: pip install pdfsmith[anthropic]"
+                "anthropic is required. Install with: pip install pdfsmith[anthropic]"
             )
 
         self.api_key = os.getenv("ANTHROPIC_API_KEY")

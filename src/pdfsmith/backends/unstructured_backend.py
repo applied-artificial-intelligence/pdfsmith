@@ -16,6 +16,7 @@ from pathlib import Path
 
 try:
     from unstructured.partition.pdf import partition_pdf
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

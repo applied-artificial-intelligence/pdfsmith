@@ -30,6 +30,7 @@ class TestPyPDFBackend:
         """Backend should be importable."""
         try:
             from pdfsmith.backends.pypdf_backend import PyPDFBackend
+
             assert PyPDFBackend is not None
         except ImportError:
             pytest.skip("pypdf not installed")
@@ -38,6 +39,7 @@ class TestPyPDFBackend:
         """Backend should parse PDF to text."""
         try:
             from pdfsmith.backends.pypdf_backend import AVAILABLE, PyPDFBackend
+
             if not AVAILABLE:
                 pytest.skip("pypdf not installed")
 
@@ -56,6 +58,7 @@ class TestPDFPlumberBackend:
         """Backend should be importable."""
         try:
             from pdfsmith.backends.pdfplumber_backend import PDFPlumberBackend
+
             assert PDFPlumberBackend is not None
         except ImportError:
             pytest.skip("pdfplumber not installed")
@@ -67,6 +70,7 @@ class TestPDFPlumberBackend:
                 AVAILABLE,
                 PDFPlumberBackend,
             )
+
             if not AVAILABLE:
                 pytest.skip("pdfplumber not installed")
 
@@ -84,6 +88,7 @@ class TestPyMuPDFBackend:
         """Backend should be importable."""
         try:
             from pdfsmith.backends.pymupdf_backend import PyMuPDFBackend
+
             assert PyMuPDFBackend is not None
         except ImportError:
             pytest.skip("pymupdf not installed")
@@ -92,6 +97,7 @@ class TestPyMuPDFBackend:
         """Backend should parse PDF to text."""
         try:
             from pdfsmith.backends.pymupdf_backend import AVAILABLE, PyMuPDFBackend
+
             if not AVAILABLE:
                 pytest.skip("pymupdf not installed")
 
@@ -109,6 +115,7 @@ class TestPyMuPDF4LLMBackend:
         """Backend should be importable."""
         try:
             from pdfsmith.backends.pymupdf4llm_backend import PyMuPDF4LLMBackend
+
             assert PyMuPDF4LLMBackend is not None
         except ImportError:
             pytest.skip("pymupdf4llm not installed")
@@ -121,6 +128,7 @@ class TestDoclingBackend:
         """Backend should be importable."""
         try:
             from pdfsmith.backends.docling_backend import DoclingBackend
+
             assert DoclingBackend is not None
         except ImportError:
             pytest.skip("docling not installed")
@@ -133,6 +141,7 @@ class TestKreuzbergBackend:
         """Backend should be importable."""
         try:
             from pdfsmith.backends.kreuzberg_backend import KreuzbergBackend
+
             assert KreuzbergBackend is not None
         except ImportError:
             pytest.skip("kreuzberg not installed")

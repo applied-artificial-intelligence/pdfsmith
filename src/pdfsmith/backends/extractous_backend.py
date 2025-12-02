@@ -4,6 +4,7 @@ from pathlib import Path
 
 try:
     from extractous import Extractor
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

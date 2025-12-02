@@ -5,6 +5,7 @@ from pathlib import Path
 try:
     from marker.converters.pdf import PdfConverter
     from marker.models import create_model_dict
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

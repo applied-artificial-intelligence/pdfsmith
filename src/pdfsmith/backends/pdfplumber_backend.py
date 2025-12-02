@@ -5,6 +5,7 @@ from typing import Any
 
 try:
     import pdfplumber
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False
@@ -76,10 +77,9 @@ class PDFPlumberBackend:
         normalized: list[list[str]] = []
         for row in table:
             padded = row + [None] * (max_cols - len(row))
-            normalized.append([
-                str(cell).strip() if cell is not None else ""
-                for cell in padded
-            ])
+            normalized.append(
+                [str(cell).strip() if cell is not None else "" for cell in padded]
+            )
 
         lines = []
         # Header

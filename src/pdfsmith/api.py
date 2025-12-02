@@ -11,22 +11,31 @@ from pdfsmith.backends.registry import BACKEND_REGISTRY, BackendInfo
 
 # Backend preference order (best first, considering quality vs availability)
 DEFAULT_PREFERENCE = [
-    "docling",      # Best quality, heavy
-    "marker",       # Great for academic docs
+    "docling",  # Best quality, heavy
+    "marker",  # Great for academic docs
     "pymupdf4llm",  # Good balance
-    "kreuzberg",    # Fast, good quality
-    "unstructured", # Versatile
-    "pdfplumber",   # Reliable for tables
-    "pymupdf",      # Fast, basic
-    "pypdf",        # Lightweight fallback
-    "pdfminer",     # Legacy but works
-    "pypdfium2",    # Alternative
-    "extractous",   # Rust-based
+    "kreuzberg",  # Fast, good quality
+    "unstructured",  # Versatile
+    "pdfplumber",  # Reliable for tables
+    "pymupdf",  # Fast, basic
+    "pypdf",  # Lightweight fallback
+    "pdfminer",  # Legacy but works
+    "pypdfium2",  # Alternative
+    "extractous",  # Rust-based
 ]
 
 BackendName = Literal[
-    "docling", "marker", "pymupdf4llm", "kreuzberg", "unstructured",
-    "pdfplumber", "pymupdf", "pypdf", "pdfminer", "pypdfium2", "extractous"
+    "docling",
+    "marker",
+    "pymupdf4llm",
+    "kreuzberg",
+    "unstructured",
+    "pdfplumber",
+    "pymupdf",
+    "pypdf",
+    "pdfminer",
+    "pypdfium2",
+    "extractous",
 ]
 
 
@@ -136,5 +145,6 @@ async def parse_async(
         return await backend_instance.parse_async(pdf_path)
     else:
         import asyncio
+
         loop = asyncio.get_event_loop()
         return await loop.run_in_executor(None, backend_instance.parse, pdf_path)

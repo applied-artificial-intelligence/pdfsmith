@@ -4,6 +4,7 @@ from pathlib import Path
 
 try:
     import pypdfium2 as pdfium
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

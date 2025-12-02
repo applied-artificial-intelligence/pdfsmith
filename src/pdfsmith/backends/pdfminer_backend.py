@@ -6,6 +6,7 @@ from pathlib import Path
 try:
     from pdfminer.high_level import extract_text_to_fp
     from pdfminer.layout import LAParams
+
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

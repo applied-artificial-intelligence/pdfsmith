@@ -98,8 +98,7 @@ class OpenAIBackend:
         """
         if not AVAILABLE:
             raise ImportError(
-                "openai is required. "
-                "Install with: pip install pdfsmith[openai]"
+                "openai is required. Install with: pip install pdfsmith[openai]"
             )
 
         self.api_key = os.getenv("OPENAI_API_KEY")
@@ -183,6 +182,7 @@ class OpenAIBackend:
 
             # Clean up uploaded file (best effort)
             import contextlib
+
             with contextlib.suppress(Exception):
                 self.client.files.delete(file.id)
 
