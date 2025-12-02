@@ -1,7 +1,7 @@
 """PDFMiner backend for pdfsmith."""
 
-from pathlib import Path
 from io import StringIO
+from pathlib import Path
 
 try:
     from pdfminer.high_level import extract_text_to_fp

@@ -3,8 +3,8 @@
 from pathlib import Path
 
 try:
-    import pypdf
-    AVAILABLE = True
+    import importlib.util
+    AVAILABLE = importlib.util.find_spec("pypdf") is not None
 except ImportError:
     AVAILABLE = False
 

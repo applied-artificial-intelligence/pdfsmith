@@ -1,14 +1,19 @@
 """Kreuzberg backend for pdfsmith.
 
-NOTE: By default, this backend disables OCR to avoid loading heavy ML models
-(~50GB memory). For OCR-based extraction, use force_ocr=True.
+NOTE: By default, this backend disables OCR to avoid loading heavy ML models.
+For OCR-based extraction, use force_ocr=True.
+
+IMPORTANT: OCR requires the tesseract-ocr system package to be installed:
+    Ubuntu/Debian: sudo apt-get install tesseract-ocr
+    macOS: brew install tesseract
+    Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki
 """
 
-from pathlib import Path
 import asyncio
+from pathlib import Path
 
 try:
-    from kreuzberg import extract_file, ExtractionConfig
+    from kreuzberg import ExtractionConfig, extract_file
     AVAILABLE = True
 except ImportError:
     AVAILABLE = False

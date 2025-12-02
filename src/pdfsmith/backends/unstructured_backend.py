@@ -1,4 +1,16 @@
-"""Unstructured backend for pdfsmith."""
+"""Unstructured backend for pdfsmith.
+
+Supports multiple strategies:
+- "fast": Quick extraction without OCR (default)
+- "hi_res": High-resolution with OCR and table detection
+
+IMPORTANT: The "hi_res" strategy requires:
+1. unstructured-pytesseract: pip install unstructured-pytesseract
+2. tesseract-ocr system package:
+    Ubuntu/Debian: sudo apt-get install tesseract-ocr
+    macOS: brew install tesseract
+    Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki
+"""
 
 from pathlib import Path
 
@@ -21,7 +33,7 @@ class UnstructuredBackend:
     def __init__(self, strategy: str = "fast") -> None:
         if not AVAILABLE:
             raise ImportError(
-                "unstructured is required. Install with: pip install pdfsmith[unstructured]"
+                "unstructured required. Install: pip install pdfsmith[unstructured]"
             )
         self.strategy = strategy
 

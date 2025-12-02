@@ -21,7 +21,7 @@ class PyMuPDF4LLMBackend:
     def __init__(self) -> None:
         if not AVAILABLE:
             raise ImportError(
-                "pymupdf4llm is required. Install with: pip install pdfsmith[pymupdf4llm]"
+                "pymupdf4llm is required. Install with: pip install pdfsmith[light]"
             )
 
     def parse(self, pdf_path: Path) -> str:

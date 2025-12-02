@@ -27,5 +27,6 @@ class ExtractousBackend:
 
     def parse(self, pdf_path: Path) -> str:
         """Parse PDF to markdown string."""
-        result = self._extractor.extract_file_to_string(str(pdf_path))
-        return result.strip()
+        # extract_file_to_string returns (content, metadata) tuple
+        content, _metadata = self._extractor.extract_file_to_string(str(pdf_path))
+        return content.strip()
