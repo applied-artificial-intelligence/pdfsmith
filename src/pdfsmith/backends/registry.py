@@ -4,10 +4,10 @@ Backend registry with lazy loading.
 Each backend is only imported when actually used, keeping the base package lightweight.
 """
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Any
 from pathlib import Path
-import importlib
+from typing import Any
 
 
 @dataclass
@@ -29,9 +29,8 @@ class BackendInfo:
             try:
                 backend_class = self.loader()
                 # Check the AVAILABLE flag if it exists
-                module = backend_class.__module__
                 import importlib
-                mod = importlib.import_module(module)
+                mod = importlib.import_module(backend_class.__module__)
                 self._available = getattr(mod, "AVAILABLE", True)
             except ImportError:
                 self._available = False
@@ -108,6 +107,48 @@ def _load_docling():
 def _load_marker():
     from pdfsmith.backends.marker_backend import MarkerBackend
     return MarkerBackend
+
+
+def _load_aws_textract():
+    from pdfsmith.backends.aws_textract_backend import AWSTextractBackend
+    return AWSTextractBackend
+
+
+def _load_azure_document_intelligence():
+    from pdfsmith.backends.azure_document_intelligence_backend import (
+        AzureDocumentIntelligenceBackend,
+    )
+    return AzureDocumentIntelligenceBackend
+
+
+def _load_google_document_ai():
+    from pdfsmith.backends.google_document_ai_backend import GoogleDocumentAIBackend
+    return GoogleDocumentAIBackend
+
+
+def _load_databricks():
+    from pdfsmith.backends.databricks_backend import DatabricksBackend
+    return DatabricksBackend
+
+
+def _load_llamaparse():
+    from pdfsmith.backends.llamaparse_backend import LlamaParseBackend
+    return LlamaParseBackend
+
+
+def _load_anthropic():
+    from pdfsmith.backends.anthropic_backend import AnthropicBackend
+    return AnthropicBackend
+
+
+def _load_openai():
+    from pdfsmith.backends.openai_backend import OpenAIBackend
+    return OpenAIBackend
+
+
+def _load_gemini():
+    from pdfsmith.backends.gemini_backend import GeminiBackend
+    return GeminiBackend
 
 
 # Registry of all supported backends
@@ -188,5 +229,63 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         package="marker-pdf",
         weight="heavy",
         loader=_load_marker,
+    ),
+    # Commercial backends
+    "aws_textract": BackendInfo(
+        name="aws_textract",
+        description="AWS Textract, commercial OCR and text extraction",
+        package="boto3",
+        weight="commercial",
+        loader=_load_aws_textract,
+    ),
+    "azure_document_intelligence": BackendInfo(
+        name="azure_document_intelligence",
+        description="Azure Document Intelligence, high-accuracy OCR",
+        package="azure-ai-documentintelligence",
+        weight="commercial",
+        loader=_load_azure_document_intelligence,
+    ),
+    "google_document_ai": BackendInfo(
+        name="google_document_ai",
+        description="Google Document AI, advanced document understanding",
+        package="google-cloud-documentai",
+        weight="commercial",
+        loader=_load_google_document_ai,
+    ),
+    "databricks": BackendInfo(
+        name="databricks",
+        description="Databricks ai_parse_document via SQL warehouse",
+        package="databricks-sdk",
+        weight="commercial",
+        loader=_load_databricks,
+    ),
+    "llamaparse": BackendInfo(
+        name="llamaparse",
+        description="LlamaIndex LlamaParse, GenAI-native document parsing",
+        package="llama-parse",
+        weight="commercial",
+        loader=_load_llamaparse,
+    ),
+    # Frontier LLM backends
+    "anthropic": BackendInfo(
+        name="anthropic",
+        description="Anthropic Claude, frontier multimodal PDF parsing",
+        package="anthropic",
+        weight="commercial",
+        loader=_load_anthropic,
+    ),
+    "openai": BackendInfo(
+        name="openai",
+        description="OpenAI GPT, frontier multimodal PDF parsing",
+        package="openai",
+        weight="commercial",
+        loader=_load_openai,
+    ),
+    "gemini": BackendInfo(
+        name="gemini",
+        description="Google Gemini, frontier multimodal PDF parsing",
+        package="google-genai",
+        weight="commercial",
+        loader=_load_gemini,
     ),
 }

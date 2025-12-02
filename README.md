@@ -7,7 +7,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A unified interface to 10+ PDF parsing libraries. Pick the right tool for the job, or let pdfsmith choose for you.
+A unified interface to 19+ PDF parsing libraries including frontier LLMs. Pick the right tool for the job, or let pdfsmith choose for you.
 
 ## Why pdfsmith?
 
@@ -28,8 +28,14 @@ pip install pdfsmith[light]
 # Recommended stack (good balance of quality and speed)
 pip install pdfsmith[recommended]
 
-# All backends
+# All open-source backends
 pip install pdfsmith[all]
+
+# Frontier LLMs (GPT, Claude, Gemini)
+pip install pdfsmith[frontier]
+
+# Commercial cloud APIs
+pip install pdfsmith[commercial]
 
 # Specific backend
 pip install pdfsmith[docling]
@@ -70,6 +76,8 @@ pdfsmith backends
 
 ## Available Backends
 
+### Open Source
+
 | Backend | Weight | Best For |
 |---------|--------|----------|
 | `docling` | heavy | Highest quality, complex documents |
@@ -84,13 +92,54 @@ pdfsmith backends
 | `pypdfium2` | light | Chrome's PDF engine |
 | `extractous` | medium | Rust-based extraction |
 
+### Commercial Cloud APIs
+
+| Backend | Provider | Cost | Best For |
+|---------|----------|------|----------|
+| `aws_textract` | AWS | $1.50/1k pages | High-accuracy OCR |
+| `azure_document_intelligence` | Azure | $1.50/1k pages | Enterprise documents |
+| `google_document_ai` | Google Cloud | $1.50/1k pages | Multi-language support |
+| `databricks` | Databricks | ~$3/1k pages | SQL-based workflows |
+| `llamaparse` | LlamaIndex | $0.003/page | Cost-effective API |
+
+### Frontier LLMs
+
+| Backend | Model | Cost | Best For |
+|---------|-------|------|----------|
+| `anthropic` | Claude Sonnet 4.5 | ~$0.04/page | High accuracy |
+| `openai` | GPT-4o | ~$0.02/page | General purpose |
+| `gemini` | Gemini 2.0 Flash | ~$0.001/page | Budget LLM option |
+
+**Note**: Frontier LLM backends require API keys set via environment variables (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`).
+
 ### Choosing a Backend
 
-- **Best quality**: `docling` - Uses deep learning, GPU recommended
+- **Best quality**: `anthropic` or `openai` - Frontier LLM accuracy (highest cost)
+- **Best value**: `llamaparse` - Near-LLM quality at 10x lower cost
+- **Structure preservation**: `docling` - Deep learning, GPU recommended
 - **Academic papers**: `marker` - Optimized for LaTeX/equations
 - **Tables**: `pdfplumber` - Excellent table detection
 - **Speed**: `pymupdf` or `kreuzberg` - Fast extraction
 - **Minimal dependencies**: `pypdf` - Pure Python, no binaries
+- **Budget LLM**: `gemini` with gemini-2.0-flash - Very low cost LLM option
+
+### System Dependencies
+
+Some backends require system packages for OCR functionality:
+
+**Tesseract OCR** (for `kreuzberg` and `unstructured` with OCR):
+```bash
+# Ubuntu/Debian
+sudo apt-get install tesseract-ocr
+
+# macOS
+brew install tesseract
+
+# Windows
+# Download from https://github.com/UB-Mannheim/tesseract/wiki
+```
+
+Without tesseract, these backends will still work for text-based PDFs but cannot extract text from scanned/image PDFs.
 
 ## Async Support
 

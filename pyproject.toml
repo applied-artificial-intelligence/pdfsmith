@@ -1,6 +1,6 @@
 [project]
 name = "pdfsmith"
-version = "0.1.0"
+version = "0.2.0"
 description = "PDF to Markdown conversion with multiple backend support"
 readme = "README.md"
 license = { text = "MIT" }
@@ -32,13 +32,26 @@ pypdfium2 = ["pypdfium2>=4.0"]
 
 # Medium-weight backends
 pymupdf4llm = ["pymupdf4llm>=0.0.10"]
-unstructured = ["unstructured>=0.10"]
+unstructured = ["unstructured>=0.10", "pikepdf>=9.0"]  # pikepdf required for fast strategy
 kreuzberg = ["kreuzberg>=3.0"]
 extractous = ["extractous>=0.1"]
 
 # Heavy backends (ML/deep learning)
 docling = ["docling>=2.0"]
 marker = ["marker-pdf>=1.0"]
+
+# Commercial backends (cloud OCR)
+aws = ["boto3>=1.34", "pymupdf>=1.23"]  # pymupdf for multi-page support
+azure = ["azure-ai-documentintelligence>=1.0"]
+google = ["google-cloud-documentai>=2.0", "google-cloud-storage>=2.0"]
+databricks = ["databricks-sdk>=0.20"]
+llamaparse = ["llama-parse>=0.6"]
+
+# Frontier LLM backends
+anthropic = ["anthropic>=0.40"]
+openai = ["openai>=1.50"]
+gemini = ["google-genai>=1.0"]
+frontier = ["anthropic>=0.40", "openai>=1.50", "google-genai>=1.0"]
 
 # Bundles
 light = ["pypdf>=4.0", "pdfplumber>=0.10", "pymupdf>=1.23"]
@@ -47,6 +60,15 @@ recommended = [
     "pdfplumber>=0.10",
     "pymupdf4llm>=0.0.10",
     "kreuzberg>=3.0",
+]
+commercial = [
+    "boto3>=1.34",
+    "pymupdf>=1.23",
+    "azure-ai-documentintelligence>=1.0",
+    "google-cloud-documentai>=2.0",
+    "google-cloud-storage>=2.0",
+    "databricks-sdk>=0.20",
+    "llama-parse>=0.6",
 ]
 all = [
     "pypdf>=4.0",
@@ -59,12 +81,14 @@ all = [
     "kreuzberg>=3.0",
     "extractous>=0.1",
     "docling>=2.0",
+    # Note: Commercial backends excluded from 'all' due to credential requirements
 ]
 
 # Development
 dev = [
     "pytest>=7.0",
     "pytest-asyncio>=0.21",
+    "pytest-cov>=4.0",
     "ruff>=0.6",
     "mypy>=1.11",
     "pre-commit>=3.0",
@@ -97,6 +121,19 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests requiring external services",
+    "commercial: marks tests requiring commercial backend credentials",
+    "aws: marks tests requiring AWS credentials",
+    "azure: marks tests requiring Azure credentials",
+    "google: marks tests requiring Google Cloud credentials",
+    "databricks: marks tests requiring Databricks credentials",
+    "llamaparse: marks tests requiring LlamaParse API key",
+    "anthropic: marks tests requiring Anthropic API key",
+    "openai: marks tests requiring OpenAI API key",
+    "gemini: marks tests requiring Google/Gemini API key",
+]
 
 [tool.mypy]
 python_version = "3.10"
@@ -115,4 +152,8 @@ exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",
     "raise NotImplementedError",
+    # These lines only execute when package is not installed
+    "except ImportError:",
+    "AVAILABLE = False",
+    "raise ImportError",
 ]

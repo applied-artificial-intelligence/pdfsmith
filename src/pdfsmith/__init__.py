@@ -18,7 +18,7 @@ Basic usage:
     print(available_backends())
 """
 
-from pdfsmith.api import parse, parse_async, available_backends, get_backend
+from pdfsmith.api import available_backends, get_backend, parse, parse_async
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = ["parse", "parse_async", "available_backends", "get_backend", "__version__"]
