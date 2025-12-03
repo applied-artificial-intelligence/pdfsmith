@@ -1,6 +1,7 @@
 """Tests for async PDF parsing functionality."""
 
 import asyncio
+import functools
 from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -12,6 +13,7 @@ from pdfsmith import available_backends, parse_async
 def requires_backend(func):
     """Skip test if no backends are installed."""
 
+    @functools.wraps(func)
     async def wrapper(*args, **kwargs):
         if not available_backends():
             pytest.skip("No backends installed")
