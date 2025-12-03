@@ -70,7 +70,7 @@ class TestAWSTextractBackend:
                     del os.environ[key]
 
             # Mock boto3 client creation
-            with patch("boto3.client") as mock_client:
+            with patch("pdfsmith.backends.aws_textract_backend.boto3.client") as mock_client:
                 mock_client.return_value = Mock()
                 backend = AWSTextractBackend()
                 assert backend.client is not None
@@ -116,9 +116,8 @@ class TestAWSTextractBackend:
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
 
-            # Mock boto3.client inside the test to avoid import issues
-            with patch("boto3.client") as mock_boto_client:
-                # Mock Textract response
+            # Create backend first, then replace the client with mock
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
                 mock_client = Mock()
                 mock_client.detect_document_text.return_value = {
                     "Blocks": [
@@ -134,7 +133,8 @@ class TestAWSTextractBackend:
                         },
                     ]
                 }
-                mock_boto_client.return_value = mock_client
+                mock_boto3.client.return_value = mock_client
+                mock_boto3.Session.return_value.client.return_value = mock_client
 
                 backend = AWSTextractBackend()
                 result = backend.parse(sample_pdf)
@@ -157,8 +157,9 @@ class TestAWSTextractBackend:
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
 
-            with patch("boto3.client") as mock_boto_client:
-                mock_boto_client.return_value = Mock()
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
+                mock_boto3.client.return_value = Mock()
+                mock_boto3.Session.return_value.client.return_value = Mock()
                 backend = AWSTextractBackend()
 
                 with pytest.raises(FileNotFoundError):
@@ -182,8 +183,9 @@ class TestAWSTextractBackend:
             large_pdf = tmp_path / "large.pdf"
             large_pdf.write_bytes(b"fake pdf content")
 
-            with patch("boto3.client") as mock_boto_client:
-                mock_boto_client.return_value = Mock()
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
+                mock_boto3.client.return_value = Mock()
+                mock_boto3.Session.return_value.client.return_value = Mock()
                 backend = AWSTextractBackend()
 
                 # Mock file size to appear as 15 MB
@@ -221,14 +223,15 @@ class TestAWSTextractBackend:
             except ImportError:
                 pytest.skip("reportlab not installed")
 
-            with patch("boto3.client") as mock_boto_client:
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
                 mock_client = Mock()
                 mock_client.detect_document_text.return_value = {
                     "Blocks": [
                         {"BlockType": "LINE", "Text": "Page content"},
                     ]
                 }
-                mock_boto_client.return_value = mock_client
+                mock_boto3.client.return_value = mock_client
+                mock_boto3.Session.return_value.client.return_value = mock_client
 
                 backend = AWSTextractBackend()
                 result = backend.parse(pdf_path)
@@ -252,13 +255,14 @@ class TestAWSTextractBackend:
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
 
-            with patch("boto3.client") as mock_boto_client:
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
                 mock_client = Mock()
                 mock_client.detect_document_text.side_effect = ClientError(
                     {"Error": {"Code": "ThrottlingException", "Message": "Rate exceeded"}},
                     "DetectDocumentText",
                 )
-                mock_boto_client.return_value = mock_client
+                mock_boto3.client.return_value = mock_client
+                mock_boto3.Session.return_value.client.return_value = mock_client
 
                 backend = AWSTextractBackend()
 
@@ -280,13 +284,14 @@ class TestAWSTextractBackend:
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
 
-            with patch("boto3.client") as mock_boto_client:
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
                 mock_client = Mock()
                 mock_client.detect_document_text.side_effect = ClientError(
                     {"Error": {"Code": "InvalidParameterException", "Message": "Invalid PDF"}},
                     "DetectDocumentText",
                 )
-                mock_boto_client.return_value = mock_client
+                mock_boto3.client.return_value = mock_client
+                mock_boto3.Session.return_value.client.return_value = mock_client
 
                 backend = AWSTextractBackend()
 
@@ -307,8 +312,9 @@ class TestAWSTextractBackend:
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
 
-            with patch("boto3.client") as mock_boto_client:
-                mock_boto_client.return_value = Mock()
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
+                mock_boto3.client.return_value = Mock()
+                mock_boto3.Session.return_value.client.return_value = Mock()
                 backend = AWSTextractBackend()
 
                 response = {
@@ -338,8 +344,9 @@ class TestAWSTextractBackend:
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
 
-            with patch("boto3.client") as mock_boto_client:
-                mock_boto_client.return_value = Mock()
+            with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
+                mock_boto3.client.return_value = Mock()
+                mock_boto3.Session.return_value.client.return_value = Mock()
                 backend = AWSTextractBackend()
 
                 response = {"Blocks": []}
