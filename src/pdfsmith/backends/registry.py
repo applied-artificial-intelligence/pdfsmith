@@ -293,7 +293,8 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
     "llamaparse": BackendInfo(
         name="llamaparse",
         description="LlamaIndex LlamaParse, GenAI-native document parsing",
-        package="llama-parse",
+        package="llama-cloud",
+        dependencies=("llama-cloud", "pypdf"),
         weight="commercial",
         loader=_load_llamaparse,
     ),

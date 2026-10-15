@@ -1,0 +1,60 @@
+Command: ['.venv/bin/python', '.workspace/work/2026-10-14-pdfsmith-update/runtime/inspect_legacy_transport.py']
+Exit: 1
+Error while parsing the file '.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/columns.pdf': 'markdown'
+{
+  "evidence": "offline SDK request serialization; no provider calls",
+  "wrapper_requested_mode": "premium",
+  "actual_sdk_parse_mode": null,
+  "actual_sdk_ignore_errors": true,
+  "provider_error_returned_as": "''",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/parsing/upload",
+      "selected_controls_present": {
+        "parse_mode": false,
+        "parsing_mode": false,
+        "tier": false,
+        "version": false,
+        "disable_cache": false,
+        "do_not_cache": false,
+        "invalidate_cache": false,
+        "target_pages": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/parsing/job/controlled-job",
+      "selected_controls_present": {
+        "parse_mode": false,
+        "parsing_mode": false,
+        "tier": false,
+        "version": false,
+        "disable_cache": false,
+        "do_not_cache": false,
+        "invalidate_cache": false,
+        "target_pages": false
+      }
+    }
+  ],
+  "modern_controls_accepted_but_absent_from_fields": [
+    "tier",
+    "version",
+    "disable_cache"
+  ],
+  "legacy_target_pages_index": "0-based as documented by installed field metadata",
+  "new_path_justification": "installed legacy model cannot express required tier, published version and disable_cache; wrapper silently omits requested parsing mode and drops explicit service failure"
+}
+/home/stefan/applied-ai/pdfsmith/.venv/lib/python3.13/site-packages/llama_cloud_services/parse/base.py:639: UserWarning: The following parameters are unused: tier, version, disable_cache.
+
+ - 'tier' is not a valid parameter. Please check the documentation or update the package.
+ - 'version' is not a valid parameter. Please check the documentation or update the package.
+ - 'disable_cache' is not a valid parameter. Please check the documentation or update the package.
+  warnings.warn(
+/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/inspect_legacy_transport.py:25: PydanticDeprecatedSince211: Accessing the 'model_fields' attribute on the instance is deprecated. Instead, you should access this attribute from the model class. Deprecated in Pydantic V2.11 to be removed in V3.0.
+  assert all(key not in modern.model_fields for key in ['tier','version','disable_cache'])
+Traceback (most recent call last):
+  File "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/inspect_legacy_transport.py", line 28, in <module>
+    assert result != '', 'REGRESSION: explicit service ERROR was reported as successful empty output'
+           ^^^^^^^^^^^^
+AssertionError: REGRESSION: explicit service ERROR was reported as successful empty output

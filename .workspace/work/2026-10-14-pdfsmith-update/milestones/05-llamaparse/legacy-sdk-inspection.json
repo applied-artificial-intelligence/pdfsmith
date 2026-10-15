@@ -1,0 +1,49 @@
+{
+  "distribution_versions": {
+    "llama-parse": "0.6.85",
+    "llama-cloud-services": "0.6.85",
+    "llama-cloud": "0.1.44"
+  },
+  "class_module": "llama_cloud_services.parse.base",
+  "class_file": "/home/stefan/applied-ai/pdfsmith/.venv/lib/python3.13/site-packages/llama_cloud_services/parse/base.py",
+  "source_sha256": "b0c736b34601180d35aa1d687e977123539845fbbb4bf12cd3084f57b14d4ab3",
+  "selected_fields": {
+    "parse_mode": {
+      "annotation": "typing.Union[llama_cloud_services.parse.utils.ParsingMode, str, NoneType]",
+      "default": "None"
+    },
+    "parsing_mode": null,
+    "tier": null,
+    "version": null,
+    "target_pages": {
+      "annotation": "typing.Optional[str]",
+      "default": "None"
+    },
+    "invalidate_cache": {
+      "annotation": "typing.Optional[bool]",
+      "default": "False"
+    },
+    "do_not_cache": {
+      "annotation": "typing.Optional[bool]",
+      "default": "False"
+    },
+    "disable_cache": null,
+    "ignore_errors": {
+      "annotation": "<class 'bool'>",
+      "default": "True"
+    },
+    "language": {
+      "annotation": "typing.Optional[str]",
+      "default": "en"
+    },
+    "result_type": {
+      "annotation": "<enum 'ResultType'>",
+      "default": "ResultType.TXT"
+    },
+    "job_timeout_in_seconds": {
+      "annotation": "typing.Optional[float]",
+      "default": "None"
+    }
+  },
+  "load_data_signature": "(self, file_path: Union[List[Union[str, bytes, io.BufferedIOBase]], str, bytes, io.BufferedIOBase], extra_info: Optional[dict] = None, fs: Optional[fsspec.spec.AbstractFileSystem] = None) -> List[llama_index.core.schema.Document]"
+}

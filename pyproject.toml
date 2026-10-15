@@ -46,7 +46,7 @@ aws = ["boto3>=1.34", "pymupdf>=1.24.3"]  # pymupdf for multi-page support
 azure = ["azure-ai-documentintelligence>=1.0"]
 google = ["google-cloud-documentai>=2.0", "google-cloud-storage>=2.0"]
 databricks = ["databricks-sdk>=0.20"]
-llamaparse = ["llama-parse>=0.6"]
+llamaparse = ["llama-cloud>=2.18,<2.19", "pypdf>=4.0"]
 
 # Frontier LLM backends
 anthropic = ["anthropic>=0.40"]
@@ -69,7 +69,8 @@ commercial = [
     "google-cloud-documentai>=2.0",
     "google-cloud-storage>=2.0",
     "databricks-sdk>=0.20",
-    "llama-parse>=0.6",
+    "llama-cloud>=2.18,<2.19",
+    "pypdf>=4.0",
 ]
 all = [
     "pypdf>=4.0",

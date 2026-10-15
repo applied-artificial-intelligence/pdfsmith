@@ -1,0 +1,14 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_llamaparse_contracts.py', '-q', '--tb=short']
+Exit: 1
+.................F........                                               [100%]
+=================================== FAILURES ===================================
+_______ test_constructor_is_lazy_and_bad_input_fails_before_credentials ________
+tests/test_llamaparse_contracts.py:242: in test_constructor_is_lazy_and_bad_input_fails_before_credentials
+    with pytest.raises(ValueError, match="signature"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'signature'
+E     Actual message: 'Input does not contain a PDF header: /tmp/pytest-of-stefan/pytest-24/test_constructor_is_lazy_and_b0/image.pdf'
+=========================== short test summary info ============================
+FAILED tests/test_llamaparse_contracts.py::test_constructor_is_lazy_and_bad_input_fails_before_credentials
+1 failed, 25 passed in 1.30s

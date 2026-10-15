@@ -10,7 +10,13 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-from pdfsmith import __version__, available_backends, parse, registered_backends
+from pdfsmith import (
+    BackendOperationError,
+    __version__,
+    available_backends,
+    parse,
+    registered_backends,
+)
 
 
 def main() -> int:
@@ -83,6 +89,31 @@ def _diagnostic(message: str) -> None:
         print(message, file=sys.stderr)
 
 
+def _recover_completed(error: BackendOperationError, directory: Path | None) -> None:
+    record = {
+        "parse_completed": error.parse_completed,
+        "recovered_content": error.recovered_content,
+        "resource_ids": error.resource_ids,
+        "completion_unknown": error.completion_unknown,
+        "cleanup_errors": error.cleanup_errors,
+    }
+    recovery = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=directory,
+            prefix="pdfsmith-recovery-",
+            suffix=".json",
+            delete=False,
+        ) as stream:
+            recovery = Path(stream.name)
+            json.dump(record, stream, ensure_ascii=True)
+        _diagnostic(f"Completed content and cleanup details saved to {recovery}")
+    except (OSError, ValueError) as exc:
+        _diagnostic(f"Could not save completed content at {recovery}: {exc}")
+
+
 def cmd_parse(args: argparse.Namespace) -> int:
     """Commit complete file output only after successful parsing and encoding."""
     if not args.pdf_file.exists():
@@ -123,6 +154,17 @@ def cmd_parse(args: argparse.Namespace) -> int:
             else:
                 sys.stdout.write(text)
         return 0
+    except BackendOperationError as exc:
+        _diagnostic(f"Error parsing PDF: {exc}")
+        if exc.resource_ids:
+            _diagnostic(
+                "Operation resource identifiers: " + json.dumps(exc.resource_ids)
+            )
+        if exc.completion_unknown:
+            _diagnostic("Remote completion is unknown; active resources were retained")
+        if exc.parse_completed and exc.recovered_content is not None:
+            _recover_completed(exc, Path(args.output).parent if args.output else None)
+        return 1
     except ImportError as exc:
         _diagnostic(f"Error: {exc}")
         return 1

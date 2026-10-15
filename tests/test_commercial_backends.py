@@ -1,21 +1,22 @@
 """Tests for commercial backends.
 
 These tests use mocking to avoid requiring real API credentials.
-For integration testing with real APIs, see tests/integration/test_commercial_integration.py
+Live runs require separate authorization; see tests/integration/.
 """
 
-import pytest
-from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
 import os
+from pathlib import Path
+from unittest.mock import Mock, patch
+
+import pytest
 
 
 @pytest.fixture
 def sample_pdf(tmp_path: Path) -> Path:
     """Create a minimal PDF for testing."""
     try:
-        from reportlab.pdfgen import canvas
         from reportlab.lib.pagesizes import letter
+        from reportlab.pdfgen import canvas
 
         pdf_path = tmp_path / "test.pdf"
         c = canvas.Canvas(str(pdf_path), pagesize=letter)
@@ -46,7 +47,6 @@ class TestAWSTextractBackend:
         try:
             from pdfsmith.backends.aws_textract_backend import (
                 AWSTextractBackend,
-                AVAILABLE,
             )
 
             assert AWSTextractBackend is not None
@@ -57,8 +57,8 @@ class TestAWSTextractBackend:
         """Backend should fail without AWS credentials."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -70,7 +70,9 @@ class TestAWSTextractBackend:
                     del os.environ[key]
 
             # Mock boto3 client creation
-            with patch("pdfsmith.backends.aws_textract_backend.boto3.client") as mock_client:
+            with patch(
+                "pdfsmith.backends.aws_textract_backend.boto3.client"
+            ) as mock_client:
                 mock_client.return_value = Mock()
                 backend = AWSTextractBackend()
                 assert backend.client is not None
@@ -82,8 +84,8 @@ class TestAWSTextractBackend:
         """Backend should initialize with AWS_PROFILE."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -109,8 +111,8 @@ class TestAWSTextractBackend:
         """Backend should parse single-page PDF."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -150,8 +152,8 @@ class TestAWSTextractBackend:
         """Backend should raise FileNotFoundError for missing file."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -172,8 +174,8 @@ class TestAWSTextractBackend:
         """Backend should raise ValueError for files over 10 MB."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -202,8 +204,8 @@ class TestAWSTextractBackend:
         """Backend should handle multi-page PDFs."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -211,8 +213,8 @@ class TestAWSTextractBackend:
 
             # Create multi-page PDF
             try:
-                from reportlab.pdfgen import canvas
                 from reportlab.lib.pagesizes import letter
+                from reportlab.pdfgen import canvas
 
                 pdf_path = tmp_path / "multipage.pdf"
                 c = canvas.Canvas(str(pdf_path), pagesize=letter)
@@ -246,11 +248,12 @@ class TestAWSTextractBackend:
     def test_parse_throttling_error(self, sample_pdf: Path):
         """Backend should handle throttling errors."""
         try:
-            from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
-                AVAILABLE,
-            )
             from botocore.exceptions import ClientError
+
+            from pdfsmith.backends.aws_textract_backend import (
+                AVAILABLE,
+                AWSTextractBackend,
+            )
 
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
@@ -258,7 +261,12 @@ class TestAWSTextractBackend:
             with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
                 mock_client = Mock()
                 mock_client.detect_document_text.side_effect = ClientError(
-                    {"Error": {"Code": "ThrottlingException", "Message": "Rate exceeded"}},
+                    {
+                        "Error": {
+                            "Code": "ThrottlingException",
+                            "Message": "Rate exceeded",
+                        }
+                    },
                     "DetectDocumentText",
                 )
                 mock_boto3.client.return_value = mock_client
@@ -275,11 +283,12 @@ class TestAWSTextractBackend:
     def test_parse_invalid_parameter_error(self, sample_pdf: Path):
         """Backend should handle invalid parameter errors."""
         try:
-            from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
-                AVAILABLE,
-            )
             from botocore.exceptions import ClientError
+
+            from pdfsmith.backends.aws_textract_backend import (
+                AVAILABLE,
+                AWSTextractBackend,
+            )
 
             if not AVAILABLE:
                 pytest.skip("boto3 not installed")
@@ -287,7 +296,12 @@ class TestAWSTextractBackend:
             with patch("pdfsmith.backends.aws_textract_backend.boto3") as mock_boto3:
                 mock_client = Mock()
                 mock_client.detect_document_text.side_effect = ClientError(
-                    {"Error": {"Code": "InvalidParameterException", "Message": "Invalid PDF"}},
+                    {
+                        "Error": {
+                            "Code": "InvalidParameterException",
+                            "Message": "Invalid PDF",
+                        }
+                    },
                     "DetectDocumentText",
                 )
                 mock_boto3.client.return_value = mock_client
@@ -305,8 +319,8 @@ class TestAWSTextractBackend:
         """_extract_blocks should only extract LINE blocks."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -337,8 +351,8 @@ class TestAWSTextractBackend:
         """_extract_blocks should handle empty response."""
         try:
             from pdfsmith.backends.aws_textract_backend import (
-                AWSTextractBackend,
                 AVAILABLE,
+                AWSTextractBackend,
             )
 
             if not AVAILABLE:
@@ -369,7 +383,6 @@ class TestAzureDocumentIntelligenceBackend:
         try:
             from pdfsmith.backends.azure_document_intelligence_backend import (
                 AzureDocumentIntelligenceBackend,
-                AVAILABLE,
             )
 
             assert AzureDocumentIntelligenceBackend is not None
@@ -380,19 +393,24 @@ class TestAzureDocumentIntelligenceBackend:
         """Backend should fail without Azure credentials."""
         try:
             from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
                 AVAILABLE,
+                AzureDocumentIntelligenceBackend,
             )
 
             if not AVAILABLE:
                 pytest.skip("azure-ai-documentintelligence not installed")
 
             # Clear Azure env vars
-            for key in ["AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT", "AZURE_DOCUMENT_INTELLIGENCE_KEY"]:
+            for key in [
+                "AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT",
+                "AZURE_DOCUMENT_INTELLIGENCE_KEY",
+            ]:
                 if key in os.environ:
                     del os.environ[key]
 
-            with pytest.raises(RuntimeError, match="AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"):
+            with pytest.raises(
+                RuntimeError, match="AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"
+            ):
                 AzureDocumentIntelligenceBackend()
 
         except ImportError:
@@ -402,8 +420,8 @@ class TestAzureDocumentIntelligenceBackend:
         """Backend should fail without API key."""
         try:
             from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
                 AVAILABLE,
+                AzureDocumentIntelligenceBackend,
             )
 
             if not AVAILABLE:
@@ -427,8 +445,8 @@ class TestAzureDocumentIntelligenceBackend:
         """Backend should parse PDF with mocked Azure client."""
         try:
             from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
                 AVAILABLE,
+                AzureDocumentIntelligenceBackend,
             )
 
             if not AVAILABLE:
@@ -438,7 +456,9 @@ class TestAzureDocumentIntelligenceBackend:
             os.environ["AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"] = (
                 "https://test.cognitiveservices.azure.com/"
             )
-            os.environ["AZURE_DOCUMENT_INTELLIGENCE_KEY"] = "test-key-32-characters-long-key"
+            os.environ["AZURE_DOCUMENT_INTELLIGENCE_KEY"] = (
+                "test-key-32-characters-long-key"
+            )
 
             # Mock Azure client
             with patch(
@@ -453,7 +473,9 @@ class TestAzureDocumentIntelligenceBackend:
                     Mock(
                         lines=[
                             Mock(content="Test Document Title"),
-                            Mock(content="This is paragraph one with some text content."),
+                            Mock(
+                                content="This is paragraph one with some text content."
+                            ),
                         ]
                     )
                 ]
@@ -474,8 +496,8 @@ class TestAzureDocumentIntelligenceBackend:
         """Backend should raise FileNotFoundError for missing file."""
         try:
             from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
                 AVAILABLE,
+                AzureDocumentIntelligenceBackend,
             )
 
             if not AVAILABLE:
@@ -501,8 +523,8 @@ class TestAzureDocumentIntelligenceBackend:
         """Backend should raise ValueError for files over 500 MB."""
         try:
             from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
                 AVAILABLE,
+                AzureDocumentIntelligenceBackend,
             )
 
             if not AVAILABLE:
@@ -534,11 +556,12 @@ class TestAzureDocumentIntelligenceBackend:
     def test_parse_rate_limit_error(self, sample_pdf: Path, env_vars):
         """Backend should handle rate limit errors."""
         try:
-            from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
-                AVAILABLE,
-            )
             from azure.core.exceptions import HttpResponseError
+
+            from pdfsmith.backends.azure_document_intelligence_backend import (
+                AVAILABLE,
+                AzureDocumentIntelligenceBackend,
+            )
 
             if not AVAILABLE:
                 pytest.skip("azure-ai-documentintelligence not installed")
@@ -568,11 +591,12 @@ class TestAzureDocumentIntelligenceBackend:
     def test_parse_invalid_pdf_error(self, sample_pdf: Path, env_vars):
         """Backend should handle invalid PDF errors."""
         try:
-            from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
-                AVAILABLE,
-            )
             from azure.core.exceptions import HttpResponseError
+
+            from pdfsmith.backends.azure_document_intelligence_backend import (
+                AVAILABLE,
+                AzureDocumentIntelligenceBackend,
+            )
 
             if not AVAILABLE:
                 pytest.skip("azure-ai-documentintelligence not installed")
@@ -603,8 +627,8 @@ class TestAzureDocumentIntelligenceBackend:
         """_extract_text should handle empty pages."""
         try:
             from pdfsmith.backends.azure_document_intelligence_backend import (
-                AzureDocumentIntelligenceBackend,
                 AVAILABLE,
+                AzureDocumentIntelligenceBackend,
             )
 
             if not AVAILABLE:
@@ -645,7 +669,6 @@ class TestGoogleDocumentAIBackend:
         try:
             from pdfsmith.backends.google_document_ai_backend import (
                 GoogleDocumentAIBackend,
-                AVAILABLE,
             )
 
             assert GoogleDocumentAIBackend is not None
@@ -656,8 +679,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should fail without Google credentials."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -682,8 +705,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should fail without project ID."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -704,8 +727,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should fail without processor ID."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -726,8 +749,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should parse PDF with mocked client."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -777,8 +800,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should raise FileNotFoundError for missing file."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -803,8 +826,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should raise ValueError for files over 20 MB."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -836,8 +859,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should raise ValueError for PDFs over 15 pages."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -845,8 +868,8 @@ class TestGoogleDocumentAIBackend:
 
             # Create a real PDF file with 20 pages
             try:
-                from reportlab.pdfgen import canvas
                 from reportlab.lib.pagesizes import letter
+                from reportlab.pdfgen import canvas
 
                 pdf_path = tmp_path / "manypage.pdf"
                 c = canvas.Canvas(str(pdf_path), pagesize=letter)
@@ -877,8 +900,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should handle INVALID_ARGUMENT errors."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -892,7 +915,9 @@ class TestGoogleDocumentAIBackend:
                 "pdfsmith.backends.google_document_ai_backend.documentai.DocumentProcessorServiceClient"
             ) as mock_client_class:
                 mock_client = Mock()
-                mock_client.process_document.side_effect = Exception("INVALID_ARGUMENT: Bad PDF")
+                mock_client.process_document.side_effect = Exception(
+                    "INVALID_ARGUMENT: Bad PDF"
+                )
                 mock_client_class.return_value = mock_client
 
                 backend = GoogleDocumentAIBackend()
@@ -907,8 +932,8 @@ class TestGoogleDocumentAIBackend:
         """Backend should handle RESOURCE_EXHAUSTED errors."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -922,7 +947,9 @@ class TestGoogleDocumentAIBackend:
                 "pdfsmith.backends.google_document_ai_backend.documentai.DocumentProcessorServiceClient"
             ) as mock_client_class:
                 mock_client = Mock()
-                mock_client.process_document.side_effect = Exception("RESOURCE_EXHAUSTED: Quota exceeded")
+                mock_client.process_document.side_effect = Exception(
+                    "RESOURCE_EXHAUSTED: Quota exceeded"
+                )
                 mock_client_class.return_value = mock_client
 
                 backend = GoogleDocumentAIBackend()
@@ -937,8 +964,8 @@ class TestGoogleDocumentAIBackend:
         """_extract_text should handle empty document."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -969,8 +996,8 @@ class TestGoogleDocumentAIBackend:
         """_get_text_from_layout should handle missing text_anchor."""
         try:
             from pdfsmith.backends.google_document_ai_backend import (
-                GoogleDocumentAIBackend,
                 AVAILABLE,
+                GoogleDocumentAIBackend,
             )
 
             if not AVAILABLE:
@@ -1007,7 +1034,6 @@ class TestDatabricksBackend:
         try:
             from pdfsmith.backends.databricks_backend import (
                 DatabricksBackend,
-                AVAILABLE,
             )
 
             assert DatabricksBackend is not None
@@ -1018,8 +1044,8 @@ class TestDatabricksBackend:
         """Backend should fail without Databricks credentials."""
         try:
             from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
                 AVAILABLE,
+                DatabricksBackend,
             )
 
             if not AVAILABLE:
@@ -1040,8 +1066,8 @@ class TestDatabricksBackend:
         """Backend should fail without client credentials."""
         try:
             from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
                 AVAILABLE,
+                DatabricksBackend,
             )
 
             if not AVAILABLE:
@@ -1062,11 +1088,12 @@ class TestDatabricksBackend:
     def test_parse_with_mocked_client(self, sample_pdf: Path, env_vars):
         """Backend should parse PDF with mocked Databricks client."""
         try:
-            from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
-                AVAILABLE,
-            )
             from databricks.sdk.service.sql import StatementState
+
+            from pdfsmith.backends.databricks_backend import (
+                AVAILABLE,
+                DatabricksBackend,
+            )
 
             if not AVAILABLE:
                 pytest.skip("databricks-sdk not installed")
@@ -1114,8 +1141,8 @@ class TestDatabricksBackend:
         """Backend should raise FileNotFoundError for missing file."""
         try:
             from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
                 AVAILABLE,
+                DatabricksBackend,
             )
 
             if not AVAILABLE:
@@ -1144,11 +1171,12 @@ class TestDatabricksBackend:
     def test_parse_sql_execution_failure(self, sample_pdf: Path, env_vars):
         """Backend should handle SQL execution failures."""
         try:
-            from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
-                AVAILABLE,
-            )
             from databricks.sdk.service.sql import StatementState
+
+            from pdfsmith.backends.databricks_backend import (
+                AVAILABLE,
+                DatabricksBackend,
+            )
 
             if not AVAILABLE:
                 pytest.skip("databricks-sdk not installed")
@@ -1192,11 +1220,12 @@ class TestDatabricksBackend:
     def test_parse_empty_result(self, sample_pdf: Path, env_vars):
         """Backend should handle empty results gracefully."""
         try:
-            from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
-                AVAILABLE,
-            )
             from databricks.sdk.service.sql import StatementState
+
+            from pdfsmith.backends.databricks_backend import (
+                AVAILABLE,
+                DatabricksBackend,
+            )
 
             if not AVAILABLE:
                 pytest.skip("databricks-sdk not installed")
@@ -1239,8 +1268,8 @@ class TestDatabricksBackend:
         """_get_warehouse_id should prefer serverless warehouses."""
         try:
             from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
                 AVAILABLE,
+                DatabricksBackend,
             )
 
             if not AVAILABLE:
@@ -1265,7 +1294,10 @@ class TestDatabricksBackend:
                 mock_standard.name = "Standard Warehouse"
                 mock_standard.id = "standard-id"
 
-                mock_client.warehouses.list.return_value = [mock_standard, mock_serverless]
+                mock_client.warehouses.list.return_value = [
+                    mock_standard,
+                    mock_serverless,
+                ]
                 mock_client_class.return_value = mock_client
 
                 backend = DatabricksBackend()
@@ -1278,8 +1310,8 @@ class TestDatabricksBackend:
         """_get_warehouse_id should raise if no warehouses found."""
         try:
             from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
                 AVAILABLE,
+                DatabricksBackend,
             )
 
             if not AVAILABLE:
@@ -1307,8 +1339,8 @@ class TestDatabricksBackend:
         """_parse_result should handle valid JSON."""
         try:
             from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
                 AVAILABLE,
+                DatabricksBackend,
             )
 
             if not AVAILABLE:
@@ -1346,8 +1378,8 @@ class TestDatabricksBackend:
         """_parse_result should handle non-JSON strings."""
         try:
             from pdfsmith.backends.databricks_backend import (
-                DatabricksBackend,
                 AVAILABLE,
+                DatabricksBackend,
             )
 
             if not AVAILABLE:
@@ -1373,284 +1405,6 @@ class TestDatabricksBackend:
 
         except ImportError:
             pytest.skip("databricks-sdk not installed")
-
-
-class TestLlamaParseBackend:
-    """Tests for LlamaParse backend."""
-
-    def test_import(self):
-        """Backend should be importable."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            assert LlamaParseBackend is not None
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_missing_api_key(self, env_vars):
-        """Backend should fail without API key."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            # Clear API key
-            os.environ.pop("LLAMA_CLOUD_API_KEY", None)
-
-            with pytest.raises(ValueError, match="LLAMA_CLOUD_API_KEY"):
-                LlamaParseBackend()
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_invalid_parsing_mode(self, env_vars):
-        """Backend should reject invalid parsing mode."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-key"
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse"):
-                with pytest.raises(ValueError, match="Invalid parsing_mode"):
-                    LlamaParseBackend(parsing_mode="invalid")
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_initialization_with_api_key(self, env_vars):
-        """Backend should initialize with API key."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-api-key"
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse") as mock_class:
-                mock_client = Mock()
-                mock_class.return_value = mock_client
-
-                backend = LlamaParseBackend()
-                assert backend.client is mock_client
-                assert backend.parsing_mode == "cost_effective"
-
-                # Verify LlamaParse was called with correct params
-                mock_class.assert_called_once_with(
-                    api_key="test-api-key",
-                    result_type="markdown",
-                    language="en",
-                    verbose=False,
-                )
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_initialization_with_custom_params(self, env_vars):
-        """Backend should accept custom parsing mode and language."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-api-key"
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse") as mock_class:
-                mock_client = Mock()
-                mock_class.return_value = mock_client
-
-                backend = LlamaParseBackend(parsing_mode="premium", language="de")
-                assert backend.parsing_mode == "premium"
-                assert backend.language == "de"
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_parse_file_not_found(self, env_vars, tmp_path):
-        """Backend should raise FileNotFoundError for missing file."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-api-key"
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse"):
-                backend = LlamaParseBackend()
-
-                with pytest.raises(FileNotFoundError):
-                    backend.parse(tmp_path / "nonexistent.pdf")
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_parse_with_mocked_client(self, env_vars, sample_pdf):
-        """Backend should parse PDF using LlamaParse."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-api-key"
-
-            # Create mock document objects
-            mock_doc1 = Mock()
-            mock_doc1.text = "# Document Title\n\nFirst paragraph."
-
-            mock_doc2 = Mock()
-            mock_doc2.text = "Second paragraph with more content."
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse") as mock_class:
-                mock_client = Mock()
-                mock_client.load_data.return_value = [mock_doc1, mock_doc2]
-                mock_class.return_value = mock_client
-
-                backend = LlamaParseBackend()
-                result = backend.parse(sample_pdf)
-
-                assert "# Document Title" in result
-                assert "First paragraph" in result
-                assert "Second paragraph" in result
-
-                mock_client.load_data.assert_called_once_with(str(sample_pdf))
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_parse_with_content_attribute(self, env_vars, sample_pdf):
-        """Backend should handle documents with content attribute."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-api-key"
-
-            # Create mock document with content instead of text
-            mock_doc = Mock(spec=[])  # No text attribute
-            mock_doc.content = "Content from content attribute"
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse") as mock_class:
-                mock_client = Mock()
-                mock_client.load_data.return_value = [mock_doc]
-                mock_class.return_value = mock_client
-
-                backend = LlamaParseBackend()
-                result = backend.parse(sample_pdf)
-
-                assert "Content from content attribute" in result
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_parse_empty_documents(self, env_vars, sample_pdf):
-        """Backend should handle empty document list."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-api-key"
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse") as mock_class:
-                mock_client = Mock()
-                mock_client.load_data.return_value = []
-                mock_class.return_value = mock_client
-
-                backend = LlamaParseBackend()
-                result = backend.parse(sample_pdf)
-
-                assert result == ""
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_parse_api_error(self, env_vars, sample_pdf):
-        """Backend should wrap API errors in RuntimeError."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            os.environ["LLAMA_CLOUD_API_KEY"] = "test-api-key"
-
-            with patch("pdfsmith.backends.llamaparse_backend.LlamaParse") as mock_class:
-                mock_client = Mock()
-                mock_client.load_data.side_effect = Exception("API rate limit exceeded")
-                mock_class.return_value = mock_client
-
-                backend = LlamaParseBackend()
-
-                with pytest.raises(RuntimeError, match="LlamaParse processing failed"):
-                    backend.parse(sample_pdf)
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
-
-    def test_parsing_modes(self):
-        """Backend should define correct parsing modes."""
-        try:
-            from pdfsmith.backends.llamaparse_backend import (
-                LlamaParseBackend,
-                AVAILABLE,
-            )
-
-            if not AVAILABLE:
-                pytest.skip("llama-parse not installed")
-
-            assert "fast" in LlamaParseBackend.PARSING_MODES
-            assert "cost_effective" in LlamaParseBackend.PARSING_MODES
-            assert "agentic" in LlamaParseBackend.PARSING_MODES
-            assert "premium" in LlamaParseBackend.PARSING_MODES
-
-            # Verify costs
-            assert LlamaParseBackend.PARSING_MODES["fast"] == 0.001
-            assert LlamaParseBackend.PARSING_MODES["cost_effective"] == 0.003
-            assert LlamaParseBackend.PARSING_MODES["agentic"] == 0.01
-            assert LlamaParseBackend.PARSING_MODES["premium"] == 0.09
-
-        except ImportError:
-            pytest.skip("llama-parse not installed")
 
 
 class TestCommercialBackendRegistry:

@@ -28,11 +28,15 @@ environments passed Python 3.10-3.13. Public/controlled/error/async/CLI hashes:
 milestones/04-native/. Six of 19 integrations now have local E2E evidence.
 
 Next: independent remaining local/provider work.
-LlamaParse installed legacy inspection found a re-export from llama-cloud-services
-0.6.85, missing tier/version/disable_cache fields and ignore_errors=True. Actual
-request/error transport checks precede replacing that SDK path.
+Checkpoint 5: actual legacy LlamaParse transport reproduced dropped mode and
+ERROR-to-empty behavior; replaced with pinned modern SDK and explicit identity.
+212 passed / 51 skips; four extra-only installed wheels passed SDK/API/async/CLI
+OFFLINE checks on Python 3.10-3.13. Cleanup errors retain recovered content/IDs;
+CLI saves a separate private recovery JSON. Modern runtime version/cache-hit
+confirmation remains unknown. Evidence: milestones/05-llamaparse/. Native mode
+correction also passed installed wheels on all four Python versions.
 
-13 integrations remain unverified; their native/model/provider lifecycle findings
+13 integrations remain without real E2E; LlamaParse has offline-contract evidence; their native/model/provider lifecycle findings
 are still required. No paid/free-credit calls, public-main merge/release, new
 agents/chats, PDF-Bench or website/deployment changes are authorized. Inherited
 provider files and unrelated untracked work remain preserved and unabsorbed.

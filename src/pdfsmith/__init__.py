@@ -8,6 +8,7 @@ from pdfsmith.api import (
     parse_async,
     registered_backends,
 )
+from pdfsmith.errors import BackendOperationError
 
 __version__ = "0.3.0.dev0"
 __all__ = [
@@ -17,5 +18,6 @@ __all__ = [
     "registered_backends",
     "get_backend",
     "IMAGE_CAPABLE_BACKENDS",
+    "BackendOperationError",
     "__version__",
 ]

@@ -127,6 +127,11 @@ establish the behavior or quality of a PDFsmith integration.
     cannot claim the output was rolled back. stdout is streaming and not atomic;
     shell redirection is outside this guarantee. stdout and file output emit the
     returned UTF-8 content exactly, without adding a newline; diagnostics use stderr.
+    Completed content carried by an operational cleanup error is saved separately
+    as a private pdfsmith-recovery-*.json file beside the requested output, or in
+    the system temporary directory for stdout mode. Exit remains nonzero, the prior
+    destination stays intact and stderr reports the recovery path and resource IDs.
+    Recovery storage failure is reported separately; no successful save is claimed.
 13. Ordinary pytest collection/execution cannot enable live tests via environment
     flags, including RUN_COMMERCIAL_TESTS=0/false/1. The test process denies outbound
     DNS/TCP connections, strips inherited credentials and uses controlled HOME.
@@ -155,7 +160,12 @@ establish the behavior or quality of a PDFsmith integration.
     service version, rejecting moving latest aliases and legacy parsing_mode with
     a migration message. disable_cache defaults true and is recorded in effective
     request identity; cache-hit status stays unknown unless confirmed. Requested
-    and provider-confirmed version/tier remain distinct. Validate job/page status,
+    and provider-confirmed version/tier remain distinct. The inspected llama-cloud
+    2.18.x response exposes no resolved runtime version or cache-hit guarantee;
+    confirmed_version/cache_hit stay unknown, and raw request-version echoes are
+    recorded separately. Accept the SDK-published 2026-06-15, 2026-09-28 and
+    2026-09-29 versions with fast/cost_effective/agentic/agentic_plus tiers; these
+    versions support markdown on fast. Validate job/page status,
     coverage/order/duplicates, output expansions and tier/version compatibility.
 18. Preserve original source/unrelated files and the earlier README correction.
     Keep PDF-Bench experiments, website/editorial changes, release/public-main

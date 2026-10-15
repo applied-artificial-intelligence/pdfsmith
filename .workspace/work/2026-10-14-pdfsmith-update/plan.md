@@ -38,15 +38,19 @@ Async convenience calls move blocking resolution/setup off the event loop.
 Each provider issue defines terminal-success and blank-output predicates, required
 fields/page coverage, request identity, cleanup/uncertain-submission behavior and
 strict real-SDK transport fixtures. After successful extraction, cleanup failure
-raises an operational exception retaining content and resource identifiers. Unknown
+raises an operational exception retaining content and resource identifiers. The
+CLI saves completed content as a separate private recovery JSON, reports the path
+and keeps a nonzero exit and prior destination. Unknown
 remote completion forbids destructive cleanup of active-job resources or blind
 resubmission. SDK request serialization is not live SQL/service validation.
 
 LlamaParse's installed legacy SDK inspection precedes any replacement. One modern
 path, explicit pinned version/tier, disable_cache=true by default, rejected legacy
 parsing_mode and provider-confirmed identity are specified. The exact accepted
-published versions are selected from current official documentation and SDK
-inspection in Issue 5, not invented in the core milestone.
+published versions were selected from current official documentation and SDK
+inspection in Issue 5: llama-cloud 2.18.x, 2026-06-15/2026-09-28/2026-09-29,
+with fast/cost_effective/agentic/agentic_plus. Runtime-version confirmation and
+cache-hit status remain unknown; provider parameter echoes are separate.
 
 Keep existing issue IDs for traceability. Execute Issue 1 (test safety plus early
 version/core wheel), Issues 2-3, Issue 4, then Issue 15. Independent backend issues

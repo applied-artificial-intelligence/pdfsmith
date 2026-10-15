@@ -422,13 +422,13 @@
     {
       "name": "llamaparse",
       "description": "LlamaIndex LlamaParse, GenAI-native document parsing",
-      "package": "llama-parse",
+      "package": "llama-cloud",
       "weight": "commercial",
       "extra": "llamaparse",
       "constructor_arguments": "self, parsing_mode: str='cost_effective', language: str='en'",
       "native_parse_async": false,
-      "source_disposition": "Current v2 docs checked; SDK/live checks pending. Replace obsolete client path if modern SDK contract confirms; retain backend name. parsing_mode is validated/stored but never sent; tier/version/cache behavior must be explicit.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Replaced legacy SDK after actual offline failure/serialization inspection. Modern real-SDK transports and isolated installed wheels passed; live parsing remains unauthorized/unverified.",
+      "current_evidence": "offline-contract; live-unverified",
       "input_formats": [
         "pdf"
       ],
@@ -436,11 +436,28 @@
         "LLAMA_CLOUD_API_KEY"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "tier: explicit fast/cost_effective/agentic/agentic_plus",
+        "version: explicit 2026-06-15/2026-09-28/2026-09-29; no latest",
+        "disable_cache: bool, default true",
+        "language: SDK 2.18 documented language code; en default, en/de serialized in tests",
+        "max_wait_seconds/request_timeout_seconds: finite positive",
+        "poll_interval_seconds: finite nonnegative"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
+      ],
+      "evidence_path": "milestones/05-llamaparse/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
       ]
     },
     {

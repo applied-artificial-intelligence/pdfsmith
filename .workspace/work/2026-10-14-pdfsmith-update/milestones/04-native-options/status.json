@@ -10,5 +10,5 @@
   "after": "23 native tests passed including actual MuPDF/PDFium extraction and resource checks",
   "contract": "use_layout=True rejects explicit table_strategy/ignore_images; use_layout=False rejects explicit use_ocr. Effective options contain active mode options only. No ignored kwargs forwarded to SDK.",
   "source": "Inspected pymupdf4llm 1.28.2 _layout_to_markdown signature and legacy kwargs; official API https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html",
-  "limits": "Previous 16 installed-wheel identities remain historical; current source correction tested through actual SDK on Python 3.12. Final wheel verification will include this correction."
+  "limits": "Corrected legacy/layout modes additionally passed installed wheel API/direct/async/CLI probes on Python 3.10-3.13; exact new identities in installed-*.json. No OCR-quality/image claim."
 }

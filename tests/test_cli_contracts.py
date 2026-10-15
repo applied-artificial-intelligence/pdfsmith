@@ -182,3 +182,31 @@ def test_console_complete_inventory_exposes_registered_services():
     assert len(result.stdout.decode().split("configuration not checked")) == 20
     assert b"aws_textract: registered" in result.stdout
     assert b"llamaparse: registered" in result.stdout
+
+
+def test_completed_content_survives_provider_cleanup_failure(
+    sample_pdf, tmp_path, monkeypatch
+):
+    from pdfsmith import BackendOperationError
+
+    output = tmp_path / "output.md"
+    output.write_bytes(b"previous valid output")
+
+    def fail_cleanup(*args, **kwargs):
+        raise BackendOperationError(
+            "controlled provider cleanup failure",
+            parse_completed=True,
+            recovered_content="# Completed document",
+            resource_ids={"job_id": "controlled-job"},
+            cleanup_errors=("controlled cleanup failure",),
+        )
+
+    monkeypatch.setattr(cli, "parse", fail_cleanup)
+    args = argparse.Namespace(pdf_file=sample_pdf, output=output, backend="llamaparse")
+    assert cli.cmd_parse(args) == 1
+    assert output.read_bytes() == b"previous valid output"
+    recoveries = list(tmp_path.glob("pdfsmith-recovery-*.json"))
+    assert len(recoveries) == 1
+    recovered = json.loads(recoveries[0].read_text())
+    assert recovered["recovered_content"] == "# Completed document"
+    assert recovered["resource_ids"] == {"job_id": "controlled-job"}
