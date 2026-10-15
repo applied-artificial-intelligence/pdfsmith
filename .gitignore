@@ -34,3 +34,7 @@ Thumbs.db
 # Project specific
 *.pdf
 !tests/fixtures/*.pdf
+
+# Local credentials and extraction caches
+.env
+.kreuzberg/

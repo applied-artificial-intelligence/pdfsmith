@@ -1,0 +1,12 @@
+Command: ['.venv/bin/python', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/legacy_llama_probe.py', '--wrapper', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/original/working-source/src/pdfsmith/backends/llamaparse_backend.py', '--document', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/columns.pdf', '--output', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/05-llamaparse/legacy-replay.json']
+Exit: 1
+Error while parsing the file '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/columns.pdf': 'markdown'
+Traceback (most recent call last):
+  File "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/legacy_llama_probe.py", line 132, in <module>
+    main()
+    ~~~~^^
+  File "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/legacy_llama_probe.py", line 126, in main
+    raise AssertionError(
+        "REGRESSION: explicit service ERROR was reported as successful empty output"
+    )
+AssertionError: REGRESSION: explicit service ERROR was reported as successful empty output
