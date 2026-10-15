@@ -23,6 +23,9 @@ the response. Legacy mode omission and ERROR-to-empty behavior were reproduced.
 Cleanup errors preserve completed content and resource identifiers; CLI recovery
 uses a separate private JSON and keeps an error exit and the prior destination.
 
+AWS and Azure now have real SDK offline request/status/cleanup checks on all four
+Python versions. No live-service verification or OCR-quality claim follows.
+
 All 19 names remain registered/in scope. Eight lack actual live E2E evidence,
 including LlamaParse. Controlled scanned-PDF OCR passed for Kreuzberg and
 Unstructured on Python 3.12, and Docling/Marker on Python 3.10-3.13, through installed wheels; this is a capability check,

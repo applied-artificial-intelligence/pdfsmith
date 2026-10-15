@@ -1,0 +1,49 @@
+AWS/Azure offline contracts - October 15, 2026
+
+Before: before.json reproduces missing-page responses returned as empty success,
+and the inherited AWS late-page error leaves its actual PyMuPDF document open.
+reproduction.tar.gz preserves the diagnostic and original committed adapter source.
+The inherited Google/provider changes were not used as an AWS/Azure baseline.
+
+After: runtime/dev-env/bin/python -m pytest -q tests/test_ocr_contracts.py --tb=short
+32 passed. Complete source suite before installing the next Google SDKs:
+277 passed, 33 skipped in 34.04s. Skips are not provider passes.
+Ruff check src tests passes. Full formatting still identifies the preserved
+inherited Google source; that source belongs to the next milestone.
+Focused mypy covers both OCR adapters, _cleanup.py and _process.py.
+
+Installed checks: uv build --wheel --out-dir runtime/ocr-wheels, then
+runtime/verify_ocr.py. Commands in installed-{aws,azure}-3.{10,11,12,13}.json.
+Eight noneditable extra-only environments; no pytest/reportlab in target envs.
+Real boto3/botocore 1.43.114 and Azure SDK 1.0.2 serialize requests through strict
+synthetic HTTP transports, with DNS/TCP denied. API/direct/async/console paths,
+ordered page PNG identity, whole-PDF Azure upload, blank complete pages,
+Markdown confirmation, missing metadata/text, failed/timed-out jobs, destination
+validation, client/result cleanup and separate private CLI recovery all pass.
+raw-outputs.tar.gz contains fixtures and observed outputs; JSON records contain
+exact source/wheel/dependency/input/output identities. No live-service proof.
+
+AWS renders each PDF page at 150 DPI in a fresh native worker, bounds image
+geometry/bytes, sends PNG Bytes to synchronous Textract, requires one PAGE block
+and DocumentMetadata.Pages=1 per response, and closes its client on every exit.
+No automatic SDK retry. Native handles are scoped to the worker's context.
+Azure standard-tier limits are checked before upload; F0 page truncation is
+rejected by exact returned page coverage. Polling uses NoPolling plus explicit
+bounded GETs, avoiding an SDK thread that could outlive the wrapper deadline.
+Known terminal operations have their owned analysis result deleted. Unknown
+completion retains the operation ID without claiming remote cancellation.
+Both adapters preserve primary errors and completed content on cleanup failure.
+
+Official contracts consulted:
+https://docs.aws.amazon.com/textract/latest/dg/limits-document.html
+https://docs.aws.amazon.com/textract/latest/APIReference/API_DetectDocumentText.html
+https://learn.microsoft.com/en-us/python/api/azure-ai-documentintelligence/azure.ai.documentintelligence.documentintelligenceclient
+https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/service-limits
+The Azure SDK supports raw bytes at runtime despite its narrower type hint;
+BytesIO is the typed path. The SDK serializes both as application/octet-stream.
+No claim is made that raw bytes themselves were incompatible.
+
+A rerun initially found previous recovery files in its output directory. That
+verification-harness error did not indicate a backend error; the final refresh
+uses new task-owned output directories and preserves the prior raw archive.
+Live authentication, actual OCR, billing and workspace permissions remain unverified.

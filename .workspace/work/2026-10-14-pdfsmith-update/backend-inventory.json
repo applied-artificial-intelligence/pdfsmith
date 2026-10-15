@@ -392,8 +392,8 @@
       "package": "boto3",
       "weight": "commercial",
       "extra": "aws",
-      "source_disposition": "Source inspected; offline SDK and live checks pending. Retain/repair multipage rendering lifecycle, limits/input types and failure paths; no live requests authorized.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired against installed real SDK transports. Live service execution remains unverified.",
+      "current_evidence": "offline-contract",
       "input_formats": [
         "pdf"
       ],
@@ -401,14 +401,26 @@
         "AWS_REGION"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "region, profile, request_timeout"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
       ],
       "source_path": "src/pdfsmith/backends/aws_textract_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/09-ocr/installed-aws-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "azure_document_intelligence",
@@ -416,8 +428,8 @@
       "package": "azure-ai-documentintelligence",
       "weight": "commercial",
       "extra": "azure",
-      "source_disposition": "Source inspected; offline SDK and live checks pending. Retain; verify begin_analyze_document signature and actual PDF/image MIME support.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired against installed real SDK transports. Live service execution remains unverified.",
+      "current_evidence": "offline-contract",
       "input_formats": [
         "pdf"
       ],
@@ -426,14 +438,26 @@
         "AZURE_DOCUMENT_INTELLIGENCE_KEY"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "endpoint, model_id, output_format, max_wait, poll_interval, request_timeout"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
       ],
       "source_path": "src/pdfsmith/backends/azure_document_intelligence_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/09-ocr/installed-azure-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "google_document_ai",

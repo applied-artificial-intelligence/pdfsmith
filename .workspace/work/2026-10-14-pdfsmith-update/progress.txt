@@ -42,9 +42,12 @@ Latest source suite at 9acc1fc: 247 passed, 51 skipped; focused model suite: 23 
 Evidence, exact model/source/wheel/input/output hashes: milestones/07-models/.
 Earlier interrupted or harness-failed attempts remain labeled separately.
 
-Eight hosted backends lack actual live E2E; LlamaParse has offline SDK contract
-evidence already. Next owned work: AWS/Azure, Google, Databricks, Anthropic,
-OpenAI and Gemini SDK contracts, then final packaging/CI/README reconciliation.
+Eight hosted backends lack actual live E2E. LlamaParse, AWS and Azure have real
+SDK offline contract evidence on Python 3.10-3.13. AWS/Azure: 32 focused checks;
+eight refreshed extra-only installed wheels passed API/direct/async/CLI and
+content-retaining cleanup failures, milestones/09-ocr/. Latest source suite:
+277 passed, 33 skipped. Next owned work: Google, Databricks, Anthropic, OpenAI
+and Gemini SDK contracts, then final packaging/CI/README reconciliation.
 
 No paid/free-credit provider calls, public-main merge/release, new agents/chats,
 PDF-Bench experiments or website/deployment changes have occurred or are authorized.

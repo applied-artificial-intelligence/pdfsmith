@@ -303,30 +303,30 @@ wheels = [
 
 [[package]]
 name = "boto3"
-version = "1.41.3"
+version = "1.43.114"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "botocore" },
     { name = "jmespath" },
     { name = "s3transfer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/90/30/1f1bfb34a97709b5d004d5c16ccac81a73ea6c5ce86ce75eaff0a75aee3f/boto3-1.41.3.tar.gz", hash = "sha256:8a89f3900a356879022c1600f72cbb3d8b85708f094d2d08a461bd193d0b07ca", size = 111614, upload-time = "2025-11-24T20:22:33.007Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e2/8c/f6f884dc947789317e73ed6fce85e18580d22e9f90e48d67c2367b02667e/boto3-1.43.114.tar.gz", hash = "sha256:be704857751564a5cf69c5bbaadbfa01c22806409815c73563db42fbffe583a2", size = 112653, upload-time = "2026-10-14T19:24:22.561Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/37/d3/56e8c147e369fdc1b5526584f87151ca1742949bf5e6ab7500d926107624/boto3-1.41.3-py3-none-any.whl", hash = "sha256:10a3f5a72e071c362f5aa8443bd949edc31b7494c48a315ccdab14b1c387a1fd", size = 139345, upload-time = "2025-11-24T20:22:30.601Z" },
+    { url = "https://files.pythonhosted.org/packages/c8/f8/0799a101e6f65c8b687f50c218654cef1e44658e946c7d33d362e2572621/boto3-1.43.114-py3-none-any.whl", hash = "sha256:d9cac2eb921ce674970cef1c9ad750f85ee3a846aedcf188d18368fb9eb6da23", size = 140043, upload-time = "2026-10-14T19:24:21.038Z" },
 ]
 
 [[package]]
 name = "botocore"
-version = "1.41.3"
+version = "1.43.114"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jmespath" },
     { name = "python-dateutil" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8c/e9/d6207e08f35280cb8755b316f0e0a0cd2e8405d1b849e847c26fb4e3e3a6/botocore-1.41.3.tar.gz", hash = "sha256:1c6ad338f445c9bf02e231bfa302239d60520ec6dd88ded3206b34dca100103c", size = 14658770, upload-time = "2025-11-24T20:22:21.929Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ce/c8/b508359d1f3846a918c06807a9ae27eee063f904559269e42ccde9de09ea/botocore-1.43.114.tar.gz", hash = "sha256:f366fa4db518775632ad1eb128cd8203ca46396cecf37209d904f0bbc049ce90", size = 16369844, upload-time = "2026-10-14T19:24:17.683Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/18/a0597e4491d3a725768162c48a4dd1e1a57323fdb40fca04a34e9a68ef93/botocore-1.41.3-py3-none-any.whl", hash = "sha256:fe2379b30cc726e9e44bf47c3834fe208b85f7eaa57b934ab05f305ca9d05a8b", size = 14328009, upload-time = "2025-11-24T20:22:17.618Z" },
+    { url = "https://files.pythonhosted.org/packages/9a/41/7c6fa7ac5fcfd5ea3c6f32aab001942da32b184a210f39042778cb1ad8ed/botocore-1.43.114-py3-none-any.whl", hash = "sha256:d1c441a22e93e158de5b1e026205f5d6d67a4545d10540c5090c62dccb3a9eca", size = 16067885, upload-time = "2026-10-14T19:24:14.629Z" },
 ]
 
 [[package]]
@@ -4190,9 +4190,13 @@ anthropic = [
 aws = [
     { name = "boto3" },
     { name = "pymupdf" },
+    { name = "pypdf", version = "6.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "pypdf", version = "6.20.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
 ]
 azure = [
     { name = "azure-ai-documentintelligence" },
+    { name = "pypdf", version = "6.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "pypdf", version = "6.20.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
 ]
 commercial = [
     { name = "azure-ai-documentintelligence" },
@@ -4315,10 +4319,10 @@ unstructured = [
 requires-dist = [
     { name = "anthropic", marker = "extra == 'anthropic'", specifier = ">=0.40" },
     { name = "anthropic", marker = "extra == 'frontier'", specifier = ">=0.40" },
-    { name = "azure-ai-documentintelligence", marker = "extra == 'azure'", specifier = ">=1.0" },
-    { name = "azure-ai-documentintelligence", marker = "extra == 'commercial'", specifier = ">=1.0" },
-    { name = "boto3", marker = "extra == 'aws'", specifier = ">=1.34" },
-    { name = "boto3", marker = "extra == 'commercial'", specifier = ">=1.34" },
+    { name = "azure-ai-documentintelligence", marker = "extra == 'azure'", specifier = ">=1.0.2,<1.1" },
+    { name = "azure-ai-documentintelligence", marker = "extra == 'commercial'", specifier = ">=1.0.2,<1.1" },
+    { name = "boto3", marker = "extra == 'aws'", specifier = ">=1.43,<1.44" },
+    { name = "boto3", marker = "extra == 'commercial'", specifier = ">=1.43,<1.44" },
     { name = "databricks-sdk", marker = "extra == 'commercial'", specifier = ">=0.20" },
     { name = "databricks-sdk", marker = "extra == 'databricks'", specifier = ">=0.20" },
     { name = "docling", marker = "extra == 'all'", specifier = ">=2.139,<2.140" },
@@ -4357,6 +4361,8 @@ requires-dist = [
     { name = "pymupdf4llm", marker = "extra == 'pymupdf4llm'", specifier = ">=1.28,<1.29" },
     { name = "pymupdf4llm", marker = "extra == 'recommended'", specifier = ">=1.28,<1.29" },
     { name = "pypdf", marker = "extra == 'all'", specifier = ">=4.0" },
+    { name = "pypdf", marker = "extra == 'aws'", specifier = ">=4.0" },
+    { name = "pypdf", marker = "extra == 'azure'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'commercial'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'docling'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'extractous'", specifier = ">=4.0" },
@@ -6273,14 +6279,14 @@ wheels = [
 
 [[package]]
 name = "s3transfer"
-version = "0.15.0"
+version = "0.19.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "botocore" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ca/bb/940d6af975948c1cc18f44545ffb219d3c35d78ec972b42ae229e8e37e08/s3transfer-0.15.0.tar.gz", hash = "sha256:d36fac8d0e3603eff9b5bfa4282c7ce6feb0301a633566153cbd0b93d11d8379", size = 152185, upload-time = "2025-11-20T20:28:56.327Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/76/43/35e4d8aa320bffe8287fe8f65f578fa2d2db0a64212f0e710dce58267854/s3transfer-0.19.2.tar.gz", hash = "sha256:ba0309fd86be3c27dbf78cdd813c13c5e1df16e5874b99d2535ebbdfb9892993", size = 165592, upload-time = "2026-07-22T19:30:44.432Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5f/e1/5ef25f52973aa12a19cf4e1375d00932d7fb354ffd310487ba7d44225c1a/s3transfer-0.15.0-py3-none-any.whl", hash = "sha256:6f8bf5caa31a0865c4081186689db1b2534cef721d104eb26101de4b9d6a5852", size = 85984, upload-time = "2025-11-20T20:28:55.046Z" },
+    { url = "https://files.pythonhosted.org/packages/bc/e7/5c595c75e9f41a44f30e526eda465ea0b4eec93470e074e4a111b253f13a/s3transfer-0.19.2-py3-none-any.whl", hash = "sha256:d8168eccca828cbb2cd573675333f3bddd254313a9c42494b84c76b539e8ba25", size = 90216, upload-time = "2026-07-22T19:30:43.251Z" },
 ]
 
 [[package]]

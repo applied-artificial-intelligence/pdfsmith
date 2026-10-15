@@ -90,7 +90,27 @@ def _extract_mupdf(backend: str, path: str, options: dict[str, Any]) -> str:
     raise ValueError(f"Unsupported process backend: {backend}")
 
 
+def _render_aws_page(path: str, options: dict[str, Any]) -> str:
+    import base64
+    import math
+
+    import pymupdf
+
+    with pymupdf.open(path) as document:
+        if document.needs_pass:
+            raise ValueError("Password-protected PDF is unsupported")
+        if len(document) != options["page_count"]:
+            raise RuntimeError("PDF page count changed before rendering")
+        page = document[options["page"]]
+        if any(math.ceil(side * 150 / 72) > 10000 for side in page.rect[2:]):
+            raise ValueError("AWS rendered page exceeds the 10000-pixel side limit")
+        data = page.get_pixmap(dpi=150).tobytes("png")
+        return base64.b64encode(data).decode("ascii")
+
+
 def _extract(backend: str, path: str, options: dict[str, Any]) -> str:
+    if backend == "_aws_page":
+        return _render_aws_page(path, options)
     if backend in {"pymupdf", "pymupdf4llm"}:
         return _extract_mupdf(backend, path, options)
     if backend == "kreuzberg":

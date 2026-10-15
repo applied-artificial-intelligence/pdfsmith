@@ -42,8 +42,8 @@ docling = ["docling>=2.139,<2.140", "pypdf>=4.0"]
 marker = ["marker-pdf==2.0.0", "surya-ocr==0.22.1", "pypdf>=4.0"]
 
 # Commercial backends (cloud OCR)
-aws = ["boto3>=1.34", "pymupdf>=1.24.3"]  # pymupdf for multi-page support
-azure = ["azure-ai-documentintelligence>=1.0"]
+aws = ["boto3>=1.43,<1.44", "pymupdf>=1.24.3", "pypdf>=4.0"]
+azure = ["azure-ai-documentintelligence>=1.0.2,<1.1", "pypdf>=4.0"]
 google = ["google-cloud-documentai>=2.0", "google-cloud-storage>=2.0"]
 databricks = ["databricks-sdk>=0.20"]
 llamaparse = ["llama-cloud>=2.18,<2.19", "pypdf>=4.0"]
@@ -63,9 +63,9 @@ recommended = [
     "kreuzberg>=4.10.4,<4.11",
 ]
 commercial = [
-    "boto3>=1.34",
+    "boto3>=1.43,<1.44",
     "pymupdf>=1.24.3",
-    "azure-ai-documentintelligence>=1.0",
+    "azure-ai-documentintelligence>=1.0.2,<1.1",
     "google-cloud-documentai>=2.0",
     "google-cloud-storage>=2.0",
     "databricks-sdk>=0.20",
