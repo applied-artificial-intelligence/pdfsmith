@@ -6,6 +6,26 @@ shared design blockers. Implementation is authorized. Integration-specific SDK f
 and runtime regressions remain required before each affected milestone closes.
 The original review packet and baseline remain immutable historical evidence.
 
+## Execution evidence
+
+Core/API/CLI work and all 11 local adapters have installed execution evidence.
+All eight hosted adapters have actual SDK offline contract checks across Python
+3.10-3.13; they remain open for live service verification. The detailed current
+matrix is backend-inventory.json and commands/results are under milestones/.
+A resolved review finding is not a live integration claim.
+
+Issue 16 additionally tests all six documented installation choices in fresh
+non-editable environments, reconciles README against the preserved October 9
+capability branch, tests installed module/distribution/console/archive identity,
+and reproduces the Python 3.10 locked ONNX Runtime wheel failure. CI uses the
+locked supported resolution and contains no release/publish job. Ruff is pinned
+to the existing hook version so source, local checks and CI agree.
+
+live-run-protocol.txt defines proposed documents, routes, settings, bounded
+submissions, cleanup evidence and the separate authorization information needed.
+It does not authorize provider spending. Batch Google, other models/modes and
+additional live failure experiments require their own named scope.
+
 ## Reconciled design, October 15, 2026
 
 Both returned reviews recommended revision before implementation. Their shared
@@ -63,7 +83,7 @@ Each issue first reproduces its user-visible error, then adds a regression that
 fails with the producing defect and passes after repair. Tests named below are
 planned additions to the indicated existing files or explicitly proposed new
 files; they are not claimed to exist or pass today. New proposed files are
- tests/test_contracts.py, tests/test_installed_package.py and
+ tests/test_contracts.py, tests/verify_distribution.py and
  tests/test_provider_contracts.py. Exact selection names will be set with the tests.
 Run focused pytest, Ruff and repository type checks before each scoped commit.
 Install pre-commit before committing. Ordinary tests are network-denied and live
@@ -231,7 +251,7 @@ Closes: parse-request.record, parse-request.absent-record, parse-request.orderin
 
 Depends on Issue 3.
 
-Files: pypdf_backend.py, pdfplumber_backend.py, tests/test_backends.py and tests/test_installed_package.py.
+Files: pypdf_backend.py, pdfplumber_backend.py, tests/test_backends.py and tests/verify_distribution.py.
 
 Constructors accept validated options and forward them to extract_text/tables
 at parse time. Test actual two-column/layout effects through both API and direct
@@ -745,7 +765,7 @@ Closes: cli-operation.record, cli-operation.absent-record, cli-operation.orderin
 
 Depends on the affected backend/CLI milestones; unresolved live authorization remains explicit.
 
-Files: pyproject.toml, generated uv.lock, README reconciliation and tests/test_installed_package.py.
+Files: pyproject.toml, generated uv.lock, README reconciliation and tests/verify_distribution.py.
 
 Early version/core-wheel work is already owned by Issue 1. Final package work
 checks each extra and advertised bundle in empty non-editable wheel environments

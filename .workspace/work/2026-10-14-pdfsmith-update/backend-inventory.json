@@ -229,9 +229,8 @@
       ],
       "system_requirements": [
         "Python >=3.11,<3.14",
-        "en_core_web_sm 3.8.0 model, preinstalled",
-        "Tesseract/Poppler for OCR strategies",
-        "Separate environment from Marker (incompatible Pillow requirements)"
+        "Loadable en_core_web_sm 3.8.0 preinstalled; damaged assets raise before implicit repair",
+        "Poppler/Tesseract and preprovisioned YOLOX model for applicable strategies"
       ],
       "execution_policy": "process",
       "evidence_states": [
@@ -248,7 +247,8 @@
         "3.12",
         "3.13"
       ],
-      "ocr_evidence": "Controlled scanned PDF through installed wheel on Python 3.12; standalone image formats remain unsupported"
+      "ocr_evidence": "Controlled scanned PDF through installed wheel on Python 3.12; standalone image formats remain unsupported",
+      "asset_failure_evidence": "milestones/16-final/unstructured-assets.txt"
     },
     {
       "name": "kreuzberg",

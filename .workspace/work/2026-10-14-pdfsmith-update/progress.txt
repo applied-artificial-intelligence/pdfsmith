@@ -1,70 +1,52 @@
 PDFsmith update - October 15, 2026
 
-Actual GPT/Claude reviews reconciled in spec.md, plan.md and reviews/dispositions.txt.
-All 19 registered backends remain required. Implementation is authorized; no
-additional planning approval is needed. The initial review packet remains immutable.
+The actual GPT/Claude reviews are reconciled in spec.md, plan.md and
+reviews/dispositions.txt. Original review/report bytes remain preserved.
+All 19 backends remain required. The implementation and unpaid verification are
+complete for the reviewed scope; full integration verification remains incomplete
+because eight hosted adapters still require authorized live service runs.
 
-Completed engineering checkpoints:
-- 8af3910: ordinary-test network/credential isolation; development version 0.3.0.dev0.
-  Core-only installed wheels passed Python 3.10-3.13, milestones/01-safety/.
-- 603bfc8: static discovery, explicit/fresh and singleton API contracts, typed options,
-  input_path/pdf_path compatibility and nonblocking async setup. Eight installed
-  pypdf/pdfplumber wheels passed all four Python versions, milestones/02-contracts/.
-- 78aebab: CLI exact UTF-8 output, validated options and staged atomic file output;
-  pre/post-commit fault injection and installed consoles, milestones/03-cli/.
-- dd7a64b, ae1c37c: four additional local parsers, native execution isolation/locking,
-  installed SDK option checks, milestones/04-native/ and 04-native-options/.
-- e7dcbe7, bac52d1: legacy LlamaParse failure replay, modern pinned tier/version/cache
-  requests, complete pages, explicit uncertain completion and content-retaining cleanup
-  errors. Four installed real-SDK offline transports, milestones/05-llamaparse/.
-  This is not live service verification; runtime version/cache-hit remain unknown.
-- 33e6996, baa417d: Kreuzberg/Extractous/Unstructured real native extraction and complete
-  output checks. Eleven installed extra-only wheels, explicit Unstructured Python
-  bounds, model assets and controlled OCR checks, milestones/06-runtime-backends/.
-- 4b68d0b: corrected portable test prerequisites and Python 3.10 filesystem fault
-  injection. Fresh dev+light suites: 196 passed, 79 skipped each on Python 3.10-3.13.
-- Docling: constructor/option regressions reproduced (10 failed, 1 passed before).
-  Four installed extra-only wheels passed CPU public/control/API/async/CLI/OCR,
-  producing-SDK partial-success rejection and handle cleanup before export failure.
-  Latest full dev suite: 235 passed, 51 skipped. Evidence: milestones/07-models/.
-  Source-distribution private-canary inclusion reproduced and fixed with explicit
-  build selection. No actual credentials were included in that reproduction.
+Evidence
+- Eleven local adapters have actual installed-package E2E evidence on identified
+  public/controlled PDFs: pypdf, pdfplumber, PyMuPDF, PyMuPDF4LLM, PDFMiner, PDFium,
+  Kreuzberg, Extractous, Unstructured, Docling, Marker. Exact versions/options/
+  routes/prerequisites and hashes are in the owning milestones and inventory.
+- All eight hosted adapters have actual-SDK offline contract evidence across
+  Python 3.10-3.13: LlamaParse, AWS, Azure, Google Document AI, Databricks,
+  Anthropic, OpenAI and Gemini. No live processing/authentication claim follows.
+- Unstructured's corrupt-installed-model implicit download was reproduced and
+  guarded. The damaged asset now fails before download; restoring its original
+  config passed actual public-PDF CLI extraction offline, 24,044 output bytes.
+- Core plus five documented bundles passed 24 fresh non-editable installations
+  across Python 3.10-3.13. Four additional fresh core environments checked the
+  final review artifacts. Installed/wheel/sdist runtime source bytes match.
+- Four fresh locked CI environments each passed 408 tests, 15 skipped. Separate
+  actual model/native evidence covers their isolated dependency stacks; skips
+  never establish verification. Ruff format/check and repository mypy passed.
+- The Python 3.10 locked ONNX Runtime wheel failure was reproduced and corrected.
+  Actual producing version mismatch was rejected, then the corrected build and
+  synthetic private-file archive canary checks passed. README examples passed.
 
-Eleven local backends now have actual E2E evidence. Docling and Marker both passed
-four isolated extra-only environments on Python 3.10-3.13. Marker uses explicit
-text-layer mode for the public text PDF and default OCR for the controlled scan;
-options, API/direct/async/CLI routes, missing/corrupt/blank inputs, producing-SDK
-partial documents, renderer failure and owned server termination passed. Real
-SDK protocol checks reject token-limited/refused inference before Surya drops
-status, and abort queued work after failure. Local RPC bypasses ambient proxies;
-all four model runs passed under invalid proxy settings with test network guards.
-Latest source suite at 9acc1fc: 247 passed, 51 skipped; focused model suite: 23 passed.
-Evidence, exact model/source/wheel/input/output hashes: milestones/07-models/.
-Earlier interrupted or harness-failed attempts remain labeled separately.
+Current artifacts
+Unpublished 0.3.0.dev0. Final artifacts are under runtime/review-distributions/;
+review-core-*.json records their hashes. Exact source hashes, fresh results and
+commands: milestones/16-final/. Earlier source/wheel identities remain explicit
+in owning milestones. README reconciles the preserved October 9 capability work.
+Website/content handoff: website-editorial-handoff.txt. Proposed bounded live
+inputs/options/submissions/cleanup and approval information: live-run-protocol.txt.
 
-Eight hosted backends lack actual live E2E. All eight now have actual SDK offline
-contract evidence on Python 3.10-3.13, distinct from live service processing:
-LlamaParse (05), AWS/Azure (09), Google (10), Databricks (11), Anthropic (12),
-OpenAI (13) and Gemini (14). Each milestone records exact source/wheel/dependency/
-input/output identity, reproductions and installed API/direct/async/console results.
-Latest full source suite: 411 passed, 12 skipped; Ruff and repository mypy pass.
-Marker needs environments separate from Unstructured and the current Anthropic/
-OpenAI/frontier extras because of upstream dependency constraints.
-
-Unstructured corrupt installed-model repair was reproduced and guarded. The same
-installed API now fails before an implicit model download; restoring the original
-model passed actual public-PDF CLI extraction offline (24,044 bytes). Evidence is
-in milestones/16-final/. Fresh suite: 411 passed, 12 skipped; mypy 30 source files.
-
-Next owned work: final package/bundle/CI/README reconciliation and concrete live-run protocols.
-All inherited provider modifications have now been intentionally integrated and
-preserved in their owning source archives; unrelated untracked work remains intact.
-
-No paid/free-credit provider calls, public-main merge/release, new agents/chats,
-PDF-Bench experiments or website/deployment changes have occurred or are authorized.
-The active task owns codex/pdfsmith-update-2026-10-14 in the primary checkout;
-no temporary worktrees exist. Unrelated inherited untracked work remains deliberately unabsorbed.
+Boundaries and preservation
+No paid or free-credit provider calls, public-main merge, package release,
+PDF-Bench experiments, website changes or deployment occurred. No agents or
+separate chats were launched. This chat consumes normal Codex account usage;
+no dollar amount for the conversation is visible to this task.
+Public main remains fe66170231dd580d9f919662ed3b89947f091763. The active library
+owner retains codex/pdfsmith-update-2026-10-14 in the primary checkout; no temporary
+worktrees exist. The older capability branch has unknown ownership and is retained.
+All inherited provider changes were intentionally integrated with originals
+archived. Unrelated user untracked files remain deliberately unabsorbed.
 
 Next actions
-No user decision is needed for continued unpaid engineering. Live provider inputs,
-configuration/spending, public merge and release remain separate future decisions.
+Stefan must separately authorize selected live providers, exact configuration
+sources, inputs/options and spending limits before hosted processing can run.
+Public-main merge and release require their own later authorization.

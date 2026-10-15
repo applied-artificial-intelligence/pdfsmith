@@ -1,0 +1,17 @@
+Using Python 3.13.5 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/final-light-3.13-9eku2zhe/env
+Resolved 11 packages in 41ms
+Downloading pillow (6.6MiB)
+ Downloaded pillow
+Prepared 3 packages in 108ms
+Installed 11 packages in 7ms
+ + cffi==2.1.1
+ + charset-normalizer==3.5.2
+ + cryptography==50.0.2
+ + pdfminer-six==20260107
+ + pdfplumber==0.11.10
+ + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/final-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl)
+ + pillow==12.3.0
+ + pycparser==3.11
+ + pymupdf==1.28.2
+ + pypdf==6.20.1
+ + pypdfium2==5.14.0

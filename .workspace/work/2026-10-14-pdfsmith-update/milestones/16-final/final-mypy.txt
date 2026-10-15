@@ -1,0 +1,3 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/final-ci-3.12-7xnp4ih4/env/bin/mypy', 'src', 'tests/verify_distribution.py', '--ignore-missing-imports']
+Exit: 0
+Success: no issues found in 31 source files

@@ -150,7 +150,10 @@ establish the behavior or quality of a PDFsmith integration.
     Python 3.10-3.13 core/baselines or narrow support from reproduced results.
     Unstructured 0.27.27 requires Python 3.11-3.13 and a preinstalled spaCy model.
     Keep its incompatible Pillow dependencies separate from Marker; the all bundle
-    already excludes Marker. No optional extra silently grants unsupported runtime
+    already excludes Marker. Marker also requires an environment separate from the
+    current Anthropic/OpenAI/frontier extras because its SDK bounds conflict.
+    Unstructured must reject a corrupt installed spaCy model before the SDK can
+    attempt an implicit reinstall. No optional extra silently grants unsupported runtime
     capability when its dependency marker excludes the SDK.
 15. Each backend needs actual local E2E or separately authorized live E2E before a
     working-integration claim. Offline SDK checks are labeled offline-contract;

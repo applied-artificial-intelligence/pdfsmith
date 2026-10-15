@@ -1,0 +1,98 @@
+[
+  {
+    "install": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.10-mqmgxigl/env/bin/python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl"
+    ],
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.10-mqmgxigl/env/bin/python",
+      "-I",
+      "/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py",
+      "--wheel",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl",
+      "--sdist",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0.tar.gz",
+      "--result",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/16-final/review-core-3.10.json"
+    ],
+    "exit": 0,
+    "stdout": "Installed distribution passed on Python 3.10.20\n",
+    "stderr": ""
+  },
+  {
+    "install": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.11-tvtiahtu/env/bin/python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl"
+    ],
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.11-tvtiahtu/env/bin/python",
+      "-I",
+      "/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py",
+      "--wheel",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl",
+      "--sdist",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0.tar.gz",
+      "--result",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/16-final/review-core-3.11.json"
+    ],
+    "exit": 0,
+    "stdout": "Installed distribution passed on Python 3.11.13\n",
+    "stderr": ""
+  },
+  {
+    "install": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.12-qaghuhc9/env/bin/python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl"
+    ],
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.12-qaghuhc9/env/bin/python",
+      "-I",
+      "/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py",
+      "--wheel",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl",
+      "--sdist",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0.tar.gz",
+      "--result",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/16-final/review-core-3.12.json"
+    ],
+    "exit": 0,
+    "stdout": "Installed distribution passed on Python 3.12.3\n",
+    "stderr": ""
+  },
+  {
+    "install": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.13-8ib9jmdw/env/bin/python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl"
+    ],
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-core-3.13-8ib9jmdw/env/bin/python",
+      "-I",
+      "/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py",
+      "--wheel",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl",
+      "--sdist",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/review-distributions/pdfsmith-0.3.0.dev0.tar.gz",
+      "--result",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/16-final/review-core-3.13.json"
+    ],
+    "exit": 0,
+    "stdout": "Installed distribution passed on Python 3.13.5\n",
+    "stderr": ""
+  }
+]

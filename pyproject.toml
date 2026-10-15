@@ -91,7 +91,7 @@ dev = [
     "pytest>=7.0",
     "pytest-asyncio>=0.21",
     "pytest-cov>=4.0",
-    "ruff>=0.6",
+    "ruff==0.6.0",
     "mypy>=1.11",
     "types-requests>=2.32",
     "types-PyYAML>=6.0",  # Type stubs for mypy
@@ -171,6 +171,8 @@ exclude_lines = [
 ]
 
 [tool.uv]
+# 1.24.x has neither a CPython 3.10 wheel nor an sdist.
+constraint-dependencies = ["onnxruntime<1.24; python_version < '3.11'"]
 conflicts = [
     [{ extra = "marker" }, { extra = "unstructured" }],
     [{ extra = "marker" }, { extra = "all" }],

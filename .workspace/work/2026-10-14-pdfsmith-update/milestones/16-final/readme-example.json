@@ -1,0 +1,44 @@
+[
+  {
+    "command": [
+      "uv",
+      "venv",
+      "--python",
+      "3.12"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Using CPython 3.12.3 interpreter at: /usr/bin/python3.12\nCreating virtual environment at: .venv\n"
+  },
+  {
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      ".[pypdf,pdfplumber]"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Resolved 10 packages in 339ms\n   Building pdfsmith @ file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/readme-example-zvgdu4o6\n      Built pdfsmith @ file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/readme-example-zvgdu4o6\nPrepared 1 package in 184ms\nInstalled 10 packages in 4ms\n + cffi==2.1.1\n + charset-normalizer==3.5.2\n + cryptography==50.0.2\n + pdfminer-six==20260107\n + pdfplumber==0.11.10\n + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/readme-example-zvgdu4o6)\n + pillow==12.3.0\n + pycparser==3.11\n + pypdf==6.20.1\n + pypdfium2==5.14.0\n"
+  },
+  {
+    "command": [
+      "uv",
+      "run",
+      "--no-project",
+      "pdfsmith",
+      "backends",
+      "--all"
+    ],
+    "exit": 0,
+    "stdout": "pypdf: registered; dependencies present; configuration not checked\npdfplumber: registered; dependencies present; configuration not checked\npymupdf: registered; dependencies missing; configuration not checked\npymupdf4llm: registered; dependencies missing; configuration not checked\npdfminer: registered; dependencies present; configuration not checked\npypdfium2: registered; dependencies present; configuration not checked\nunstructured: registered; dependencies missing; configuration not checked\nkreuzberg: registered; dependencies missing; configuration not checked\nextractous: registered; dependencies missing; configuration not checked\ndocling: registered; dependencies missing; configuration not checked\nmarker: registered; dependencies missing; configuration not checked\naws_textract: registered; dependencies missing; configuration not checked\nazure_document_intelligence: registered; dependencies missing; configuration not checked\n  Required environment names: AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT, AZURE_DOCUMENT_INTELLIGENCE_KEY\ngoogle_document_ai: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_CLOUD_PROJECT, GOOGLE_DOCUMENT_AI_PROCESSOR_ID\ndatabricks: registered; dependencies missing; configuration not checked\n  Required environment names: DATABRICKS_HOST, DATABRICKS_WAREHOUSE_ID\nllamaparse: registered; dependencies missing; configuration not checked\n  Required environment names: LLAMA_CLOUD_API_KEY\nanthropic: registered; dependencies missing; configuration not checked\n  Required environment names: ANTHROPIC_API_KEY\nopenai: registered; dependencies missing; configuration not checked\n  Required environment names: OPENAI_API_KEY\ngemini: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_API_KEY or GEMINI_API_KEY\n",
+    "stderr": ""
+  },
+  {
+    "command": "README Python example",
+    "code": "from pdfsmith import get_backend, parse, parse_async, registered_backends\n\ntext = parse(\"document.pdf\", backend=\"pypdf\",\n             backend_options={\"extraction_mode\": \"layout\"})\nother = parse(pdf_path=\"document.pdf\", backend=\"pdfplumber\")\n# Inside an async function:\n# text = await parse_async(\"document.pdf\", backend=\"pypdf\")\n\ninstance = get_backend(\"pdfplumber\", backend_options={\"layout\": True})\nprint(instance.effective_options)\n\nfor info in registered_backends():\n    print(info.name, info.extra, info.supports_python(), info.is_available())\n",
+    "exit": 0,
+    "stdout": "{'layout': True, 'x_tolerance': 3.0, 'y_tolerance': 3.0}\npypdf pypdf True True\npdfplumber pdfplumber True True\npymupdf pymupdf True False\npymupdf4llm pymupdf4llm True False\npdfminer pdfminer True True\npypdfium2 pypdfium2 True True\nunstructured unstructured True False\nkreuzberg kreuzberg True False\nextractous extractous True False\ndocling docling True False\nmarker marker True False\naws_textract aws True False\nazure_document_intelligence azure True False\ngoogle_document_ai google True False\ndatabricks databricks True False\nllamaparse llamaparse True False\nanthropic anthropic True False\nopenai openai True False\ngemini gemini True False\n",
+    "stderr": ""
+  }
+]

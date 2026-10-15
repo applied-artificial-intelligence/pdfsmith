@@ -1,0 +1,40 @@
+[
+  {
+    "phase": "before",
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/package-regression-76d362ly/env-before/bin/python",
+      "-I",
+      "/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py",
+      "--wheel",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/package-regression-76d362ly/before/pdfsmith-0.2.0-py3-none-any.whl",
+      "--sdist",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/package-regression-76d362ly/before/pdfsmith-0.2.0.tar.gz",
+      "--result",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/16-final/package-regression-before.json"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py\", line 119, in <module>\n    observed = verify(\n               ^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py\", line 24, in verify\n    assert distribution.version == pdfsmith.__version__\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+    "wheel_sha256": "fe342e55b50fe857497017666cddcd0ea41ed43d1336e413a723f1f6d26dc482",
+    "sdist_sha256": "479e6bd95e7244c5e9fa91550167bc8bf600a10afab6f8a978c5dd9bca8730c6"
+  },
+  {
+    "phase": "after",
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/package-regression-76d362ly/env-after/bin/python",
+      "-I",
+      "/home/stefan/applied-ai/pdfsmith/tests/verify_distribution.py",
+      "--wheel",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/package-regression-76d362ly/after/pdfsmith-0.3.0.dev0-py3-none-any.whl",
+      "--sdist",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/package-regression-76d362ly/after/pdfsmith-0.3.0.dev0.tar.gz",
+      "--result",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/16-final/package-regression-after.json"
+    ],
+    "exit": 0,
+    "stdout": "Installed distribution passed on Python 3.12.3\n",
+    "stderr": "",
+    "wheel_sha256": "071976e9884f4867727fdb5aac76828f4ad10b3b25d6a2ba97cfc8ae7a513f50",
+    "sdist_sha256": "38a502087d3183433b991a928e49115b36190e7b7c1aac6fb0af00d0fa2ad4ab"
+  }
+]

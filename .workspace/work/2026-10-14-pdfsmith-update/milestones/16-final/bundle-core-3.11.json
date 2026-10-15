@@ -1,0 +1,43 @@
+{
+  "python": "3.11.13 (main, Aug 18 2025, 19:19:13) [Clang 20.1.4 ]",
+  "version": "0.3.0.dev0",
+  "constructible_backends": [],
+  "package_path": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/final-core-3.11-h50mvwp_/env/lib/python3.11/site-packages/pdfsmith/__init__.py",
+  "wheel_sha256": "dd48b2f6afda6b1b2bd9a12735d4a9f3a217691a5df23f9ed24a27b988fdd39e",
+  "sdist_sha256": "8c07ed725e5b82aaa1e7eb389299c7f662535e5c23d7f59baa2096d7f125ac8a",
+  "package_sources": {
+    "pdfsmith/__init__.py": "0e80deb8f7ce0f3d1ec0e7d101c4fde9bbe2c8d6765fe70b91c3e1581b7f0c85",
+    "pdfsmith/_documents.py": "b39cb73aa71abbe9f9fbc30a4a3c4273f59571df6ff949ca4abe7f51a51c0128",
+    "pdfsmith/_inputs.py": "290e4e6445d991ef15c91c1ef4b5c9d78f55854e1280056c25f9fecab968dcde",
+    "pdfsmith/api.py": "1d02da4ec120a6d165b79df7b52f80ae0e42b6873bd00e7609fd35ef91f39b04",
+    "pdfsmith/backends/__init__.py": "725c9d317d633bd11bfaa51369ccc8cb4aef0dbc1443cc0e68566394182761ae",
+    "pdfsmith/backends/_cleanup.py": "d90ecf5dee5d0e2d050d906a18e8632ff2b40b702fecaaec8d180dc2aacee1f0",
+    "pdfsmith/backends/_process.py": "6cf06fa391861bb2f32b72323286489ebc8f469cfdd3c8dc71dd1fb4873c788a",
+    "pdfsmith/backends/anthropic_backend.py": "cf77871df872a806270f74a88889bc6b6b966fc0b6822ad9b41be1099cc7fd76",
+    "pdfsmith/backends/aws_textract_backend.py": "99d51fbbe4b6dd0939cc745a34cdc890942498eb04fa2a174c7998ebfe233bdd",
+    "pdfsmith/backends/azure_document_intelligence_backend.py": "a125fe13dfafd4536b5f2b6907207630dcaabd2a3fc2f57d0a4df6d2d9f150e8",
+    "pdfsmith/backends/databricks_backend.py": "d5517b630d38fcbe5c460414876167fde7bf9db0ada11f8e26ba047d6c767d3f",
+    "pdfsmith/backends/docling_backend.py": "ec5b6174dd0c327096095e9a025eb3fa2e8db7cb1f58f17f0c96683f1cfab259",
+    "pdfsmith/backends/extractous_backend.py": "6a7e6d91a2f271d56c843d09081a7ccd80cf49bde855badf790cf0d3cdd54a02",
+    "pdfsmith/backends/gemini_backend.py": "07fb8ff03f51e9abe182ffabbc209d355d950aaeff5325e9cc453d4d88c089a3",
+    "pdfsmith/backends/google_document_ai_backend.py": "77a3211c3ffa91157f1852b13abe9d81aceed8b42205e223b81536f1511d6845",
+    "pdfsmith/backends/kreuzberg_backend.py": "787e9db8fa4d68d01ff8a85a8193ad997380558fa1aec23861a48d4679c6335e",
+    "pdfsmith/backends/llamaparse_backend.py": "95d71466f19dcac49b16430d79bc9dcbb6852c8a67470b266f59beace6bec875",
+    "pdfsmith/backends/marker_backend.py": "30563697624a005d3913c7036f88810d22a09a8b211d99ce214ebae5b7b3f374",
+    "pdfsmith/backends/openai_backend.py": "2b8f1c4e69b55e23ed979ef38a738b7dcc433b1e9e9a86d491b3045cee0e522d",
+    "pdfsmith/backends/pdfminer_backend.py": "b7f8c456c1ebcf3cd6ae7187c42df629f9ba32641eb80472468f963418b5b31c",
+    "pdfsmith/backends/pdfplumber_backend.py": "746c4c79b748780eb15189bd64aa25342b6f898d36af250e0abd852b01e6957f",
+    "pdfsmith/backends/pymupdf4llm_backend.py": "d8099c436913e52ce8baa4ac3a33a8d9de1c672ba0e5612bb86347220de29666",
+    "pdfsmith/backends/pymupdf_backend.py": "dd935443a5cf9afdaf1cc253e10f6945d9a9ee526c432f1022e36ccc970e97bc",
+    "pdfsmith/backends/pypdf_backend.py": "1345dec49436e2e34b7e1d74ffb3c2d123cb3715e12475a4541390b8a06009b0",
+    "pdfsmith/backends/pypdfium2_backend.py": "13c2cc8dd24349f9d47b26f1ed381f9748c5d89c33666c47a9e5d18413e425e7",
+    "pdfsmith/backends/registry.py": "f15f6973c002816302ba605958cd3c7b009f2105ed5e5586ae245039808032e5",
+    "pdfsmith/backends/unstructured_backend.py": "c4544a3e439a18918f7052c378ffa6c0d53b9618e69afd6ca0fef4557570d7ab",
+    "pdfsmith/cli.py": "d8895db341df23586d8f44d3255a55195db2fbbfeb57d5177d385f8aeab10bce",
+    "pdfsmith/config.py": "19e569e7c294e02522e64254fba138cd533c597277289e07993f31e793f750ff",
+    "pdfsmith/errors.py": "ccab96b4200637d55e7ec9fb4d65986e159b0a035c717061afb6bd234b07524d"
+  },
+  "dependencies": {
+    "pdfsmith": "0.3.0.dev0"
+  }
+}

@@ -1,0 +1,88 @@
+Final unpaid engineering evidence, October 15, 2026
+
+No hosted document-processing calls, paid or free-credit, occurred. Source and
+installed artifact checks below are distinct from hosted live E2E verification.
+All 19 adapters remain in scope. Eleven have actual local execution evidence in
+prior owning milestones; all eight hosted adapters have actual SDK offline
+contract evidence on Python 3.10-3.13 in milestones/05 and 09-14.
+
+Installation coverage
+The core-only wheel and each documented bundle (light, recommended, commercial,
+frontier, all) installed in empty non-editable environments on Python 3.10-3.13:
+24 successful installations. Each checked module/distribution/console identity,
+all 19 registered names, declared bundle constructors, source archive selection
+and installed/wheel/sdist code identity. Every non-core bundle also exercised the
+identified public PDF through pypdf API/direct/async/CLI and exact output parity.
+Unstructured is intentionally absent from all on Python 3.10, and rejects direct
+selection there. These bundle checks do not re-execute every model or service.
+
+Exact commands, dependency snapshots, package hashes and input/output identities
+are in bundle-*.json and bundle-*-{install,run}.txt. verify_final.py records the
+orchestration, run from the repository root. Its 24 successful environment paths
+are in bundle-environments.json. Paths are evidence identifiers, not prerequisites
+for new environments. An initial archive probe incorrectly rejected Hatch's
+standard .gitignore member and was corrected before the recorded passing runs.
+
+The final review wheel/sdist includes the corrected README and a type annotation
+in the distribution probe. Four additional fresh core-only environments passed
+with that exact artifact. review-core-*.json and review-core-commands.json record
+its hashes. Every runtime package source byte matches the 24 bundle installations;
+archive README/test metadata differs and the historical hashes remain explicit.
+The review wheel remains unpublished under runtime/review-distributions/.
+
+Meaningful packaging regressions
+package_regression.py reconstructs the inherited version-producing defect in a
+controlled source copy: static distribution 0.2.0 with module 0.3.0.dev0. The new
+installed-distribution probe rejects that actual built/installed mismatch, then
+passes on the corrected one-source build. Synthetic .env/.workspace/private-note
+canaries in the producing project are excluded from the corrected archive. No
+actual credential was copied or used. Source selection itself was reproduced and
+repaired earlier in milestone 07; this is a final regression check.
+
+Locked CI behavior
+The first actual Python 3.10 locked install failed because ONNX Runtime 1.24.3 had
+neither a CPython 3.10 wheel nor an sdist. ci-3.10-before-install.txt preserves the
+failure. A Python <3.11 uv resolution constraint selects 1.23.2 instead; other
+runtimes retain their compatible branches. The generated lock was regenerated,
+not manually edited. Ruff now matches the existing pre-commit 0.6.0 version.
+
+After correction, four fresh locked/non-editable environments ran the workflow's
+actual commands. Each passed 408 tests, 15 skipped; 12 live integrations cannot
+run from pytest and three optional native/model tests need their separate stacks.
+Skipped integrations are not counted as passes. Actual native/model execution
+remains in the owning isolated milestone evidence. ci-*-{install,tests}.txt and
+ci-environments.json record these runs. The historical ci-*-ruff.txt files contain
+the format result because the initial logger used one name for both Ruff checks;
+final-ruff-check.txt and final-ruff-format.txt separately retain the current
+successful commands. final-mypy.txt also checks the distribution probe.
+
+CI has locked four-Python offline SDK/local contract and distribution jobs, read-
+only repository permissions and no publish/release job. This report records local
+execution of those commands, not a completed GitHub-hosted workflow run.
+Official references checked October 15:
+https://docs.astral.sh/uv/concepts/projects/sync/
+https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+https://pypi.org/pypi/onnxruntime/1.24.3/json
+
+Documentation and preservation
+README installation commands and its Python example passed in a fresh controlled
+source-copy environment; readme-example.json records the commands/results.
+Relative README references were checked against actual files. The update
+reconciles the October 9 capability correction, cb5094e6b2690b50da748bcea4875adaa8c74dfc,
+whose branch is retained. No historical review packet or returned report bytes
+were changed. Existing unrelated untracked user files remain unabsorbed.
+
+The damaged-installed-model Unstructured reproduction, guarded failure and actual
+restored-model CLI execution are in unstructured-assets.txt and its linked files.
+The original model config was restored with its original hash, and the task-owned
+network hook was removed. No model download happened during that reproduction.
+
+Limits and next user decision
+Source identity is source-identity.json. Full backend/input/output identities live
+in their owning milestone results; none is inferred from registration. All current
+wrappers remain PDF-only, and no extraction-quality or speed ranking is claimed.
+No PDF-Bench experiments, website changes, release, deployment or public-main
+merge occurred. Live processing of the eight hosted adapters requires Stefan's
+separate provider/configuration/input/spending authorization as specified in
+../../live-run-protocol.txt. No implicit authority comes from installed SDKs,
+existing credentials, available free credits or a passing offline test.
