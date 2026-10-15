@@ -1,0 +1,39 @@
+{
+  "head": "fe66170231dd580d9f919662ed3b89947f091763",
+  "branch": "main",
+  "visibility": "PUBLIC",
+  "remote_main": "fe66170231dd580d9f919662ed3b89947f091763",
+  "observed_at_utc": "2026-10-15T01:01:41.185021+00:00",
+  "inherited_modified_files": {
+    "src/pdfsmith/__init__.py": {
+      "sha256": "4ae92d4bf4672042d0a9d556e9368416fb7b3a3c24643b441d08ddf5361b2c1f",
+      "mtime_utc": "2025-12-14T14:13:36.433928+00:00"
+    },
+    "src/pdfsmith/api.py": {
+      "sha256": "257ad38a157aca31a2166bc714e208ed0eee6a5446a67bc6beacf13dc8e2440a",
+      "mtime_utc": "2025-12-14T14:13:25.207640+00:00"
+    },
+    "src/pdfsmith/backends/anthropic_backend.py": {
+      "sha256": "6f9f1903cbf0cdaddbadfaf1f0bf3914b7b9de5c2536ff9ee75e085b87f756fc",
+      "mtime_utc": "2026-03-10T18:19:08.191331+00:00"
+    },
+    "src/pdfsmith/backends/gemini_backend.py": {
+      "sha256": "11b8f62437f04208ab5f5ded5aabc308584f215ad1f7a7c96270e3012868a38c",
+      "mtime_utc": "2026-03-10T17:25:34.366564+00:00"
+    },
+    "src/pdfsmith/backends/google_document_ai_backend.py": {
+      "sha256": "e86a19081d36a5ffddfb78aed5d3cf15cbed52a166504bb7704bcd7dd5468fab",
+      "mtime_utc": "2026-03-10T20:32:28.641927+00:00"
+    },
+    "src/pdfsmith/backends/openai_backend.py": {
+      "sha256": "4cf26b601b73ece9776b4254cb4ab0ed100373b515c812d9a749524dc35ba9b6",
+      "mtime_utc": "2026-03-10T17:25:32.721521+00:00"
+    },
+    "uv.lock": {
+      "sha256": "4875e7a1b7178532e3e6d992c103b93ad2ad29c3a94af18a101b70037c4a6f1f",
+      "mtime_utc": "2025-12-02T13:30:58.866954+00:00"
+    }
+  },
+  "provenance": "API/module mtimes match dated December 14 2025 untracked API proposal; four provider mtimes are March 10 2026. Timestamps establish chronology, not authorship. No author/session provenance is available in Git for uncommitted work. uv.lock adds the types-PyYAML dependency already in pyproject. Preserve all bytes pending scoped integration.",
+  "excluded": "No secret files, old prompts, MCP settings or environment values collected."
+}

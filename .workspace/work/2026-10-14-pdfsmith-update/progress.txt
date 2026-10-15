@@ -1,0 +1,35 @@
+PDFsmith update - October 14, 2026
+
+State: alignment and external-review preparation; no source implementation yet.
+Delivery branch: codex/pdfsmith-update-2026-10-14; public main remains unchanged.
+Stefan explicitly selected every registered backend, replacing baseline-only scope.
+Specification covers all 19 integrations; plan has 16 staged issues. LlamaParse
+v2 migration is an early service milestone following the shared API contracts.
+Actual GPT/Claude reviews have not been returned. start-here.txt requires those
+reviews and disposition of consequential findings before substantial implementation.
+
+Evidence: separate installed public-source, PyPI 0.2.0 and inherited-working builds,
+Python 3.12.11, pypdf 6.20.1 and pdfplumber 0.11.10. Both parsers recover content
+from the identified public PDF in all builds; blank/corrupt/missing controls and
+CLI failures were exercised. Exact identities/hashes/results are under baseline/.
+The working build reports distribution 0.2.0 but module 0.3.0, breaks pdf_path=
+and no-option instance reuse, rejects the advertised pdfplumber preset and ignores
+invalid preset/unsupported OCR. Existing focused tests: public 89 passed;
+working 88 passed, 1 failed in the instance-reuse regression.
+The replay script reproduced baseline observations and hashes for all three builds.
+Specification terms, plan shape/premises/claims/closure, Ruff, mypy and all configured
+pre-commit checks on the owned work-unit artifacts passed.
+
+Preservation: seven inherited tracked modifications and all unrelated untracked
+work remain intact. Unknown authorship is recorded, not guessed. A secret-free
+allowlisted snapshot preserves initial source and tracked diff. Sensitive files
+were excluded; a credential in a historical prompt needs rotation by Stefan.
+
+Boundaries: no paid/free-credit parsing calls, other chats/agents, PDF-Bench edits,
+website/editorial edits, package release, public-main merge or deployment.
+ParseBench is attributed prior work; its results are not PDFsmith measurements.
+
+Next actions
+Stefan submits external-review-packet.txt with review-request.txt independently to
+GPT and Claude and returns the actual reports. Rotate the credential found in the
+excluded historical prompt. Provider-run authorization is a separate later gate.

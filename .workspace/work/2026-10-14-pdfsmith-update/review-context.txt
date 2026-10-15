@@ -1,0 +1,134 @@
+PDFsmith external design review context
+
+Commission and current gate
+Stefan commissioned a real library update, including every registered backend.
+The all-backend selection was explicit in alignment. Planning must not quietly
+reduce the task to pypdf/pdfplumber or a capability-copy audit. Actual GPT and
+Claude reports are required before substantial implementation. No review has been
+returned or claimed. No other agent/chat or paid parsing service was invoked.
+
+Observed identities
+Repository: applied-artificial-intelligence/pdfsmith; PUBLIC, checked with gh.
+Public main: fe66170231dd580d9f919662ed3b89947f091763, verified using ls-remote.
+Released distribution: pdfsmith==0.2.0; PyPI currently lists only that release.
+Release wheel SHA-256:
+5c9ff402fa7af7688f9183c7441df49a0b375dde8daff8332aa92bdc94804b13.
+Inherited working module: 0.3.0; built wheel/distribution still identifies as 0.2.0.
+That discrepancy was reproduced after isolated installation, not just read from files.
+
+Preservation
+Seven tracked modifications predated this session: __init__.py, api.py,
+anthropic_backend.py, gemini_backend.py, google_document_ai_backend.py,
+openai_backend.py and uv.lock. API/module timestamps agree with the dated December
+14, 2025 draft API proposal; provider timestamps are March 10, 2026. Git does not
+identify their author/session. The lockfile addition records types-PyYAML already
+declared in metadata. Preserve this work and integrate only reviewed affected
+portions at their owning issue. The packet includes allowlisted source bytes,
+hashes and tracked diff, excluding secrets and unrelated untracked content.
+
+Untracked configuration, historical reviews, project map and draft documentation
+also exist. A historical prompt contains an embedded credential and is excluded.
+No environment files, MCP configuration or credential values enter this packet.
+The checkout is deliberately still dirty to preserve inherited work.
+
+Fresh baseline method
+Created separate Python 3.12.11 environments and installed non-editable packages
+from public Git source, the PyPI wheel and an allowlisted working-source copy.
+All used pypdf 6.20.1 and pdfplumber 0.11.10. The result JSON includes every installed
+dependency, module hashes, fixture hashes and output hashes. No installed-package
+probe imported the live checkout or used its large pre-existing virtualenv.
+
+Public document: retained Premera Preferred Gold 1500 summary, original URL
+https://www.premera.com/documents/045632_2025.pdf.
+Input SHA-256:
+d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80.
+The retained source manifest records the public origin and May 28, 2026 retrieval.
+This session reused those exact bytes; it did not claim a fresh upstream download.
+Controlled text and blank PDFs were generated using invariant ReportLab output;
+the corrupt control is an intentionally invalid PDF stream. Inputs were not changed.
+
+Observed baseline behavior
+All three installations returned 22,601 characters via pypdf and 42,984 via
+pdfplumber, with the expected Summary heading. Async output hashes match sync.
+Default selection was pdfplumber and its output matched explicit pdfplumber.
+This is capability evidence on one public document, not an extraction-quality test.
+
+All returned empty strings for a valid blank PDF. Missing input raised
+FileNotFoundError; unknown backend raised ValueError; missing Docling raised
+ImportError. Corrupt input produced PdfStreamError with pypdf and PdfminerException
+with pdfplumber. These exception types reflect the tested installed dependencies.
+CLI controls include parse/version/discovery/missing/unknown/corrupt/blank/options.
+The current CLI lacks the inherited Python configuration options.
+
+Public source and release honor parse(pdf_path=..., backend="pypdf") and reuse a
+no-option backend instance. The inherited working build breaks both behaviors.
+The inherited pdfplumber best preset raises TypeError for layout; pypdf preset=typo
+and ocr=True silently return unchanged content. These were actual installed-package
+operations; the probe did not mock their producing code.
+
+Existing API/async/CLI/config tests on the public snapshot: 89 passed.
+The same focused tests on the working snapshot: 88 passed, 1 failed, specifically
+TestBackendSelection.test_get_backend_returns_singleton. Logs retain the commands.
+This is baseline diagnosis; no source fix has been applied yet.
+
+Additional source observations, not runtime proof
+available_backends() scans DEFAULT_PREFERENCE rather than all 19 registry entries.
+Several installation hints use backend names that do not match extras (aws, azure,
+google), and PyMuPDF4LLM's light-extra hint does not install its own package.
+Inherited common/preset mappings exceed several backend constructor contracts.
+Docling stores some settings without applying them to its converter. Frontier
+constructors accept arbitrary kwargs without using them. Their parse paths ignore
+provider truncation/finish status. OpenAI's upload cleanup is only on success.
+Google batch code concatenates sorted object names without checking per-document
+operation metadata; Databricks does not poll a pending statement to completion.
+The inventory names per-backend verification and disposition work. These source
+findings must get actual producing-code regressions before their repairs close.
+
+LlamaIndex update checked against primary sources
+ParseBench was announced April 13, 2026. It evaluates tables, charts, content
+faithfulness, semantic formatting and visual grounding and publishes code/data.
+Those are LlamaIndex's benchmark dimensions, not PDFsmith measurements. PDF-Bench
+owns any corpus/metric reuse and experiments. PDFsmith must preserve usable output
+and expose its actual configuration without promising a score or universal quality.
+Source: https://www.llamaindex.ai/blog/parsebench
+
+The current LlamaParse getting-started guide uses llama-cloud>=2.8 and Parse v2.
+Its migration guide requires tier/version, nests processing/output options and
+changes page selection to 1-based indexing; v1 remains available but new features
+are v2-only. This affects compatibility and request identity. Our current wrapper
+imports llama_parse.LlamaParse and accepts parsing_mode without forwarding it.
+The plan proposes a v2 migration under the same backend name, explicit legacy
+setting treatment and actual SDK transport checks before any live run.
+Sources:
+https://developers.llamaindex.ai/llamaparse/parse/getting_started/
+https://developers.llamaindex.ai/llamaparse/parse/guides/migration-v1-to-v2/
+https://developers.llamaindex.ai/llamaparse/parse/guides/tiers/
+
+Local option references checked for planning:
+https://pypdf.readthedocs.io/en/stable/user/extract-text.html
+https://github.com/jsvine/pdfplumber
+Other provider/model APIs require fresh official-documentation and installed-SDK
+checks at their owning issue before changes. PyPI metadata lookups included in
+baseline/upstream-packages.json are not API or integration validation.
+
+Consumer contract
+PDF-Bench's current reconstruction spec requires pypdf/pdfplumber first, exact
+parser/package/source identities, controlled options and separate failed/empty
+outcomes. Its current adapter gets BACKEND_REGISTRY[name].loader(), constructs with
+kwargs and calls backend.parse(path), so API-only fixes would not repair all of
+its behavior. Preserve the direct constructor path or supply a reviewed migration;
+do not modify PDF-Bench here. Its cache keys/reference/denominator work belongs to
+its owner and is not repaired by a PDFsmith version change.
+
+Readiness and remaining decisions
+Reviewers should decide which design findings block all work and which block only
+the affected integration. Baseline engineering can proceed independently once the
+reviews are reconciled. Local integrations need actual model/native/system-tool
+runs, not skip-only tests. Every service needs an offline SDK contract check now
+and an exact live protocol; successful offline checks must remain live-unverified.
+Stefan's no-paid-call instruction still controls. Full live integration closure
+requires separate input/provider/configuration/spending authority.
+
+Next actions
+Stefan supplies returned GPT and Claude reports before source implementation.
+Rotate the credential found in the excluded historical prompt.

@@ -1,0 +1,6 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/public-env/bin/python', '-m', 'pytest', 'tests/test_api.py', 'tests/test_async.py', 'tests/test_cli.py', 'tests/test_config.py', '-q', '--tb=short', '-p', 'no:cacheprovider']
+CWD: /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/public-source
+Exit: 0
+........................................................................ [ 80%]
+.................                                                        [100%]
+89 passed in 0.36s

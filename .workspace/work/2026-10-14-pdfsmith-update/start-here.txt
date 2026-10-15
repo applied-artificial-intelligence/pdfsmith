@@ -1,0 +1,71 @@
+PDFsmith update: dedicated source-project assignment
+
+Work in /home/stefan/applied-ai/pdfsmith, not a website checkout. Own the parser
+library update and its implementation evidence. This is substantial engineering,
+not a rewrite of marketing copy or another capability-only check.
+
+Goal
+Provide a dependable, documented PDF parsing interface for PDF-Bench and practical
+document workflows. A caller must be able to install the selected integration,
+select a parser, pass supported options, obtain usable output, and distinguish
+failure from success. Demonstrate those behaviors through fresh end-to-end runs.
+
+Read first
+- /home/stefan/applied-ai/pdfsmith/CLAUDE.md and its referenced project map.
+  The map is historical; verify its claims against the actual implementation.
+- /home/stefan/applied-ai/pdfsmith/.workspace/issues/2026-10-09-public-capability-release-check.md
+- /home/stefan/applied-ai/content-marketing/positioning/open-source/pdfsmith-source-packet.md
+- /home/stefan/applied-ai/content-marketing/.workspace/work/2026-10-13-publication-and-project-recovery/portfolio-owner-contract.txt
+- /home/stefan/applied-ai/pdf-bench/.workspace/work/2026-10-13-benchmark-rebuild/spec.md,
+  if present, for consumer requirements. Read only; PDF-Bench owns its experiments.
+
+Start with alignment and external plan review
+Inspect Git state before changing anything. This checkout contains existing
+modified API/backend/version files and untracked work; preserve them and identify
+their provenance before integrating or committing. Do not expose credentials.
+
+Use the align workflow in this work unit. Establish the useful supported backend
+set, API/CLI contracts, compatibility requirements and measurable acceptance
+criteria. Inventory released, public-source and working-tree behavior separately.
+Check the observed pyproject/module version discrepancy rather than assuming
+which version is correct. Record what to retain, repair, replace or defer.
+
+Prepare spec.md, a staged plan and a self-contained external design-review packet
+for GPT and Claude in this work unit. Include relevant implementation excerpts,
+known defects, proposed tests, dependencies and unresolved decisions. Return the
+packet paths to Stefan. Do not claim reviews occurred or start substantial
+implementation until the actual reviews are returned and consequential findings
+are reconciled. Safe baseline reproduction and diagnostic tests are in scope now.
+
+Execute the reviewed plan
+Implement coherent milestones in this repository. Prioritize PDF-Bench's required
+interfaces and useful local parsing workflows; do not make repairing every
+provider a prerequisite. Address discovery versus actual availability, explicit
+and default selection, option handling, synchronous/asynchronous behavior,
+failure reporting, optional dependencies and package/version consistency where
+the review establishes a need. Verify current third-party APIs from official
+documentation before updating integrations.
+
+Test the installed package through its public API and CLI on identified public
+documents and controlled fixtures. Include missing/corrupt inputs, unavailable
+integrations, option errors and partial/empty output as applicable. Show regression
+tests failing on the reproduced defect and passing after repair. Mocked provider
+tests do not establish a working paid integration; keep that distinction explicit.
+Do not infer parser quality from successful execution.
+
+Handoff and boundaries
+Keep a short progress.txt in this work unit. At each completed milestone provide
+exact source/package identity, commands, fresh results, input/output hashes,
+supported behavior, exclusions and reproducible examples. Supply one concise
+website-editorial-handoff.txt for the website and content-marketing owners;
+do not edit their CMS, manuscripts or calendars.
+
+PDF-Bench owns corpus/reference design, comparative runs and performance claims.
+This project owns the parser interface and integrations. Do not duplicate the
+benchmark or promise that a parser is universally best. Independently useful
+milestones can proceed without waiting for the entire portfolio.
+
+Use scoped commits without absorbing unrelated work. Follow repository visibility
+and push rules. No public-main merge, package release, paid-provider calls,
+publication or deployment without separate authorization. Do not launch hidden
+subagents or other conversations. Stefan will follow this dedicated conversation.

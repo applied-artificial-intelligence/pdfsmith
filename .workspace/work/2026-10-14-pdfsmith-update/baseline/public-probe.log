@@ -1,0 +1,111 @@
+{
+  "kind": "public",
+  "versions": [
+    "0.2.0",
+    "0.2.0"
+  ],
+  "checks": {
+    "public_pypdf": {
+      "outcome": "returned_string",
+      "characters": 22601
+    },
+    "async_pypdf": {
+      "outcome": "returned_string",
+      "characters": 22601
+    },
+    "pypdf_text.pdf": {
+      "outcome": "returned_string",
+      "characters": 60
+    },
+    "pypdf_blank.pdf": {
+      "outcome": "returned_string",
+      "characters": 0
+    },
+    "pypdf_corrupt.pdf": {
+      "outcome": "exception",
+      "type": "PdfStreamError"
+    },
+    "pypdf_missing.pdf": {
+      "outcome": "exception",
+      "type": "FileNotFoundError"
+    },
+    "public_pdfplumber": {
+      "outcome": "returned_string",
+      "characters": 42984
+    },
+    "async_pdfplumber": {
+      "outcome": "returned_string",
+      "characters": 42984
+    },
+    "pdfplumber_text.pdf": {
+      "outcome": "returned_string",
+      "characters": 60
+    },
+    "pdfplumber_blank.pdf": {
+      "outcome": "returned_string",
+      "characters": 0
+    },
+    "pdfplumber_corrupt.pdf": {
+      "outcome": "exception",
+      "type": "PdfminerException"
+    },
+    "pdfplumber_missing.pdf": {
+      "outcome": "exception",
+      "type": "FileNotFoundError"
+    },
+    "default": {
+      "outcome": "returned_string",
+      "characters": 42984
+    },
+    "default_backend": {
+      "outcome": "returned_string",
+      "characters": 10
+    },
+    "discovery": {
+      "outcome": "returned_value",
+      "value": [
+        "pdfplumber",
+        "pypdf",
+        "pdfminer",
+        "pypdfium2"
+      ]
+    },
+    "singleton": {
+      "outcome": "returned_value",
+      "value": true
+    },
+    "keyword_compatibility": {
+      "outcome": "returned_string",
+      "characters": 22601
+    },
+    "unknown_backend": {
+      "outcome": "exception",
+      "type": "ValueError"
+    },
+    "missing_integration": {
+      "outcome": "exception",
+      "type": "ImportError"
+    },
+    "layout_preset": {
+      "outcome": "exception",
+      "type": "TypeError"
+    },
+    "invalid_preset": {
+      "outcome": "exception",
+      "type": "TypeError"
+    },
+    "unsupported_ocr": {
+      "outcome": "exception",
+      "type": "TypeError"
+    },
+    "invalid_option": {
+      "outcome": "exception",
+      "type": "TypeError"
+    },
+    "directory_input": {
+      "outcome": "exception",
+      "type": "IsADirectoryError"
+    }
+  }
+}
+EOF marker not found

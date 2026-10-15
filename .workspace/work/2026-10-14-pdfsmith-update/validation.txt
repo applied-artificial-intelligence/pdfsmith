@@ -1,0 +1,48 @@
+Command: ['verification', 'terms', 'check', '.workspace/work/2026-10-14-pdfsmith-update/spec.md']
+Exit: 0
+terms check: ok
+
+Command: ['python3', '/home/stefan/.codex/skills/decompose/check_plan.py', '.workspace/work/2026-10-14-pdfsmith-update/plan.md']
+Exit: 0
+check_plan: OK .workspace/work/2026-10-14-pdfsmith-update/plan.md
+  milestone: 0.3.0.dev0 - Reviewed parser contracts and backend verification
+  issues:    16
+
+Command: ['verification', 'premises', 'check', '.workspace/work/2026-10-14-pdfsmith-update/plan.md']
+Exit: 0
+premises check: ok
+
+Command: ['verification', 'claims', 'list', '.workspace/work/2026-10-14-pdfsmith-update/plan.md']
+Exit: 0
+issue 1	preserved-source	Inherited source and new changes remain distinguishable.	A new commit absorbs an unrelated modification or a snapshot omits inherited bytes.
+issue 2	honest-discovery	Discovery and selection distinguish membership, dependencies and initialization.	Listing a backend initializes a client, omits a registered name or routes a paid default.
+issue 3	validated-api	Sync/async share validated semantics and preserve released call forms.	A typo is ignored, setup blocks the loop or options leak into another operation.
+issue 4	local-baselines	Both baseline extras parse documents and apply supported options.	Only imports or mocks run, or the output-affecting option never reaches extraction.
+issue 5	llamaparse-contract	LlamaParse sends the requested configuration and interprets terminal results.	The mode is stored but not sent, latest changes silently or partial output is called complete.
+issue 6	lightweight-parsers	All remaining lightweight integrations execute with declared dependencies.	A backend requires an undeclared transitive package or leaks its native document on failure.
+issue 7	model-parsers	Docling and Marker options reach current real conversion APIs.	Only constructors work, Markdown retrieval targets an obsolete field or model assets are undeclared.
+issue 8	native-parsers	Native/OCR integrations execute their declared PDF/image and async contracts.	The installed version has a different config schema or async results are never awaited.
+issue 9	ocr-sdk-contracts	AWS/Azure requests and failures follow current documented contracts.	A size rule or SDK body is obsolete, or a late page error publishes early pages as success.
+issue 10	google-batch-contract	Google batch failures and shard ordering cannot masquerade as complete output.	Lexicographic sorting reorders pages or one failed document is ignored.
+issue 11	databricks-contract	Databricks parses documented result types and accounts for async statement state.	The function signature is invalid or a still-running statement is labeled a failure or success.
+issue 12	anthropic-contract	Anthropic output and option accounting reflect actual SDK responses.	A model is rejected only because old pricing lacks it or max-token truncation is ignored.
+issue 13	openai-contract	OpenAI upload lifecycle and completion status survive failure paths.	Generation raises after upload and leaves an unreported file, or incomplete output is returned as full.
+issue 14	gemini-contract	Gemini honors explicit configuration and interprets candidate status.	The wrapper reads only response.text while ignoring blocked/truncated finish reasons.
+issue 15	atomic-cli	The CLI applies reviewed options and preserves previous files on failure.	A parse/write failure truncates output, stdout carries diagnostics or an output alias destroys input.
+issue 16	installed-identity	Installable package identity and support claims match fresh executed evidence.	Module and wheel versions disagree, a declared extra omits a dependency or skipped providers are called verified.
+claims list: ok
+
+Command: ['verification', 'closure', 'check', '.workspace/work/2026-10-14-pdfsmith-update/plan.md']
+Exit: 0
+closure check: ok
+
+Command: ['.venv/bin/ruff', 'check', '.workspace/work/2026-10-14-pdfsmith-update/assemble_review.py', '.workspace/work/2026-10-14-pdfsmith-update/baseline_probe.py']
+Exit: 0
+All checks passed!
+
+Command: ['.venv/bin/mypy', '.workspace/work/2026-10-14-pdfsmith-update/assemble_review.py', '.workspace/work/2026-10-14-pdfsmith-update/baseline_probe.py']
+Exit: 0
+Success: no issues found in 2 source files
+
+Command: ['bash', '-n', '.workspace/work/2026-10-14-pdfsmith-update/reproduce-baseline.sh']
+Exit: 0

@@ -1,0 +1,159 @@
+{
+  "observed_at_utc": "2026-10-15T01:07:34.792997+00:00",
+  "packages": [
+    {
+      "package": "PyYAML",
+      "latest": "6.0.3",
+      "requires_python": ">=3.8",
+      "metadata_url": "https://pypi.org/pypi/PyYAML/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "anthropic",
+      "latest": "1.14.0",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/anthropic/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "azure-ai-documentintelligence",
+      "latest": "1.0.2",
+      "requires_python": ">=3.8",
+      "metadata_url": "https://pypi.org/pypi/azure-ai-documentintelligence/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "boto3",
+      "latest": "1.43.114",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/boto3/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "databricks-sdk",
+      "latest": "0.152.0",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/databricks-sdk/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "docling",
+      "latest": "2.139.0",
+      "requires_python": "<4.0,>=3.10",
+      "metadata_url": "https://pypi.org/pypi/docling/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "extractous",
+      "latest": "0.3.0",
+      "requires_python": "<3.14,>=3.8",
+      "metadata_url": "https://pypi.org/pypi/extractous/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "google-cloud-documentai",
+      "latest": "3.16.0",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/google-cloud-documentai/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "google-cloud-storage",
+      "latest": "3.17.0",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/google-cloud-storage/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "google-genai",
+      "latest": "2.31.0",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/google-genai/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "kreuzberg",
+      "latest": "4.10.4",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/kreuzberg/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "llama-cloud",
+      "latest": "2.18.0",
+      "requires_python": ">=3.9",
+      "metadata_url": "https://pypi.org/pypi/llama-cloud/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "llama-parse",
+      "latest": "0.6.94",
+      "requires_python": "<4.0,>=3.9",
+      "metadata_url": "https://pypi.org/pypi/llama-parse/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "marker-pdf",
+      "latest": "2.0.0",
+      "requires_python": "<4,>=3.10",
+      "metadata_url": "https://pypi.org/pypi/marker-pdf/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "openai",
+      "latest": "3.31.0",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/openai/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "pdfminer.six",
+      "latest": "20260107",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/pdfminer.six/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "pdfplumber",
+      "latest": "0.11.10",
+      "requires_python": ">=3.8",
+      "metadata_url": "https://pypi.org/pypi/pdfplumber/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "pymupdf",
+      "latest": "1.28.2",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/pymupdf/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "pymupdf4llm",
+      "latest": "1.28.2",
+      "requires_python": ">=3.10",
+      "metadata_url": "https://pypi.org/pypi/pymupdf4llm/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "pypdf",
+      "latest": "6.20.1",
+      "requires_python": ">=3.9",
+      "metadata_url": "https://pypi.org/pypi/pypdf/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "pypdfium2",
+      "latest": "5.14.0",
+      "requires_python": ">=3.6",
+      "metadata_url": "https://pypi.org/pypi/pypdfium2/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    },
+    {
+      "package": "unstructured",
+      "latest": "0.27.27",
+      "requires_python": "<3.14,>=3.11",
+      "metadata_url": "https://pypi.org/pypi/unstructured/json",
+      "boundary": "Metadata observation only; not installed or API-verified by this lookup."
+    }
+  ]
+}

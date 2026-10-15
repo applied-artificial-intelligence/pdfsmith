@@ -1,0 +1,13 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/working-env/bin/python', '-m', 'pytest', 'tests/test_api.py', 'tests/test_async.py', 'tests/test_cli.py', 'tests/test_config.py', '-q', '--tb=short', '-p', 'no:cacheprovider']
+CWD: /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/working-source
+Exit: 1
+..........F............................................................. [ 80%]
+.................                                                        [100%]
+=================================== FAILURES ===================================
+___________ TestBackendSelection.test_get_backend_returns_singleton ____________
+tests/test_api.py:136: in test_get_backend_returns_singleton
+    assert instance1 is instance2
+E   assert <pdfsmith.backends.pdfplumber_backend.PDFPlumberBackend object at 0x7eb2168c7590> is <pdfsmith.backends.pdfplumber_backend.PDFPlumberBackend object at 0x7eb216515130>
+=========================== short test summary info ============================
+FAILED tests/test_api.py::TestBackendSelection::test_get_backend_returns_singleton
+1 failed, 88 passed in 0.49s

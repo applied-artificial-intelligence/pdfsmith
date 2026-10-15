@@ -1,0 +1,292 @@
+{
+  "kind": "release",
+  "python": "3.12.11",
+  "distribution_version": "0.2.0",
+  "module_version": "0.2.0",
+  "package_path": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/lib/python3.12/site-packages/pdfsmith",
+  "module_hashes": {
+    "__init__.py": "56d146feaa3dfafe944c54ce91a5d6be4b7ebae5faa7e4e34d80e2bbe6bf5247",
+    "api.py": "540693f17ca2258fe3a2459012ab856514f9320f9bb74e1c7e0c0d5e117344d5",
+    "backends/__init__.py": "725c9d317d633bd11bfaa51369ccc8cb4aef0dbc1443cc0e68566394182761ae",
+    "backends/anthropic_backend.py": "459f267e3d31f0a657dea6b909f6c507570a7894186f394c74b0c0bebd54a525",
+    "backends/aws_textract_backend.py": "dca929b2bf3856821a4d52e6b854bd5ee61cadff904f0a9375749210986298f5",
+    "backends/azure_document_intelligence_backend.py": "92e1ec1c983ee76375679291a8e0ad771d654904ba1bb7dc5009c973cb10294d",
+    "backends/databricks_backend.py": "f3f87ebf9ccbb07d4a4bfa661b00ac85cd4e3f7fa536ec8db41f2558317fecbf",
+    "backends/docling_backend.py": "a3dd357261dce2a3830d3b617e59a9665f1cd87fff7930c5aebc9577717a7199",
+    "backends/extractous_backend.py": "581b348341f57c62fc6fadc204af1b6104dfc46f2b46778a27bbcbfe85cde73d",
+    "backends/gemini_backend.py": "11714f0e11141ceb66ae0d1e8673254f7202f10c50cbc7f1a0c4a79fa9e6baad",
+    "backends/google_document_ai_backend.py": "03b4b7096f286faa5e52309de358679216ed3323064fd06c5b1015ca7c8a1a1b",
+    "backends/kreuzberg_backend.py": "5b9abef4d59d01d0772e252f31f0316d976eb6b0caeafa67cec7df3e7c2c3995",
+    "backends/llamaparse_backend.py": "d6fb5bd5a8e780fb93b8ea10eca135dcf47cbef827f15a7dd032cfb87525e801",
+    "backends/marker_backend.py": "cf48d12554826bb709bd8aa6e5d7bc052366c58652bf86436f27aae839ff0cc7",
+    "backends/openai_backend.py": "59b53eba473b6c13f1a8ffd2f0f3f49a403faa1188828de21b3d60fc9ec1c18e",
+    "backends/pdfminer_backend.py": "469fe1243aaa3087de0d77324af9f433a006e1ee6c175d3702df80514321a1bc",
+    "backends/pdfplumber_backend.py": "48a1a36982d3f233f838b3e1d34d96c2e7dfc33e3f4fe738b738e21dbeb50c73",
+    "backends/pymupdf4llm_backend.py": "af2759f4a65bfab1c7e97f4afe73efab2daa4c219a6c0b297d91d65e01b1b112",
+    "backends/pymupdf_backend.py": "7f4a24f4fce5703bc9dd9cf63beb2ad2f7d4f6c945fa69a9c6130e85729d85a0",
+    "backends/pypdf_backend.py": "39b8796a34eac3a537d0081c304500f82e457ae8eb4495dc3e3969b2abeb0ade",
+    "backends/pypdfium2_backend.py": "c51c53322a095f6849c02b3b59f40a52ef93aaa68718f26df91e74a3ed2a0dcc",
+    "backends/registry.py": "7ed09be1780c2c7acf145a429c4702444aa5a4eca6278e2d11716bc8e2639d5a",
+    "backends/unstructured_backend.py": "bd2be6dc047478a50cace173053901b360fc69b97f753cfa13de07557aaf4837",
+    "cli.py": "0a3f4f67aed8788596bfa1ca4ac1ed5576535f1aaf95defd0cbecac4377d58d8",
+    "config.py": "9f80027c588dcd6940b060dbeb091318903650c89b744fe6d93b59c265ffa675"
+  },
+  "dependencies": {
+    "cryptography": "50.0.2",
+    "PyYAML": "6.0.3",
+    "cffi": "2.1.1",
+    "packaging": "26.3",
+    "pdfplumber": "0.11.10",
+    "pdfsmith": "0.2.0",
+    "pytest": "9.1.1",
+    "pillow": "12.3.0",
+    "pluggy": "1.6.0",
+    "pypdf": "6.20.1",
+    "Pygments": "2.21.0",
+    "reportlab": "5.0.1",
+    "typing_extensions": "4.16.0",
+    "pycparser": "3.11",
+    "pytest-asyncio": "1.4.0",
+    "pypdfium2": "5.14.0",
+    "charset-normalizer": "3.5.2",
+    "pdfminer.six": "20260107",
+    "iniconfig": "2.3.1"
+  },
+  "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+  "fixture_sha256": {
+    "blank.pdf": "226bdbe274d3222c3ed276db4f6736d457282e01abf7982629360f7b4f1ad77b",
+    "text.pdf": "a21c30be332e3c166fc0c85afe9e63e0d7cfd5c776923f7b49690311bfb91145",
+    "corrupt.pdf": "523ea078b8344c6391e04f64694302a1fb77667b6191c0f5881643df67c8bd4a"
+  },
+  "checks": {
+    "public_pypdf": {
+      "outcome": "returned_string",
+      "characters": 22601,
+      "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd",
+      "summary_heading": true
+    },
+    "async_pypdf": {
+      "outcome": "returned_string",
+      "characters": 22601,
+      "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd",
+      "summary_heading": true
+    },
+    "pypdf_text.pdf": {
+      "outcome": "returned_string",
+      "characters": 60,
+      "sha256": "6f8e57a4b5becfbf83c8d0731d2ee1eb57f59a5f2f0ddbe616bd325db7f16a50",
+      "summary_heading": false
+    },
+    "pypdf_blank.pdf": {
+      "outcome": "returned_string",
+      "characters": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary_heading": false
+    },
+    "pypdf_corrupt.pdf": {
+      "outcome": "exception",
+      "type": "PdfStreamError",
+      "message": "Stream has ended unexpectedly"
+    },
+    "pypdf_missing.pdf": {
+      "outcome": "exception",
+      "type": "FileNotFoundError",
+      "message": "PDF file not found: /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/fixtures/missing.pdf"
+    },
+    "public_pdfplumber": {
+      "outcome": "returned_string",
+      "characters": 42984,
+      "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5",
+      "summary_heading": true
+    },
+    "async_pdfplumber": {
+      "outcome": "returned_string",
+      "characters": 42984,
+      "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5",
+      "summary_heading": true
+    },
+    "pdfplumber_text.pdf": {
+      "outcome": "returned_string",
+      "characters": 60,
+      "sha256": "6f8e57a4b5becfbf83c8d0731d2ee1eb57f59a5f2f0ddbe616bd325db7f16a50",
+      "summary_heading": false
+    },
+    "pdfplumber_blank.pdf": {
+      "outcome": "returned_string",
+      "characters": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary_heading": false
+    },
+    "pdfplumber_corrupt.pdf": {
+      "outcome": "exception",
+      "type": "PdfminerException",
+      "message": "No /Root object! - Is this really a PDF?"
+    },
+    "pdfplumber_missing.pdf": {
+      "outcome": "exception",
+      "type": "FileNotFoundError",
+      "message": "PDF file not found: /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/fixtures/missing.pdf"
+    },
+    "default": {
+      "outcome": "returned_string",
+      "characters": 42984,
+      "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5",
+      "summary_heading": true
+    },
+    "default_backend": {
+      "outcome": "returned_string",
+      "characters": 10,
+      "sha256": "b98d81dc3933c0e3c1c09215b23bee92edd087601f15e599171ca935809775b1",
+      "summary_heading": false
+    },
+    "discovery": {
+      "outcome": "returned_value",
+      "value": [
+        "pdfplumber",
+        "pypdf",
+        "pdfminer",
+        "pypdfium2"
+      ]
+    },
+    "singleton": {
+      "outcome": "returned_value",
+      "value": true
+    },
+    "keyword_compatibility": {
+      "outcome": "returned_string",
+      "characters": 22601,
+      "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd",
+      "summary_heading": true
+    },
+    "unknown_backend": {
+      "outcome": "exception",
+      "type": "ValueError",
+      "message": "Unknown backend: not-a-parser. Available: ['pypdf', 'pdfplumber', 'pymupdf', 'pymupdf4llm', 'pdfminer', 'pypdfium2', 'unstructured', 'kreuzberg', 'extractous', 'docling', 'marker', 'aws_textract', 'azure_document_intelligence', 'google_document_ai', 'databricks', 'llamaparse', 'anthropic', 'openai', 'gemini']"
+    },
+    "missing_integration": {
+      "outcome": "exception",
+      "type": "ImportError",
+      "message": "Backend 'docling' is not installed. Install with: pip install pdfsmith[docling]"
+    },
+    "layout_preset": {
+      "outcome": "exception",
+      "type": "TypeError",
+      "message": "parse() got an unexpected keyword argument 'preset'"
+    },
+    "invalid_preset": {
+      "outcome": "exception",
+      "type": "TypeError",
+      "message": "parse() got an unexpected keyword argument 'preset'"
+    },
+    "unsupported_ocr": {
+      "outcome": "exception",
+      "type": "TypeError",
+      "message": "parse() got an unexpected keyword argument 'ocr'"
+    },
+    "invalid_option": {
+      "outcome": "exception",
+      "type": "TypeError",
+      "message": "parse() got an unexpected keyword argument 'backend_options'"
+    },
+    "directory_input": {
+      "outcome": "exception",
+      "type": "IsADirectoryError",
+      "message": "[Errno 21] Is a directory: '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/fixtures'"
+    }
+  },
+  "cli": {
+    "version": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "3c532829127bca6b080257aff94fcc2a8c663e62459aa62baaa2cfec3668d86c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "backends": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "backends"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "0c806278b7c0b064ebe39e40393fad9d805b39bc260503ae5bcf96054a9d9d55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "parse": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "parse",
+        "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+        "--backend",
+        "pypdf"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "7f05f7d608e217377806343b70fc398567d917f6bd358d9d3b55b63eddd0ab45",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "corrupt": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "parse",
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/fixtures/corrupt.pdf",
+        "--backend",
+        "pypdf"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "751c3232e531b4ae4e4b2097feec997b358262113b8238460083d0cec9654e28"
+    },
+    "blank": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "parse",
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/fixtures/blank.pdf",
+        "--backend",
+        "pypdf"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unknown": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "parse",
+        "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+        "--backend",
+        "not-a-parser"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "61427436b9cef075d827dff2e8ec42c59943e811461e1cfcf9fb2d5dcdc1cad7"
+    },
+    "missing": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "parse",
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/fixtures/missing.pdf",
+        "--backend",
+        "pypdf"
+      ],
+      "returncode": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "de8011579fd3b1b38cbe7e4868ceaa6e9fc7142fc472837edcfabbba747b3ed4"
+    },
+    "options": {
+      "command": [
+        "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/release-env/bin/pdfsmith",
+        "parse",
+        "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+        "--backend",
+        "pdfplumber",
+        "--preset",
+        "best"
+      ],
+      "returncode": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8036e9d6804d1d733cf41fc344ec2b3108fb68b03e0770d1302f867efc97d498"
+    }
+  },
+  "boundary": "Fresh local capability diagnostics; no provider calls or quality comparison."
+}

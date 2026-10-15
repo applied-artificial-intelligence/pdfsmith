@@ -1,0 +1,30 @@
+PDFsmith source-owner handoff - planning/baseline checkpoint, October 14, 2026
+
+This is not completion of the library update or authorization for public copy.
+The existing October 9 capability source packet remains bounded to its exact
+public revision/release; no new backend-quality or current-cloud claim is cleared.
+
+Public main: fe66170231dd580d9f919662ed3b89947f091763. Released package: 0.2.0,
+wheel SHA-256 5c9ff402fa7af7688f9183c7441df49a0b375dde8daff8332aa92bdc94804b13.
+Inherited source module says 0.3.0 while its installed distribution says 0.2.0.
+Keep those identities separate until reviewed packaging repair is implemented.
+
+Fresh baseline evidence in this work unit confirms installed pypdf/pdfplumber
+calls on the retained public Premera document. Default selection is fixed-order
+pdfplumber in the declared isolated environment; this is not best-parser routing.
+The working API has reproduced configuration and compatibility defects. Existing
+provider wrappers have not received fresh real-service verification here.
+
+Stefan requires the update to verify all 19 registered backends. LlamaParse needs
+current v2 SDK/configuration assessment. ParseBench is relevant attributed prior
+work from LlamaIndex, not our benchmark result or a PDFsmith quality guarantee.
+PDF-Bench owns corpus/metric reuse, comparisons and experiments.
+
+The source owner will supply milestone identities, runnable examples, input/output
+hashes and supported/unvalidated boundaries after reviewed implementation. Website
+and content owners retain their CMS, manuscripts, calendars and deployment work.
+No restoration, publication, package release or deployment is authorized here.
+
+Next actions
+No website/editorial action is needed from this planning checkpoint. Stefan's
+returned GPT/Claude design reviews are needed before source implementation.
