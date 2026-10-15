@@ -1,0 +1,8 @@
+{
+  "pyproject.toml": "f58478e70fec4e14234f95daaf6fbc49d14a05fe97768da0a15fd4043d2b0a59",
+  "uv.lock": "f719f014875dadcdf29348070c12a128791c4984132510dc3d3bc24655fb768b",
+  "src/pdfsmith/backends/anthropic_backend.py": "cf77871df872a806270f74a88889bc6b6b966fc0b6822ad9b41be1099cc7fd76",
+  "src/pdfsmith/backends/registry.py": "5e53a6a4a5e6acb4023043663d5ce8d66738f4937d3cc534b0625d22e3e475cf",
+  "tests/anthropic_transport.py": "8ca6059a474e3569a5591a1c9fec49a706d4c58e22b46bbc91fe14beca00b403",
+  "tests/test_anthropic_contracts.py": "cc8a4081717c62e74874943ea05b9195a6c2102defc140744e52bbec7ec78bed"
+}

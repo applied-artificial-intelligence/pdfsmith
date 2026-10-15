@@ -1,0 +1,63 @@
+Anthropic offline SDK contracts - October 15, 2026
+
+The inherited provider source is retained byte-for-byte in inherited-source.tar.gz,
+with its SHA-256 in inherited-sha256.txt. before.json uses that preserved source
+and actual Anthropic SDK 1.15.0 with a strict network-free httpx2 transport.
+It reproduces max_tokens/refusal returning text as complete success, absent
+content returning empty success, missing usage being replaced by estimates,
+unknown options accepted and clients left open. No model was called.
+An initial diagnostic passed the old httpx.Client type to the new SDK, which
+rejects that type. The corrected actual SDK transport uses httpx2.Client.
+
+The replacement constructor is pure and validates model/max_tokens/request_timeout;
+unknown options, including temperature removed by the current SDK, fail before
+client work. Explicit nonempty model IDs are not constrained by pricing tables.
+The retired default Claude 3.5 Haiku is replaced with the active documented
+claude-haiku-4-5-20251001. This is an API-contract default, not a quality comparison.
+The inherited 4.5 mapping's 20251015 suffix did not match the official dated ID.
+
+The wrapper uses declared pypdf, PDF-only input, an explicit conservative 100-page
+wrapper bound and the actual base64+prompt 32,000,000-byte request envelope limit.
+The current provider supports 600 pages for suitable >=1M-token contexts; this
+wrapper does not claim that larger-context mode. Actual over-limit PDFs fail
+before client work. No native optional import or file-size page estimate remains.
+
+One client is owned per call. max_retries=0 and explicit HTTP timeout are sent to
+the SDK. Successful extraction requires assistant/end_turn, a message identity,
+and nonempty text-block coverage; a present empty text block is a valid blank
+completion. Other stop states, missing content and unexpected non-text blocks
+raise. A completed LLM turn does not prove semantic completeness or page quality.
+Server/connection ambiguity is reported without replay or an invented remote job.
+Clients close on every exit; completed content and message IDs survive cleanup
+failure in BackendOperationError and a separate private CLI recovery JSON.
+
+get_cost_info retains the method but reports monetary fields as None and exposes
+only the last actual SDK usage, input hash and requested/reported model/message
+identity. Missing usage is unknown, never estimated. Failed next invocation clears
+the prior snapshot. No cumulative estimated cost or stale pricing map remains.
+
+Focused checks: runtime/dev-env/bin/python -m pytest -q
+ tests/test_anthropic_contracts.py --tb=line: 23 passed. Actual request serialization,
+non-price-list model IDs, options, stop/refusal/truncation/blank and missing usage,
+client cleanup, real production client factory and one-attempt server failure,
+limit checks and usage reset are exercised. Full fresh source suite: 359 passed,
+12 skipped in 103.25s. Ruff and repository mypy passed. Skips are not live proof.
+
+Four fresh noneditable extra-only installed wheels passed Python 3.10-3.13 through
+API/direct/async/actual console and all SDK status/cleanup cases. Target environments
+contain no pytest/fixture-generator packages. Factory verification injects only
+the HTTP transport into the actual source-created SDK client, preserving the
+source retry/timeout arguments. installed-*.json, logs and raw-outputs.tar.gz record
+exact wheel/source/dependency/input/output identities, requests and recovery.
+All provider HTTP is handled by an in-memory transport; DNS/TCP is denied.
+
+Anthropic 1.15 uses httpx2. Marker 2.0 requires Anthropic <1, so marker+anthropic
+and marker+frontier are now declared incompatible extras, alongside the earlier
+Marker/Unstructured Pillow conflict. Use separate environments. uv.lock is
+regenerated and resolves both SDK ranges under explicit extra conflicts.
+
+Official contracts consulted:
+https://platform.claude.com/docs/en/build-with-claude/pdf-support
+https://platform.claude.com/docs/en/about-claude/model-deprecations
+Actual model access, authentication, inference, usage accuracy and billing remain
+unverified until separately authorized live runs. No paid/free-credit call occurred.

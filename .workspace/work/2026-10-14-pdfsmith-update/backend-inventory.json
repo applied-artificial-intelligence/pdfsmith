@@ -580,8 +580,8 @@
       "package": "anthropic",
       "weight": "commercial",
       "extra": "anthropic",
-      "source_disposition": "Inherited model changes inspected; offline SDK/live checks pending. Retain/repair stale price-based model validation, ignored kwargs and unchecked stop reasons.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Integrated preserved inherited work; repaired completion/usage/limits and verified actual SDK offline contracts. Live service remains unverified.",
+      "current_evidence": "offline-contract",
       "input_formats": [
         "pdf"
       ],
@@ -589,14 +589,26 @@
         "ANTHROPIC_API_KEY"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "model, max_tokens, request_timeout"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
       ],
       "source_path": "src/pdfsmith/backends/anthropic_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/12-anthropic/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "openai",

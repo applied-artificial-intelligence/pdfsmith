@@ -333,6 +333,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="anthropic",
         description="Anthropic Claude, frontier multimodal PDF parsing",
         package="anthropic",
+        dependencies=("anthropic", "pypdf"),
         weight="commercial",
         loader=_load_anthropic,
     ),

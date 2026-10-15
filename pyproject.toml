@@ -49,10 +49,10 @@ databricks = ["databricks-sdk>=0.116,<0.117", "pypdf>=4.0"]
 llamaparse = ["llama-cloud>=2.18,<2.19", "pypdf>=4.0"]
 
 # Frontier LLM backends
-anthropic = ["anthropic>=0.40"]
+anthropic = ["anthropic>=1.15,<1.16", "pypdf>=4.0"]
 openai = ["openai>=1.50"]
 gemini = ["google-genai>=1.0"]
-frontier = ["anthropic>=0.40", "openai>=1.50", "google-genai>=1.0"]
+frontier = ["pypdf>=4.0", "anthropic>=1.15,<1.16", "openai>=1.50", "google-genai>=1.0"]
 
 # Bundles
 light = ["pypdf>=4.0", "pdfplumber>=0.10", "pymupdf>=1.24.3"]
@@ -174,4 +174,6 @@ exclude_lines = [
 conflicts = [
     [{ extra = "marker" }, { extra = "unstructured" }],
     [{ extra = "marker" }, { extra = "all" }],
+    [{ extra = "marker" }, { extra = "anthropic" }],
+    [{ extra = "marker" }, { extra = "frontier" }],
 ]
