@@ -502,8 +502,8 @@
       "package": "databricks-sdk",
       "weight": "commercial",
       "extra": "databricks",
-      "source_disposition": "Source inspected; offline SDK and live checks pending. Retain or replace unsupported request/result assumptions after official API check; current SQL embeds base64 and treats non-SUCCEEDED immediate status as failure.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired against current documented binary/schema contract and real SDK transports; SQL engine and live service remain unverified.",
+      "current_evidence": "offline-contract",
       "input_formats": [
         "pdf"
       ],
@@ -512,14 +512,26 @@
         "DATABRICKS_WAREHOUSE_ID"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "host, warehouse_id, max_wait, poll_interval, request_timeout"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
       ],
       "source_path": "src/pdfsmith/backends/databricks_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/11-databricks/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "llamaparse",

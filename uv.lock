@@ -1102,16 +1102,16 @@ wheels = [
 
 [[package]]
 name = "databricks-sdk"
-version = "0.73.0"
+version = "0.116.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "google-auth" },
     { name = "protobuf" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a8/7f/cfb2a00d10f6295332616e5b22f2ae3aaf2841a3afa6c49262acb6b94f5b/databricks_sdk-0.73.0.tar.gz", hash = "sha256:db09eaaacd98e07dded78d3e7ab47d2f6c886e0380cb577977bd442bace8bd8d", size = 801017, upload-time = "2025-11-05T06:52:58.509Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/89/f9/a11b6e932f82bfb567ceab8314021894a8831c827b67810f20fbfe03771e/databricks_sdk-0.116.0.tar.gz", hash = "sha256:0bce6f2aa4a0385651b727711624161c610bba090007d5bd9451adb770cb5ffc", size = 987547, upload-time = "2026-06-10T06:14:46.049Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a7/27/b822b474aaefb684d11df358d52e012699a2a8af231f9b47c54b73f280cb/databricks_sdk-0.73.0-py3-none-any.whl", hash = "sha256:a4d3cfd19357a2b459d2dc3101454d7f0d1b62865ce099c35d0c342b66ac64ff", size = 753896, upload-time = "2025-11-05T06:52:56.451Z" },
+    { url = "https://files.pythonhosted.org/packages/41/97/52a397e06a6be924598e47f1ff682799af0a7461eabdecce3cdcc5015c37/databricks_sdk-0.116.0-py3-none-any.whl", hash = "sha256:136c0b889c59dafd4e5336768dc0a5717e2a672701a9f3d87cc8440f104c9073", size = 935625, upload-time = "2026-06-10T06:14:44.421Z" },
 ]
 
 [[package]]
@@ -4208,6 +4208,8 @@ config = [
 ]
 databricks = [
     { name = "databricks-sdk" },
+    { name = "pypdf", version = "6.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "pypdf", version = "6.20.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
 ]
 dev = [
     { name = "mypy" },
@@ -4320,8 +4322,8 @@ requires-dist = [
     { name = "azure-ai-documentintelligence", marker = "extra == 'commercial'", specifier = ">=1.0.2,<1.1" },
     { name = "boto3", marker = "extra == 'aws'", specifier = ">=1.43,<1.44" },
     { name = "boto3", marker = "extra == 'commercial'", specifier = ">=1.43,<1.44" },
-    { name = "databricks-sdk", marker = "extra == 'commercial'", specifier = ">=0.20" },
-    { name = "databricks-sdk", marker = "extra == 'databricks'", specifier = ">=0.20" },
+    { name = "databricks-sdk", marker = "extra == 'commercial'", specifier = ">=0.116,<0.117" },
+    { name = "databricks-sdk", marker = "extra == 'databricks'", specifier = ">=0.116,<0.117" },
     { name = "docling", marker = "extra == 'all'", specifier = ">=2.139,<2.140" },
     { name = "docling", marker = "extra == 'docling'", specifier = ">=2.139,<2.140" },
     { name = "extractous", marker = "extra == 'all'", specifier = ">=0.3,<0.4" },
@@ -4361,6 +4363,7 @@ requires-dist = [
     { name = "pypdf", marker = "extra == 'aws'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'azure'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'commercial'", specifier = ">=4.0" },
+    { name = "pypdf", marker = "extra == 'databricks'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'docling'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'extractous'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'google'", specifier = ">=4.0" },

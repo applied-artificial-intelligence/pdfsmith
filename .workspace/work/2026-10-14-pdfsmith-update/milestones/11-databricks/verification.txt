@@ -1,0 +1,68 @@
+Databricks SDK contract verification - October 15, 2026
+
+before.json uses the inherited installed adapter with actual Databricks SDK
+0.116.0 and a strict offline requests adapter. A normal documented nested document
+and page-level errors both returned empty strings; pending statements failed
+immediately, an empty result was called success and malformed JSON was returned
+as parsed text. The outgoing old SQL is retained and marked legacy_sql. Its
+string/base64 signature disagrees with the current binary/options-map docs;
+no SQL engine was called to claim empirical SQL rejection. before-source.tar.gz
+preserves the original adapter and reproduction.tar.gz preserves the diagnostic.
+
+The replacement constructor validates options and binds explicit host/warehouse
+configuration without SDK import, credentials or warehouse discovery. Missing
+inputs fail first. Inline PDFs are limited to 10,000,000 bytes and 500 pages;
+pypdf is a declared dependency. Larger documents need a separate staging design.
+SQL uses unbase64 over the actual input, an explicit schema version 2.0 options
+map, disabled figure descriptions and to_json over the VARIANT result. Figure
+and image generation/persistence are excluded. Table HTML remains HTML in text.
+The SQL string cannot establish server-side acceptance without a workspace run.
+
+Actual SDK resource methods serialize one statement submission, bounded pending
+polls and chunk retrieval. Success requires SUCCEEDED plus an untruncated
+one-row, one-column JSON_ARRAY manifest, complete chunk coverage, one JSON object,
+empty error_status, confirmed schema version, complete ordered pages and elements.
+Missing first chunks are fetched through the SDK chunk endpoint. Failed SQL,
+missing/malformed JSON or partial document metadata never becomes empty success.
+Blank elements with complete successful page metadata return an empty string.
+
+The wrapper owns one client per parse, disables async token refresh, and supports
+PAT or OAuth M2M credentials at parse-time client creation. SDK 0.116.0 obtains
+workspace metadata during client creation; this discovery/authentication happens
+before the statement deadline, not inside the bounded statement polling period.
+A diagnostic using the synthetic offline.invalid host encountered the SDK's long
+metadata retry and was stopped with SIGINT; it did not call a provider. All final
+verification intercepts that actual SDK metadata HTTP request as well as SQL.
+
+The SDK has no no-retry configuration and no public session close. An owned SDK
+clock rejects retry/backoff before a replay, preserving the original SDK error as
+cause; the owned underlying session is closed explicitly. The SDK range is narrow
+because these seams must be revalidated on upgrade. The actual 500-response check
+asserts exactly one submission. No automatic replay follows ambiguous submission.
+Known statements get bounded best-effort cancellation plus one status check.
+Cancellation acknowledgement alone is not termination; resource IDs and uncertain
+completion remain visible. Completed output survives session-close failure in
+BackendOperationError and a separate private CLI recovery JSON.
+
+Focused source suite: runtime/dev-env/bin/python -m pytest -q
+ tests/test_databricks_contracts.py --tb=line: 27 passed. This includes the actual
+production client factory and SDK configuration, not only patched SDK instances.
+Ruff and repository mypy pass. Fresh full source suite: 336 passed, 12 skipped
+in 38.07s. Skipped providers are not passes. Four fresh noneditable extra-only installed wheels
+passed Python 3.10-3.13: API/direct/async/actual console, pending/blank/result-chunk
+routes, documented errors, timeout/cancellation, no duplicate submission, and
+content-preserving cleanup/recovery. No pytest or fixture generator is installed
+in those target environments. Commands, exact wheel/source/dependency/input/output
+hashes and HTTP request evidence are in installed-*.json, run/install logs and
+raw-outputs.tar.gz. A first harness run used an incorrect fixture-directory name;
+that FileNotFoundError was corrected before the four successful installed runs.
+
+Official current contracts checked:
+https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_parse_document
+https://docs.databricks.com/api/statement-execution/v1/statement-execution
+https://databricks-sdk-py.readthedocs.io/en/stable/workspace/sql/statement_execution.html
+https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-functions-builtin
+The parsing function requires a supported region and Databricks Runtime 17.3+;
+serverless environment version 3+ is required where applicable. Installed SDK
+transport tests do not establish workspace authentication, engine/function
+availability, SQL acceptance, actual document parsing or billing.

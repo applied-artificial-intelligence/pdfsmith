@@ -316,6 +316,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="databricks",
         description="Databricks ai_parse_document via SQL warehouse",
         package="databricks-sdk",
+        dependencies=("databricks-sdk", "pypdf"),
         weight="commercial",
         loader=_load_databricks,
     ),

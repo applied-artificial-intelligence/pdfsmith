@@ -45,7 +45,7 @@ marker = ["marker-pdf==2.0.0", "surya-ocr==0.22.1", "pypdf>=4.0"]
 aws = ["boto3>=1.43,<1.44", "pymupdf>=1.24.3", "pypdf>=4.0"]
 azure = ["azure-ai-documentintelligence>=1.0.2,<1.1", "pypdf>=4.0"]
 google = ["google-cloud-documentai>=3.16,<3.17", "google-cloud-storage>=3.17,<3.18", "pypdf>=4.0"]
-databricks = ["databricks-sdk>=0.20"]
+databricks = ["databricks-sdk>=0.116,<0.117", "pypdf>=4.0"]
 llamaparse = ["llama-cloud>=2.18,<2.19", "pypdf>=4.0"]
 
 # Frontier LLM backends
@@ -68,7 +68,7 @@ commercial = [
     "azure-ai-documentintelligence>=1.0.2,<1.1",
     "google-cloud-documentai>=3.16,<3.17",
     "google-cloud-storage>=3.17,<3.18",
-    "databricks-sdk>=0.20",
+    "databricks-sdk>=0.116,<0.117",
     "llama-cloud>=2.18,<2.19",
     "pypdf>=4.0",
 ]
