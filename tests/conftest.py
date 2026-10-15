@@ -1,12 +1,67 @@
 """Shared test fixtures and configuration for pdfsmith tests."""
 
 import os
+import socket
+from collections.abc import Generator
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Generator
 from unittest.mock import MagicMock
 
 import pytest
+
+NETWORK_GUARD = pytest.StashKey[pytest.MonkeyPatch]()
+
+
+def pytest_sessionstart(session: pytest.Session) -> None:
+    guard = pytest.MonkeyPatch()
+    session.config.stash[NETWORK_GUARD] = guard
+    for key in tuple(os.environ):
+        if key.startswith(
+            (
+                "AWS_",
+                "AZURE_",
+                "GOOGLE_",
+                "GEMINI_",
+                "ANTHROPIC_",
+                "OPENAI_",
+                "LLAMA_",
+                "DATABRICKS_",
+                "PDFSMITH_",
+            )
+        ):
+            guard.delenv(key, raising=False)
+    assert session.config.cache is not None
+    guard.setenv("HOME", str(session.config.cache.mkdir("isolated-home")))
+    guard.setenv("AWS_EC2_METADATA_DISABLED", "true")
+
+    def denied(*args, **kwargs):
+        raise RuntimeError("Outbound networking is disabled in ordinary PDFsmith tests")
+
+    for method in ("connect", "connect_ex"):
+        original = getattr(socket.socket, method)
+
+        def connect(sock, address, _original=original):
+            if sock.family == socket.AF_UNIX:
+                return _original(sock, address)
+            return denied()
+
+        guard.setattr(socket.socket, method, connect)
+    guard.setattr(socket, "create_connection", denied)
+    guard.setattr(socket, "getaddrinfo", denied)
+
+
+def pytest_sessionfinish(session: pytest.Session) -> None:
+    session.config.stash[NETWORK_GUARD].undo()
+
+
+def pytest_collection_modifyitems(items: list[pytest.Item]) -> None:
+    for item in items:
+        if item.get_closest_marker("integration") or "integration" in item.path.parts:
+            item.add_marker(
+                pytest.mark.skip(
+                    reason="Live services require a separately authorized run protocol"
+                )
+            )
 
 
 @pytest.fixture
@@ -161,7 +216,5 @@ def mock_backend_registry(monkeypatch):
         ),
     }
 
-    monkeypatch.setattr(
-        "pdfsmith.backends.registry.BACKEND_REGISTRY", mock_registry
-    )
+    monkeypatch.setattr("pdfsmith.backends.registry.BACKEND_REGISTRY", mock_registry)
     return mock_registry

@@ -1,38 +1,24 @@
-"""Integration tests for commercial backends.
+"""Live service checks, excluded from ordinary tests regardless of environment flags.
 
-These tests require real API credentials and will incur costs.
-Only run when you need to verify actual API integration.
-
-Setup:
-    1. Copy .env.example to .env
-    2. Fill in your API credentials
-    3. Run: pytest tests/integration/ -v --commercial
-
-Cost per run (assuming 1-page test PDF):
-    - AWS Textract: ~$0.0015
-    - Azure: ~$0.0015
-    - Google: ~$0.0015
-    - Databricks: ~$0.003
-    Total: ~$0.007 per full integration test run
+Actual service execution requires a separate authorized input/configuration/spend
+protocol. Offline SDK contract tests belong in the ordinary network-denied suite.
 """
 
-import pytest
-from pathlib import Path
 import os
+from pathlib import Path
+
+import pytest
 
 # Mark all tests in this module as requiring commercial credentials
-pytestmark = pytest.mark.skipif(
-    not os.getenv("RUN_COMMERCIAL_TESTS"),
-    reason="Commercial API tests disabled. Set RUN_COMMERCIAL_TESTS=1 to enable.",
-)
+pytestmark = pytest.mark.integration
 
 
 @pytest.fixture
 def sample_pdf(tmp_path: Path) -> Path:
     """Create a minimal test PDF."""
     try:
-        from reportlab.pdfgen import canvas
         from reportlab.lib.pagesizes import letter
+        from reportlab.pdfgen import canvas
 
         pdf_path = tmp_path / "integration_test.pdf"
         c = canvas.Canvas(str(pdf_path), pagesize=letter)
@@ -70,7 +56,7 @@ class TestAWSTextractIntegration:
         assert len(result) > 0
         assert "Integration Test" in result or "test" in result.lower()
 
-        print(f"\n✓ AWS Textract parsed successfully")
+        print("\n✓ AWS Textract parsed successfully")
         print(f"  Result length: {len(result)} characters")
         print(f"  Content preview: {result[:100]}...")
 
@@ -81,8 +67,8 @@ class TestAWSTextractIntegration:
             pytest.skip("AWS credentials not set")
 
         try:
-            from reportlab.pdfgen import canvas
             from reportlab.lib.pagesizes import letter
+            from reportlab.pdfgen import canvas
 
             # Create 2-page PDF
             pdf_path = tmp_path / "multipage.pdf"
@@ -99,7 +85,7 @@ class TestAWSTextractIntegration:
             result = backend.parse(pdf_path)
 
             assert "Page 1" in result or "page" in result.lower()
-            print(f"\n✓ AWS Textract multi-page test passed")
+            print("\n✓ AWS Textract multi-page test passed")
 
         except ImportError:
             pytest.skip("reportlab not installed")
@@ -127,7 +113,7 @@ class TestAzureDocumentIntelligenceIntegration:
         assert len(result) > 0
         assert "Integration Test" in result or "test" in result.lower()
 
-        print(f"\n✓ Azure Document Intelligence parsed successfully")
+        print("\n✓ Azure Document Intelligence parsed successfully")
         print(f"  Result length: {len(result)} characters")
         print(f"  Content preview: {result[:100]}...")
 
@@ -138,15 +124,15 @@ class TestAzureDocumentIntelligenceIntegration:
             pytest.skip("Azure credentials not set")
 
         try:
-            from reportlab.pdfgen import canvas
             from reportlab.lib.pagesizes import letter
+            from reportlab.pdfgen import canvas
 
             # Create 10-page PDF
             pdf_path = tmp_path / "large.pdf"
             c = canvas.Canvas(str(pdf_path), pagesize=letter)
 
             for i in range(10):
-                c.drawString(100, 750, f"Page {i+1} Content")
+                c.drawString(100, 750, f"Page {i + 1} Content")
                 c.showPage()
             c.save()
 
@@ -158,7 +144,7 @@ class TestAzureDocumentIntelligenceIntegration:
             result = backend.parse(pdf_path)
 
             assert len(result) > 0
-            print(f"\n✓ Azure large PDF test passed")
+            print("\n✓ Azure large PDF test passed")
 
         except ImportError:
             pytest.skip("reportlab not installed")
@@ -186,7 +172,7 @@ class TestGoogleDocumentAIIntegration:
         assert len(result) > 0
         assert "Integration Test" in result or "test" in result.lower()
 
-        print(f"\n✓ Google Document AI parsed successfully")
+        print("\n✓ Google Document AI parsed successfully")
         print(f"  Result length: {len(result)} characters")
         print(f"  Content preview: {result[:100]}...")
 
@@ -197,19 +183,21 @@ class TestGoogleDocumentAIIntegration:
             pytest.skip("Google credentials not set")
 
         try:
-            from reportlab.pdfgen import canvas
             from reportlab.lib.pagesizes import letter
+            from reportlab.pdfgen import canvas
 
             # Create 20-page PDF (exceeds 15 page limit)
             pdf_path = tmp_path / "overlimit.pdf"
             c = canvas.Canvas(str(pdf_path), pagesize=letter)
 
             for i in range(20):
-                c.drawString(100, 750, f"Page {i+1}")
+                c.drawString(100, 750, f"Page {i + 1}")
                 c.showPage()
             c.save()
 
-            from pdfsmith.backends.google_document_ai_backend import GoogleDocumentAIBackend
+            from pdfsmith.backends.google_document_ai_backend import (
+                GoogleDocumentAIBackend,
+            )
 
             backend = GoogleDocumentAIBackend()
 
@@ -217,7 +205,7 @@ class TestGoogleDocumentAIIntegration:
             with pytest.raises(ValueError, match="15 pages"):
                 backend.parse(pdf_path)
 
-            print(f"\n✓ Google page limit enforcement working")
+            print("\n✓ Google page limit enforcement working")
 
         except ImportError:
             pytest.skip("reportlab not installed")
@@ -244,7 +232,7 @@ class TestDatabricksIntegration:
         assert isinstance(result, str)
         assert len(result) > 0
 
-        print(f"\n✓ Databricks parsed successfully")
+        print("\n✓ Databricks parsed successfully")
         print(f"  Result length: {len(result)} characters")
         print(f"  Content preview: {result[:100]}...")
 
@@ -273,42 +261,26 @@ class TestDatabricksIntegration:
                 os.environ["DATABRICKS_WAREHOUSE_ID"] = original_warehouse
 
 
-class TestCrossProviderComparison:
-    """Compare results across commercial providers."""
+class TestCommercialBackendInvocation:
+    """Check individual integrations without asserting agreement between parsers."""
 
-    @pytest.mark.commercial
-    def test_consistency_across_providers(self, sample_pdf: Path):
-        """Test that all providers return consistent results."""
-        results = {}
-
-        # Try each provider
-        providers = [
+    @pytest.mark.parametrize(
+        "backend_name, credential_name",
+        [
             ("aws_textract", "AWS_ACCESS_KEY_ID"),
             ("azure_document_intelligence", "AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"),
             ("google_document_ai", "GOOGLE_APPLICATION_CREDENTIALS"),
             ("databricks", "DATABRICKS_HOST"),
-        ]
+        ],
+    )
+    def test_explicit_backend_invocation(
+        self, sample_pdf, backend_name, credential_name
+    ):
+        if not os.getenv(credential_name):
+            pytest.skip("Provider configuration is unavailable")
+        from pdfsmith.backends.registry import BACKEND_REGISTRY
 
-        for backend_name, env_check in providers:
-            if not os.getenv(env_check):
-                continue
-
-            try:
-                from pdfsmith import parse
-
-                result = parse(sample_pdf, backend=backend_name)
-                results[backend_name] = result
-            except Exception as e:
-                print(f"✗ {backend_name} failed: {e}")
-
-        # Compare results
-        if len(results) >= 2:
-            print(f"\n✓ Compared {len(results)} providers")
-            for name, result in results.items():
-                print(f"  {name}: {len(result)} chars")
-
-            # All should contain key phrases
-            for name, result in results.items():
-                assert "Integration Test" in result or "test" in result.lower()
-        else:
-            pytest.skip("Need at least 2 providers configured for comparison")
+        backend = BACKEND_REGISTRY[backend_name].loader()()
+        result = backend.parse(sample_pdf)
+        assert isinstance(result, str)
+        assert "Integration Test" in result or "test" in result.lower()

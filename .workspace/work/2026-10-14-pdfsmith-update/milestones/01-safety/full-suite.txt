@@ -1,0 +1,6 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', '-q', '--tb=short']
+Exit: 0
+ssssssssssss..........x.....................s...................ssssssss [ 42%]
+ss.ssssssss.sssssssssss.ssssssssss.ssssssssss........................... [ 84%]
+...........................                                              [100%]
+108 passed, 62 skipped, 1 xfailed in 0.87s

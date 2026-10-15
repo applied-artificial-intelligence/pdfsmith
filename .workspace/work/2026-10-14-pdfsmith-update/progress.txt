@@ -1,15 +1,19 @@
 PDFsmith update - October 15, 2026
 
-State: external reviews reconciled; shared planning blockers resolved. Implementation
+State: first engineering checkpoint verified (test safety and development identity).
+Shared planning blockers are resolved. Implementation
 is authorized on codex/pdfsmith-update-2026-10-14. All 19 backends remain in scope.
 GPT and Claude reports/identities/byte-preserving archive and dispositions are in
 reviews/. Specific model versions were not supplied. Revised spec/plan pass their
 terms, shape, premise and closure checks. The original packet, source archives and
 fcca203 manifests remain historical evidence, not regenerated against new plans.
 
-Next execution: fail-closed test safety and early package identity/core wheel,
-then static discovery, shared constructor/API contracts, pypdf/pdfplumber installed
-E2E and CLI preservation. Provider-specific SDK findings remain their own gates.
+Completed: live-flag regression fails on original producing tests and passes after
+network-denied collection guards. Core-only wheel passes Python 3.10-3.13; all 25
+public/release module ASTs compared. Lightweight suite: 108 passed, 62 skipped,
+1 strict expected singleton failure pending the next checkpoint. Exact evidence is
+in milestones/01-safety/. Next: static discovery, shared constructor/API contracts,
+pypdf/pdfplumber installed E2E and CLI preservation. Provider-specific SDK findings remain their own gates.
 LlamaParse replacement waits for actual installed-legacy-SDK inspection.
 
 Initial seven tracked source/lock edits remain preserved in initial-source.tar.gz;

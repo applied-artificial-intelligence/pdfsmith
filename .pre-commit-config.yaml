@@ -21,4 +21,6 @@ repos:
       - id: mypy
         additional_dependencies:
           - types-PyYAML
+          - pytest>=7.0
+          - packaging>=24.0
         args: [--ignore-missing-imports]

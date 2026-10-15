@@ -1,0 +1,127 @@
+[
+  {
+    "module": "pdfsmith/__init__.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/api.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/cli.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/config.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/__init__.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/anthropic_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/aws_textract_backend.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/azure_document_intelligence_backend.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/databricks_backend.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/docling_backend.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/extractous_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/gemini_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/google_document_ai_backend.py",
+    "bytes_equal": true,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/kreuzberg_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/llamaparse_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/marker_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/openai_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/pdfminer_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/pdfplumber_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/pymupdf4llm_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/pymupdf_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/pypdf_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/pypdfium2_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/registry.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  },
+  {
+    "module": "pdfsmith/backends/unstructured_backend.py",
+    "bytes_equal": false,
+    "ast_equal": true
+  }
+]

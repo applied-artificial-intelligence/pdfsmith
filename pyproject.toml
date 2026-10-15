@@ -1,6 +1,6 @@
 [project]
 name = "pdfsmith"
-version = "0.2.0"
+dynamic = ["version"]
 description = "PDF to Markdown conversion with multiple backend support"
 readme = "README.md"
 license = { text = "MIT" }
@@ -23,6 +23,7 @@ keywords = ["pdf", "markdown", "text extraction", "document processing", "ocr"]
 dependencies = []
 
 [project.optional-dependencies]
+config = ["PyYAML>=6.0"]
 # Lightweight backends (no ML dependencies)
 pypdf = ["pypdf>=4.0"]
 pdfplumber = ["pdfplumber>=0.10"]
@@ -92,6 +93,8 @@ dev = [
     "ruff>=0.6",
     "mypy>=1.11",
     "types-PyYAML>=6.0",  # Type stubs for mypy
+    "PyYAML>=6.0",
+    "packaging>=24.0",
     "pre-commit>=3.0",
     "reportlab>=4.0",  # For creating test PDFs
 ]
@@ -111,6 +114,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pdfsmith"]
+
+[tool.hatch.version]
+path = "src/pdfsmith/__init__.py"
 
 [tool.ruff]
 line-length = 88

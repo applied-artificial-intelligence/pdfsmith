@@ -1,0 +1,23 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/original-env/bin/python', '-m', 'pytest', 'tests/test_api.py::test_version', '-q', '--tb=short']
+Exit: 1
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________________________ test_version _________________________________
+tests/test_api.py:17: in test_version
+    assert __version__ == version("pdfsmith")
+E   AssertionError: assert '0.3.0' == '0.2.0'
+E
+E     - 0.2.0
+E     ?   ^
+E     + 0.3.0
+E     ?   ^
+=============================== warnings summary ===============================
+.workspace/work/2026-10-14-pdfsmith-update/runtime/original-env/lib/python3.12/site-packages/_pytest/config/__init__.py:1464
+  /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/original-env/lib/python3.12/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_api.py::test_version - AssertionError: assert '0.3.0' == '0...
+1 failed, 1 warning in 0.03s

@@ -18,8 +18,6 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-import yaml
-
 
 @dataclass
 class BackendConfig:
@@ -69,6 +67,11 @@ def _find_config_file(backend_name: str) -> Path | None:
 
 def _load_yaml_config(path: Path) -> dict[str, Any]:
     """Load YAML config file."""
+    try:
+        import yaml
+    except ImportError as exc:
+        raise ImportError("YAML configuration requires pdfsmith[config]") from exc
+
     with open(path) as f:
         return yaml.safe_load(f) or {}
 
