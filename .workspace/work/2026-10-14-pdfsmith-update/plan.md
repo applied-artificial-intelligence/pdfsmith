@@ -1,60 +1,57 @@
 # Plan: PDFsmith library update and complete backend verification
 
-This plan decomposes spec.md after Stefan selected every registered backend for
-verification. It is a proposal for external GPT and Claude review, not evidence
-that implementation or service validation occurred. All source changes depend on
-returned reports and reconciliation of consequential findings. Baseline diagnostics
-are already authorized and are recorded separately under baseline/.
+This plan decomposes the reviewed spec.md after Stefan selected every registered
+backend. GPT and Claude reports are retained under reviews/; dispositions resolve
+shared design blockers. Implementation is authorized. Integration-specific SDK facts
+and runtime regressions remain required before each affected milestone closes.
+The original review packet and baseline remain immutable historical evidence.
 
-## Design for review
+## Reconciled design, October 15, 2026
 
-Preserve the released string API and backend identifiers. Repair the inherited
-extension rather than replacing the parser architecture. Keep registry metadata
-separate from initialized instances: discovery must not create clients/models.
-Expose a full registered inventory and distinguish dependency detection from
-configured/readiness and fresh document-level verification. Proposed public
-addition: registered_backends() -> list[BackendInfo]. Keep the existing no-argument
-available_backends() order for compatibility; add an explicit include_services
-keyword if needed to inspect installed service dependencies without initializing
-them. Reviewers should challenge whether this addition is sufficient or redundant.
+Both returned reviews recommended revision before implementation. Their shared
+planning blockers are resolved by spec.md's Reviewed contract and the complete
+finding dispositions in reviews/dispositions.txt. Provider-specific claims still
+require their own producing-code tests; no live service has been validated.
 
-Resolve one backend per operation, then validate effective options against its
-explicit supported contract before constructing it. Unknown keys and unsupported
-preset/OCR requests fail rather than disappear. Do not infer support from **kwargs.
-Retain no-option get_backend() reuse; configured parse calls must not share mutable
-option dictionaries or result accounting. Run blocking setup/extraction off the
-async event loop; use a native async path only where its setup and errors obey the
-same contract. Document cancellation of executor work without claiming it kills a
-thread or rolls back a provider job.
+Use constructor-bound schemas and lazy expensive initialization on every direct
+and convenience path. The constructors are authoritative for options; registry
+metadata describes dependencies/input/execution only and does not duplicate those
+schemas. Convenience parsing creates fresh configurations; no-option get_backend
+preserves locked reuse and freezes configuration. Preserve pdf_path= and accept
+input_path= with a conflict error. Drop unreleased preset/ocr instead of retaining
+invalid aliases or a Marker alias that activates paid LLM work.
 
-Use a single development-version source for an unpublished 0.3.0.dev0 build; the
-existing public wheel remains 0.2.0. The reviewed implementation may use Hatch's
-version-from-module support. The inherited 0.3.0 string is evidence of a proposal,
-not authority to release. No release is part of this plan.
+Static discovery never imports wrappers/SDKs. Expose registered_backends() with
+names, extras, dependencies, execution policy, required environment variable names
+and tested formats; keep available_backends()'s released local ordering. No
+include_services switch or claim that find_spec proves importability is needed.
+The backend inventory records evidence as independent observations with precise
+scope, not an assumed progression from registration to operational readiness.
 
-For local options, forward only documented settings to the producing extraction
-calls, with per-backend schemas and behavior tests. Preserve default output unless
-a reproduced defect requires a reviewed correction. Retain preset names only as
-configuration aliases, without a quality guarantee. Keep images backend-specific;
-reject formats not actually supported by that wrapper. Do not promise structured
-JSON, bounding boxes or semantic completeness through a str return value.
+Apply the exact typed configuration precedence, copying and alias rules in the
+specification. Preserve released Docling layering while making YAML optional and
+lazy; do not centralize an undeclared PyYAML import into the core API. All wrappers
+begin PDF-only until their own image route is tested. PyMuPDF work is process-
+isolated; PDFium uses shared runtime synchronization, including indirect paths.
+Async convenience calls move blocking resolution/setup off the event loop.
 
-For services, test the real installed SDK with offline transports and official
-response shapes, not a second implementation of the wrapper. Validate paths and
-options before uploads, inspect failure/truncation/partial statuses, use bounded
-polling, and clean up owned temporary resources on failure. Offline SDK success is
-not a live integration pass. Service E2E remains an explicit pending gate until
-Stefan approves a concrete provider/configuration/input/spend protocol.
+Each provider issue defines terminal-success and blank-output predicates, required
+fields/page coverage, request identity, cleanup/uncertain-submission behavior and
+strict real-SDK transport fixtures. After successful extraction, cleanup failure
+raises an operational exception retaining content and resource identifiers. Unknown
+remote completion forbids destructive cleanup of active-job resources or blind
+resubmission. SDK request serialization is not live SQL/service validation.
 
-LlamaParse is an early independent service milestone. Assess migrating the existing
-llamaparse backend to the current llama-cloud Parse v2 SDK, with explicit tier and
-service version, nested processing/output controls and observable cache policy.
-Keep its identifier, and provide an explicit legacy parsing_mode compatibility
-mapping or rejection. A premium-to-agentic_plus mapping cannot be assumed equivalent.
-The current wrapper does not forward parsing_mode at all. ParseBench informs the
-need for preserved table/format content and transparent configuration; comparisons
-and benchmark reuse belong to PDF-Bench. Adding LiteParse is outside this registry
-update unless Stefan expands scope.
+LlamaParse's installed legacy SDK inspection precedes any replacement. One modern
+path, explicit pinned version/tier, disable_cache=true by default, rejected legacy
+parsing_mode and provider-confirmed identity are specified. The exact accepted
+published versions are selected from current official documentation and SDK
+inspection in Issue 5, not invented in the core milestone.
+
+Keep existing issue IDs for traceability. Execute Issue 1 (test safety plus early
+version/core wheel), Issues 2-3, Issue 4, then Issue 15. Independent backend issues
+5-14 follow stable shared contracts. First local milestones do not wait for paid
+service authorization or another integration's unresolved runtime problem.
 
 ## Verification and evidence
 
@@ -65,7 +62,9 @@ files; they are not claimed to exist or pass today. New proposed files are
  tests/test_contracts.py, tests/test_installed_package.py and
  tests/test_provider_contracts.py. Exact selection names will be set with the tests.
 Run focused pytest, Ruff and repository type checks before each scoped commit.
-Install pre-commit before committing. Test environments may use python -m pytest
+Install pre-commit before committing. Ordinary tests are network-denied and live
+tests are excluded regardless of inherited environment flags. The fixture/test
+runner environment is separate from each clean installed-wheel environment. Test environments may use python -m pytest
 when proving the behavior of a specific installed wheel rather than the checkout.
 
 The local verification matrix must cover all 11 local integrations on a public PDF
@@ -98,22 +97,25 @@ package release, service spend and deployment remain separately unauthorized.
 
 **Issue 1 - Preserve inherited work and establish failing compatibility evidence**
 
-Files: work-unit evidence, .gitignore, tests/test_api.py and the proposed
- tests/test_contracts.py. Retain an allowlisted, hashed source snapshot and classify
-inherited work by chronology and unknown authorship. Ignore credential/runtime
-artifacts without deleting them. Add real public-API regressions for the observed
-pdf_path keyword break, no-option instance reuse, ignored options and constructor
-preset mismatch. Keep these expected failures visible until their owning repairs.
-Do not commit inherited provider changes in this checkpoint.
+Review reconciliation is complete; this is the first engineering checkpoint.
 
-Verify: replay baseline_probe.py against separate installed public/release/working
-snapshots. Run uv run --extra dev --extra pypdf --extra pdfplumber pytest
- tests/test_api.py tests/test_contracts.py -q. This checkpoint records the exact
-expected failures rather than claiming the suite is green. Mark tests requiring a
-later fix as explicit expected failures with the reproduced reason, then remove
-that marker in the owning repair; never use an unexplained blanket xfail.
-Done when the initial bytes and actual defect triggers are recoverable without
-secret files, and inherited work is distinct from owned changes.
+Files: tests/conftest.py, tests/test_safety.py, tests/test_api.py, pyproject.toml, src/pdfsmith/__init__.py and work-unit evidence.
+
+Resolve test safety before broad collection: deny outbound connections, isolate HOME
+and inherited credentials, and exclude live tests independently of environment
+flags. Reproduce the old RUN_COMMERCIAL_TESTS=0/false/1 behavior with synthetic
+clients and an execution tripwire, then verify zero live-test execution. Move
+0.3.0.dev0 single-source identity, wheel/module/CLI equality and core-only imports
+here. Compare ASTs for every release/public module, not only api/registry. Preserve
+the original baseline and report bytes. Reason-specific xfails must be strict.
+
+Verify: Run the actual integration-test entry point with a synthetic SDK tripwire for absent/0/false/1 flags before and after the guard. Run safety/version tests and the clean core-wheel probe; expected old compatibility failures are strict and named.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -138,19 +140,24 @@ Closes: inherited-source.record, inherited-source.absent-record, inherited-sourc
 
 **Issue 2 - Repair registry discovery and deterministic backend selection**
 
-Depends on Issue 1. Files: api.py, __init__.py, backends/registry.py and
- tests/test_api.py plus tests/test_contracts.py. Add full inventory with verified
-extra names and separate local/service/input metadata. Preserve legacy order and
-local-only default selection. Dependency checks cannot create clients/models,
-read credentials or invoke providers. Explicit selection cannot substitute another
-backend. Repair no-option instance reuse while isolating configured instances.
+Depends on Issue 1.
 
-Verify: uv run --extra dev --extra pypdf --extra pdfplumber pytest
- tests/test_api.py tests/test_contracts.py -q. Test core-only and missing-dependency
-subprocesses plus installed SDK-only environments; make any constructor or outbound
-request during discovery fail the test. Show the inherited singleton regression
-failing before the repair and passing after it. Done when all 19 names are
-addressable and discovery never asserts successful service execution.
+Files: src/pdfsmith/backends/registry.py, src/pdfsmith/api.py, src/pdfsmith/__init__.py and tests/test_api.py.
+
+Use metadata/top-level find_spec only, without wrapper imports or environment
+mutation. registered_backends() lists all entries; available_backends() preserves
+legacy local ordering. Do not add include_services. Lock singleton creation; never
+cache a failed initialization. Record static required variable names, not values.
+Fix extra aliases and neutralize unsupported quality descriptions. A fresh-process
+discovery test detects imported wrappers, torch/docling and environment changes.
+
+Verify: Run tests/test_api.py and discovery subprocess tests; verify all 19 entries and zero backend imports/env mutations plus thread-safe singleton retry.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -175,22 +182,25 @@ Closes: registry-installation.record, registry-installation.absent-record, regis
 
 **Issue 3 - Unify API validation, option precedence and async behavior**
 
-Depends on Issue 2. Files: api.py, config.py, tests/test_async.py and
- tests/test_contracts.py. Restore released keyword compatibility. Resolve once,
-validate types/keys/input support, merge documented sources and dispatch identically
-for sync/async. Explicit backend options override common OCR settings and presets;
-those explicit layers override backend environment/file/default configuration.
-Reject invalid/unsupported requests before constructor/provider activity. Preserve
-native extraction exceptions and distinguish valid empty strings. Offload blocking
-imports/setup as well as parsing; define executor cancellation limits.
+Depends on Issue 2.
 
-Verify: uv run --extra dev --extra pypdf --extra pdfplumber pytest
- tests/test_api.py tests/test_async.py tests/test_config.py tests/test_contracts.py -q.
-Use genuine unknown preset/OCR requests and conflicting configuration sources;
-assert no client initialization or input/output mutation on rejection. Run a loop
-heartbeat during deliberately blocked constructor and extraction calls. Concurrent
-calls with conflicting options must not contaminate each other. Done when the
-keyword and silent-option regressions pass on both entry points.
+Files: src/pdfsmith/api.py, src/pdfsmith/config.py, shared backend validation/execution helpers, tests/test_contracts.py, tests/test_async.py and tests/test_config.py.
+
+Bind options in constructors, apply stored options in producing calls, and
+make constructors validate-only. Keep pdf_path and inherited input_path alias;
+reject both together. Remove unreleased preset/ocr and all generic quality aliases.
+Use exact typed configuration/copying/alias precedence from spec.md. Core/config
+import stays dependency-free; YAML import is lazy and its extra declared. API and
+direct paths share schemas. Native-runtime execution follows spec.md's process/
+serialization policy; generic concurrent executor access is not a safety policy.
+
+Verify: Run tests/test_contracts.py, tests/test_async.py and tests/test_config.py. Reproduce keyword, option-source and heartbeat defects first; exercise the same direct constructors and API calls after repair.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -215,19 +225,23 @@ Closes: parse-request.record, parse-request.absent-record, parse-request.orderin
 
 **Issue 4 - Verify configurable pypdf and pdfplumber through installed packages**
 
-Depends on Issue 3. Files: pypdf_backend.py, pdfplumber_backend.py,
- tests/test_backends.py and tests/test_installed_package.py. Implement a bounded,
-explicit option set based on current official extract_text/extract_tables APIs.
-Cover pypdf extraction mode and pdfplumber layout/text/table settings where useful;
-forward them to producing calls rather than constructors that cannot accept them.
-Preserve plain defaults and document table/text duplication if retained.
+Depends on Issue 3.
 
-Verify: isolated extras with uv, then python -m pytest on the proposed installed
-package tests for these two backends. Parse the identified public Premera document
-and deterministic controlled layout/table/blank/corrupt/missing inputs through API,
-async API and CLI. A deliberately chosen layout fixture must change output under
-layout settings, and the inherited preset error must fail before repair. Done when
-both independent baseline backends have fresh hashed real-output evidence.
+Files: pypdf_backend.py, pdfplumber_backend.py, tests/test_backends.py and tests/test_installed_package.py.
+
+Constructors accept validated options and forward them to extract_text/tables
+at parse time. Test actual two-column/layout effects through both API and direct
+constructor calls. Cover API/async options and default CLI only here; CLI option
+parity belongs to Issue 15. No tests of removed presets are required beyond their
+explicit rejection. Use clean extra-only wheel targets without PyYAML/test helpers.
+
+Verify: Run actual installed-wheel API/async/default CLI probes on the retained Premera PDF and controlled text/table/layout/blank/corrupt inputs. Require different output for a layout-affecting constructor option. Keep fixture generation outside wheel targets.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -252,22 +266,26 @@ Closes: baseline-document.record, baseline-document.absent-record, baseline-docu
 
 **Issue 5 - Migrate and verify the LlamaParse SDK contract**
 
-Depends on Issue 3; can proceed independently of the remaining local integrations.
-Files: llamaparse_backend.py, pyproject.toml/lockfile as needed, and
- tests/test_provider_contracts.py. Pin the supported modern SDK/API contract from
-current official documentation. Proposed path is llama-cloud Parse v2, retaining
-the llamaparse name and explicit treatment of legacy parsing_mode/language. Expose
-effective tier/version/cache controls, correct Markdown retrieval, bounded polling,
-partial/failed results and resource cleanup. Remove historical price/quality
-assertions unless evidence and ownership justify a separate claim. No live call.
+Depends on Issue 3.
 
-Verify: install only the declared extra and run uv run --extra dev --extra
-llamaparse pytest tests/test_provider_contracts.py -k llamaparse -q. Use the actual
-installed SDK with an offline transport to inspect uploads, nested request fields,
-version/tier changes, status polling and Markdown extraction. Test missing API key,
-invalid settings, partial job, timeout and cleanup failure. A mutation that drops
-tier/version must fail. Prepare a hashed one-document live protocol for Stefan's
-separate authorization. Done offline means SDK-contract verified, live-unverified.
+Files: llamaparse_backend.py, its extra/lock and tests/providers/test_llamaparse.py.
+
+Inspect the actual installed legacy SDK before deciding replacement: distribution,
+re-export, fields/unknown-field handling, serialization/endpoints/defaults,
+ignore_errors, index base, retries/polling and cache controls. Replacement is
+conditional on missing supported controls. Require explicit tier plus a published
+pinned version, reject legacy parsing_mode, disable_cache=true by default and
+separate requested/provider-confirmed identities. Validate complete job/page
+coverage, failed pages, duplicate/order/missing expansion and tier/version output
+compatibility. Do not map premium or invent historical effective defaults.
+
+Verify: Run only tests/providers/test_llamaparse.py in its isolated SDK environment; capture real serialized requests and typed failure/page responses. No live call.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -292,19 +310,23 @@ Closes: llamaparse-job.record, llamaparse-job.absent-record, llamaparse-job.orde
 
 **Issue 6 - Verify the remaining lightweight local integrations**
 
-Depends on Issue 3. Files: pymupdf_backend.py, pymupdf4llm_backend.py,
- pdfminer_backend.py, pypdfium2_backend.py, metadata and backend/installed tests.
-Check current official APIs and install extras separately. Repair installation
-hints, supported extraction options and native handle/stream cleanup on exceptions.
-Keep backend identifiers and direct constructor calls stable. Report PDF/image
-input support from actual wrappers, not underlying-library possibilities.
+Depends on Issue 3.
 
-Verify: run the proposed installed-package test selection for each of pymupdf,
-pymupdf4llm, pdfminer and pypdfium2 in its isolated extra environment. Parse public
-and controlled PDFs, repeat/concurrently execute where supported, provoke corrupt
-and encrypted/missing input, and demonstrate release of native documents/pages/text
-handles after producing-code errors. Done when each row has independent output
-hashes and a precise dependency/platform contract.
+Files: pymupdf_backend.py, pymupdf4llm_backend.py, pdfminer_backend.py, pypdfium2_backend.py and local installed-package tests.
+
+Use spawned-process isolation for fitz/pymupdf4llm and runtime-wide locking for
+PDFium, covering init/extract/cleanup and mixed sync/async callers. Exercise actual
+native work in subprocesses, including event-loop responsiveness. Close pypdf
+streams and PDFium document/page/text handles. Check owner-password-only PDFs
+against needs_pass rather than assuming is_encrypted means unreadable.
+
+Verify: Run each named extra in isolation on the public PDF and controlled encrypted/corrupt files. Instrument mixed sync/async native boundaries, cleanup and real native heartbeat in subprocesses.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -329,20 +351,24 @@ Closes: lightweight-output.record, lightweight-output.absent-record, lightweight
 
 **Issue 7 - Verify Docling and Marker model-backed integration contracts**
 
-Depends on Issue 3. Files: docling_backend.py, marker_backend.py, config.py,
-metadata and backend/installed tests. Verify current official conversion/rendering
-APIs, required configuration dependencies, model assets and system/runtime bounds.
-Repair dropped OCR-language/table settings and the actual Marker result conversion
-where current APIs require it. No-option operation must not enable paid model use.
-Separate first-use model acquisition from subsequent parsing evidence. Inspect
-resources before downloads; report measured incompatibility instead of skipping it.
+Depends on Issue 3.
 
-Verify: isolated docling and marker extras, documented CPU fixtures/public PDF,
-blank/corrupt controls, effective OCR/table configurations, repeated parsing and
-cleanup. Actual model-backed E2E is required for a working-local claim. Offline
-class stubs alone do not satisfy it. Run focused backend and installed-package
-pytest selections plus Ruff/type checks. Done when each local integration really
-runs or remains explicitly open with a reproduced upstream/runtime blocker.
+Files: docling_backend.py, marker_backend.py and model-backed installed tests.
+
+Move model acquisition out of constructors. Inspect Docling conversion status
+and failures before export; ensure finally cleanup even if export raises. Apply
+OCR-language/table-mode settings through actual pipeline options. Marker remote
+LLM augmentation is unsupported and cannot be activated by defaults or files.
+Model-backed conversions run process-isolated. Real typed partial-conversion
+results must fail; model/system blockers leave verification open.
+
+Verify: Run actual CPU model conversions in isolated extra environments on public/controlled PDFs, including typed partial-conversion rejection, option effects and finally cleanup. Do not count missing assets as a pass.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -367,18 +393,23 @@ Closes: model-conversion.record, model-conversion.absent-record, model-conversio
 
 **Issue 8 - Verify Kreuzberg, Extractous and Unstructured runtime integration**
 
-Depends on Issue 3. Files: kreuzberg_backend.py, extractous_backend.py,
-unstructured_backend.py, metadata and backend/installed tests. Check current APIs,
-Rust/Java/native/system requirements, OCR language/configuration and image support.
-Repair async dispatch and unsupported strategy/option acceptance. Do not infer
-that images work because the registry lists the backend as image-capable.
+Depends on Issue 3.
 
-Verify: each extra in isolation, actual public/controlled PDF runs, a controlled
-image only for claimed image support, empty/corrupt controls and option-effect
-fixtures. Test sync use inside/outside a running loop according to the documented
-contract, and async calls with a responsive loop. State native/OCR tool versions.
-Run focused backend/installed-package tests. Done when all three local rows have
-real evidence or an explicit still-open reproduced failure.
+Files: kreuzberg_backend.py, extractous_backend.py, unstructured_backend.py and native installed tests.
+
+Check the installed Extractous maximum-string-length default and result metadata
+for truncation; configure a documented safe limit or report explicit truncation.
+Kreuzberg sync calls work from running loops with a dedicated thread/loop. Verify
+Rust/Java/OCR runtime safety and actual configuration schemas. No image capability
+is declared until the wrapper's real PNG/JPEG/TIFF route is tested.
+
+Verify: Run real PDF/native/OCR extra-specific checks, controlled image routes where claimed, async heartbeat and sync-from-running-loop behavior. Check Extractous limit/truncation with reachable long content.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -403,18 +434,23 @@ Closes: native-conversion.record, native-conversion.absent-record, native-conver
 
 **Issue 9 - Verify AWS Textract and Azure SDK request and cleanup contracts**
 
-Depends on Issue 3. Files: aws_textract_backend.py,
- azure_document_intelligence_backend.py, extras and tests/test_provider_contracts.py.
-Verify official current input/size/page rules and SDK signatures. Validate all
-local inputs before client/provider work, handle page conversion and extraction,
-resource cleanup, terminal failures and configured input types. Offline fixtures
-must be encoded with real installed SDK types or transports. No live call.
+Depends on Issue 3.
 
-Verify: isolated aws and azure extras and offline transport tests for valid,
-missing, corrupt, oversized, multipage, partial-result and provider-error paths.
-Reproduce cleanup behavior when a later page fails. Document exactly what returned
-text can represent and cannot represent. Run the provider pytest selections.
-Done offline when contracts pass and concrete live protocols remain visibly gated.
+Files: aws_textract_backend.py, azure_document_intelligence_backend.py and their isolated provider tests.
+
+Constructors do not resolve credentials or create clients. Page rendering uses
+process-isolated fitz helpers, not concurrent threads. Validate supported input and
+MIME before client work. Close AWS native handles in finally when later pages
+fail. Specify accepted terminal/blank response shapes and preserve primary errors
+with cleanup diagnostics; live billing/permissions remain unverified.
+
+Verify: Run real installed SDKs with offline transports for missing/invalid input, oversized/multipage bodies, late-page error, terminal responses and cleanup. Live verification remains separately gated.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -439,19 +475,24 @@ Closes: ocr-service-response.record, ocr-service-response.absent-record, ocr-ser
 
 **Issue 10 - Verify Google Document AI synchronous and batch result handling**
 
-Depends on Issue 3. Files: google_document_ai_backend.py, extras and provider
-tests. Reconcile inherited batch work rather than replacing it blindly. Verify
-processor-dependent limits, credentials and SDK/GCS dependencies, regional endpoint,
-per-document status, shard/page order, bounded polling and cleanup. Inspect batch
-metadata before treating outputs as complete. Do not sort shards as plain filename
-strings if document shard metadata defines order. No GCS upload or live call.
+Depends on Issue 3.
 
-Verify: actual SDK message round-trips and offline fake transport/storage matching
-SDK objects. Include partial failure, missing output, shuffled/multi-digit shards,
-poll timeout and upload/download/cleanup failure. A mutation that ignores failure
-metadata or shard order must fail. Run google provider tests in the isolated extra.
-Done offline when real SDK contracts pass, inherited changes are accounted for and
-live upload/processor validation remains a separate recorded gate.
+Files: google_document_ai_backend.py, google extra and tests/providers/test_google.py.
+
+Make page counting a declared dependency using pypdf rather than optional fitz.
+Validate document-level status and output destination before shard coverage/order/
+duplicate checks. Local timeout does not mean remote termination: attempt bounded
+cancellation and retain active-job inputs/resources when completion is uncertain.
+Report owned identifiers and cleanup failures explicitly. Use typed Google SDK
+exceptions rather than substring classification where available.
+
+Verify: Run offline real-SDK batch pipeline tests with status failures, shuffled/missing/duplicate shards, metadata coverage, timeout/cancellation and cleanup uncertainty. No live upload.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -476,18 +517,24 @@ Closes: google-batch-document.record, google-batch-document.absent-record, googl
 
 **Issue 11 - Verify Databricks execution and document-response contracts**
 
-Depends on Issue 3. Files: databricks_backend.py, extras and provider tests.
-Check the current official ai_parse_document input/output contract and supported
-SDK statement polling. Review SQL/binary upload approach against documented APIs;
-replace unsupported encoding/signature assumptions. Use explicit warehouse
-configuration for predictable operation and avoid discovery starting remote work.
-Differentiate pending/error/missing-result/partial document responses. No live SQL.
+Depends on Issue 3.
 
-Verify: isolated databricks extra and actual SDK transport/typed response tests,
-including queued/running/succeeded/failed/canceled states, timeout, no result,
-malformed response and meaningful parsed elements. Test the submitted SQL/request,
-not just a mocked wrapper return value. Done offline when current contracts are
-checked and a concrete authorized live workspace protocol is ready.
+Files: databricks_backend.py and tests/providers/test_databricks.py.
+
+Require explicit warehouse configuration; no constructor warehouse discovery.
+Verify binary-input/options-map SQL and document.elements[*].content plus
+error_status/schema metadata from current official docs. Bound inline payloads or
+specify staging lifecycle. Poll pending statements, retrieve all chunks, require
+result cardinality, cancel best-effort on timeout, reject malformed/missing results.
+SDK transport checks do not prove workspace SQL acceptance.
+
+Verify: Run real SDK transport checks of outgoing documented SQL/binary requests, PENDING-to-SUCCEEDED polling, timeout cancellation, chunk/cardinality and documented nested errors/results. SQL execution remains documentation-backed until authorized live work.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -512,18 +559,22 @@ Closes: databricks-statement.record, databricks-statement.absent-record, databri
 
 **Issue 12 - Verify Anthropic document requests and completion handling**
 
-Depends on Issue 3. Files: anthropic_backend.py, metadata and provider tests.
-Reconcile inherited model mappings with current official document API and model
-support. Decouple usable model identity from stale price dictionaries. Make any
-retained constructor kwargs explicit, verify file/page limits and supported input
-types, inspect stop reasons/truncation/refusal and avoid misleading cost accounting.
-No live inference or model-selection quality claim.
+Depends on Issue 3.
 
-Verify: actual installed SDK with offline transport and realistic typed messages,
-usage/stop/error responses, invalid/missing configuration, truncated output and
-concurrent option/accounting isolation. Provoke failures through the producing
-wrapper and SDK request. Run anthropic provider tests. Done offline with exact
-supported request contract and live-unverified status.
+Files: anthropic_backend.py and tests/providers/test_anthropic.py.
+
+Require documented terminal stop status and text/blank conditions; reject
+refusal/truncation. Decouple model acceptance from pricing tables; reject unknown
+kwargs. Preserve provider-reported usage, remove undated USD/page estimates.
+Apply lazy credentials/client initialization and explicit per-call result isolation.
+
+Verify: Run real Anthropic SDK transport fixtures including unknown config, terminal text/blank, refusal/truncation and usage responses; errors must originate in the producing wrapper.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -548,18 +599,23 @@ Closes: anthropic-message.record, anthropic-message.absent-record, anthropic-mes
 
 **Issue 13 - Verify OpenAI document uploads, completion status and cleanup**
 
-Depends on Issue 3. Files: openai_backend.py, metadata and provider tests.
-Check current official file-input and response API support before selecting the
-supported API path. Preserve useful caller model configuration, validate supported
-options and completion state, and delete only uploads owned by this operation on
-success and failure. Cleanup errors must not conceal the original parse error.
-Do not equate an empty response or output-token limit with a full parse. No live call.
+Depends on Issue 3.
 
-Verify: actual SDK with offline HTTP transport, successful and failed upload,
-provider rejection after upload, truncation/refusal/empty responses and deletion
-failure. A mutation that removes cleanup on generation failure must fail. Run
-openai provider tests in the isolated extra. Done offline with fresh SDK request
-and cleanup evidence plus a separate live-run protocol.
+Files: openai_backend.py and tests/providers/test_openai.py.
+
+Current Chat Completions PDF input is not assumed obsolete. Verify actual model
+and request limits, finish/refusal status, usage and owned upload lifecycle. Failure
+after upload still deletes terminal-operation uploads; uncertain active work is
+reported. Successful parse plus cleanup failure raises content-retaining operational
+error. Decouple model acceptance from prices and remove undated USD estimates.
+
+Verify: Run real OpenAI SDK upload/completion transports, post-upload generation error, truncation/refusal, cleanup error and content-retaining operational exception checks.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -584,16 +640,22 @@ Closes: openai-file-response.record, openai-file-response.absent-record, openai-
 
 **Issue 14 - Verify Gemini document requests and finish/usage semantics**
 
-Depends on Issue 3. Files: gemini_backend.py, metadata and provider tests.
-Check current official google-genai document handling, model IDs and output limits.
-Remove silent option acceptance and stale-price coupling, inspect candidate finish
-reasons/safety blocks, verify usage accounting from documented response fields and
-clean up owned resources. Preserve environment-key compatibility. No live call.
+Depends on Issue 3.
 
-Verify: installed google-genai SDK with offline transport; inspect MIME/bytes and
-model/config request fields and actual typed blocked/truncated/empty/error/usage
-responses. Test concurrent differently configured calls. Run gemini provider tests.
-Done offline with exact SDK contract and visibly pending live-service verification.
+Files: gemini_backend.py and tests/providers/test_gemini.py.
+
+Inspect prompt/candidate block and finish reasons before flattening response.text.
+Use current typed SDK responses and actual request parameters/limits, not generic
+model tables. Preserve real usage, remove undated USD estimates and size-based
+page-limit enforcement. Unknown kwargs fail before client work.
+
+Verify: Run real google-genai SDK transports for MIME/config fields, blocked/truncated/empty typed candidates and usage without accepting unknown kwargs.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -618,20 +680,24 @@ Closes: gemini-candidate.record, gemini-candidate.absent-record, gemini-candidat
 
 **Issue 15 - Bring CLI options and output preservation into the reviewed contract**
 
-Depends on Issues 2-4; other backend capabilities can become available later
-without redesigning the CLI. Files: cli.py and tests/test_cli.py. Add explicit
-configuration arguments matching the reviewed Python option schema, with no
-credential-bearing command suggestions. Label inventory states honestly. Keep
-stdout reserved for parse output and stderr for diagnostics. Stage complete file
-output and replace atomically after parse/serialization success. Reject output
-paths that would overwrite the input, including aliases, before extraction.
+Depends on Issues 2-4.
 
-Verify: uv run --extra dev --extra pypdf --extra pdfplumber pytest tests/test_cli.py
- tests/test_installed_package.py -q. Run actual console subprocesses, invalid JSON,
-unknown options, missing/corrupt/blank input, input/output aliasing and deliberately
-failed serialization/write/replace. Prior valid output must remain byte-identical.
-Done when installed CLI has the same effective configuration and failure semantics
-as Python without output corruption.
+Files: src/pdfsmith/cli.py and tests/test_cli.py.
+
+Stage output in the destination directory before parsing; validate aliases via
+resolved path and samefile, including hard links. Encode/write/close before atomic
+replace, which defines commit. Test close/partial-write/replace and separately
+post-commit diagnostic failure. stdout/file bytes equal returned UTF-8 exactly;
+no extra newline or Written message on stdout. stdout/shell redirection are not
+atomic. Backend options replace removed preset/OCR CLI plans.
+
+Verify: Run tests/test_cli.py plus actual console subprocesses. Inject partial-write/encoding/close/replace and post-commit stderr errors; verify input/old output hashes and stdout/file parity.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -656,23 +722,24 @@ Closes: cli-operation.record, cli-operation.absent-record, cli-operation.orderin
 
 **Issue 16 - Reconcile package identity, installation coverage and final handoff**
 
-Depends on Issues 1-15 for affected backend claims; independently completed
-local milestones can export before every live gate is cleared. Files: package
-metadata/version, lockfile, README after reconciliation of the existing correction
-branch, required support documentation and tests/test_installed_package.py.
-Generate the lockfile using uv, never manually. Build the unpublished wheel,
-install it outside the checkout and test declared extras/Python bounds separately.
-Use a single development version and record public/released/working identities.
+Depends on the affected backend/CLI milestones; unresolved live authorization remains explicit.
 
-Verify: uv build, installed wheel core-only/each-extra subprocess checks, and all
-unpaid tests plus Ruff and repository type checks under declared environments.
-Every local working claim needs actual output/input hashes. Every service row
-separates SDK-contract verification from a live run. Re-run baseline diagnostics
-against the new wheel and show each repaired regression's failing/passing evidence.
-Publish no release or public-main merge. Supply one website-editorial-handoff.txt
-and concise progress.txt, with exact support/exclusions and live-run protocols.
-Done engineering means reviewed offline work and local verification are complete;
-full live-service verification remains open until separately authorized runs pass.
+Files: pyproject.toml, generated uv.lock, README reconciliation and tests/test_installed_package.py.
+
+Early version/core-wheel work is already owned by Issue 1. Final package work
+checks each extra and advertised bundle in empty non-editable wheel environments
+on Python 3.10-3.13 or narrows reproduced support bounds. Test runner/fixture tools
+cannot mask dependencies. Local assessment with a blocker is not verified closure.
+Keep offline/live service evidence separate and correct stale tests instead of
+using skips. Supply the editorial handoff separately from package verification.
+
+Verify: Build once and install the wheel into empty Python 3.10-3.13 core/baseline and each-extra environments; run all applicable unpaid tests, Ruff and repository mypy. Reconcile bundles and support limits with actual outcomes.
+Use uv-managed environments and pytest with the focused selection described above.
+Record commands, exit results, source/wheel/dependency identities and input/output
+hashes. Run Ruff and mypy before the scoped commit.
+
+Done means the stated tests executed and passed with no unintended file changes;
+provider rows remain live-unverified until authorized real execution.
 
 ### Premises
 
@@ -697,5 +764,5 @@ Closes: package-evidence.record, package-evidence.absent-record, package-evidenc
 
 ## Next actions
 
-Stefan submits the external review packet to GPT and Claude and returns both reports.
-Provider spending, public-main merge and package release remain separate decisions.
+No further planning approval is required. Provider spending, public-main merge and
+package release remain separate decisions once concrete requests are prepared.

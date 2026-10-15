@@ -1,0 +1,20 @@
+[
+  {
+    "file": "fable-01.md",
+    "sha256": "4a1909aed9a170817c505ab7d39ff4a339c40ced2f0043c81cc34f3a7f6fefdc",
+    "bytes": 25496,
+    "model_identity": "not supplied in report; GPT/Claude attribution supplied by Stefan",
+    "initial_index_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "readable_sha256": "9871a493ebea775e45c41fb3480bb232f4f5bf9307314d1b48618b4abdcf0cd5",
+    "original_location": "returned-reviews.tar.gz:returned/fable-01.md"
+  },
+  {
+    "file": "gpt-01.md",
+    "sha256": "80a44a130fa68c977b1a9a82be96f534129274ac0a17e2fb2ff1f7cb90161850",
+    "bytes": 34152,
+    "model_identity": "not supplied in report; GPT/Claude attribution supplied by Stefan",
+    "initial_index_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "readable_sha256": "4c133c3de1d3626f421e777a49428840114427ac95aa67910449b9ef19086d03",
+    "original_location": "returned-reviews.tar.gz:returned/gpt-01.md"
+  }
+]

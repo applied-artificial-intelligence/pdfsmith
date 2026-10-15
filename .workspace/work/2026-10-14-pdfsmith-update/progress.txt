@@ -1,35 +1,24 @@
-PDFsmith update - October 14, 2026
+PDFsmith update - October 15, 2026
 
-State: alignment and external-review preparation; no source implementation yet.
-Delivery branch: codex/pdfsmith-update-2026-10-14; public main remains unchanged.
-Stefan explicitly selected every registered backend, replacing baseline-only scope.
-Specification covers all 19 integrations; plan has 16 staged issues. LlamaParse
-v2 migration is an early service milestone following the shared API contracts.
-Actual GPT/Claude reviews have not been returned. start-here.txt requires those
-reviews and disposition of consequential findings before substantial implementation.
+State: external reviews reconciled; shared planning blockers resolved. Implementation
+is authorized on codex/pdfsmith-update-2026-10-14. All 19 backends remain in scope.
+GPT and Claude reports/identities/byte-preserving archive and dispositions are in
+reviews/. Specific model versions were not supplied. Revised spec/plan pass their
+terms, shape, premise and closure checks. The original packet, source archives and
+fcca203 manifests remain historical evidence, not regenerated against new plans.
 
-Evidence: separate installed public-source, PyPI 0.2.0 and inherited-working builds,
-Python 3.12.11, pypdf 6.20.1 and pdfplumber 0.11.10. Both parsers recover content
-from the identified public PDF in all builds; blank/corrupt/missing controls and
-CLI failures were exercised. Exact identities/hashes/results are under baseline/.
-The working build reports distribution 0.2.0 but module 0.3.0, breaks pdf_path=
-and no-option instance reuse, rejects the advertised pdfplumber preset and ignores
-invalid preset/unsupported OCR. Existing focused tests: public 89 passed;
-working 88 passed, 1 failed in the instance-reuse regression.
-The replay script reproduced baseline observations and hashes for all three builds.
-Specification terms, plan shape/premises/claims/closure, Ruff, mypy and all configured
-pre-commit checks on the owned work-unit artifacts passed.
+Next execution: fail-closed test safety and early package identity/core wheel,
+then static discovery, shared constructor/API contracts, pypdf/pdfplumber installed
+E2E and CLI preservation. Provider-specific SDK findings remain their own gates.
+LlamaParse replacement waits for actual installed-legacy-SDK inspection.
 
-Preservation: seven inherited tracked modifications and all unrelated untracked
-work remain intact. Unknown authorship is recorded, not guessed. A secret-free
-allowlisted snapshot preserves initial source and tracked diff. Sensitive files
-were excluded; a credential in a historical prompt needs rotation by Stefan.
+Initial seven tracked source/lock edits remain preserved in initial-source.tar.gz;
+reviewed affected portions can now be integrated in scoped checkpoints. Unrelated
+untracked files and credentials remain outside commits.
 
-Boundaries: no paid/free-credit parsing calls, other chats/agents, PDF-Bench edits,
-website/editorial edits, package release, public-main merge or deployment.
-ParseBench is attributed prior work; its results are not PDFsmith measurements.
+Boundaries: no live/free-credit provider calls, public-main merge/release, new
+agents/chats, PDF-Bench experiments or website/deployment changes are authorized.
 
 Next actions
-Stefan submits external-review-packet.txt with review-request.txt independently to
-GPT and Claude and returns the actual reports. Rotate the credential found in the
-excluded historical prompt. Provider-run authorization is a separate later gate.
+No additional planning approval is needed. Provider-run spending/input/configuration
+and public merge/release decisions remain separate future gates.

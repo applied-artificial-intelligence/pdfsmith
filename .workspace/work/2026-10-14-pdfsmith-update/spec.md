@@ -4,7 +4,9 @@ Alignment brief: `start-here.txt`, commissioned by Stefan on October 14, 2026.
 Stefan selected "Verify every registered backend now" in the alignment reply and
 requested consideration of LlamaIndex's ParseBench announcement. This replaces
 the proposed baseline-only scope. This specification describes the required end
-state; implementation requires the returned external reviews specified below.
+state. GPT and Claude reports were returned on October 15, 2026 and reconciled
+in reviews/dispositions.txt. Shared design decisions below resolve their planning
+blockers; affected integrations still need their prescribed runtime evidence.
 
 ## Objective
 
@@ -40,90 +42,124 @@ than assuming the old wrapper still expresses current service settings.
 ParseBench is relevant prior work on document evaluation. Its findings do not
 establish the behavior or quality of a PDFsmith integration.
 
-## Acceptance criteria
+## Reviewed contract and acceptance criteria
 
-1. A self-contained specification/implementation packet is reviewed externally
-   by GPT and Claude. Retain the actual returned reports, their identities and
-   hashes, and a disposition of consequential findings. No substantial source
-   implementation starts before those findings are reconciled. Baseline diagnostic
-   work is permitted by the brief.
-2. Inventory public source, released distribution and inherited working tree
-   separately, including source hashes and initial dirty state. Preserve all
-   inherited files. Record known chronology separately from unknown authorship;
-   do not absorb unrelated files into commits.
-3. Account for all 19 existing registry names in one backend verification matrix.
-   Each row identifies its install extra and SDK/runtime dependencies, input types,
-   supported options, sync/async behavior, configuration, actual test evidence and
-   retain/repair/replace disposition. No backend silently disappears or is called
-   working solely because it is registered or imports.
-4. Every local integration has a fresh isolated installed-package parse of an
-   identified public PDF and controlled text/blank/corrupt fixtures, or an exact
-   reproduced environment/upstream failure that prevents a support claim. A failure
-   remains open engineering work, not a passing verification. Baseline parsers can
-   finish their milestones independently of another backend's blocker.
-5. Every service integration has current official-API verification, isolated SDK
-   and request/response contract checks, missing-configuration and error-path
-   checks, and a reproducible live-run protocol. Actual service verification needs
-   separately authorized inputs, provider/configuration and spending. Until a real
-   run occurs its status remains live-unverified, even if offline tests pass.
-6. Preserve `parse(path, backend=...) -> str`, `parse_async(...) -> str`, released
-   `pdf_path=` keyword use, backend identifiers, direct loader/constructor/parse
-   usage needed by PDF-Bench, and existing CLI parse/output/backend commands.
-   Retain no-option `get_backend()` instance reuse unless a reviewed compatibility
-   migration explicitly supersedes it. New configuration cannot leak between calls.
-7. Explicit selection never silently changes backend. Default selection is
-   deterministic for a declared installed environment, stays local/unpaid, reports
-   its selected name through the public selection surface, and does not claim
-   quality ranking. An unavailable or broken selected integration cannot silently
-   substitute a different parser after parsing begins.
-8. Discovery distinguishes registry membership, dependency availability,
-   configuration and successful parsing. Listing backends cannot initialize models,
-   obtain credentials, invoke remote services or create provider resources.
-   Installation guidance uses an extra that actually installs the integration.
-9. Supported options reach the producing SDK/parser calls. Unknown options, wrong
-   types, invalid presets and unsupported common options fail explicitly. Sync and
-   async entry points apply the same validation and precedence. Regression evidence
-   demonstrates an output-affecting option on a fixture that makes it observable.
-   Advertised settings cannot be accepted without effect.
-10. Local path/configuration errors occur before parser/model/client initialization
-    or remote requests. Missing paths, directories, corrupt inputs, unsupported
-    formats, unavailable integrations and invalid options have documented outcomes.
-    Input files and existing output files remain unchanged when an operation fails.
-11. Backend exceptions and provider-declared partial, failed or truncated responses
-    cannot become apparently successful completed output. Valid empty content
-    remains distinguishable from an exception, and empty-content evidence is
-    reported separately from content recovery. PDFsmith does not guarantee detection
-    of silent semantic omissions by an upstream parser.
-12. CLI failure returns nonzero, keeps diagnostics on stderr, and preserves any
-    previous output on parse, serialization or write failure. Successful file output
-    is complete UTF-8 text. CLI options express the supported Python configuration
-    contract, with invalid configuration rejected before processing.
-13. Async parsing preserves content/errors and allows unrelated loop work to run
-    during imports, initialization and blocking extraction. Document cancellation
-    boundaries, including work in executor threads that cannot be forcibly stopped.
-    Repeated/concurrent calls do not mix options or mutable result accounting.
-14. Files, native documents, page handles, streams and temporary remote resources
-    have defined cleanup on success and failure. Cleanup failure cannot conceal the
-    original parse failure. Remote calls cannot be rolled back; any remaining
-    artifacts or uncertain service completion must be reported honestly.
-15. The unpublished development build has one consistent PEP 440 version across
-    wheel metadata, module and CLI. Record the unchanged public/released 0.2.0
-    identity separately. No package release or claim that old artifacts used the
-    new implementation follows from this metadata repair.
-16. Each completed engineering milestone includes scoped source/package identities,
-    exact commands, fresh pass/fail results, backend dependency snapshots, input and
-    output hashes, supported behaviors, exclusions and runnable API/CLI examples.
-    Regression tests fail on actual reproduced producing-code defects and pass on
-    repaired code. Existing failures and lint/type drift encountered are resolved
-    within the reviewed scope rather than suppressed.
-17. A final installed-wheel exercise runs outside this checkout using only declared
-    extras. Core-only import, no-backend behavior and per-extra installation are
-    tested. Supported Python/platform bounds reflect observed compatibility; no
-    workstation-only model/cache state is silently required.
-18. One concise website-editorial handoff supplies verified identities and claim
-    boundaries. It does not change website, editorial, PDF-Bench or historical
-    experiment files, and it cannot imply universal parser quality or production
-    validation from smoke tests.
+1. Preserve the original review packet and source archives. Retain returned report
+   bytes/hashes, GPT/Claude attribution supplied by Stefan, and dispositions. No
+   specific reviewer model version was supplied. A resolved design finding is not
+   a claim that its implementation or runtime verification has passed.
+2. All 19 names remain in one evidence matrix. Record independent evidence states:
+   registered, dependency-present, constructible, offline-contract, local-e2e and
+   live-e2e. These are observations, not a total ordering or readiness guarantee.
+   find_spec/metadata detection is dependency presence, not proven importability.
+   Configuration discovery lists required variable names; values are not read and
+   configuration status is not-checked. Missing runs and skips never count as passes.
+3. Discovery reads static metadata and top-level dependency information without
+   loading backend wrappers, SDKs or models or changing process environment. Keep
+   the released available_backends() local preference order and add a full
+   registered_backends() inventory. Actual loading can report installed-but-broken
+   dependencies separately. Default selection stays in its released local order.
+4. Constructors bind validated backend-specific options. They perform no credential
+   resolution, client creation, model acquisition or network calls. parse(path)
+   checks existence, regular-file identity, supported type and cheap signature
+   consistency before expensive initialization. Structural corruption can require
+   parsing; no generic magic-byte check promises to detect all corruption.
+5. API calls and direct loader()->class(**options)->parse(path) calls use the same
+   constructor schemas. parse()/parse_async() return str, preserve pdf_path= and
+   accept inherited input_path= as an alias; supplying both is an error. No-option
+   get_backend() returns a locked reusable instance whose effective configuration
+   freezes at first construction. Explicit backend_options, including {}, create a
+   fresh instance; convenience parse calls always use fresh instances. Failed
+   initialization is retryable and never installs a half-initialized cached object.
+6. Retire the unreleased preset/ocr parameters and quality aliases. Preserve their
+   historical bytes in the source archive, not as a misleading runtime interface.
+   Callers use backend_options and per-backend documented keys. Unsupported kwargs
+   fail, and no default/automatic/file/environment configuration may enable paid
+   augmentation. Marker use_llm remains unsupported in this local-wrapper update.
+7. Explicit constructor/API options override PDFSMITH-prefixed environment, then
+   legacy backend-prefixed environment, project YAML, user YAML and defaults.
+   Automatic file/environment loading is retained for the already released Docling
+   contract only; other backends get explicit options until their owning schema
+   documents additional sources. Project and user files merge by top-level key;
+   nested values replace whole values and are deep-copied. Constructor None means
+   omitted only for documented optional parameters; null on other keys is invalid.
+   Strict bool strings are true/false/1/0/yes/no/on/off; invalid values raise.
+   Numeric values reject bools and invalid ranges. Unknown option keys and unknown
+   PDFSMITH_<backend>_ variables raise; unrelated provider credential variables are
+   outside option scanning. Alias conflicts at equal precedence raise. Docling's
+   documented OCR/THREADS/TABLE_STRUCTURE aliases normalize to canonical keys.
+   Effective options are normalized once, copied defensively and exposed without
+   credentials. Constructors do not reread options after validation. Core import
+   and pdfsmith.config import work without PyYAML; YAML use requires a declared
+   optional extra and gives an actionable error if absent.
+8. Every backend starts PDF-only. Images are added per actual wrapper and format
+   after a real controlled-image run, including .tif/.tiff. No service image claim
+   comes from an underlying provider's general capability. Unsupported formats and
+   extension/signature mismatches fail before client initialization or upload.
+9. Native execution policy covers direct sync and async entry points. PyMuPDF and
+   PyMuPDF4LLM extraction/rendering run in spawned child processes, never competing
+   worker threads. PDFium calls use one runtime-wide synchronization boundary;
+   Docling/Marker native conversions are process-isolated. Cloud page counting
+   uses a declared parser, not optional fitz or file-size estimates. Rust/Java/OCR
+   wrappers get tested policy in their own milestone. Blocking imports/setup and
+   extraction do not run on the async event loop. Sync async-backed wrappers work
+   inside a running loop using a dedicated thread/loop. Cancellation does not
+   pretend to kill threads or roll back remote work; the worker owns final cleanup.
+10. Completion requires the backend's documented terminal-success predicates,
+    expected result fields and declared page coverage/order. Explicit failure,
+    refusal, token truncation, failed pages, missing expansions/shards and partial
+    local conversions raise, even if some text exists. Valid complete blank content
+    may return an empty string. Silent semantic omissions remain outside this
+    library's guarantee. Offline transport evidence never establishes server-side
+    authentication, workspace permissions or actual document processing.
+11. Service requests are not retried after ambiguous non-idempotent submission.
+    Known active jobs get bounded polling and best-effort cancellation. Do not
+    delete resources still used by an operation whose terminal state is unknown;
+    report operation/resource identifiers and residual uncertainty. Always close
+    owned local handles. If parsing and cleanup both fail, preserve the parse error
+    and attach cleanup diagnostics. Cleanup failure after extraction raises an
+    operational exception carrying parse_completed=True, recovered content and
+    resource identifiers; useful paid output is not lost or silently called clean.
+12. CLI file output stages in the destination directory before parsing, rejects
+    same-path/symlink/hard-link input aliases, encodes complete UTF-8 and closes the
+    staged file before os.replace. Replace is the commit point. Pre-commit failure
+    preserves input and prior destination bytes. Post-commit diagnostic failure
+    cannot claim the output was rolled back. stdout is streaming and not atomic;
+    shell redirection is outside this guarantee. stdout and file output emit the
+    returned UTF-8 content exactly, without adding a newline; diagnostics use stderr.
+13. Ordinary pytest collection/execution cannot enable live tests via environment
+    flags, including RUN_COMMERCIAL_TESTS=0/false/1. The test process denies outbound
+    DNS/TCP connections, strips inherited credentials and uses controlled HOME.
+    Offline SDK tests supply synthetic credentials and strict transports. Authorized
+    live protocols are separate explicit commands tied to provider, input, options
+    and spending authority; no such authority has been supplied.
+14. Move one-source unpublished 0.3.0.dev0 identity and core-only installed-wheel
+    tests to the first milestone. Module, distribution and CLI agree on PEP 440
+    identity. Per-extra installed-wheel checks use fresh environments, no editable
+    source, no fixture-generator/test packages masking dependencies. Test declared
+    Python 3.10-3.13 core/baselines or narrow support from reproduced results.
+15. Each backend needs actual local E2E or separately authorized live E2E before a
+    working-integration claim. Offline SDK checks are labeled offline-contract;
+    documented SQL/API compatibility is labeled documentation-backed. Baseline local
+    milestones can finish independently of other providers. An assessed upstream
+    blocker leaves that integration open, with exact evidence and no passing claim.
+16. Each milestone records source/wheel/backend identities, exact commands, fresh
+    outcomes, input/output hashes and supported exclusions. Regressions fail on the
+    actual producing defect with reachable input and pass after repair. Update tests
+    that encoded old defects. Expected failures, if temporarily necessary, are
+    reason-specific and strict. No broad skips or mocked success establish closure.
+17. LlamaParse replacement is conditional on inspecting the installed legacy SDK's
+    distributions/re-export, effective options, serialization, error-swallowing,
+    endpoints, page-index base, polling/retry and cache controls. Use one SDK path
+    under the existing name. V2 calls require explicit tier and pinned published
+    service version, rejecting moving latest aliases and legacy parsing_mode with
+    a migration message. disable_cache defaults true and is recorded in effective
+    request identity; cache-hit status stays unknown unless confirmed. Requested
+    and provider-confirmed version/tier remain distinct. Validate job/page status,
+    coverage/order/duplicates, output expansions and tier/version compatibility.
+18. Preserve original source/unrelated files and the earlier README correction.
+    Keep PDF-Bench experiments, website/editorial changes, release/public-main
+    merge, publication and deployment separately owned and unauthorized here.
 
 ## In scope
 
@@ -193,8 +229,9 @@ establish the behavior or quality of a PDFsmith integration.
 
 ## Open questions
 
-- External design reviews are not yet returned. Stefan supplies the reports; this
-  owner resolves consequential findings before the affected implementation.
+- Shared review contracts are resolved in reviews/dispositions.txt. Per-provider
+  SDK facts and runtime regressions remain dependencies of their owning milestone,
+  not unresolved user design questions or global implementation blockers.
 - Live-service runs require Stefan's exact provider/configuration/input and spend
   authorization. Prepare concrete protocols after offline repair; no implicit use
   of existing credentials or free credits.
@@ -206,5 +243,5 @@ establish the behavior or quality of a PDFsmith integration.
 
 ## Next actions
 
-Stefan returns GPT and Claude reviews of the completed packet before substantial
-implementation. Live-provider spending remains a separate later decision.
+No further planning approval is needed. Live-provider input/configuration/spending
+authorization remains a separate decision once concrete offline protocols exist.

@@ -1,0 +1,142 @@
+PDFsmith external-review reconciliation - October 15, 2026
+
+Reports: gpt-01.md (GPT) and fable-01.md (Claude), attributed by Stefan.
+Exact model versions were not supplied and are not inferred from filenames.
+Original returned bytes and their initially staged empty versions are preserved
+in returned-reviews.tar.gz; readable Markdown copies gain only a final newline.
+identities.json records original and readable hashes.
+
+Decision: shared planning blockers are resolved in the revised specification/plan.
+User authorized implementation after reconciliation. Runtime/SDK findings remain
+open until their owning tests pass. No report is treated as a test result for this
+checkout, and no live-service verification or spending authority is inferred.
+
+GPT F1; Claude M5
+Plan ownership: 1,16
+Disposition: Accepted
+Ordinary tests unconditionally exclude live tests and deny outbound access; synthetic-credential subprocess tests cover every flag. Any temporary xfail is strict.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F2; Claude B1,H3,H5,D1
+Plan ownership: 2,3,7-14
+Disposition: Accepted
+Static discovery, constructor-bound shared validation and lazy credential/client/model work resolve lifecycle ownership. Direct constructor path remains supported.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F3; Claude H4,D3
+Plan ownership: 3,7
+Disposition: Accepted with compatibility choice
+Exact typed precedence, deep copies, canonical/legacy aliases and whole nested-value replacement are specified. Preserve released Docling user/project layering, rather than deleting CWD lookup. Other wrappers get explicit options until schema documentation. YAML import is lazy.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F4; Claude H5,Low singleton
+Plan ownership: 2,3,6-10
+Disposition: Accepted
+Lock singleton initialization/retry. Spawn processes for fitz/Docling/Marker, global PDFium boundary, test native overlaps and heartbeat. Avoid fitz in cloud page counting.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F5; Claude B2,H1,D2,D4
+Plan ownership: 2,3,7,8,15
+Disposition: Accepted, remove unreleased layer
+Drop preset/ocr rather than maintain broken quality aliases. Keep backend_options. No implicit Marker paid use. Start formats PDF-only and add image routes only after actual tests.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F6; Claude H6,D7
+Plan ownership: 5
+Disposition: Accepted, provider-specific gate
+Inspect installed legacy distributions/re-export/serialization/error/cache before replacing. One SDK path; explicit pinned tier/version, reject legacy modes, disable_cache=true, unknown cache-hit state, complete ordered page/output checks.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F7; Claude M1
+Plan ownership: 11
+Disposition: Accepted
+Require explicit warehouse, documented binary SQL/options and nested document schema, poll/chunk/cardinality checks and bounded cancellation. Offline transport is not live SQL validation.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F8; Claude H2
+Plan ownership: 5,7-14
+Disposition: Accepted
+Per-wrapper terminal/blank/failure predicates; Docling partial status and Extractous truncation checks included. Google metadata plus shard coverage/order is mandatory.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F9; Claude M2,D6
+Plan ownership: 3,5-14
+Disposition: Accepted, strict operational-error choice
+Lazy owned resources, primary-error preservation and explicit uncertain-job state. Successful extraction with failed cleanup raises an exception retaining recovered text and resource IDs; do not delete active-job resources.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F10; Claude M3
+Plan ownership: 15
+Disposition: Accepted, exact-output choice
+Same-directory staging before parse, aliases including hardlinks, encode/write/close then replace commit point. Preserve before commit; post-commit diagnostic errors separate. stdout/file emit returned UTF-8 exactly with no added newline.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F11; Claude M7,D8
+Plan ownership: 1,2,10,16
+Disposition: Accepted
+Early dynamic module version and core-wheel probe, lazy optional YAML, declared pypdf page count, clean extra-only wheel environments and actual Python support checks. Test runner extras cannot mask packaging defects.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+GPT F12; Claude missing evidence
+Plan ownership: 1,3-16
+Disposition: Accepted
+Replace old tests preserving defects, capture actual producing-code failing/passing evidence and inspect all release/public module ASTs. SDK fixtures need official source/date; skips never establish support.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Claude B3
+Plan ownership: 2,16
+Disposition: Accepted with terminology correction
+Evidence states are independent observations; dependency-present is the honest label for metadata/find_spec, not importable. Required credential names are static and configuration status is not-checked. Inventory columns added.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Claude M4
+Plan ownership: 4,6
+Disposition: Accepted
+Close pypdf streams and PDFium native handles; verify current API and needs_pass behavior on owner-password-only input.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Claude M6
+Plan ownership: 12-14
+Disposition: Accepted
+Retain provider usage; remove undated USD and file-size page estimates from acceptance/limit decisions.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Claude D5
+Plan ownership: 8
+Disposition: Resolved implementation choice
+Sync async-backed wrappers work inside running loops using dedicated thread/loop; native runtime policy still applies.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Claude D9
+Plan ownership: 2
+Disposition: Resolved compatibility choice
+Keep released local default preference, including Docling first if installed. No quality claim or model download occurs during discovery/constructor. Actual parsing can require explicit model acquisition.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Claude Low resolver/exception findings
+Plan ownership: 2,3,10
+Disposition: Accepted
+One resolver for selection and parse; runtime caches excluded from dataclass comparison; use typed provider exceptions rather than message substrings.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Both simplification: remove repetitive premise/claim blocks
+Plan ownership: plan
+Disposition: Partially accepted
+Issue prose and schema duplication were pruned. Required machine-checked premise/claim/closure tables remain for compatibility with the existing workflow; they are not a second evidence database.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Claude simplification: merge issues
+Plan ownership: plan
+Disposition: Deferred, not a correctness blocker
+Keep 16 stable ownership IDs because both reports refer to them. Execute shared core as coherent checkpoints; no redundant architectures or reviewer-requested new agent workflow.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Both scope/prior-art suggestions
+Plan ownership: all
+Disposition: Accepted
+All 19 names remain required. PDF-Bench experiments/ParseBench reuse, LiteParse, timing, structured output and public release/deploy remain separate.
+Verification: required in the owning engineering checkpoint; not yet claimed fixed.
+
+Next actions
+No further planning decision is needed. Live-provider authorization remains a separate
+request after exact inputs/configuration/spending protocols are prepared.

@@ -10,7 +10,19 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Fresh installed E2E works with defaults; options currently rejected by zero-argument constructor. Retain and extend validated extraction options.",
-      "current_evidence": "fresh-local-installed-E2E"
+      "current_evidence": "fresh-local-installed-E2E",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "local-e2e-defaults-only"
+      ]
     },
     {
       "name": "pdfplumber",
@@ -21,7 +33,19 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Fresh installed E2E works with defaults; inherited best preset raises TypeError(layout). Retain and repair option forwarding; table/text duplication remains explicit.",
-      "current_evidence": "fresh-local-installed-E2E"
+      "current_evidence": "fresh-local-installed-E2E",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "local-e2e-defaults-only"
+      ]
     },
     {
       "name": "pymupdf",
@@ -32,7 +56,18 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; real E2E pending. Retain; verify supported options and encrypted-input behavior; existing document close uses finally.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "pymupdf4llm",
@@ -43,7 +78,18 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; real E2E pending. Retain; repair install hint (light extra does not install this package) and verify current to_markdown API.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "pdfminer",
@@ -54,7 +100,18 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; real E2E pending. Retain; presets send constructor options the wrapper rejects; validate LAParams forwarding.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "pypdfium2",
@@ -65,7 +122,18 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; real E2E pending. Retain; explicitly verify native document/page/textpage cleanup.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "serialized-pdfium",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "unstructured",
@@ -76,7 +144,18 @@
       "constructor_arguments": "self, strategy: str='fast'",
       "native_parse_async": false,
       "source_disposition": "Source inspected; native E2E pending. Retain/repair only strategy is accepted while presets/common OCR send additional unsupported keys.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": "pending isolated runtime check",
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "kreuzberg",
@@ -87,7 +166,18 @@
       "constructor_arguments": "self, force_ocr: bool=False",
       "native_parse_async": true,
       "source_disposition": "Source inspected; native E2E pending. Retain/repair SDK config drift and OCR-language constructor mismatch. Sync wrapper uses asyncio.run; native async exists.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": "pending isolated runtime check",
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "extractous",
@@ -98,7 +188,18 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; native E2E pending. Retain; verify current native/Java dependencies, real input types, tuple result and resource behavior.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": "pending isolated runtime check",
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "docling",
@@ -109,7 +210,18 @@
       "constructor_arguments": "self, do_ocr: bool | None=None, do_table_structure: bool | None=None, num_threads: int | None=None, device: str | None=None, **kwargs: Any",
       "native_parse_async": false,
       "source_disposition": "Source inspected; model E2E pending. Retain/repair configuration: ocr_languages and table_mode are stored/known but not applied in converter setup. Check actual image conversion and dependencies.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": "pending isolated runtime check",
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "marker",
@@ -120,7 +232,18 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; model E2E pending. Retain/repair preset constructor mismatch; verify current rendering API before changing result.markdown.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": "pending isolated runtime check",
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "aws_textract",
@@ -131,7 +254,20 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; offline SDK and live checks pending. Retain/repair multipage rendering lifecycle, limits/input types and failure paths; no live requests authorized.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "AWS_REGION"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "azure_document_intelligence",
@@ -142,7 +278,21 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; offline SDK and live checks pending. Retain; verify begin_analyze_document signature and actual PDF/image MIME support.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT",
+        "AZURE_DOCUMENT_INTELLIGENCE_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "google_document_ai",
@@ -153,7 +303,21 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Inherited batch implementation inspected; offline SDK and live checks pending. Retain/repair per-document failure handling, shard ordering and staging cleanup; PyMuPDF page counting is undeclared in google extra.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "GOOGLE_CLOUD_PROJECT",
+        "GOOGLE_DOCUMENT_AI_PROCESSOR_ID"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "databricks",
@@ -164,7 +328,21 @@
       "constructor_arguments": "self",
       "native_parse_async": false,
       "source_disposition": "Source inspected; offline SDK and live checks pending. Retain or replace unsupported request/result assumptions after official API check; current SQL embeds base64 and treats non-SUCCEEDED immediate status as failure.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "DATABRICKS_HOST",
+        "DATABRICKS_WAREHOUSE_ID"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "llamaparse",
@@ -175,7 +353,20 @@
       "constructor_arguments": "self, parsing_mode: str='cost_effective', language: str='en'",
       "native_parse_async": false,
       "source_disposition": "Current v2 docs checked; SDK/live checks pending. Replace obsolete client path if modern SDK contract confirms; retain backend name. parsing_mode is validated/stored but never sent; tier/version/cache behavior must be explicit.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "LLAMA_CLOUD_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "anthropic",
@@ -186,7 +377,20 @@
       "constructor_arguments": "self, model: str='claude-3-5-haiku', **kwargs: Any",
       "native_parse_async": false,
       "source_disposition": "Inherited model changes inspected; offline SDK/live checks pending. Retain/repair stale price-based model validation, ignored kwargs and unchecked stop reasons.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "ANTHROPIC_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "openai",
@@ -197,7 +401,20 @@
       "constructor_arguments": "self, model: str='gpt-4o-mini', **kwargs: Any",
       "native_parse_async": false,
       "source_disposition": "Inherited model changes inspected; offline SDK/live checks pending. Retain/repair upload cleanup on generation failure, ignored kwargs and unchecked completion state.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "OPENAI_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     },
     {
       "name": "gemini",
@@ -208,7 +425,21 @@
       "constructor_arguments": "self, model: str='gemini-2.0-flash', **kwargs: Any",
       "native_parse_async": false,
       "source_disposition": "Inherited model/usage changes inspected; offline SDK/live checks pending. Retain/repair ignored kwargs and unchecked candidate finish/block statuses.",
-      "current_evidence": "source-inspection-only; runtime verification pending"
+      "current_evidence": "source-inspection-only; runtime verification pending",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "GOOGLE_API_KEY or GEMINI_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered"
+      ]
     }
-  ]
+  ],
+  "review_revision": "2026-10-15: static declarations are not SDK/live verification"
 }
