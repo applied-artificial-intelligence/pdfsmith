@@ -48,6 +48,16 @@ def _extract(path: Path, options: dict[str, Any]) -> str:
             "Unstructured requires the en_core_web_sm 3.8.0 spaCy model. "
             "Preinstall it before parsing; PDFsmith does not install it implicitly."
         )
+    import spacy
+
+    try:
+        spacy.load("en_core_web_sm", exclude=["ner", "lemmatizer", "attribute_ruler"])
+    except OSError as exc:
+        raise ImportError(
+            "Unstructured cannot load the installed en_core_web_sm 3.8.0 model. "
+            "Repair the model installation before parsing; "
+            "PDFsmith does not download or repair it implicitly."
+        ) from exc
     os.environ.pop("UNSTRUCTURED_DEFAULT_MODEL_NAME", None)
     os.environ.pop("UNSTRUCTURED_DEFAULT_MODEL_INITIALIZE_PARAMS_JSON_PATH", None)
     from unstructured.partition.pdf import partition_pdf

@@ -51,8 +51,12 @@ Latest full source suite: 411 passed, 12 skipped; Ruff and repository mypy pass.
 Marker needs environments separate from Unstructured and the current Anthropic/
 OpenAI/frontier extras because of upstream dependency constraints.
 
-Next owned work: verify the remaining Unstructured corrupt-model repair concern,
-then final package/bundle/CI/README reconciliation and concrete live-run protocols.
+Unstructured corrupt installed-model repair was reproduced and guarded. The same
+installed API now fails before an implicit model download; restoring the original
+model passed actual public-PDF CLI extraction offline (24,044 bytes). Evidence is
+in milestones/16-final/. Fresh suite: 411 passed, 12 skipped; mypy 30 source files.
+
+Next owned work: final package/bundle/CI/README reconciliation and concrete live-run protocols.
 All inherited provider modifications have now been intentionally integrated and
 preserved in their owning source archives; unrelated untracked work remains intact.
 

@@ -1,0 +1,28 @@
+Unstructured installed-model failure, October 15, 2026
+
+A fresh non-editable wheel[unstructured] environment and the official pinned spaCy
+3.8.0 model were installed using the commands in unstructured-assets-install.json.
+The task-owned environment's model config.cfg was renamed, preserving its exact
+bytes. Distribution metadata still reported the installed model. An urllib tap
+recorded and blocked the SDK's implicit replacement download before any HTTP,
+installation or deletion could occur; Python DNS/TCP were denied as well.
+
+Before repair, the public parse API attempted the model download and ultimately
+reported incomplete page coverage. After repair, the same input, damaged asset
+and installed API raised an actionable ImportError without another attempt.
+PDFsmith now validates that spaCy can load the required model before entering
+Unstructured's automatic installer path. It does not promise to sandbox arbitrary
+third-party package behavior or eliminate model acquisition for other integrations.
+
+The original config was restored with matching SHA-256. The actual installed CLI
+then parsed the identified public eight-page PDF successfully under the same
+network guard. Exact commands, dependency/package/input/output hashes and output
+are in unstructured-corrupt-{before,after}.json and unstructured-restored.json.
+A preliminary restored-model CLI invocation omitted the parse subcommand and
+exited 2 before extraction; it was corrected before the recorded passing run.
+The task-owned sitecustomize hook was removed after verification.
+
+The standalone scripts preserve the actual producing failure and corrected run.
+They operate only on the isolated environment created by the setup script; do not
+use their model-renaming step on a shared/user installation. The archived after script includes the corrected CLI subcommand; the separate
+restored script records the successful rerun after correcting that invocation. No provider calls occurred.

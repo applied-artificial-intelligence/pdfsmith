@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/bin/python",
+    "-I",
+    "-c",
+    "from pdfsmith import parse;parse('/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf',backend=\"unstructured\")"
+  ],
+  "exit": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/lib/python3.12/site-packages/pdfsmith/api.py\", line 135, in parse\n    return _content(instance.parse(path))\n                    ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/lib/python3.12/site-packages/pdfsmith/backends/unstructured_backend.py\", line 35, in parse\n    return extract_in_process(self.name, path, self._options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/lib/python3.12/site-packages/pdfsmith/backends/_process.py\", line 45, in extract_in_process\n    raise error_types.get(error[\"type\"], RuntimeError)(error[\"message\"])\nImportError: Unstructured cannot load the installed en_core_web_sm 3.8.0 model. Repair the model installation before parsing; PDFsmith does not download or repair it implicitly.\n",
+  "new_download_attempts": false,
+  "wheel_sha256": "5bb649922e180ed2fa7767d4cf10a9b3a2eb41ec6d752fbf5a9796621c84b031",
+  "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80"
+}
