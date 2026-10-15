@@ -1,0 +1,53 @@
+[
+  {
+    "backend": "kreuzberg",
+    "options": {
+      "force_ocr": true
+    },
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bin/python",
+      "-I",
+      "-c",
+      "import pdfsmith;print(pdfsmith.parse('/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/scanned.pdf',backend='kreuzberg',backend_options={'force_ocr': True}))"
+    ],
+    "exit": 0,
+    "stdout": "OCR READABLE SENTINEL 12345\n",
+    "stderr": "",
+    "input_sha256": "0c0a9b8f711e237d65500fe4e8a2d6c6a9f1059bc869ac9996ebd28278748a8e",
+    "output_sha256": "54006eabf99d7eb11886ebcc5623dc567a829e2e426924bfe505544ec1f092d8"
+  },
+  {
+    "backend": "unstructured",
+    "options": {
+      "strategy": "ocr_only"
+    },
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bin/python",
+      "-I",
+      "-c",
+      "import pdfsmith;print(pdfsmith.parse('/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/scanned.pdf',backend='unstructured',backend_options={'strategy': 'ocr_only'}))"
+    ],
+    "exit": 0,
+    "stdout": "# OCR READABLE SENTINEL 12345\n",
+    "stderr": "",
+    "input_sha256": "0c0a9b8f711e237d65500fe4e8a2d6c6a9f1059bc869ac9996ebd28278748a8e",
+    "output_sha256": "91241ad3ba6e7b266abb70b383c8832d24b5ab3ff74d265fdcfa893fa0f3aba5"
+  },
+  {
+    "backend": "unstructured",
+    "options": {
+      "strategy": "hi_res"
+    },
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bin/python",
+      "-I",
+      "-c",
+      "import pdfsmith;print(pdfsmith.parse('/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/scanned.pdf',backend='unstructured',backend_options={'strategy': 'hi_res'}))"
+    ],
+    "exit": 0,
+    "stdout": "# OCR READABLE SENTINEL 12345\n",
+    "stderr": "",
+    "input_sha256": "0c0a9b8f711e237d65500fe4e8a2d6c6a9f1059bc869ac9996ebd28278748a8e",
+    "output_sha256": "91241ad3ba6e7b266abb70b383c8832d24b5ab3ff74d265fdcfa893fa0f3aba5"
+  }
+]

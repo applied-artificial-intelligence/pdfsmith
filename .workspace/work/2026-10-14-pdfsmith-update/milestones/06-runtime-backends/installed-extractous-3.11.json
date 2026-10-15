@@ -1,0 +1,102 @@
+{
+  "evidence": "local-e2e",
+  "backend": "extractous",
+  "python": "3.11.13",
+  "package_path": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-extractous-3.11/lib/python3.11/site-packages/pdfsmith/__init__.py",
+  "module_version": "0.3.0.dev0",
+  "installed_distributions": {
+    "pdfsmith": "0.3.0.dev0",
+    "pypdf": "6.20.1",
+    "extractous": "0.3.0"
+  },
+  "module_hashes": {
+    "_documents.py": "b39cb73aa71abbe9f9fbc30a4a3c4273f59571df6ff949ca4abe7f51a51c0128",
+    "cli.py": "d8895db341df23586d8f44d3255a55195db2fbbfeb57d5177d385f8aeab10bce",
+    "__init__.py": "0e80deb8f7ce0f3d1ec0e7d101c4fde9bbe2c8d6765fe70b91c3e1581b7f0c85",
+    "_inputs.py": "290e4e6445d991ef15c91c1ef4b5c9d78f55854e1280056c25f9fecab968dcde",
+    "api.py": "1d02da4ec120a6d165b79df7b52f80ae0e42b6873bd00e7609fd35ef91f39b04",
+    "errors.py": "ccab96b4200637d55e7ec9fb4d65986e159b0a035c717061afb6bd234b07524d",
+    "config.py": "19e569e7c294e02522e64254fba138cd533c597277289e07993f31e793f750ff",
+    "backends/databricks_backend.py": "f3f87ebf9ccbb07d4a4bfa661b00ac85cd4e3f7fa536ec8db41f2558317fecbf",
+    "backends/marker_backend.py": "e03d04e3ec2960067ece24454ab5015b88ad7dc1c971aa7b0de9739fb201dca8",
+    "backends/extractous_backend.py": "6a7e6d91a2f271d56c843d09081a7ccd80cf49bde855badf790cf0d3cdd54a02",
+    "backends/registry.py": "a1e05b87608a6de883fc517846a4cd34e8e9c0fef8d3c8f0237da7e0cd025eaa",
+    "backends/pymupdf4llm_backend.py": "d8099c436913e52ce8baa4ac3a33a8d9de1c672ba0e5612bb86347220de29666",
+    "backends/openai_backend.py": "4cf26b601b73ece9776b4254cb4ab0ed100373b515c812d9a749524dc35ba9b6",
+    "backends/__init__.py": "725c9d317d633bd11bfaa51369ccc8cb4aef0dbc1443cc0e68566394182761ae",
+    "backends/gemini_backend.py": "11b8f62437f04208ab5f5ded5aabc308584f215ad1f7a7c96270e3012868a38c",
+    "backends/azure_document_intelligence_backend.py": "92e1ec1c983ee76375679291a8e0ad771d654904ba1bb7dc5009c973cb10294d",
+    "backends/llamaparse_backend.py": "95d71466f19dcac49b16430d79bc9dcbb6852c8a67470b266f59beace6bec875",
+    "backends/docling_backend.py": "a3dd357261dce2a3830d3b617e59a9665f1cd87fff7930c5aebc9577717a7199",
+    "backends/anthropic_backend.py": "6f9f1903cbf0cdaddbadfaf1f0bf3914b7b9de5c2536ff9ee75e085b87f756fc",
+    "backends/google_document_ai_backend.py": "e86a19081d36a5ffddfb78aed5d3cf15cbed52a166504bb7704bcd7dd5468fab",
+    "backends/pymupdf_backend.py": "dd935443a5cf9afdaf1cc253e10f6945d9a9ee526c432f1022e36ccc970e97bc",
+    "backends/pdfplumber_backend.py": "746c4c79b748780eb15189bd64aa25342b6f898d36af250e0abd852b01e6957f",
+    "backends/pypdf_backend.py": "1345dec49436e2e34b7e1d74ffb3c2d123cb3715e12475a4541390b8a06009b0",
+    "backends/aws_textract_backend.py": "dca929b2bf3856821a4d52e6b854bd5ee61cadff904f0a9375749210986298f5",
+    "backends/pdfminer_backend.py": "b7f8c456c1ebcf3cd6ae7187c42df629f9ba32641eb80472468f963418b5b31c",
+    "backends/pypdfium2_backend.py": "13c2cc8dd24349f9d47b26f1ed381f9748c5d89c33666c47a9e5d18413e425e7",
+    "backends/kreuzberg_backend.py": "787e9db8fa4d68d01ff8a85a8193ad997380558fa1aec23861a48d4679c6335e",
+    "backends/unstructured_backend.py": "0d0f350334aa59d9e1033d946580fa3811130031766546bf73bf0ecb87fcab71",
+    "backends/_process.py": "562b34cb180244307f82bad02b97ca2d1ef5a8264bd971eb075ae09a6a170355"
+  },
+  "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+  "fixtures": {
+    "blank.pdf": "226bdbe274d3222c3ed276db4f6736d457282e01abf7982629360f7b4f1ad77b",
+    "long.pdf": "42375212edebdedd25f27ba5281070efaea7f7055b47163dc9fff4b379628bc1",
+    "scanned.pdf": "0c0a9b8f711e237d65500fe4e8a2d6c6a9f1059bc869ac9996ebd28278748a8e",
+    "columns.pdf": "bc01e9276323553df2c5eafe57d1f2f390039d7c495616890418fff596179588",
+    "corrupt.pdf": "35b85ec75a6e6ed565eb3fe8645154359515861382c79f61ccc3b192447e44ac"
+  },
+  "output_sha256": "4d56a606f6130275e588e17757cdc0e537de18dabf5043aeceada69ac036b1e7",
+  "output_bytes": 24758,
+  "configured_options": {},
+  "configured_sha256": "4d56a606f6130275e588e17757cdc0e537de18dabf5043aeceada69ac036b1e7",
+  "effective_defaults": {},
+  "errors": {
+    "missing": {
+      "type": "FileNotFoundError",
+      "message": "Input file not found: /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/missing.pdf"
+    },
+    "corrupt": {
+      "type": "RuntimeError",
+      "message": "Stream has ended unexpectedly"
+    }
+  },
+  "cli_command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-extractous-3.11/bin/pdfsmith",
+    "parse",
+    "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+    "-b",
+    "extractous",
+    "--backend-options",
+    "{}",
+    "-o",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/runtime-outputs/extractous-3.11/cli.md"
+  ],
+  "scope": "Actual local parsing; no quality comparison or live provider calls",
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-extractous-3.11/bin/python",
+    "-I",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/native_probe.py",
+    "--backend",
+    "extractous",
+    "--document",
+    "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+    "--fixtures",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures",
+    "--output",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/runtime-outputs/extractous-3.11"
+  ],
+  "install_command": [
+    "uv",
+    "pip",
+    "install",
+    "--python",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-extractous-3.11/bin/python",
+    "--torch-backend",
+    "cpu",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[extractous]"
+  ],
+  "wheel_sha256": "c5bdc0e8b07577c7b5be0d29f595e0fbe9a7a5397dd172b09b25b59b9289bdf0"
+}

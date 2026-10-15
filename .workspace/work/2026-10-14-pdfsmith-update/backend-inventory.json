@@ -7,8 +7,6 @@
       "package": "pypdf",
       "weight": "light",
       "extra": "pypdf",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Retained and repaired; defaults, configured output, blank/corrupt/missing input verified. No quality comparison.",
       "current_evidence": "local-e2e",
       "input_formats": [
@@ -33,16 +31,16 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/pypdf_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "pdfplumber",
-      "description": "Detailed PDF parsing, excellent for tables",
+      "description": "PDF text and table extraction",
       "package": "pdfplumber",
       "weight": "light",
       "extra": "pdfplumber",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Retained and repaired; defaults, configured output, blank/corrupt/missing input verified. No quality comparison.",
       "current_evidence": "local-e2e",
       "input_formats": [
@@ -69,7 +67,9 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/pdfplumber_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "pymupdf",
@@ -77,8 +77,6 @@
       "package": "pymupdf",
       "weight": "light",
       "extra": "pymupdf",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
       "current_evidence": "local-e2e",
       "input_formats": [
@@ -103,7 +101,9 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/pymupdf_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "pymupdf4llm",
@@ -111,8 +111,6 @@
       "package": "pymupdf4llm",
       "weight": "medium",
       "extra": "pymupdf4llm",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
       "current_evidence": "local-e2e",
       "input_formats": [
@@ -141,7 +139,9 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/pymupdf4llm_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "pdfminer",
@@ -149,8 +149,6 @@
       "package": "pdfminer.six",
       "weight": "light",
       "extra": "pdfminer",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
       "current_evidence": "local-e2e",
       "input_formats": [
@@ -176,7 +174,9 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/pdfminer_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "pypdfium2",
@@ -184,8 +184,6 @@
       "package": "pypdfium2",
       "weight": "light",
       "extra": "pypdfium2",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
       "current_evidence": "local-e2e",
       "input_formats": [
@@ -208,7 +206,9 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/pypdfium2_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "unstructured",
@@ -216,10 +216,8 @@
       "package": "unstructured",
       "weight": "medium",
       "extra": "unstructured",
-      "constructor_arguments": "self, strategy: str='fast'",
-      "native_parse_async": false,
-      "source_disposition": "Repaired after actual producing failures; remaining installed/OCR checks explicit in milestones/06-runtime-backends/status.json",
-      "current_evidence": "source implementation plus actual controlled SDK regressions; installed-wheel matrix pending",
+      "source_disposition": "Repaired and verified through isolated installed wheels, real public/controlled PDF/native/async/CLI routes; no quality ranking.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -239,9 +237,18 @@
       "evidence_states": [
         "registered",
         "dependency-present",
-        "constructible"
+        "constructible",
+        "local-e2e"
       ],
-      "evidence_path": "milestones/06-runtime-backends/"
+      "evidence_path": "milestones/06-runtime-backends/installed-unstructured-*.json",
+      "source_path": "src/pdfsmith/backends/unstructured_backend.py",
+      "direct_async_method": false,
+      "verified_python": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "ocr_evidence": "Controlled scanned PDF through installed wheel on Python 3.12; standalone image formats remain unsupported"
     },
     {
       "name": "kreuzberg",
@@ -249,10 +256,8 @@
       "package": "kreuzberg",
       "weight": "medium",
       "extra": "kreuzberg",
-      "constructor_arguments": "self, force_ocr: bool=False",
-      "native_parse_async": true,
-      "source_disposition": "Repaired after actual producing failures; remaining installed/OCR checks explicit in milestones/06-runtime-backends/status.json",
-      "current_evidence": "source implementation plus actual controlled SDK regressions; installed-wheel matrix pending",
+      "source_disposition": "Repaired and verified through isolated installed wheels, real public/controlled PDF/native/async/CLI routes; no quality ranking.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -267,9 +272,19 @@
       "evidence_states": [
         "registered",
         "dependency-present",
-        "constructible"
+        "constructible",
+        "local-e2e"
       ],
-      "evidence_path": "milestones/06-runtime-backends/"
+      "evidence_path": "milestones/06-runtime-backends/installed-kreuzberg-*.json",
+      "source_path": "src/pdfsmith/backends/kreuzberg_backend.py",
+      "direct_async_method": true,
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "ocr_evidence": "Controlled scanned PDF through installed wheel on Python 3.12; standalone image formats remain unsupported"
     },
     {
       "name": "extractous",
@@ -277,10 +292,8 @@
       "package": "extractous",
       "weight": "medium",
       "extra": "extractous",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
-      "source_disposition": "Repaired after actual producing failures; remaining installed/OCR checks explicit in milestones/06-runtime-backends/status.json",
-      "current_evidence": "source implementation plus actual controlled SDK regressions; installed-wheel matrix pending",
+      "source_disposition": "Repaired and verified through isolated installed wheels, real public/controlled PDF/native/async/CLI routes; no quality ranking.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -292,18 +305,25 @@
       "evidence_states": [
         "registered",
         "dependency-present",
-        "constructible"
+        "constructible",
+        "local-e2e"
       ],
-      "evidence_path": "milestones/06-runtime-backends/"
+      "evidence_path": "milestones/06-runtime-backends/installed-extractous-*.json",
+      "source_path": "src/pdfsmith/backends/extractous_backend.py",
+      "direct_async_method": false,
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "docling",
-      "description": "IBM's document understanding, best quality",
+      "description": "IBM document conversion",
       "package": "docling",
       "weight": "heavy",
       "extra": "docling",
-      "constructor_arguments": "self, do_ocr: bool | None=None, do_table_structure: bool | None=None, num_threads: int | None=None, device: str | None=None, **kwargs: Any",
-      "native_parse_async": false,
       "source_disposition": "Source inspected; model E2E pending. Retain/repair configuration: ocr_languages and table_mode are stored/known but not applied in converter setup. Check actual image conversion and dependencies.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -316,7 +336,9 @@
       "execution_policy": "process",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/docling_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "marker",
@@ -324,8 +346,6 @@
       "package": "marker-pdf",
       "weight": "heavy",
       "extra": "marker",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Source inspected; model E2E pending. Retain/repair preset constructor mismatch; verify current rendering API before changing result.markdown.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -338,7 +358,9 @@
       "execution_policy": "process",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/marker_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "aws_textract",
@@ -346,8 +368,6 @@
       "package": "boto3",
       "weight": "commercial",
       "extra": "aws",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Source inspected; offline SDK and live checks pending. Retain/repair multipage rendering lifecycle, limits/input types and failure paths; no live requests authorized.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -362,16 +382,16 @@
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/aws_textract_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "azure_document_intelligence",
-      "description": "Azure Document Intelligence, high-accuracy OCR",
+      "description": "Azure Document Intelligence OCR",
       "package": "azure-ai-documentintelligence",
       "weight": "commercial",
       "extra": "azure",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Source inspected; offline SDK and live checks pending. Retain; verify begin_analyze_document signature and actual PDF/image MIME support.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -387,7 +407,9 @@
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/azure_document_intelligence_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "google_document_ai",
@@ -395,8 +417,6 @@
       "package": "google-cloud-documentai",
       "weight": "commercial",
       "extra": "google",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Inherited batch implementation inspected; offline SDK and live checks pending. Retain/repair per-document failure handling, shard ordering and staging cleanup; PyMuPDF page counting is undeclared in google extra.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -412,7 +432,9 @@
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/google_document_ai_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "databricks",
@@ -420,8 +442,6 @@
       "package": "databricks-sdk",
       "weight": "commercial",
       "extra": "databricks",
-      "constructor_arguments": "self",
-      "native_parse_async": false,
       "source_disposition": "Source inspected; offline SDK and live checks pending. Retain or replace unsupported request/result assumptions after official API check; current SQL embeds base64 and treats non-SUCCEEDED immediate status as failure.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -437,7 +457,9 @@
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/databricks_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "llamaparse",
@@ -445,8 +467,6 @@
       "package": "llama-cloud",
       "weight": "commercial",
       "extra": "llamaparse",
-      "constructor_arguments": "self, parsing_mode: str='cost_effective', language: str='en'",
-      "native_parse_async": false,
       "source_disposition": "Replaced legacy SDK after actual offline failure/serialization inspection. Modern real-SDK transports and isolated installed wheels passed; live parsing remains unauthorized/unverified.",
       "current_evidence": "offline-contract; live-unverified",
       "input_formats": [
@@ -478,7 +498,9 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/llamaparse_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "anthropic",
@@ -486,8 +508,6 @@
       "package": "anthropic",
       "weight": "commercial",
       "extra": "anthropic",
-      "constructor_arguments": "self, model: str='claude-3-5-haiku', **kwargs: Any",
-      "native_parse_async": false,
       "source_disposition": "Inherited model changes inspected; offline SDK/live checks pending. Retain/repair stale price-based model validation, ignored kwargs and unchecked stop reasons.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -502,7 +522,9 @@
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/anthropic_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "openai",
@@ -510,8 +532,6 @@
       "package": "openai",
       "weight": "commercial",
       "extra": "openai",
-      "constructor_arguments": "self, model: str='gpt-4o-mini', **kwargs: Any",
-      "native_parse_async": false,
       "source_disposition": "Inherited model changes inspected; offline SDK/live checks pending. Retain/repair upload cleanup on generation failure, ignored kwargs and unchecked completion state.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -526,7 +546,9 @@
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/openai_backend.py",
+      "direct_async_method": false
     },
     {
       "name": "gemini",
@@ -534,8 +556,6 @@
       "package": "google-genai",
       "weight": "commercial",
       "extra": "gemini",
-      "constructor_arguments": "self, model: str='gemini-2.0-flash', **kwargs: Any",
-      "native_parse_async": false,
       "source_disposition": "Inherited model/usage changes inspected; offline SDK/live checks pending. Retain/repair ignored kwargs and unchecked candidate finish/block statuses.",
       "current_evidence": "source-inspection-only; runtime verification pending",
       "input_formats": [
@@ -550,7 +570,9 @@
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
         "registered"
-      ]
+      ],
+      "source_path": "src/pdfsmith/backends/gemini_backend.py",
+      "direct_async_method": false
     }
   ],
   "review_revision": "2026-10-15: static declarations are not SDK/live verification"

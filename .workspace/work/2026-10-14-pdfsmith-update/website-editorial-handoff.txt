@@ -7,7 +7,7 @@ Module/distribution/CLI development identity now agrees. No public-main merge,
 release, website publication or deployment has occurred or is authorized.
 
 Actual local E2E evidence covers pypdf, pdfplumber, PyMuPDF, PyMuPDF4LLM,
-PDFMiner and PDFium. Installed extra-only wheels passed identified public and
+PDFMiner, PDFium, Kreuzberg, Extractous and Unstructured. Installed extra-only wheels passed identified public and
 controlled PDF checks on Python 3.10-3.13. Options, async/direct/CLI routes,
 blank/corrupt/missing inputs, native execution policy and output preservation
 are documented with exact source/wheel/input/output hashes in milestones/.
@@ -22,8 +22,12 @@ the response. Legacy mode omission and ERROR-to-empty behavior were reproduced.
 Cleanup errors preserve completed content and resource identifiers; CLI recovery
 uses a separate private JSON and keeps an error exit and the prior destination.
 
-All 19 names remain registered/in scope. Thirteen lack actual E2E evidence,
-including LlamaParse. Image/OCR capability claims remain unvalidated. Discovery
+All 19 names remain registered/in scope. Ten lack actual E2E evidence,
+including LlamaParse. Controlled scanned-PDF OCR passed for Kreuzberg and
+Unstructured through installed wheels on Python 3.12; this is a capability check,
+not an OCR-quality comparison. Standalone image formats remain unsupported.
+Unstructured requires a preinstalled spaCy model and layout assets for hi_res;
+its Pillow dependencies conflict with Marker, so use separate environments. Discovery
 reports static registration and dependency presence; configuration is not checked.
 Default selection retains its fixed local preference order. No best-parser claim.
 

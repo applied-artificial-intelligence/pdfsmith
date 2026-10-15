@@ -37,6 +37,9 @@ def main():
             "pymupdf4llm",
             "pdfminer.high_level",
             "pypdfium2",
+            "kreuzberg",
+            "extractous",
+            "unstructured.partition.pdf",
         )
     )
     public = pdfsmith.parse(args.document, backend=args.backend)
@@ -71,12 +74,15 @@ def main():
         "pymupdf4llm": {"use_layout": True},
         "pdfminer": {"char_margin": 100.0},
         "pypdfium2": {},
+        "kreuzberg": {"output_format": "markdown"},
+        "extractous": {},
+        "unstructured": {"include_page_breaks": True},
     }[args.backend]
     configured = cls(**options).parse(args.document)
     assert configured == pdfsmith.parse(
         args.document, backend=args.backend, backend_options=options
     )
-    if args.backend != "pypdfium2":
+    if options:
         assert public != configured, "configured extraction did not change output"
     output = args.output / "cli.md"
     command = [

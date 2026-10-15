@@ -27,14 +27,15 @@ PDFMiner options. 178 passed / 61 skips; 16 extra-only installed-wheel
 environments passed Python 3.10-3.13. Public/controlled/error/async/CLI hashes:
 milestones/04-native/. Six of 19 integrations now have local E2E evidence.
 
-Checkpoint 6 implementation: Kreuzberg/Extractous/Unstructured regressions
-reproduced (12 failed) and repaired (224 passed / 51 skips overall). Native
-workers, full Extractous stream, strict Unstructured coverage/model checks and
-explicit Python/extra incompatibilities are implemented. Installed-wheel matrix
-and OCR/model checks are pending; these rows are not yet counted local-e2e.
+Checkpoint 6: Kreuzberg/Extractous/Unstructured complete local capability evidence.
+Twelve original failures repaired; 224 tests passed / 51 skips. Eleven isolated
+extra-only wheels passed public/controlled/API/async/CLI runs on supported Python
+versions; Unstructured 3.10 explicitly rejected. Missing model checks and explicit
+asset preparation recorded. Installed-wheel OCR/hi_res checks passed on controlled
+scanned PDF (Python 3.12). Exact identities, raw outputs and model hashes:
+milestones/06-runtime-backends/. Nine integrations now have local E2E evidence.
 
-Next: finish checkpoint 6 installed/asset verification, then Docling/Marker and
-remaining provider SDK contracts.
+Next: Docling/Marker, then remaining provider SDK contracts and final packaging.
 Checkpoint 5: actual legacy LlamaParse transport reproduced dropped mode and
 ERROR-to-empty behavior; replaced with pinned modern SDK and explicit identity.
 212 passed / 51 skips; four extra-only installed wheels passed SDK/API/async/CLI
@@ -43,7 +44,7 @@ CLI saves a separate private recovery JSON. Modern runtime version/cache-hit
 confirmation remains unknown. Evidence: milestones/05-llamaparse/. Native mode
 correction also passed installed wheels on all four Python versions.
 
-13 integrations remain without real E2E; LlamaParse has offline-contract evidence; their native/model/provider lifecycle findings
+10 integrations remain without real E2E; LlamaParse has offline-contract evidence; their native/model/provider lifecycle findings
 are still required. No paid/free-credit calls, public-main merge/release, new
 agents/chats, PDF-Bench or website/deployment changes are authorized. Inherited
 provider files and unrelated untracked work remain preserved and unabsorbed.

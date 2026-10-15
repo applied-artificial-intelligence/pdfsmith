@@ -1,5 +1,5 @@
 {
-  "checkpoint": "Implementation/regressions passed; installed extra-only matrix and OCR/model checks remain open",
+  "checkpoint": "Implementation and installed-wheel local E2E complete",
   "parent_commit": "bac52d1953331eef184c37bc4f91d2fd1de2283a",
   "source_sha256": {
     "src/pdfsmith/api.py": "1d02da4ec120a6d165b79df7b52f80ae0e42b6873bd00e7609fd35ef91f39b04",
@@ -19,12 +19,16 @@
   "implementation": "Fresh native interpreter workers; validated options and paths before SDK/model work; explicit local Tesseract for Unstructured/Kreuzberg; no configurable cloud augmentation. Extractous uses uncapped stream readinto and copies reused buffers, checks metadata/errors. Unstructured preflights model presence and uses page breaks/count/order to reject swallowed extraction failure.",
   "Python": "Core/baselines remain 3.10-3.13 tested; Unstructured explicitly requires >=3.11,<3.14. Actual SDK resolver rejected 3.10; constructor/API/default-selection metadata now represent this restriction.",
   "dependency_conflict": "Actual uv pip compile reproduced Marker Pillow<11 vs Unstructured PDF pi-heif Pillow>=11.1 conflict on Python3.13; isolated environments required and uv conflicts declared. No dependency override or unsupported SDK combination.",
-  "remaining": "Installed wheel public PDF/fixture/CLI/async/error probes on supported Pythons; explicit unsupported-runtime probe on Python3.10; missing-model installed path; actual OCR and hi_res assets; final source/resource evidence. Do not mark these three inventory rows local-e2e yet.",
+  "remaining": "This closes local capability evidence for these three backends; Docling/Marker and eight live-service E2E rows remain open. LlamaParse has offline contracts only.",
   "sources": [
     "https://docs.kreuzberg.dev/reference/api-python/",
     "https://github.com/yobix-ai/extractous/blob/main/bindings/extractous-python/src/extractor.rs",
     "https://github.com/yobix-ai/extractous/blob/main/extractous-core/src/extractor.rs",
     "https://docs.unstructured.io/open-source/installation/full-installation",
     "https://docs.astral.sh/uv/concepts/resolution/#conflicting-dependencies"
-  ]
+  ],
+  "source_commit": "33e69962570d2f761dfc111eca10273b8c749561",
+  "installed": "Eleven isolated extra-only installed-wheel public/controlled/API/direct/inside-loop/three-way async/CLI runs: Kreuzberg/Extractous on Python 3.10-3.13; Unstructured on 3.11-3.13. Python 3.10 unsupported-range error separately proven, not counted as parsing success.",
+  "assets": "Missing spaCy asset rejected in each fresh Unstructured environment before explicit model installation. NLP model wheel pinned by hash; layout model prepared explicitly, then OCR/hi_res tested with outbound denial. Actual model file hashes retained.",
+  "ocr": "Kreuzberg force_ocr and Unstructured ocr_only/hi_res extracted the known sentinel from a controlled scanned PDF through installed wheels on Python 3.12. No standalone image-format or quality claim."
 }

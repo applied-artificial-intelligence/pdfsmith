@@ -1,0 +1,10 @@
+{
+  "evidence": "missing asset expected failure; not an E2E parsing pass",
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.13/bin/python",
+    "-I",
+    "-c",
+    "import pdfsmith;pdfsmith.parse('/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf',backend='unstructured')"
+  ],
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import pdfsmith;pdfsmith.parse('/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf',backend='unstructured')\n                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.13/lib/python3.13/site-packages/pdfsmith/api.py\", line 135, in parse\n    return _content(instance.parse(path))\n                    ~~~~~~~~~~~~~~^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.13/lib/python3.13/site-packages/pdfsmith/backends/unstructured_backend.py\", line 35, in parse\n    return extract_in_process(self.name, path, self._options)\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.13/lib/python3.13/site-packages/pdfsmith/backends/_process.py\", line 35, in extract_in_process\n    raise error_types.get(error[\"type\"], RuntimeError)(error[\"message\"])\nImportError: Unstructured requires the en_core_web_sm 3.8.0 spaCy model. Preinstall it before parsing; PDFsmith does not install it implicitly.\n"
+}
