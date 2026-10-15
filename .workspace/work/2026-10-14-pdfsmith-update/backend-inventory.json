@@ -79,18 +79,30 @@
       "extra": "pymupdf",
       "constructor_arguments": "self",
       "native_parse_async": false,
-      "source_disposition": "Source inspected; real E2E pending. Retain; verify supported options and encrypted-input behavior; existing document close uses finally.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "sort: bool"
+      ],
       "system_requirements": [],
       "execution_policy": "process",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pymupdf-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
       ]
     },
     {
@@ -101,18 +113,34 @@
       "extra": "pymupdf4llm",
       "constructor_arguments": "self",
       "native_parse_async": false,
-      "source_disposition": "Source inspected; real E2E pending. Retain; repair install hint (light extra does not install this package) and verify current to_markdown API.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "use_layout: bool (default false)",
+        "table_strategy: lines/lines_strict/text",
+        "force_text: bool",
+        "ignore_images: bool",
+        "use_ocr: bool (false default; true requires layout and separately installed OCR engine, unverified)"
+      ],
       "system_requirements": [],
       "execution_policy": "process",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pymupdf4llm-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
       ]
     },
     {
@@ -123,18 +151,31 @@
       "extra": "pdfminer",
       "constructor_arguments": "self",
       "native_parse_async": false,
-      "source_disposition": "Source inspected; real E2E pending. Retain; presets send constructor options the wrapper rejects; validate LAParams forwarding.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "char_margin/line_margin/word_margin: finite nonnegative number",
+        "detect_vertical/all_texts: bool"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pdfminer-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
       ]
     },
     {
@@ -145,18 +186,28 @@
       "extra": "pypdfium2",
       "constructor_arguments": "self",
       "native_parse_async": false,
-      "source_disposition": "Source inspected; real E2E pending. Retain; explicitly verify native document/page/textpage cleanup.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [],
       "system_requirements": [],
       "execution_policy": "serialized-pdfium",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pypdfium2-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
       ]
     },
     {

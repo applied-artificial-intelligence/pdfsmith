@@ -27,12 +27,12 @@ config = ["PyYAML>=6.0"]
 # Lightweight backends (no ML dependencies)
 pypdf = ["pypdf>=4.0"]
 pdfplumber = ["pdfplumber>=0.10"]
-pymupdf = ["pymupdf>=1.23"]
+pymupdf = ["pymupdf>=1.24.3"]
 pdfminer = ["pdfminer.six>=20221105"]
 pypdfium2 = ["pypdfium2>=4.0"]
 
 # Medium-weight backends
-pymupdf4llm = ["pymupdf4llm>=0.0.10"]
+pymupdf4llm = ["pymupdf4llm>=1.28,<1.29"]
 unstructured = ["unstructured>=0.10", "pikepdf>=9.0"]  # pikepdf required for fast strategy
 kreuzberg = ["kreuzberg>=3.0"]
 extractous = ["extractous>=0.1"]
@@ -42,7 +42,7 @@ docling = ["docling>=2.0"]
 marker = ["marker-pdf>=1.0"]
 
 # Commercial backends (cloud OCR)
-aws = ["boto3>=1.34", "pymupdf>=1.23"]  # pymupdf for multi-page support
+aws = ["boto3>=1.34", "pymupdf>=1.24.3"]  # pymupdf for multi-page support
 azure = ["azure-ai-documentintelligence>=1.0"]
 google = ["google-cloud-documentai>=2.0", "google-cloud-storage>=2.0"]
 databricks = ["databricks-sdk>=0.20"]
@@ -55,16 +55,16 @@ gemini = ["google-genai>=1.0"]
 frontier = ["anthropic>=0.40", "openai>=1.50", "google-genai>=1.0"]
 
 # Bundles
-light = ["pypdf>=4.0", "pdfplumber>=0.10", "pymupdf>=1.23"]
+light = ["pypdf>=4.0", "pdfplumber>=0.10", "pymupdf>=1.24.3"]
 recommended = [
     "pypdf>=4.0",
     "pdfplumber>=0.10",
-    "pymupdf4llm>=0.0.10",
+    "pymupdf4llm>=1.28,<1.29",
     "kreuzberg>=3.0",
 ]
 commercial = [
     "boto3>=1.34",
-    "pymupdf>=1.23",
+    "pymupdf>=1.24.3",
     "azure-ai-documentintelligence>=1.0",
     "google-cloud-documentai>=2.0",
     "google-cloud-storage>=2.0",
@@ -74,10 +74,10 @@ commercial = [
 all = [
     "pypdf>=4.0",
     "pdfplumber>=0.10",
-    "pymupdf>=1.23",
+    "pymupdf>=1.24.3",
     "pdfminer.six>=20221105",
     "pypdfium2>=4.0",
-    "pymupdf4llm>=0.0.10",
+    "pymupdf4llm>=1.28,<1.29",
     "unstructured>=0.10",
     "kreuzberg>=3.0",
     "extractous>=0.1",

@@ -22,12 +22,17 @@ Checkpoint 3: CLI options and atomic output, 157 passed / 62 skips. Nine
 original failures reproduced; installed consoles passed Python 3.10-3.13. Exact
 commands, wheel/source/input/output identities: milestones/03-cli/.
 
+Checkpoint 4: native MuPDF process workers, cross-instance PDFium lock and
+PDFMiner options. 178 passed / 61 skips; 16 extra-only installed-wheel
+environments passed Python 3.10-3.13. Public/controlled/error/async/CLI hashes:
+milestones/04-native/. Six of 19 integrations now have local E2E evidence.
+
 Next: independent remaining local/provider work.
 LlamaParse installed legacy inspection found a re-export from llama-cloud-services
 0.6.85, missing tier/version/disable_cache fields and ignore_errors=True. Actual
 request/error transport checks precede replacing that SDK path.
 
-17 integrations remain unverified; their native/model/provider lifecycle findings
+13 integrations remain unverified; their native/model/provider lifecycle findings
 are still required. No paid/free-credit calls, public-main merge/release, new
 agents/chats, PDF-Bench or website/deployment changes are authorized. Inherited
 provider files and unrelated untracked work remain preserved and unabsorbed.

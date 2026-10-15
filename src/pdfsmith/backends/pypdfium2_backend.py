@@ -1,39 +1,43 @@
-"""PyPDFium2 backend for pdfsmith."""
+"""PDFium text extraction serialized across all PDFsmith instances."""
 
+import importlib.util
 from pathlib import Path
+from threading import RLock
+from typing import Any
 
-try:
-    import pypdfium2 as pdfium
+from pdfsmith._inputs import validate_input
+from pdfsmith.config import normalize_options
 
-    AVAILABLE = True
-except ImportError:
-    AVAILABLE = False
+AVAILABLE = importlib.util.find_spec("pypdfium2") is not None
+PDFIUM_LOCK = RLock()
 
 
 class PyPDFium2Backend:
-    """PDF parser using PyPDFium2 - Chrome's PDF engine.
-
-    PyPDFium2 wraps PDFium, the PDF rendering engine used in Chrome.
-    Fast and reliable for text extraction.
-    """
-
     name = "pypdfium2"
 
-    def __init__(self) -> None:
-        if not AVAILABLE:
-            raise ImportError(
-                "pypdfium2 is required. Install with: pip install pdfsmith[pypdfium2]"
-            )
+    def __init__(self, **options: Any) -> None:
+        normalize_options(self.name, options, {})
+
+    @property
+    def effective_options(self) -> dict[str, Any]:
+        return {}
 
     def parse(self, pdf_path: Path) -> str:
-        """Parse PDF to markdown string."""
-        pdf = pdfium.PdfDocument(pdf_path)
+        path = validate_input(pdf_path)
+        with PDFIUM_LOCK:
+            import pypdfium2 as pdfium
 
-        pages_text = []
-        for page in pdf:
-            textpage = page.get_textpage()
-            text = textpage.get_text_range()
-            if text.strip():
-                pages_text.append(text.strip())
-
-        return "\n\n".join(pages_text)
+            with pdfium.PdfDocument(path) as document:
+                parts = []
+                for page in document:
+                    try:
+                        textpage = page.get_textpage()
+                        try:
+                            text = textpage.get_text_range().strip()
+                            if text:
+                                parts.append(text)
+                        finally:
+                            textpage.close()
+                    finally:
+                        page.close()
+                return "\n\n".join(parts)

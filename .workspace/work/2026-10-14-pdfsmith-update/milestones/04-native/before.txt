@@ -1,0 +1,162 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_native_contracts.py', '-q', '--tb=short']
+Exit: 1
+FFFFFFFFF..FFFF                                                          [100%]
+=================================== FAILURES ===================================
+______ test_constructor_does_not_import_or_initialize_native_sdk[pymupdf] ______
+tests/test_native_contracts.py:32: in test_constructor_does_not_import_or_initialize_native_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E     AssertionError: SDK loaded before parse
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...Traceback (most recent call last):\n  File "<string>", line 1, in <module>\nAssertionError: SDK loaded before parse\n').returncode
+____ test_constructor_does_not_import_or_initialize_native_sdk[pymupdf4llm] ____
+tests/test_native_contracts.py:32: in test_constructor_does_not_import_or_initialize_native_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E     AssertionError: SDK loaded before parse
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...Traceback (most recent call last):\n  File "<string>", line 1, in <module>\nAssertionError: SDK loaded before parse\n').returncode
+_____ test_constructor_does_not_import_or_initialize_native_sdk[pdfminer] ______
+tests/test_native_contracts.py:32: in test_constructor_does_not_import_or_initialize_native_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E     AssertionError: SDK loaded before parse
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...Traceback (most recent call last):\n  File "<string>", line 1, in <module>\nAssertionError: SDK loaded before parse\n').returncode
+_____ test_constructor_does_not_import_or_initialize_native_sdk[pypdfium2] _____
+tests/test_native_contracts.py:32: in test_constructor_does_not_import_or_initialize_native_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E     AssertionError: SDK loaded before parse
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...Traceback (most recent call last):\n  File "<string>", line 1, in <module>\nAssertionError: SDK loaded before parse\n').returncode
+____ test_direct_and_async_native_extraction_avoid_parent_runtime[pymupdf] _____
+tests/test_native_contracts.py:46: in test_direct_and_async_native_extraction_avoid_parent_runtime
+    assert "pdfsmith" in parse(sample_pdf, backend=backend)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:132: in parse
+    return _content(instance.parse(path))
+                    ^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/pymupdf_backend.py:30: in parse
+    doc = fitz.open(pdf_path)
+          ^^^^^^^^^^^^^^^^^^^
+tests/test_native_contracts.py:42: in forbidden_parent_runtime
+    raise RuntimeError("Native extraction entered parent runtime")
+E   RuntimeError: Native extraction entered parent runtime
+----------------------------- Captured stdout call -----------------------------
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+__ test_direct_and_async_native_extraction_avoid_parent_runtime[pymupdf4llm] ___
+tests/test_native_contracts.py:46: in test_direct_and_async_native_extraction_avoid_parent_runtime
+    assert "pdfsmith" in parse(sample_pdf, backend=backend)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:132: in parse
+    return _content(instance.parse(path))
+                    ^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/pymupdf4llm_backend.py:30: in parse
+    return pymupdf4llm.to_markdown(str(pdf_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf4llm/__init__.py:240: in to_markdown
+    return _layout_to_markdown(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf4llm/__init__.py:90: in _layout_to_markdown
+    parsed_doc = pymupdf4llm.helpers.document_layout.parse_document(
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf4llm/helpers/document_layout.py:1314: in parse_document
+    mydoc = pymupdf.open(doc)
+            ^^^^^^^^^^^^^^^^^
+tests/test_native_contracts.py:42: in forbidden_parent_runtime
+    raise RuntimeError("Native extraction entered parent runtime")
+E   RuntimeError: Native extraction entered parent runtime
+____ test_pdfium_serializes_distinct_instances_and_closes_document_handles _____
+tests/test_native_contracts.py:77: in test_pdfium_serializes_distinct_instances_and_closes_document_handles
+    results = list(
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py:619: in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py:317: in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_native_contracts.py:78: in <lambda>
+    pool.map(lambda _: parse(sample_pdf, backend="pypdfium2"), range(8))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:132: in parse
+    return _content(instance.parse(path))
+                    ^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/pypdfium2_backend.py:30: in parse
+    pdf = pdfium.PdfDocument(pdf_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_native_contracts.py:65: in observed_document
+    raise RuntimeError("Overlapping PDFium runtime calls")
+E   RuntimeError: Overlapping PDFium runtime calls
+_________ test_direct_backend_checks_input_before_sdk_loading[pymupdf] _________
+tests/test_native_contracts.py:94: in test_direct_backend_checks_input_before_sdk_loading
+    backend_type().parse(tmp_path / "missing.pdf")
+src/pdfsmith/backends/pymupdf_backend.py:30: in parse
+    doc = fitz.open(pdf_path)
+          ^^^^^^^^^^^^^^^^^^^
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf/__init__.py:3001: in __init__
+    raise FileNotFoundError(f"no such file: '{filename}'")
+E   pymupdf.FileNotFoundError: no such file: '/tmp/pytest-of-stefan/pytest-20/test_direct_backend_checks_inp0/missing.pdf'
+_______ test_direct_backend_checks_input_before_sdk_loading[pymupdf4llm] _______
+tests/test_native_contracts.py:94: in test_direct_backend_checks_input_before_sdk_loading
+    backend_type().parse(tmp_path / "missing.pdf")
+src/pdfsmith/backends/pymupdf4llm_backend.py:30: in parse
+    return pymupdf4llm.to_markdown(str(pdf_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf4llm/__init__.py:240: in to_markdown
+    return _layout_to_markdown(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf4llm/__init__.py:90: in _layout_to_markdown
+    parsed_doc = pymupdf4llm.helpers.document_layout.parse_document(
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf4llm/helpers/document_layout.py:1314: in parse_document
+    mydoc = pymupdf.open(doc)
+            ^^^^^^^^^^^^^^^^^
+.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/pymupdf/__init__.py:3001: in __init__
+    raise FileNotFoundError(f"no such file: '{filename}'")
+E   pymupdf.FileNotFoundError: no such file: '/tmp/pytest-of-stefan/pytest-20/test_direct_backend_checks_inp1/missing.pdf'
+__________ test_native_options_fail_before_parsing[pymupdf-options0] ___________
+tests/test_native_contracts.py:110: in test_native_options_fail_before_parsing
+    BACKEND_REGISTRY[backend].loader()(**options)
+E   TypeError: PyMuPDFBackend.__init__() got an unexpected keyword argument 'sort'
+________ test_native_options_fail_before_parsing[pymupdf4llm-options1] _________
+tests/test_native_contracts.py:110: in test_native_options_fail_before_parsing
+    BACKEND_REGISTRY[backend].loader()(**options)
+E   TypeError: PyMuPDF4LLMBackend.__init__() got an unexpected keyword argument 'use_llm'
+__________ test_native_options_fail_before_parsing[pdfminer-options2] __________
+tests/test_native_contracts.py:110: in test_native_options_fail_before_parsing
+    BACKEND_REGISTRY[backend].loader()(**options)
+E   TypeError: PDFMinerBackend.__init__() got an unexpected keyword argument 'char_margin'
+_________ test_native_options_fail_before_parsing[pypdfium2-options3] __________
+tests/test_native_contracts.py:110: in test_native_options_fail_before_parsing
+    BACKEND_REGISTRY[backend].loader()(**options)
+E   TypeError: PyPDFium2Backend.__init__() got an unexpected keyword argument 'typo'
+=========================== short test summary info ============================
+FAILED tests/test_native_contracts.py::test_constructor_does_not_import_or_initialize_native_sdk[pymupdf]
+FAILED tests/test_native_contracts.py::test_constructor_does_not_import_or_initialize_native_sdk[pymupdf4llm]
+FAILED tests/test_native_contracts.py::test_constructor_does_not_import_or_initialize_native_sdk[pdfminer]
+FAILED tests/test_native_contracts.py::test_constructor_does_not_import_or_initialize_native_sdk[pypdfium2]
+FAILED tests/test_native_contracts.py::test_direct_and_async_native_extraction_avoid_parent_runtime[pymupdf]
+FAILED tests/test_native_contracts.py::test_direct_and_async_native_extraction_avoid_parent_runtime[pymupdf4llm]
+FAILED tests/test_native_contracts.py::test_pdfium_serializes_distinct_instances_and_closes_document_handles
+FAILED tests/test_native_contracts.py::test_direct_backend_checks_input_before_sdk_loading[pymupdf]
+FAILED tests/test_native_contracts.py::test_direct_backend_checks_input_before_sdk_loading[pymupdf4llm]
+FAILED tests/test_native_contracts.py::test_native_options_fail_before_parsing[pymupdf-options0]
+FAILED tests/test_native_contracts.py::test_native_options_fail_before_parsing[pymupdf4llm-options1]
+FAILED tests/test_native_contracts.py::test_native_options_fail_before_parsing[pdfminer-options2]
+FAILED tests/test_native_contracts.py::test_native_options_fail_before_parsing[pypdfium2-options3]
+13 failed, 2 passed in 3.00s
