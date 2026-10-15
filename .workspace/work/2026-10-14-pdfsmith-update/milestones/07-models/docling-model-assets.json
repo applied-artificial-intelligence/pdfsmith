@@ -1,0 +1,100 @@
+{
+  "preparation": "docling.utils.model_downloader.download_models(output_dir=assets/docling, with_layout=True, with_tableformer=True, with_code_formula=False, with_picture_classifier=False, with_rapidocr=False)",
+  "files": [
+    {
+      "path": "docling-project--docling-layout-heron/.gitattributes",
+      "bytes": 1519,
+      "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361"
+    },
+    {
+      "path": "docling-project--docling-layout-heron/README.md",
+      "bytes": 3219,
+      "sha256": "175700839bc7808eac6af1d0c23e4f483606ab2276fe01122f4093e61a1a65b6"
+    },
+    {
+      "path": "docling-project--docling-layout-heron/config.json",
+      "bytes": 3268,
+      "sha256": "fdea30805ce2f5666b147fca941dcdd27ad468e27d6ed21902207d3da056a97d"
+    },
+    {
+      "path": "docling-project--docling-layout-heron/docling_heron_400.png",
+      "bytes": 96925,
+      "sha256": "e7f78610372b32a7938e480d2c7fa1c3037ee170bd82282a5bd026232f6e6f9e"
+    },
+    {
+      "path": "docling-project--docling-layout-heron/model.safetensors",
+      "bytes": 171658996,
+      "sha256": "00333a43451945aaf89db8ca9c0a17e75d1537c17db60fdb91aa95f4c7929e0c"
+    },
+    {
+      "path": "docling-project--docling-layout-heron/preprocessor_config.json",
+      "bytes": 444,
+      "sha256": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+    },
+    {
+      "path": "docling-project--docling-layout-heron-onnx/.gitattributes",
+      "bytes": 1519,
+      "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361"
+    },
+    {
+      "path": "docling-project--docling-layout-heron-onnx/README.md",
+      "bytes": 294,
+      "sha256": "48de0f07390f6823a225ce8aab348e7b57408534b56b71f1433ed6280456597f"
+    },
+    {
+      "path": "docling-project--docling-layout-heron-onnx/config.json",
+      "bytes": 878,
+      "sha256": "c6e67b6cdf64fa245779d0409bb994aa96e8c1790e15ec07a65843628e232180"
+    },
+    {
+      "path": "docling-project--docling-layout-heron-onnx/model.onnx",
+      "bytes": 171220471,
+      "sha256": "59c81a3a2923042d85034ffc487f8f47e4854117e879aef89b2b9f728fb4922a"
+    },
+    {
+      "path": "docling-project--docling-layout-heron-onnx/preprocessor_config.json",
+      "bytes": 445,
+      "sha256": "54d086cf0d7d371f7fac36e5d3a0dae31e211298affc816106cc376506799d58"
+    },
+    {
+      "path": "docling-project--docling-models/.gitattributes",
+      "bytes": 1905,
+      "sha256": "360aba3ff7ce75396f13f0a77925fe9e79997e8d4bac064595ebb00c82700386"
+    },
+    {
+      "path": "docling-project--docling-models/.gitignore",
+      "bytes": 5180,
+      "sha256": "b44b404189eaff3631c470946e7350c2e88cead304d332a8ad50325e6f56e95d"
+    },
+    {
+      "path": "docling-project--docling-models/README.md",
+      "bytes": 3413,
+      "sha256": "d17f233378eff1240b623b36da76ee8b40afcca05d505949713bf03f7e00822a"
+    },
+    {
+      "path": "docling-project--docling-models/config.json",
+      "bytes": 41,
+      "sha256": "9c34024dc28ff47b75818f415e769809798c29bf9bde6f2ccc63a4acb62396d9"
+    },
+    {
+      "path": "docling-project--docling-models/model_artifacts/tableformer/accurate/tableformer_accurate.safetensors",
+      "bytes": 212758388,
+      "sha256": "2a7d6c924b3cd12fb99a09280ca9c33a89c5d60b93253617d2e088c1a40374d9"
+    },
+    {
+      "path": "docling-project--docling-models/model_artifacts/tableformer/accurate/tm_config.json",
+      "bytes": 7060,
+      "sha256": "984e122ceb8ccf84d84c9d2882f6f2302a44b4f1e577babd6289892c36f3cffd"
+    },
+    {
+      "path": "docling-project--docling-models/model_artifacts/tableformer/fast/tableformer_fast.safetensors",
+      "bytes": 145453276,
+      "sha256": "3119563aab5a7c96fda4d621119b63fd8806272b86c30936d15507616422f718"
+    },
+    {
+      "path": "docling-project--docling-models/model_artifacts/tableformer/fast/tm_config.json",
+      "bytes": 7060,
+      "sha256": "dca6762508dddfae6d57d6cb4ef822c6000119dff0f3b6489db7413118c2622a"
+    }
+  ]
+}

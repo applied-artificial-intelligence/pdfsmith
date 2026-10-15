@@ -1,54 +1,47 @@
 PDFsmith update - October 15, 2026
 
-Reviewed contracts are implemented for static discovery and shared API dispatch;
-all 19 backends remain registered/in scope. External GPT/Claude reports, raw-byte
-archive and dispositions are under reviews/. No additional planning approval needed.
+Actual GPT/Claude reviews reconciled in spec.md, plan.md and reviews/dispositions.txt.
+All 19 registered backends remain required. Implementation is authorized; no
+additional planning approval is needed. The initial review packet remains immutable.
 
-Checkpoint 1: test safety + single-source 0.3.0.dev0 development identity, 8af3910.
-Core-only wheel probes passed Python 3.10-3.13. Unsafe live environment flags were
-reproduced and fixed. All 25 released/public module ASTs compared equal.
+Completed engineering checkpoints:
+- 8af3910: ordinary-test network/credential isolation; development version 0.3.0.dev0.
+  Core-only installed wheels passed Python 3.10-3.13, milestones/01-safety/.
+- 603bfc8: static discovery, explicit/fresh and singleton API contracts, typed options,
+  input_path/pdf_path compatibility and nonblocking async setup. Eight installed
+  pypdf/pdfplumber wheels passed all four Python versions, milestones/02-contracts/.
+- 78aebab: CLI exact UTF-8 output, validated options and staged atomic file output;
+  pre/post-commit fault injection and installed consoles, milestones/03-cli/.
+- dd7a64b, ae1c37c: four additional local parsers, native execution isolation/locking,
+  installed SDK option checks, milestones/04-native/ and 04-native-options/.
+- e7dcbe7, bac52d1: legacy LlamaParse failure replay, modern pinned tier/version/cache
+  requests, complete pages, explicit uncertain completion and content-retaining cleanup
+  errors. Four installed real-SDK offline transports, milestones/05-llamaparse/.
+  This is not live service verification; runtime version/cache-hit remain unknown.
+- 33e6996, baa417d: Kreuzberg/Extractous/Unstructured real native extraction and complete
+  output checks. Eleven installed extra-only wheels, explicit Unstructured Python
+  bounds, model assets and controlled OCR checks, milestones/06-runtime-backends/.
+- 4b68d0b: corrected portable test prerequisites and Python 3.10 filesystem fault
+  injection. Fresh dev+light suites: 196 passed, 79 skipped each on Python 3.10-3.13.
+- Docling: constructor/option regressions reproduced (10 failed, 1 passed before).
+  Four installed extra-only wheels passed CPU public/control/API/async/CLI/OCR,
+  producing-SDK partial-success rejection and handle cleanup before export failure.
+  Latest full dev suite: 235 passed, 51 skipped. Evidence: milestones/07-models/.
+  Source-distribution private-canary inclusion reproduced and fixed with explicit
+  build selection. No actual credentials were included in that reproduction.
 
-Checkpoint 2: discovery without wrapper imports/environment mutation, constructor-
-bound pypdf/pdfplumber options, restored pdf_path keyword/input_path alias, locked
-singleton reuse, fresh convenience instances, defensive typed configuration and
-nonblocking async setup. Unreleased preset/ocr aliases removed. Actual regressions:
-23 failed before; two cache/equality failures also reproduced on preserved code.
-After: 142 passed, 62 optional/live skips, no xfails. Eight isolated extra-only
-wheel environments passed pypdf/pdfplumber public/fixture/API/async/default CLI
-checks on Python 3.10-3.13. Exact package/input/output hashes and command evidence:
-milestones/02-contracts/. These are capability checks, not quality rankings.
+Ten backends now have actual local E2E evidence. Nine lack actual E2E, including
+LlamaParse, which has offline contract evidence. Marker remains open: installed 2.0
+initialization tries a font download; its shared inference servers can persist past
+worker exit, so safe resource ownership must be resolved before conversion claims.
+Next owned work: Marker, the remaining provider contracts, then final package/CI/docs.
 
-Checkpoint 3: CLI options and atomic output, 157 passed / 62 skips. Nine
-original failures reproduced; installed consoles passed Python 3.10-3.13. Exact
-commands, wheel/source/input/output identities: milestones/03-cli/.
-
-Checkpoint 4: native MuPDF process workers, cross-instance PDFium lock and
-PDFMiner options. 178 passed / 61 skips; 16 extra-only installed-wheel
-environments passed Python 3.10-3.13. Public/controlled/error/async/CLI hashes:
-milestones/04-native/. Six of 19 integrations now have local E2E evidence.
-
-Checkpoint 6: Kreuzberg/Extractous/Unstructured complete local capability evidence.
-Twelve original failures repaired; 224 tests passed / 51 skips. Eleven isolated
-extra-only wheels passed public/controlled/API/async/CLI runs on supported Python
-versions; Unstructured 3.10 explicitly rejected. Missing model checks and explicit
-asset preparation recorded. Installed-wheel OCR/hi_res checks passed on controlled
-scanned PDF (Python 3.12). Exact identities, raw outputs and model hashes:
-milestones/06-runtime-backends/. Nine integrations now have local E2E evidence.
-
-Next: Docling/Marker, then remaining provider SDK contracts and final packaging.
-Checkpoint 5: actual legacy LlamaParse transport reproduced dropped mode and
-ERROR-to-empty behavior; replaced with pinned modern SDK and explicit identity.
-212 passed / 51 skips; four extra-only installed wheels passed SDK/API/async/CLI
-OFFLINE checks on Python 3.10-3.13. Cleanup errors retain recovered content/IDs;
-CLI saves a separate private recovery JSON. Modern runtime version/cache-hit
-confirmation remains unknown. Evidence: milestones/05-llamaparse/. Native mode
-correction also passed installed wheels on all four Python versions.
-
-10 integrations remain without real E2E; LlamaParse has offline-contract evidence; their native/model/provider lifecycle findings
-are still required. No paid/free-credit calls, public-main merge/release, new
-agents/chats, PDF-Bench or website/deployment changes are authorized. Inherited
-provider files and unrelated untracked work remain preserved and unabsorbed.
+No paid/free-credit provider calls, public-main merge/release, new agents/chats,
+PDF-Bench experiments or website/deployment changes have occurred or are authorized.
+The active task owns codex/pdfsmith-update-2026-10-14 in the primary checkout;
+no temporary worktrees exist. Four inherited provider modifications and unrelated
+untracked work remain deliberately unabsorbed, with preservation hashes recorded.
 
 Next actions
-No user decision is required for continued unpaid implementation. Live provider
-input/configuration/spending and public merge/release remain separate future gates.
+No user decision is needed for continued unpaid engineering. Live provider inputs,
+configuration/spending, public merge and release remain separate future decisions.

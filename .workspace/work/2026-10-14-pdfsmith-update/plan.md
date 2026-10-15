@@ -360,7 +360,9 @@ Depends on Issue 3.
 Files: docling_backend.py, marker_backend.py and model-backed installed tests.
 
 Move model acquisition out of constructors. Inspect Docling conversion status
-and failures before export; ensure finally cleanup even if export raises. Apply
+and failures before export; ensure finally cleanup even if export raises. The
+verified Docling 2.139 pipeline owns handle cleanup in its finally block; avoid
+double-unloading in the wrapper, and terminate worker-owned model memory. Apply
 OCR-language/table-mode settings through actual pipeline options. Marker remote
 LLM augmentation is unsupported and cannot be activated by defaults or files.
 Model-backed conversions run process-isolated. Real typed partial-conversion

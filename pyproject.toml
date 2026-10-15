@@ -38,7 +38,7 @@ kreuzberg = ["kreuzberg>=4.10.4,<4.11", "pypdf>=4.0"]
 extractous = ["extractous>=0.3,<0.4", "pypdf>=4.0"]
 
 # Heavy backends (ML/deep learning)
-docling = ["docling>=2.0"]
+docling = ["docling>=2.139,<2.140", "pypdf>=4.0"]
 marker = ["marker-pdf>=1.0"]
 
 # Commercial backends (cloud OCR)
@@ -82,7 +82,7 @@ all = [
     "unstructured[pdf]>=0.27.27,<0.28; python_version >= '3.11' and python_version < '3.14'",
     "kreuzberg>=4.10.4,<4.11",
     "extractous>=0.3,<0.4",
-    "docling>=2.0",
+    "docling>=2.139,<2.140",
     # Note: Commercial backends excluded from 'all' due to credential requirements
 ]
 
@@ -115,6 +115,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pdfsmith"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src/pdfsmith", "tests", "README.md", "LICENSE", "pyproject.toml", "uv.lock"]
 
 [tool.hatch.version]
 path = "src/pdfsmith/__init__.py"

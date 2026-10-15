@@ -324,21 +324,35 @@
       "package": "docling",
       "weight": "heavy",
       "extra": "docling",
-      "source_disposition": "Source inspected; model E2E pending. Retain/repair configuration: ocr_languages and table_mode are stored/known but not applied in converter setup. Check actual image conversion and dependencies.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired; lazy typed frozen configuration, process-isolated CPU models, complete status/page checks and SDK finally cleanup verified. Image-asset options rejected because the string interface cannot return them.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
-      "system_requirements": "pending isolated runtime check",
+      "options_contract": [
+        "Authoritative constructor schema: src/pdfsmith/backends/docling_backend.py; OCR uses local Tesseract, en/de/fr/es aliases normalize to its codes; environment lists use JSON."
+      ],
+      "system_requirements": [
+        "Preinstalled local layout/TableFormer assets; Tesseract executable and selected language data for do_ocr=true."
+      ],
       "execution_policy": "process",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
       ],
       "source_path": "src/pdfsmith/backends/docling_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/07-models/installed-docling-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "marker",

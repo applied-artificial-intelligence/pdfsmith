@@ -275,6 +275,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="docling",
         description="IBM document conversion",
         package="docling",
+        dependencies=("docling", "pypdf"),
         weight="heavy",
         loader=_load_docling,
     ),

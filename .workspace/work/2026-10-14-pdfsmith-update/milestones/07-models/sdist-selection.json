@@ -1,0 +1,30 @@
+[
+  {
+    "mode": "before",
+    "command": [
+      "uv",
+      "build",
+      "--sdist",
+      "--out-dir",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/sdist-selection/artifacts-before"
+    ],
+    "exit": 0,
+    "private_canary_in_archive": true,
+    "archive_sha256": "f33efd27708c6319bf0735aff4c62266273f8e8de90c162fdb8b7f5a2ab90621",
+    "member_count": 53
+  },
+  {
+    "mode": "after",
+    "command": [
+      "uv",
+      "build",
+      "--sdist",
+      "--out-dir",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/sdist-selection/artifacts-after"
+    ],
+    "exit": 0,
+    "private_canary_in_archive": false,
+    "archive_sha256": "dea0cb8d595ae5a92777f30bf666f5e631f4f2e0d2714bdd01dfc481e10e8349",
+    "member_count": 51
+  }
+]

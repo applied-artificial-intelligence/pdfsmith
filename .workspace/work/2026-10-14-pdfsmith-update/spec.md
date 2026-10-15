@@ -90,6 +90,9 @@ establish the behavior or quality of a PDFsmith integration.
    PDFSMITH_<backend>_ variables raise; unrelated provider credential variables are
    outside option scanning. Alias conflicts at equal precedence raise. Docling's
    documented OCR/THREADS/TABLE_STRUCTURE aliases normalize to canonical keys.
+   Docling uses local Tesseract for OCR; its constructor schema defines language
+   aliases and table modes. Image-asset generation options are rejected because
+   the string result cannot deliver their assets.
    Effective options are normalized once, copied defensively and exposed without
    credentials. Constructors do not reread options after validation. Core import
    and pdfsmith.config import work without PyYAML; YAML use requires a declared

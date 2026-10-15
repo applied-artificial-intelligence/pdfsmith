@@ -87,6 +87,8 @@ def _extract(backend: str, path: str, options: dict[str, Any]) -> str:
         from pdfsmith.backends.kreuzberg_backend import _extract as extract
     elif backend == "extractous":
         from pdfsmith.backends.extractous_backend import _extract as extract
+    elif backend == "docling":
+        from pdfsmith.backends.docling_backend import _extract as extract
     elif backend == "unstructured":
         from pdfsmith.backends.unstructured_backend import _extract as extract
     else:
