@@ -30,23 +30,21 @@ Completed engineering checkpoints:
   Source-distribution private-canary inclusion reproduced and fixed with explicit
   build selection. No actual credentials were included in that reproduction.
 
-Ten backends now have actual local E2E evidence. Nine lack actual E2E, including
-LlamaParse, which has offline contract evidence. Marker remains open: installed 2.0
-initialization tries a font download; its shared inference servers can persist past
-worker exit, so full integration verification requires explicit server ownership and cleanup.
-Marker ownership/configuration repair is implemented with Marker 2.0.0 and Surya
-0.22.1 pinned. Controlled installed Python 3.12 digital and local CPU OCR calls
-returned their expected text and terminated the owned inference processes. Source
-suite: 247 passed, 51 skipped; focused model/ownership/network/recovery tests: 23
-passed after port revocation. Four-version public/fixture/CLI/async SDK runs are
-running with explicit text-layer mode for the public text PDF and default OCR
-for the controlled scan. Earlier runs were stopped or had harness setup failures;
-those logs are retained separately. Marker remains unverified until the fresh runs
-close. Real SDK transport checks reproduced ignored token-limit status and now
-reject incomplete inference before retry/fallback can publish it. Local RPC
-bypasses ambient proxies inside workers. No model servers from the stopped runs
-remain.
-Next owned work: finish Marker evidence, remaining providers, final package/CI/docs.
+Eleven local backends now have actual E2E evidence. Docling and Marker both passed
+four isolated extra-only environments on Python 3.10-3.13. Marker uses explicit
+text-layer mode for the public text PDF and default OCR for the controlled scan;
+options, API/direct/async/CLI routes, missing/corrupt/blank inputs, producing-SDK
+partial documents, renderer failure and owned server termination passed. Real
+SDK protocol checks reject token-limited/refused inference before Surya drops
+status, and abort queued work after failure. Local RPC bypasses ambient proxies;
+all four model runs passed under invalid proxy settings with test network guards.
+Latest source suite at 9acc1fc: 247 passed, 51 skipped; focused model suite: 23 passed.
+Evidence, exact model/source/wheel/input/output hashes: milestones/07-models/.
+Earlier interrupted or harness-failed attempts remain labeled separately.
+
+Eight hosted backends lack actual live E2E; LlamaParse has offline SDK contract
+evidence already. Next owned work: AWS/Azure, Google, Databricks, Anthropic,
+OpenAI and Gemini SDK contracts, then final packaging/CI/README reconciliation.
 
 No paid/free-credit provider calls, public-main merge/release, new agents/chats,
 PDF-Bench experiments or website/deployment changes have occurred or are authorized.

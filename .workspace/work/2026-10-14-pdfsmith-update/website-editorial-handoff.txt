@@ -7,8 +7,9 @@ Module/distribution/CLI development identity now agrees. No public-main merge,
 release, website publication or deployment has occurred or is authorized.
 
 Actual local E2E evidence covers pypdf, pdfplumber, PyMuPDF, PyMuPDF4LLM,
-PDFMiner, PDFium, Kreuzberg, Extractous, Unstructured and Docling. Installed extra-only wheels passed identified public and
-controlled PDF checks on Python 3.10-3.13. Options, async/direct/CLI routes,
+PDFMiner, PDFium, Kreuzberg, Extractous, Unstructured, Docling and Marker. Installed extra-only wheels passed identified public and
+controlled PDF checks across their recorded supported Python ranges within
+3.10-3.13; Unstructured explicitly rejects Python 3.10. Options, async/direct/CLI routes,
 blank/corrupt/missing inputs, native execution policy and output preservation
 are documented with exact source/wheel/input/output hashes in milestones/.
 This proves the stated capability, not comparative parsing quality or speed.
@@ -22,14 +23,17 @@ the response. Legacy mode omission and ERROR-to-empty behavior were reproduced.
 Cleanup errors preserve completed content and resource identifiers; CLI recovery
 uses a separate private JSON and keeps an error exit and the prior destination.
 
-All 19 names remain registered/in scope. Nine lack actual E2E evidence,
+All 19 names remain registered/in scope. Eight lack actual live E2E evidence,
 including LlamaParse. Controlled scanned-PDF OCR passed for Kreuzberg and
-Unstructured on Python 3.12, and Docling on Python 3.10-3.13, through installed wheels; this is a capability check,
+Unstructured on Python 3.12, and Docling/Marker on Python 3.10-3.13, through installed wheels; this is a capability check,
 not an OCR-quality comparison. Standalone image formats remain unsupported.
 Unstructured requires a preinstalled spaCy model and layout assets for hi_res;
 its Pillow dependencies conflict with Marker, so use separate environments. Discovery
 reports static registration and dependency presence; configuration is not checked.
-Default selection retains its fixed local preference order. No best-parser claim.
+Marker is pinned to 2.0.0/Surya 0.22.1 and uses local CPU inference with
+owned model processes. Public text-PDF checks used text-layer mode; default OCR
+passed the controlled scan. A compatible local llama-server binary is required
+for OCR. Default selection retains its fixed local preference order. No best-parser claim.
 
 Authoritative current contracts: spec.md and plan.md. Returned GPT/Claude reports
 and dispositions are under reviews/. The original external-review packet remains

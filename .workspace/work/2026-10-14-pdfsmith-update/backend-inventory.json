@@ -360,8 +360,8 @@
       "package": "marker-pdf",
       "weight": "heavy",
       "extra": "marker",
-      "source_disposition": "Repaired lazy options and owned SDK2 model processes. Controlled Python 3.12 digital/CPU-OCR diagnostics passed; complete installed matrix remains active and is not a verified closure.",
-      "current_evidence": "controlled-diagnostics; full installed verification pending",
+      "source_disposition": "Repaired and verified: lazy typed options, fresh worker, owned local model servers, complete page metadata, inference finish/refusal checks, cleanup/recovery and proxy isolation. CPU fast mode only; no remote LLM augmentation or standalone-image claim.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -373,11 +373,18 @@
       "evidence_states": [
         "registered",
         "dependency-present",
-        "constructible"
+        "constructible",
+        "local-e2e"
       ],
       "source_path": "src/pdfsmith/backends/marker_backend.py",
       "direct_async_method": false,
-      "evidence_path": "milestones/07-models/marker-initial-diagnostics.json"
+      "evidence_path": "milestones/07-models/installed-marker-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "aws_textract",

@@ -1,0 +1,22 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.13/bin/python', '-I', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/marker_probe.py', '--document', '/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf', '--fixtures', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures', '--assets', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/marker', '--binary', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/marker/llamacpp/llama-b11669/llama-server', '--output', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/marker-outputs-3.13']
+Exit: 0
+{
+  "outputs": {
+    "controlled.md": "ed083d98da6674e5d7186fe81900d2edb6fc6cfc5ceb7061151f4bcb7bfb0e95",
+    "configured.md": "948c30014474082a76f843a29e6ec61f746d14b0cfc8e7cf806189a318edfc8f",
+    "ocr.md": "c22767d33d584ec2a404f2215ab3ac5309573f7ae98efb5a804cca3c00269d40",
+    "public.md": "3928c8bf389cd237bbe9574c29632beb03481b80689456034c7ffcf652c88d4d"
+  },
+  "errors": {
+    "missing": {
+      "type": "FileNotFoundError",
+      "message": "Input file not found: /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/missing.pdf"
+    },
+    "corrupt": {
+      "type": "RuntimeError",
+      "message": "Stream has ended unexpectedly"
+    },
+    "partial": "Marker returned incomplete page coverage",
+    "export": "Controlled Marker renderer failure"
+  }
+}
