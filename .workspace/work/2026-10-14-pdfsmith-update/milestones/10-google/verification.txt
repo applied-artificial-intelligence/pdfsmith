@@ -1,0 +1,67 @@
+Google Document AI - offline SDK contract verification
+
+The inherited provider modification was preserved byte-for-byte in
+inherited-source.tar.gz before integration; inherited-sha256.txt identifies it.
+before.json shows actual public API calls through the real SDK returning text
+with document.error or missing page metadata. batch-before.json replays the
+inherited batch path on an actual 16-page PDF and real REST/storage SDK transports:
+lexicographic filenames reverse the text, an individual document error is ignored,
+and missing/duplicate shards are returned as successful partial/duplicated text.
+Clients were not closed. No cloud operation occurred.
+
+Repaired behavior: lazy constructor, validated options and declared pypdf count;
+explicit sync/batch/auto selection; 15-page/40MB sync and 500-page/1GB batch wrapper
+upper bounds. Processor-specific lower server limits can still reject requests.
+Optional processor_version is sent in the resource name. skip_human_review=true;
+no images/figure augmentation is requested. Standard Google ADC resolves only at
+parse-time client creation, never during discovery/construction.
+
+Google SDK 3.16.x and storage 3.17.x perform actual REST serialization, upload,
+polling, typed protobuf metadata decode and JSON shard downloads through a strict
+in-memory HTTP adapter. SDK/API/direct/async/console checks passed four isolated,
+noneditable extra-only installs, Python 3.10-3.13. Ordinary DNS/TCP is denied.
+The 9MB controlled PDF exercises actual resumable upload and server checksum
+confirmation. Its upload hash matches the original PDF; smaller PDFs use actual
+SDK multipart upload. No test/fixture dependencies mask target requirements.
+Evidence: installed-3.*.json, run/install logs and raw-outputs.tar.gz. These contain
+exact package/wheel/source/dependency/input/output identities and outgoing URLs.
+
+Complete success requires the matching known terminal operation, SUCCEEDED
+metadata, exactly one matching input-document status with code zero and an output
+destination inside the owned prefix/bucket. Shards must have complete unique
+indices/counts, contiguous text offsets and complete ordered page coverage.
+Document-level errors, missing/mismatched responses and incomplete shards raise.
+Blank sync output is valid only with complete pages. Partial semantic omissions
+cannot be detected by metadata alone and are outside this contract.
+
+No submission retries. Polling is explicitly bounded. Known jobs receive a bounded
+cancellation request on uncertainty, followed by one bounded terminal-state check.
+Unknown jobs retain their input/output resources and surface operation/GCS IDs.
+Only confirmed terminal work or rejected submissions permit owned-prefix deletion;
+object deletion uses generation preconditions. Storage, operations and processor
+sessions close on all paths. Completed output plus cleanup error is retained in
+BackendOperationError and separate private CLI recovery JSON.
+
+SDK compatibility evidence: Document AI 3.16.0 overrides the REST cancel routing
+without a body binding; real cancel_operation raised KeyError('body'). The wrapper
+adds the missing body='*' to its owned operations transport before cancellation.
+The core OperationsRestTransport.close() raises NotImplementedError, so its owned
+session is closed directly. These localized SDK seams explain the narrow pin.
+The tests actually emit the cancel POST and assert three owned session closes.
+
+Focused source tests: runtime/dev-env/bin/python -m pytest -q
+ tests/test_google_contracts.py --tb=line: 34 passed, including actual auto batch,
+resumable upload, status/shard/page errors, rejected/ambiguous submission, timeout,
+cancellation confirmation/failure, unknown identity and cleanup/content retention.
+Ruff and repository mypy passed. A full suite with the added Google cases passed
+309 tests/22 skipped before the final added resumable-upload case. The following
+full-suite refresh passed 320 tests/12 skipped in 41.87s. Skipped services are not passes.
+
+Official current contracts consulted October 15, 2026:
+https://docs.cloud.google.com/document-ai/limits
+https://docs.cloud.google.com/document-ai/docs/reference/rest/v1/Document
+https://docs.cloud.google.com/document-ai/docs/reference/rest/Shared.Types/BatchProcessMetadata
+https://docs.cloud.google.com/document-ai/docs/reference/rest/v1/DocumentOutputConfig
+https://docs.cloud.google.com/document-ai/docs/samples/documentai-batch-process-document
+Live authentication, processor availability/permissions, OCR execution and billing
+remain unverified. Offline SDK results are not a live service or quality claim.

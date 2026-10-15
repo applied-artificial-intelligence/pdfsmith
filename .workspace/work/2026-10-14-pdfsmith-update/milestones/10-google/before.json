@@ -1,0 +1,41 @@
+[
+  {
+    "case": "complete",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "client_close_calls": 0,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/processors/processor:process?%24alt=json%3Benum-encoding%3Dint"
+      }
+    ]
+  },
+  {
+    "case": "document-error",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "client_close_calls": 0,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/processors/processor:process?%24alt=json%3Benum-encoding%3Dint"
+      }
+    ]
+  },
+  {
+    "case": "missing-pages",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "client_close_calls": 0,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/processors/processor:process?%24alt=json%3Benum-encoding%3Dint"
+      }
+    ]
+  }
+]

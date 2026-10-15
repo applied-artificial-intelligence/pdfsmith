@@ -1106,8 +1106,7 @@ version = "0.73.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "google-auth" },
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf" },
     { name = "requests" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a8/7f/cfb2a00d10f6295332616e5b22f2ae3aaf2841a3afa6c49262acb6b94f5b/databricks_sdk-0.73.0.tar.gz", hash = "sha256:db09eaaacd98e07dded78d3e7ab47d2f6c886e0380cb577977bd442bace8bd8d", size = 801017, upload-time = "2025-11-05T06:52:58.509Z" }
@@ -1523,8 +1522,7 @@ dependencies = [
     { name = "google-auth" },
     { name = "googleapis-common-protos" },
     { name = "proto-plus" },
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf" },
     { name = "requests" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/61/da/83d7043169ac2c8c7469f0e375610d78ae2160134bf1b80634c482fa079c/google_api_core-2.28.1.tar.gz", hash = "sha256:2b405df02d68e68ce0fbc138559e6036559e685159d148ae5861013dc201baf8", size = 176759, upload-time = "2025-10-28T21:34:51.529Z" }
@@ -1567,24 +1565,23 @@ wheels = [
 
 [[package]]
 name = "google-cloud-documentai"
-version = "3.7.0"
+version = "3.16.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "google-api-core", extra = ["grpc"] },
     { name = "google-auth" },
     { name = "grpcio" },
     { name = "proto-plus" },
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/02/58/0d22b0a315aac8716cdc66c690595a7397dc91499177039171426450de34/google_cloud_documentai-3.7.0.tar.gz", hash = "sha256:be4a912acfdbeb1f03d48d8bb869ad85e6bc4e38b57a88d9a894e8950f5883bf", size = 352699, upload-time = "2025-10-17T02:34:41.232Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/77/57/fcb7cb904c9d4a39953ccc798e2bce5d260171142ba41467fdf2cb29e090/google_cloud_documentai-3.16.0.tar.gz", hash = "sha256:b9988746f8eb95aa7fee13c5812a9e3573d1b9322bc7f54b40efe9ab7a9281fd", size = 360531, upload-time = "2026-10-01T18:16:21.535Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/82/af/eea48c24cea7da859d0ca4fdbbbb449bf31cbad66bb57287e2fba06765aa/google_cloud_documentai-3.7.0-py3-none-any.whl", hash = "sha256:ff1dc9aacbf4e0e1807ef7a47d2ea0ac9b441ddbff18548d49cdc6dcb5368183", size = 303041, upload-time = "2025-10-17T02:32:49.014Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/a4/6c9236d57b8bda960dee6d7f809f80f89039f075bde1d9be66b887a09397/google_cloud_documentai-3.16.0-py3-none-any.whl", hash = "sha256:8b2feabd8ea266e68d9a32e60f3d6cc48d940b8c8150215e6ee5f409264bd12a", size = 309115, upload-time = "2026-10-01T18:10:01.246Z" },
 ]
 
 [[package]]
 name = "google-cloud-storage"
-version = "3.6.0"
+version = "3.17.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "google-api-core" },
@@ -1594,9 +1591,9 @@ dependencies = [
     { name = "google-resumable-media" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f4/cd/7e112cf025b2b591067b599e4bfe965df0c12b0cc0afdb5556469bff126d/google_cloud_storage-3.6.0.tar.gz", hash = "sha256:29cc6b9a6c0fc9cdad071e375d540a5a50fbc9a7fad8300fa02fb904f6fe2ca2", size = 17251072, upload-time = "2025-11-17T10:18:29.81Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1d/d8/9d6444c1bc301bd4bad36cc91306524e8aba670cbefcc0d2fc184c88fbea/google_cloud_storage-3.17.1.tar.gz", hash = "sha256:b24df37900f5e0a93518bd7d3a2a7b7b48d8a1e72add8eb57d53a38b8b2b0640", size = 17355234, upload-time = "2026-10-15T17:49:57.847Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ae/ef/3b57bf617ee0c79450c1ff211d1eb888db8fc1050ac74b3e52cc6ed86e63/google_cloud_storage-3.6.0-py3-none-any.whl", hash = "sha256:5decbdddd63b7d1fc3e266a393ad6453d2e27d172bd982b1e2f15481668db097", size = 299039, upload-time = "2025-11-17T10:18:27.66Z" },
+    { url = "https://files.pythonhosted.org/packages/09/77/4376bb26f24966008a9522c61bae025d7030baabf443f20c4b795fb58308/google_cloud_storage-3.17.1-py3-none-any.whl", hash = "sha256:287c7919d7bcda710eae6f6b60c756e89140475d9a4daec01b6174e737488ca8", size = 345706, upload-time = "2026-10-15T17:49:27.497Z" },
 ]
 
 [[package]]
@@ -1608,7 +1605,7 @@ dependencies = [
     { name = "google-auth", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
     { name = "grpcio", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
     { name = "proto-plus", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
+    { name = "protobuf", marker = "python_full_version >= '3.11' and python_full_version < '3.14'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/2c/5d/dca91808ab37834cda879039335fc53e4455e904caa979f5d1b4c69fffb5/google_cloud_vision-3.16.0.tar.gz", hash = "sha256:dcbf584b7911f7379cab88fbf9c32bc8d19f16718f9594d7fd65af23246b01b0", size = 580781, upload-time = "2026-10-01T18:18:43.158Z" }
 wheels = [
@@ -1686,8 +1683,7 @@ name = "googleapis-common-protos"
 version = "1.72.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/e5/7b/adfd75544c415c487b33061fe7ae526165241c1ea133f9a9125a56b39fd8/googleapis_common_protos-1.72.0.tar.gz", hash = "sha256:e55a601c1b32b52d7a3e65f43563e2aa61bcd737998ee672ac9b951cd49319f5", size = 147433, upload-time = "2025-11-06T18:29:24.087Z" }
 wheels = [
@@ -1762,8 +1758,7 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "googleapis-common-protos" },
     { name = "grpcio" },
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3f/46/e9f19d5be65e8423f886813a2a9d0056ba94757b0c5007aa59aed1a961fa/grpcio_status-1.76.0.tar.gz", hash = "sha256:25fcbfec74c15d1a1cb5da3fab8ee9672852dc16a5a9eeb5baf7d7a9952943cd", size = 13679, upload-time = "2025-10-21T16:28:52.545Z" }
 wheels = [
@@ -3700,7 +3695,7 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ml-dtypes", marker = "(python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'win32') or (python_full_version == '3.12.*' and sys_platform == 'win32')" },
     { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'win32') or (python_full_version == '3.12.*' and sys_platform == 'win32')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'win32') or (python_full_version == '3.12.*' and sys_platform == 'win32')" },
+    { name = "protobuf", marker = "(python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'win32') or (python_full_version == '3.12.*' and sys_platform == 'win32')" },
     { name = "typing-extensions", marker = "(python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'win32') or (python_full_version == '3.12.*' and sys_platform == 'win32')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3f/62/bc2dfadb63ecf04cb2d65a6b17751863039d36c65de51d6a3128ab35f1e7/onnx-1.23.2.tar.gz", hash = "sha256:008cb0467b2bbee41448acc7da8b6f4e704624cb0d327a2d5adafc7ce19bc5b8", size = 6023090, upload-time = "2026-10-06T04:25:58.681Z" }
@@ -3743,7 +3738,7 @@ dependencies = [
     { name = "flatbuffers", marker = "python_full_version < '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
     { name = "packaging", marker = "python_full_version < '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf", marker = "python_full_version < '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
     { name = "sympy", marker = "python_full_version < '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
 ]
 wheels = [
@@ -3825,8 +3820,7 @@ dependencies = [
     { name = "flatbuffers", marker = "python_full_version >= '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
     { name = "numpy", version = "2.3.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
     { name = "packaging", marker = "python_full_version >= '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf", marker = "python_full_version >= '3.11' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a7/e7/61b2768393646bd12e31eeb71958193f4e02c98c4980cf9289d19bbb4a8f/onnxruntime-1.31.0-cp311-cp311-macosx_14_0_arm64.whl", hash = "sha256:cbf1a7f6470ddfe9dbc781966af8ce4a10e1858d75a93f93cc6b9367c9587870", size = 20871717, upload-time = "2026-10-09T04:18:03.504Z" },
@@ -4226,6 +4220,7 @@ dev = [
     { name = "reportlab" },
     { name = "ruff" },
     { name = "types-pyyaml" },
+    { name = "types-requests" },
 ]
 docling = [
     { name = "docling" },
@@ -4248,6 +4243,8 @@ gemini = [
 google = [
     { name = "google-cloud-documentai" },
     { name = "google-cloud-storage" },
+    { name = "pypdf", version = "6.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "pypdf", version = "6.20.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
 ]
 kreuzberg = [
     { name = "kreuzberg" },
@@ -4329,10 +4326,10 @@ requires-dist = [
     { name = "docling", marker = "extra == 'docling'", specifier = ">=2.139,<2.140" },
     { name = "extractous", marker = "extra == 'all'", specifier = ">=0.3,<0.4" },
     { name = "extractous", marker = "extra == 'extractous'", specifier = ">=0.3,<0.4" },
-    { name = "google-cloud-documentai", marker = "extra == 'commercial'", specifier = ">=2.0" },
-    { name = "google-cloud-documentai", marker = "extra == 'google'", specifier = ">=2.0" },
-    { name = "google-cloud-storage", marker = "extra == 'commercial'", specifier = ">=2.0" },
-    { name = "google-cloud-storage", marker = "extra == 'google'", specifier = ">=2.0" },
+    { name = "google-cloud-documentai", marker = "extra == 'commercial'", specifier = ">=3.16,<3.17" },
+    { name = "google-cloud-documentai", marker = "extra == 'google'", specifier = ">=3.16,<3.17" },
+    { name = "google-cloud-storage", marker = "extra == 'commercial'", specifier = ">=3.17,<3.18" },
+    { name = "google-cloud-storage", marker = "extra == 'google'", specifier = ">=3.17,<3.18" },
     { name = "google-genai", marker = "extra == 'frontier'", specifier = ">=1.0" },
     { name = "google-genai", marker = "extra == 'gemini'", specifier = ">=1.0" },
     { name = "kreuzberg", marker = "extra == 'all'", specifier = ">=4.10.4,<4.11" },
@@ -4366,6 +4363,7 @@ requires-dist = [
     { name = "pypdf", marker = "extra == 'commercial'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'docling'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'extractous'", specifier = ">=4.0" },
+    { name = "pypdf", marker = "extra == 'google'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'kreuzberg'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'light'", specifier = ">=4.0" },
     { name = "pypdf", marker = "extra == 'llamaparse'", specifier = ">=4.0" },
@@ -4384,6 +4382,7 @@ requires-dist = [
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6" },
     { name = "surya-ocr", marker = "extra == 'marker'", specifier = "==0.22.1" },
     { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0" },
+    { name = "types-requests", marker = "extra == 'dev'", specifier = ">=2.32" },
     { name = "unstructured", extras = ["pdf"], marker = "python_full_version >= '3.11' and python_full_version < '3.14' and extra == 'all'", specifier = ">=0.27.27,<0.28" },
     { name = "unstructured", extras = ["pdf"], marker = "python_full_version >= '3.11' and python_full_version < '3.14' and extra == 'unstructured'", specifier = ">=0.27.27,<0.28" },
 ]
@@ -4816,8 +4815,7 @@ name = "proto-plus"
 version = "1.26.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "protobuf", version = "6.33.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or python_full_version >= '3.14' or (extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
-    { name = "protobuf", version = "6.33.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and python_full_version < '3.14') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version < '3.11' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker') or (python_full_version >= '3.14' and extra == 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')" },
+    { name = "protobuf" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f4/ac/87285f15f7cce6d4a008f33f1757fb5a13611ea8914eb58c3d0d26243468/proto_plus-1.26.1.tar.gz", hash = "sha256:21a515a4c4c0088a773899e23c7bbade3d18f9c66c73edd4c7ee3816bc96a012", size = 56142, upload-time = "2025-03-10T15:54:38.843Z" }
 wheels = [
@@ -4826,66 +4824,8 @@ wheels = [
 
 [[package]]
 name = "protobuf"
-version = "6.33.1"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'darwin'",
-    "python_full_version >= '3.14' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "(python_full_version >= '3.14' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.14' and sys_platform != 'darwin' and sys_platform != 'linux')",
-    "python_full_version < '3.11' and sys_platform == 'darwin'",
-    "python_full_version < '3.11' and platform_machine == 'aarch64' and sys_platform == 'linux'",
-    "(python_full_version < '3.11' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.11' and sys_platform != 'darwin' and sys_platform != 'linux')",
-]
-sdist = { url = "https://files.pythonhosted.org/packages/0a/03/a1440979a3f74f16cab3b75b0da1a1a7f922d56a8ddea96092391998edc0/protobuf-6.33.1.tar.gz", hash = "sha256:97f65757e8d09870de6fd973aeddb92f85435607235d20b2dfed93405d00c85b", size = 443432, upload-time = "2025-11-13T16:44:18.895Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/06/f1/446a9bbd2c60772ca36556bac8bfde40eceb28d9cc7838755bc41e001d8f/protobuf-6.33.1-cp310-abi3-win32.whl", hash = "sha256:f8d3fdbc966aaab1d05046d0240dd94d40f2a8c62856d41eaa141ff64a79de6b", size = 425593, upload-time = "2025-11-13T16:44:06.275Z" },
-    { url = "https://files.pythonhosted.org/packages/a6/79/8780a378c650e3df849b73de8b13cf5412f521ca2ff9b78a45c247029440/protobuf-6.33.1-cp310-abi3-win_amd64.whl", hash = "sha256:923aa6d27a92bf44394f6abf7ea0500f38769d4b07f4be41cb52bd8b1123b9ed", size = 436883, upload-time = "2025-11-13T16:44:09.222Z" },
-    { url = "https://files.pythonhosted.org/packages/cd/93/26213ff72b103ae55bb0d73e7fb91ea570ef407c3ab4fd2f1f27cac16044/protobuf-6.33.1-cp39-abi3-macosx_10_9_universal2.whl", hash = "sha256:fe34575f2bdde76ac429ec7b570235bf0c788883e70aee90068e9981806f2490", size = 427522, upload-time = "2025-11-13T16:44:10.475Z" },
-    { url = "https://files.pythonhosted.org/packages/c2/32/df4a35247923393aa6b887c3b3244a8c941c32a25681775f96e2b418f90e/protobuf-6.33.1-cp39-abi3-manylinux2014_aarch64.whl", hash = "sha256:f8adba2e44cde2d7618996b3fc02341f03f5bc3f2748be72dc7b063319276178", size = 324445, upload-time = "2025-11-13T16:44:11.869Z" },
-    { url = "https://files.pythonhosted.org/packages/8e/d0/d796e419e2ec93d2f3fa44888861c3f88f722cde02b7c3488fcc6a166820/protobuf-6.33.1-cp39-abi3-manylinux2014_s390x.whl", hash = "sha256:0f4cf01222c0d959c2b399142deb526de420be8236f22c71356e2a544e153c53", size = 339161, upload-time = "2025-11-13T16:44:12.778Z" },
-    { url = "https://files.pythonhosted.org/packages/1d/2a/3c5f05a4af06649547027d288747f68525755de692a26a7720dced3652c0/protobuf-6.33.1-cp39-abi3-manylinux2014_x86_64.whl", hash = "sha256:8fd7d5e0eb08cd5b87fd3df49bc193f5cfd778701f47e11d127d0afc6c39f1d1", size = 323171, upload-time = "2025-11-13T16:44:14.035Z" },
-    { url = "https://files.pythonhosted.org/packages/08/b4/46310463b4f6ceef310f8348786f3cff181cea671578e3d9743ba61a459e/protobuf-6.33.1-py3-none-any.whl", hash = "sha256:d595a9fd694fdeb061a62fbe10eb039cc1e444df81ec9bb70c7fc59ebcb1eafa", size = 170477, upload-time = "2025-11-13T16:44:17.633Z" },
-]
-
-[[package]]
-name = "protobuf"
 version = "6.33.6"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version == '3.12.*' and sys_platform == 'win32' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.13.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.13.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.13.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.13.*' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.11.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.11.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.11.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.11.*' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.13.*' and sys_platform == 'win32' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.11.*' and sys_platform == 'win32' and extra != 'extra-8-pdfsmith-marker' and extra == 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.13.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.13.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.13.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.13.*' and sys_platform != 'darwin' and sys_platform != 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.11.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.11.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.11.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.11.*' and sys_platform != 'darwin' and sys_platform != 'linux' and extra != 'extra-8-pdfsmith-all' and extra == 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.12.*' and sys_platform == 'win32' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.13.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.13.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.13.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.13.*' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.12.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.12.*' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.11.*' and sys_platform == 'darwin' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.11.*' and platform_machine == 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "(python_full_version == '3.11.*' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured') or (python_full_version == '3.11.*' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured')",
-    "python_full_version == '3.13.*' and sys_platform == 'win32' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-    "python_full_version == '3.11.*' and sys_platform == 'win32' and extra != 'extra-8-pdfsmith-marker' and extra != 'extra-8-pdfsmith-unstructured'",
-]
 sdist = { url = "https://files.pythonhosted.org/packages/66/70/e908e9c5e52ef7c3a6c7902c9dfbb34c7e29c25d2f81ade3856445fd5c94/protobuf-6.33.6.tar.gz", hash = "sha256:a6768d25248312c297558af96a9f9c929e8c4cee0659cb07e780731095f38135", size = 444531, upload-time = "2026-03-18T19:05:00.988Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/fc/9f/2f509339e89cfa6f6a4c4ff50438db9ca488dec341f7e454adad60150b00/protobuf-6.33.6-cp310-abi3-win32.whl", hash = "sha256:7d29d9b65f8afef196f8334e80d6bc1d5d4adedb449971fefd3723824e6e77d3", size = 425739, upload-time = "2026-03-18T19:04:48.373Z" },
@@ -7755,6 +7695,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/7e/69/3c51b36d04da19b92f9e815be12753125bd8bc247ba0470a982e6979e71c/types_pyyaml-6.0.12.20250915.tar.gz", hash = "sha256:0f8b54a528c303f0e6f7165687dd33fafa81c807fcac23f632b63aa624ced1d3", size = 17522, upload-time = "2025-09-15T03:01:00.728Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/bd/e0/1eed384f02555dde685fff1a1ac805c1c7dcb6dd019c916fe659b1c1f9ec/types_pyyaml-6.0.12.20250915-py3-none-any.whl", hash = "sha256:e7d4d9e064e89a3b3cae120b4990cd370874d2bf12fa5f46c97018dd5d3c9ab6", size = 20338, upload-time = "2025-09-15T03:00:59.218Z" },
+]
+
+[[package]]
+name = "types-requests"
+version = "2.33.0.20261006"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "urllib3" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/57/15/9b7e2e2e7c87d01366185b198b3febc6bc0c973f2bf21a62da4ab7d3495e/types_requests-2.33.0.20261006.tar.gz", hash = "sha256:0652999e9306aea345f40732d58fa49a7f6cade6a0d74d92119c5c8d82eddaf0", size = 25316, upload-time = "2026-10-06T08:15:57.782Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4d/72/b82789207b3d360ce9f5a4372c790c52cc3dd928aeb7d4faeec652b651b2/types_requests-2.33.0.20261006-py3-none-any.whl", hash = "sha256:26cc8146505cab33cda9737991929e4144c559bebe05078ccc6998f27c4ca2c1", size = 21445, upload-time = "2026-10-06T08:15:56.658Z" },
 ]
 
 [[package]]

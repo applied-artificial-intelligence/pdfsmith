@@ -465,8 +465,8 @@
       "package": "google-cloud-documentai",
       "weight": "commercial",
       "extra": "google",
-      "source_disposition": "Inherited batch implementation inspected; offline SDK and live checks pending. Retain/repair per-document failure handling, shard ordering and staging cleanup; PyMuPDF page counting is undeclared in google extra.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Integrated preserved inherited batch proposal; repaired status/shard/resource ownership and verified real SDK offline contracts. Live service remains unverified.",
+      "current_evidence": "offline-contract",
       "input_formats": [
         "pdf"
       ],
@@ -475,14 +475,26 @@
         "GOOGLE_DOCUMENT_AI_PROCESSOR_ID"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "project_id, processor_id, location, processor_version, gcs_bucket, mode, max_wait, poll_interval, request_timeout"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
       ],
       "source_path": "src/pdfsmith/backends/google_document_ai_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/10-google/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "databricks",

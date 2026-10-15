@@ -1,0 +1,278 @@
+[
+  {
+    "case": "complete",
+    "result": {
+      "returned": "FINAL PAGE SENTINEL\n\nFIRST PAGE SENTINEL"
+    },
+    "client_close_calls": 0,
+    "calls": [
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "POST",
+        "url": "https://storage.googleapis.com/upload/storage/v1/b/offline-bucket/o?uploadType=multipart"
+      },
+      {
+        "method": "POST",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/processors/processor:batchProcess?%24alt=json%3Benum-encoding%3Dint"
+      },
+      {
+        "method": "GET",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/operations/owned-job"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F7985eadc3e6f%2Foutput%2F&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F7985eadc3e6f%2Foutput%2Fowned-job%2F0%2Fa-final.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F7985eadc3e6f%2Foutput%2Fowned-job%2F0%2Fz-first.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F7985eadc3e6f%2F&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F7985eadc3e6f%2Finput%2Fgoogle-16-pages.pdf?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F7985eadc3e6f%2Foutput%2Fowned-job%2F0%2Fa-final.json?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F7985eadc3e6f%2Foutput%2Fowned-job%2F0%2Fz-first.json?generation=1&prettyPrint=false"
+      }
+    ],
+    "input_pages": 16
+  },
+  {
+    "case": "individual-error",
+    "result": {
+      "returned": "FINAL PAGE SENTINEL\n\nFIRST PAGE SENTINEL"
+    },
+    "client_close_calls": 0,
+    "calls": [
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "POST",
+        "url": "https://storage.googleapis.com/upload/storage/v1/b/offline-bucket/o?uploadType=multipart"
+      },
+      {
+        "method": "POST",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/processors/processor:batchProcess?%24alt=json%3Benum-encoding%3Dint"
+      },
+      {
+        "method": "GET",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/operations/owned-job"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F190aa69a812a%2Foutput%2F&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F190aa69a812a%2Foutput%2Fowned-job%2F0%2Fa-final.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F190aa69a812a%2Foutput%2Fowned-job%2F0%2Fz-first.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F190aa69a812a%2F&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F190aa69a812a%2Finput%2Fgoogle-16-pages.pdf?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F190aa69a812a%2Foutput%2Fowned-job%2F0%2Fa-final.json?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F190aa69a812a%2Foutput%2Fowned-job%2F0%2Fz-first.json?generation=1&prettyPrint=false"
+      }
+    ],
+    "input_pages": 16
+  },
+  {
+    "case": "missing-shard",
+    "result": {
+      "returned": "FINAL PAGE SENTINEL"
+    },
+    "client_close_calls": 0,
+    "calls": [
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "POST",
+        "url": "https://storage.googleapis.com/upload/storage/v1/b/offline-bucket/o?uploadType=multipart"
+      },
+      {
+        "method": "POST",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/processors/processor:batchProcess?%24alt=json%3Benum-encoding%3Dint"
+      },
+      {
+        "method": "GET",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/operations/owned-job"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F8d73cafe482f%2Foutput%2F&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F8d73cafe482f%2Foutput%2Fowned-job%2F0%2Fa-final.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F8d73cafe482f%2F&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F8d73cafe482f%2Finput%2Fgoogle-16-pages.pdf?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F8d73cafe482f%2Foutput%2Fowned-job%2F0%2Fa-final.json?generation=1&prettyPrint=false"
+      }
+    ],
+    "input_pages": 16
+  },
+  {
+    "case": "duplicate-shard",
+    "result": {
+      "returned": "FINAL PAGE SENTINEL\n\nFIRST PAGE SENTINEL\n\nFIRST PAGE SENTINEL"
+    },
+    "client_close_calls": 0,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://storage.googleapis.com/upload/storage/v1/b/offline-bucket/o?uploadType=multipart"
+      },
+      {
+        "method": "POST",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/processors/processor:batchProcess?%24alt=json%3Benum-encoding%3Dint"
+      },
+      {
+        "method": "GET",
+        "url": "https://us-documentai.googleapis.com/v1/projects/offline/locations/us/operations/owned-job"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F99eeeafc16e9%2Foutput%2F&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F99eeeafc16e9%2Foutput%2Fowned-job%2F0%2Fa-final.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F99eeeafc16e9%2Foutput%2Fowned-job%2F0%2Fduplicate.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/download/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F99eeeafc16e9%2Foutput%2Fowned-job%2F0%2Fz-first.json?alt=media&generation=1"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o?projection=noAcl&prefix=pdfsmith-tmp%2F99eeeafc16e9%2F&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F99eeeafc16e9%2Finput%2Fgoogle-16-pages.pdf?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F99eeeafc16e9%2Foutput%2Fowned-job%2F0%2Fa-final.json?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "GET",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket?projection=noAcl&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F99eeeafc16e9%2Foutput%2Fowned-job%2F0%2Fduplicate.json?generation=1&prettyPrint=false"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://storage.googleapis.com/storage/v1/b/offline-bucket/o/pdfsmith-tmp%2F99eeeafc16e9%2Foutput%2Fowned-job%2F0%2Fz-first.json?generation=1&prettyPrint=false"
+      }
+    ],
+    "input_pages": 16
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "pyproject.toml": "e728624845726fb9434fec70e6bfd1dadade0e34d2b9f50c9a4f7faba639155a",
+  "uv.lock": "ca2b1bc4e74bf9fb1348df8754a8ca1b8d3b0a33b9de1b9d4869e4beca13a8ed",
+  "src/pdfsmith/backends/google_document_ai_backend.py": "77a3211c3ffa91157f1852b13abe9d81aceed8b42205e223b81536f1511d6845",
+  "src/pdfsmith/backends/registry.py": "04e02136afe26f2cff067bbc775db4aa1f1593c02f729e3e877924d49625636a",
+  "tests/test_commercial_backends.py": "5ac13ca9ee35f3cdcfb06213b75ae726920f939a580fc589f14adf94e12e413a",
+  "tests/test_google_contracts.py": "9a4c5c37fab6b5ff51bcc96fd1065a2a5d439d375937c2a0424ebc2714b0a0bd",
+  "tests/google_transport.py": "a5e6389fb20fcf9f0069feeacf19e86a4f4433f4717287ce5e93c0fbc8e56506",
+  ".pre-commit-config.yaml": "c78b5f62b626759ba17bc61ed25a935228c5a4cfc438817363160a042145b0ad"
+}

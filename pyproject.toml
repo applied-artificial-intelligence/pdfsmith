@@ -44,7 +44,7 @@ marker = ["marker-pdf==2.0.0", "surya-ocr==0.22.1", "pypdf>=4.0"]
 # Commercial backends (cloud OCR)
 aws = ["boto3>=1.43,<1.44", "pymupdf>=1.24.3", "pypdf>=4.0"]
 azure = ["azure-ai-documentintelligence>=1.0.2,<1.1", "pypdf>=4.0"]
-google = ["google-cloud-documentai>=2.0", "google-cloud-storage>=2.0"]
+google = ["google-cloud-documentai>=3.16,<3.17", "google-cloud-storage>=3.17,<3.18", "pypdf>=4.0"]
 databricks = ["databricks-sdk>=0.20"]
 llamaparse = ["llama-cloud>=2.18,<2.19", "pypdf>=4.0"]
 
@@ -66,8 +66,8 @@ commercial = [
     "boto3>=1.43,<1.44",
     "pymupdf>=1.24.3",
     "azure-ai-documentintelligence>=1.0.2,<1.1",
-    "google-cloud-documentai>=2.0",
-    "google-cloud-storage>=2.0",
+    "google-cloud-documentai>=3.16,<3.17",
+    "google-cloud-storage>=3.17,<3.18",
     "databricks-sdk>=0.20",
     "llama-cloud>=2.18,<2.19",
     "pypdf>=4.0",
@@ -93,6 +93,7 @@ dev = [
     "pytest-cov>=4.0",
     "ruff>=0.6",
     "mypy>=1.11",
+    "types-requests>=2.32",
     "types-PyYAML>=6.0",  # Type stubs for mypy
     "PyYAML>=6.0",
     "packaging>=24.0",

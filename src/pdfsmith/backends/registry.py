@@ -308,6 +308,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="google_document_ai",
         description="Google Document AI, advanced document understanding",
         package="google-cloud-documentai",
+        dependencies=("google-cloud-documentai", "google-cloud-storage", "pypdf"),
         weight="commercial",
         loader=_load_google_document_ai,
     ),
