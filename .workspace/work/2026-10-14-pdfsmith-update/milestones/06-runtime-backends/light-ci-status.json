@@ -1,0 +1,11 @@
+{
+  "source_commit": "33e69962570d2f761dfc111eca10273b8c749561",
+  "test_sha256": {
+    "tests/test_runtime_backends.py": "33a64dfa20d4b638b7eab2b579a09de164aad15881c49d66b2802cc3fd2609de",
+    "tests/test_native_contracts.py": "36c4b3d5c7949791904b34f8bff4a8e46c6be601d1b1f3c9a8562113847e1bf5",
+    "tests/test_cli_contracts.py": "62505e47b297088332bcc77c543d7c534587894474b1bda163b45e0b72c89dc5"
+  },
+  "before": "Preserved baa417d tests failed in the real Python3.10 light-only installed environment: optional SDK prerequisites and unsupported Unstructured construction were asserted as unconditional success. Python3.10 pathlib accessor additionally exposed a fault-injector descriptor-binding failure. Evidence retained.",
+  "after": "Four fresh wheel[dev,light] environments on Python3.10-3.13: 196 passed,79 optional/live skips each. These are CI-like light-only tests, distinct from the 11 completed per-extra real native E2E runs.",
+  "changes": "Constructor import checks permit documented unsupported runtime errors while still rejecting SDK initialization; execution tests require their actual optional SDK; filesystem fault injector preloads pathlib and patches the Python3.10 static accessor without changing production behavior."
+}

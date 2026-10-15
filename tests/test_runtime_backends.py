@@ -20,8 +20,10 @@ from pdfsmith.backends.registry import BACKEND_REGISTRY
 )
 def test_runtime_constructor_does_not_initialize_sdk(backend, sdk):
     code = (
-        "import sys;from pdfsmith.backends.registry import BACKEND_REGISTRY;"
-        f"BACKEND_REGISTRY[{backend!r}].loader()();"
+        "import sys;from pdfsmith.backends.registry import BACKEND_REGISTRY\n"
+        f"info = BACKEND_REGISTRY[{backend!r}]\n"
+        "try: info.loader()()\n"
+        "except ImportError: assert not info.supports_python()\n"
         f"assert {sdk!r} not in sys.modules, 'SDK initialized before parse'"
     )
     result = subprocess.run(
@@ -31,7 +33,11 @@ def test_runtime_constructor_does_not_initialize_sdk(backend, sdk):
 
 
 @pytest.mark.parametrize("backend", ["kreuzberg", "extractous", "unstructured"])
-def test_runtime_wrapper_validates_input_before_loading_sdk(backend, tmp_path):
+def test_runtime_wrapper_validates_prerequisites_before_loading_sdk(backend, tmp_path):
+    if not BACKEND_REGISTRY[backend].supports_python():
+        with pytest.raises(ImportError, match="requires Python"):
+            BACKEND_REGISTRY[backend].loader()()
+        return
     with pytest.raises(FileNotFoundError):
         BACKEND_REGISTRY[backend].loader()().parse(tmp_path / "missing.pdf")
 

@@ -1,0 +1,8 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', '-q', '--tb=short']
+Install: ['uv', 'pip', 'install', '--python', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ci-light-3.12/bin/python', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[dev,light]']
+Exit: 0
+ssssssssssss............................................................ [ 26%]
+........ssssssssss.ssssssss.sssssssssss.ssssssssss...................... [ 52%]
+............................................................ssssssssssss [ 78%]
+ssssss.......sssss......s...........s...........sss........              [100%]
+196 passed, 79 skipped in 17.82s

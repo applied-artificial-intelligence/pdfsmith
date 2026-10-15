@@ -94,7 +94,7 @@ def test_real_console_io_failure_preserves_existing_output(
     output.write_bytes(b"previous valid output")
     startup = tmp_path / "sitecustomize.py"
     startup.write_text(
-        "import io, os\n"
+        "import io, os, pathlib\n"
         "original = io.open\n"
         "class FailingOutput:\n"
         "    def __init__(self, raw): self._stream = raw\n"
@@ -114,6 +114,8 @@ def test_real_console_io_failure_preserves_existing_output(
         "    raw = original(file, mode, *args, **kwargs)\n"
         "    return FailingOutput(raw) if 'w' in mode else raw\n"
         "io.open = failing_open\n"
+        "if hasattr(pathlib.Path, '_accessor'):\n"
+        "    type(pathlib.Path._accessor).open = staticmethod(failing_open)\n"
     )
     monkeypatch.setenv("PYTHONPATH", str(tmp_path))
     monkeypatch.setenv("PYTHONDONTWRITEBYTECODE", "1")

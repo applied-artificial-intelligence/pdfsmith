@@ -36,7 +36,11 @@ def test_constructor_does_not_import_or_initialize_native_sdk(backend):
 def test_direct_and_async_native_extraction_avoid_parent_runtime(
     backend, sample_pdf, monkeypatch
 ):
-    fitz = pytest.importorskip("fitz")
+    from pdfsmith.backends.registry import BACKEND_REGISTRY
+
+    if not BACKEND_REGISTRY[backend].is_available():
+        pytest.skip(f"Optional {backend} integration is not installed")
+    fitz = importlib.import_module("fitz")
 
     def forbidden_parent_runtime(*args, **kwargs):
         raise RuntimeError("Native extraction entered parent runtime")
