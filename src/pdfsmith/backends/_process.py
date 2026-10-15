@@ -1,4 +1,4 @@
-"""One fresh interpreter per MuPDF extraction, including direct backend calls."""
+"""Fresh interpreter isolation for native extraction, including direct calls."""
 
 import contextlib
 import json
@@ -39,7 +39,7 @@ def extract_in_process(backend: str, path: Path, options: dict[str, Any]) -> str
     return text
 
 
-def _extract(backend: str, path: str, options: dict[str, Any]) -> str:
+def _extract_mupdf(backend: str, path: str, options: dict[str, Any]) -> str:
     import pymupdf
 
     with pymupdf.open(path) as document:
@@ -80,7 +80,38 @@ def _extract(backend: str, path: str, options: dict[str, Any]) -> str:
     raise ValueError(f"Unsupported process backend: {backend}")
 
 
+def _extract(backend: str, path: str, options: dict[str, Any]) -> str:
+    if backend in {"pymupdf", "pymupdf4llm"}:
+        return _extract_mupdf(backend, path, options)
+    if backend == "kreuzberg":
+        from pdfsmith.backends.kreuzberg_backend import _extract as extract
+    elif backend == "extractous":
+        from pdfsmith.backends.extractous_backend import _extract as extract
+    elif backend == "unstructured":
+        from pdfsmith.backends.unstructured_backend import _extract as extract
+    else:
+        raise ValueError(f"Unsupported process backend: {backend}")
+    return extract(Path(path), options)
+
+
+def _test_network_guard() -> None:
+    import os
+
+    if os.environ.get("_PDFSMITH_TEST_OFFLINE") != "1":
+        return
+    import socket
+
+    def denied(*args: Any, **kwargs: Any) -> Any:
+        raise RuntimeError("Outbound networking is disabled in PDFsmith test workers")
+
+    for name in ("connect", "connect_ex"):
+        setattr(socket.socket, name, denied)
+    socket.create_connection = denied
+    socket.getaddrinfo = denied
+
+
 def main() -> None:
+    _test_network_guard()
     request = json.load(sys.stdin)
     response: dict[str, Any]
     try:

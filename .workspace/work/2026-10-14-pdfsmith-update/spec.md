@@ -53,7 +53,9 @@ establish the behavior or quality of a PDFsmith integration.
    live-e2e. These are observations, not a total ordering or readiness guarantee.
    find_spec/metadata detection is dependency presence, not proven importability.
    Configuration discovery lists required variable names; values are not read and
-   configuration status is not-checked. Missing runs and skips never count as passes.
+   configuration status is not-checked. Per-integration Python bounds are explicit
+   registry metadata; default selection excludes an unsupported runtime and direct
+   requests fail with the required range. Missing runs and skips never count as passes.
 3. Discovery reads static metadata and top-level dependency information without
    loading backend wrappers, SDKs or models or changing process environment. Keep
    the released available_backends() local preference order and add a full
@@ -143,6 +145,10 @@ establish the behavior or quality of a PDFsmith integration.
     identity. Per-extra installed-wheel checks use fresh environments, no editable
     source, no fixture-generator/test packages masking dependencies. Test declared
     Python 3.10-3.13 core/baselines or narrow support from reproduced results.
+    Unstructured 0.27.27 requires Python 3.11-3.13 and a preinstalled spaCy model.
+    Keep its incompatible Pillow dependencies separate from Marker; the all bundle
+    already excludes Marker. No optional extra silently grants unsupported runtime
+    capability when its dependency marker excludes the SDK.
 15. Each backend needs actual local E2E or separately authorized live E2E before a
     working-integration claim. Offline SDK checks are labeled offline-contract;
     documented SQL/API compatibility is labeled documentation-backed. Baseline local

@@ -33,6 +33,9 @@ def pytest_sessionstart(session: pytest.Session) -> None:
     assert session.config.cache is not None
     guard.setenv("HOME", str(session.config.cache.mkdir("isolated-home")))
     guard.setenv("AWS_EC2_METADATA_DISABLED", "true")
+    guard.setenv("_PDFSMITH_TEST_OFFLINE", "1")
+    guard.setenv("HF_HUB_OFFLINE", "1")
+    guard.setenv("UNSTRUCTURED_DISABLE_NOTICE", "1")
 
     def denied(*args, **kwargs):
         raise RuntimeError("Outbound networking is disabled in ordinary PDFsmith tests")

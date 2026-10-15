@@ -402,9 +402,16 @@ Depends on Issue 3.
 Files: kreuzberg_backend.py, extractous_backend.py, unstructured_backend.py and native installed tests.
 
 Check the installed Extractous maximum-string-length default and result metadata
-for truncation; configure a documented safe limit or report explicit truncation.
-Kreuzberg sync calls work from running loops with a dedicated thread/loop. Verify
-Rust/Java/OCR runtime safety and actual configuration schemas. No image capability
+for truncation; use its full readinto stream with copied buffers, not its capped
+string API or reusable bytearray references. All three wrappers use isolated
+native workers, including direct sync and async entry points. Verify
+Rust/Java/OCR runtime safety and actual configuration schemas. Unstructured 0.27.27
+requires Python 3.11-3.13 and a preinstalled en_core_web_sm 3.8.0 model; missing
+assets must not trigger implicit installation or empty-success output. Require
+complete page breaks for Unstructured and ordered native pages for Kreuzberg.
+Current Marker and Unstructured PDF extras have incompatible Pillow constraints;
+keep their environments separate and declare uv conflicts, preserving core Python
+3.10 support and an explicit unsupported-Python error for Unstructured. No image capability
 is declared until the wrapper's real PNG/JPEG/TIFF route is tested.
 
 Verify: Run real PDF/native/OCR extra-specific checks, controlled image routes where claimed, async heartbeat and sync-from-running-loop behavior. Check Extractous limit/truncation with reachable long content.

@@ -218,19 +218,30 @@
       "extra": "unstructured",
       "constructor_arguments": "self, strategy: str='fast'",
       "native_parse_async": false,
-      "source_disposition": "Source inspected; native E2E pending. Retain/repair only strategy is accepted while presets/common OCR send additional unsupported keys.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired after actual producing failures; remaining installed/OCR checks explicit in milestones/06-runtime-backends/status.json",
+      "current_evidence": "source implementation plus actual controlled SDK regressions; installed-wheel matrix pending",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
-      "system_requirements": "pending isolated runtime check",
-      "execution_policy": "thread-compatible-pending-runtime-check",
+      "options_contract": [
+        "strategy: fast/hi_res/ocr_only; additional assets/models required",
+        "include_page_breaks: bool"
+      ],
+      "system_requirements": [
+        "Python >=3.11,<3.14",
+        "en_core_web_sm 3.8.0 model, preinstalled",
+        "Tesseract/Poppler for OCR strategies",
+        "Separate environment from Marker (incompatible Pillow requirements)"
+      ],
+      "execution_policy": "process",
       "evidence_states": [
-        "registered"
-      ]
+        "registered",
+        "dependency-present",
+        "constructible"
+      ],
+      "evidence_path": "milestones/06-runtime-backends/"
     },
     {
       "name": "kreuzberg",
@@ -240,19 +251,25 @@
       "extra": "kreuzberg",
       "constructor_arguments": "self, force_ocr: bool=False",
       "native_parse_async": true,
-      "source_disposition": "Source inspected; native E2E pending. Retain/repair SDK config drift and OCR-language constructor mismatch. Sync wrapper uses asyncio.run; native async exists.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired after actual producing failures; remaining installed/OCR checks explicit in milestones/06-runtime-backends/status.json",
+      "current_evidence": "source implementation plus actual controlled SDK regressions; installed-wheel matrix pending",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "force_ocr: bool, default false; explicit local Tesseract only",
+        "output_format: plain/markdown"
+      ],
       "system_requirements": "pending isolated runtime check",
-      "execution_policy": "thread-compatible-pending-runtime-check",
+      "execution_policy": "process",
       "evidence_states": [
-        "registered"
-      ]
+        "registered",
+        "dependency-present",
+        "constructible"
+      ],
+      "evidence_path": "milestones/06-runtime-backends/"
     },
     {
       "name": "extractous",
@@ -262,19 +279,22 @@
       "extra": "extractous",
       "constructor_arguments": "self",
       "native_parse_async": false,
-      "source_disposition": "Source inspected; native E2E pending. Retain; verify current native/Java dependencies, real input types, tuple result and resource behavior.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired after actual producing failures; remaining installed/OCR checks explicit in milestones/06-runtime-backends/status.json",
+      "current_evidence": "source implementation plus actual controlled SDK regressions; installed-wheel matrix pending",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [],
       "system_requirements": "pending isolated runtime check",
-      "execution_policy": "thread-compatible-pending-runtime-check",
+      "execution_policy": "process",
       "evidence_states": [
-        "registered"
-      ]
+        "registered",
+        "dependency-present",
+        "constructible"
+      ],
+      "evidence_path": "milestones/06-runtime-backends/"
     },
     {
       "name": "docling",

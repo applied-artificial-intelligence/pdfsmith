@@ -1,0 +1,30 @@
+{
+  "checkpoint": "Implementation/regressions passed; installed extra-only matrix and OCR/model checks remain open",
+  "parent_commit": "bac52d1953331eef184c37bc4f91d2fd1de2283a",
+  "source_sha256": {
+    "src/pdfsmith/api.py": "1d02da4ec120a6d165b79df7b52f80ae0e42b6873bd00e7609fd35ef91f39b04",
+    "src/pdfsmith/backends/_process.py": "562b34cb180244307f82bad02b97ca2d1ef5a8264bd971eb075ae09a6a170355",
+    "src/pdfsmith/backends/kreuzberg_backend.py": "787e9db8fa4d68d01ff8a85a8193ad997380558fa1aec23861a48d4679c6335e",
+    "src/pdfsmith/backends/extractous_backend.py": "6a7e6d91a2f271d56c843d09081a7ccd80cf49bde855badf790cf0d3cdd54a02",
+    "src/pdfsmith/backends/unstructured_backend.py": "0d0f350334aa59d9e1033d946580fa3811130031766546bf73bf0ecb87fcab71",
+    "src/pdfsmith/backends/registry.py": "a1e05b87608a6de883fc517846a4cd34e8e9c0fef8d3c8f0237da7e0cd025eaa",
+    "tests/test_runtime_backends.py": "389404b79e755fe4a14b95c6606ccac00ad75e4f95d2fa0431c278bc89d7052d",
+    "tests/conftest.py": "e911de5721d743d3532ac64cdc6c2f78f5169e1664db8a58b069fec147707b29",
+    "pyproject.toml": "0653ca273b87e1ecb1f49e40df741365a7d1b37577787fc1f96fa625d6c3a008",
+    "uv.lock": "4f12c5875f94686e1dbfe492b73446b2ed21996ad5afe75a588ef634da1d7bf9"
+  },
+  "before": "12 failures reproduced via actual SDK/public/direct paths: eager SDK loading, old Kreuzberg OCR argument and asyncio.run inside loop, half-million-character Extractous truncation, swallowed Unstructured malformed-font error, missing input and option validation",
+  "after": "224 passed, 51 optional/live skips. Native focused tests 12 passed. Scoped Ruff/mypy pass; uv universal lock resolves with explicit extra conflicts and conditional Python marker.",
+  "SDKs": "kreuzberg 4.10.4; extractous 0.3.0; unstructured 0.27.27; spaCy en_core_web_sm 3.8.0 pinned model wheel SHA1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85",
+  "implementation": "Fresh native interpreter workers; validated options and paths before SDK/model work; explicit local Tesseract for Unstructured/Kreuzberg; no configurable cloud augmentation. Extractous uses uncapped stream readinto and copies reused buffers, checks metadata/errors. Unstructured preflights model presence and uses page breaks/count/order to reject swallowed extraction failure.",
+  "Python": "Core/baselines remain 3.10-3.13 tested; Unstructured explicitly requires >=3.11,<3.14. Actual SDK resolver rejected 3.10; constructor/API/default-selection metadata now represent this restriction.",
+  "dependency_conflict": "Actual uv pip compile reproduced Marker Pillow<11 vs Unstructured PDF pi-heif Pillow>=11.1 conflict on Python3.13; isolated environments required and uv conflicts declared. No dependency override or unsupported SDK combination.",
+  "remaining": "Installed wheel public PDF/fixture/CLI/async/error probes on supported Pythons; explicit unsupported-runtime probe on Python3.10; missing-model installed path; actual OCR and hi_res assets; final source/resource evidence. Do not mark these three inventory rows local-e2e yet.",
+  "sources": [
+    "https://docs.kreuzberg.dev/reference/api-python/",
+    "https://github.com/yobix-ai/extractous/blob/main/bindings/extractous-python/src/extractor.rs",
+    "https://github.com/yobix-ai/extractous/blob/main/extractous-core/src/extractor.rs",
+    "https://docs.unstructured.io/open-source/installation/full-installation",
+    "https://docs.astral.sh/uv/concepts/resolution/#conflicting-dependencies"
+  ]
+}

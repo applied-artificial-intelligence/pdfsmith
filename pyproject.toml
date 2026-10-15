@@ -33,9 +33,9 @@ pypdfium2 = ["pypdfium2>=4.0"]
 
 # Medium-weight backends
 pymupdf4llm = ["pymupdf4llm>=1.28,<1.29"]
-unstructured = ["unstructured>=0.10", "pikepdf>=9.0"]  # pikepdf required for fast strategy
-kreuzberg = ["kreuzberg>=3.0"]
-extractous = ["extractous>=0.1"]
+unstructured = ["unstructured[pdf]>=0.27.27,<0.28; python_version >= '3.11' and python_version < '3.14'", "pypdf>=4.0"]
+kreuzberg = ["kreuzberg>=4.10.4,<4.11", "pypdf>=4.0"]
+extractous = ["extractous>=0.3,<0.4", "pypdf>=4.0"]
 
 # Heavy backends (ML/deep learning)
 docling = ["docling>=2.0"]
@@ -60,7 +60,7 @@ recommended = [
     "pypdf>=4.0",
     "pdfplumber>=0.10",
     "pymupdf4llm>=1.28,<1.29",
-    "kreuzberg>=3.0",
+    "kreuzberg>=4.10.4,<4.11",
 ]
 commercial = [
     "boto3>=1.34",
@@ -79,9 +79,9 @@ all = [
     "pdfminer.six>=20221105",
     "pypdfium2>=4.0",
     "pymupdf4llm>=1.28,<1.29",
-    "unstructured>=0.10",
-    "kreuzberg>=3.0",
-    "extractous>=0.1",
+    "unstructured[pdf]>=0.27.27,<0.28; python_version >= '3.11' and python_version < '3.14'",
+    "kreuzberg>=4.10.4,<4.11",
+    "extractous>=0.3,<0.4",
     "docling>=2.0",
     # Note: Commercial backends excluded from 'all' due to credential requirements
 ]
@@ -164,4 +164,10 @@ exclude_lines = [
     "except ImportError:",
     "AVAILABLE = False",
     "raise ImportError",
+]
+
+[tool.uv]
+conflicts = [
+    [{ extra = "marker" }, { extra = "unstructured" }],
+    [{ extra = "marker" }, { extra = "all" }],
 ]

@@ -35,7 +35,9 @@ def available_backends() -> list[BackendInfo]:
     return [
         BACKEND_REGISTRY[name]
         for name in DEFAULT_PREFERENCE
-        if name in BACKEND_REGISTRY and BACKEND_REGISTRY[name].is_available()
+        if name in BACKEND_REGISTRY
+        and BACKEND_REGISTRY[name].supports_python()
+        and BACKEND_REGISTRY[name].is_available()
     ]
 
 
@@ -48,6 +50,7 @@ def _resolve_backend(
                 f"Unknown backend: {name}. Registered: {list(BACKEND_REGISTRY)}"
             )
         info = BACKEND_REGISTRY[name]
+        info.require_python()
         if for_image and all(fmt == "pdf" for fmt in info.input_formats):
             raise ValueError(f"Backend '{name}' does not support image inputs")
         if not info.is_available():

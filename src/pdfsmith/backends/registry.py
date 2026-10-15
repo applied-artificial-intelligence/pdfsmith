@@ -4,6 +4,7 @@ Backend registry with lazy loading.
 Each backend is only imported when actually used, keeping the base package lightweight.
 """
 
+import sys
 from collections.abc import Callable
 from copy import deepcopy
 from dataclasses import dataclass, field
@@ -27,6 +28,8 @@ class BackendInfo:
     input_formats: tuple[str, ...] = ("pdf",)
     required_env: tuple[str, ...] = ()
     execution_policy: str = "thread"
+    python_minimum: tuple[int, int] | None = None
+    python_maximum_exclusive: tuple[int, int] | None = None
     _instance: Any = field(default=None, init=False, repr=False, compare=False)
     _available: bool | None = field(default=None, init=False, repr=False, compare=False)
     _lock: Any = field(default_factory=RLock, init=False, repr=False, compare=False)
@@ -34,6 +37,21 @@ class BackendInfo:
     def __post_init__(self) -> None:
         if not self.extra:
             self.extra = self.name
+
+    def supports_python(self) -> bool:
+        version = sys.version_info[:2]
+        return (self.python_minimum is None or version >= self.python_minimum) and (
+            self.python_maximum_exclusive is None
+            or version < self.python_maximum_exclusive
+        )
+
+    def require_python(self) -> None:
+        if not self.supports_python():
+            minimum = ".".join(map(str, self.python_minimum or (3, 10)))
+            maximum = ".".join(map(str, self.python_maximum_exclusive or (4, 0)))
+            raise ImportError(
+                f"Backend '{self.name}' requires Python >={minimum},<{maximum}"
+            )
 
     def is_available(self) -> bool:
         """Inspect distribution metadata without running backend or SDK code."""
@@ -47,6 +65,7 @@ class BackendInfo:
         return True
 
     def get_instance(self, options: dict[str, Any] | None = None) -> Any:
+        self.require_python()
         if options is not None:
             return self.loader()(**deepcopy(options))
         with self._lock:
@@ -230,6 +249,9 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="unstructured",
         description="Document processing for LLMs",
         package="unstructured",
+        python_minimum=(3, 11),
+        python_maximum_exclusive=(3, 14),
+        dependencies=("unstructured", "pypdf", "pikepdf"),
         weight="medium",
         loader=_load_unstructured,
     ),
@@ -237,6 +259,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="kreuzberg",
         description="Fast Rust-based extraction with OCR",
         package="kreuzberg",
+        dependencies=("kreuzberg", "pypdf"),
         weight="medium",
         loader=_load_kreuzberg,
     ),
@@ -244,6 +267,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="extractous",
         description="Rust-based text extraction",
         package="extractous",
+        dependencies=("extractous", "pypdf"),
         weight="medium",
         loader=_load_extractous,
     ),
@@ -343,7 +367,15 @@ _REQUIRED_ENV = {
 for _name, _info in BACKEND_REGISTRY.items():
     _info.extra = _EXTRA_NAMES.get(_name, _name)
     _info.required_env = _REQUIRED_ENV.get(_name, ())
-    if _name in {"pymupdf", "pymupdf4llm", "docling", "marker"}:
+    if _name in {
+        "pymupdf",
+        "pymupdf4llm",
+        "docling",
+        "marker",
+        "kreuzberg",
+        "extractous",
+        "unstructured",
+    }:
         _info.execution_policy = "process"
     elif _name == "pypdfium2":
         _info.execution_policy = "serialized-pdfium"

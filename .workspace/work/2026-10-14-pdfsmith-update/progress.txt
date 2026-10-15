@@ -27,7 +27,14 @@ PDFMiner options. 178 passed / 61 skips; 16 extra-only installed-wheel
 environments passed Python 3.10-3.13. Public/controlled/error/async/CLI hashes:
 milestones/04-native/. Six of 19 integrations now have local E2E evidence.
 
-Next: independent remaining local/provider work.
+Checkpoint 6 implementation: Kreuzberg/Extractous/Unstructured regressions
+reproduced (12 failed) and repaired (224 passed / 51 skips overall). Native
+workers, full Extractous stream, strict Unstructured coverage/model checks and
+explicit Python/extra incompatibilities are implemented. Installed-wheel matrix
+and OCR/model checks are pending; these rows are not yet counted local-e2e.
+
+Next: finish checkpoint 6 installed/asset verification, then Docling/Marker and
+remaining provider SDK contracts.
 Checkpoint 5: actual legacy LlamaParse transport reproduced dropped mode and
 ERROR-to-empty behavior; replaced with pinned modern SDK and explicit identity.
 212 passed / 51 skips; four extra-only installed wheels passed SDK/API/async/CLI
