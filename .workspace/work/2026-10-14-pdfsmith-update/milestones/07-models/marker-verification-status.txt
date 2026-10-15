@@ -1,0 +1,39 @@
+Marker ownership checkpoint, October 15, 2026
+
+Complete installed E2E matrix is still pending; this checkpoint does not close
+Marker or increase the local E2E count. Actual isolated Python 3.12 diagnostics
+parsed two digital pages and the controlled scanned-PDF sentinel. Their installed
+source bytes are archived separately from subsequent repairs. Version 1.10.1 was
+installed deliberately without dependencies in its own environment and rejected
+before inference by the new version guard.
+
+Fresh source suite: 247 passed, 51 skipped (marker-source-suite.txt). Focused
+model/ownership/network/recovery suite: 23 passed. Scoped Ruff/mypy passed.
+The standalone real-SDK transport fixture proves that Surya accepts a length-
+limited reply as error=False before the guard; the guarded path rejects it and
+queued work after one request. Complete text and complete blank replies still
+work. These are offline protocol checks, not model/service/quality results.
+
+Two initial public-PDF runs used default OCR and were stopped deliberately.
+Only exact owned PIDs were signaled, with executable/parent checks and pidfds.
+Their remaining resources were explicitly stopped and temporary homes archived
+then removed. This is manual cleanup evidence, not automatic-cleanup success.
+Two later probes reached their private-SDK fault injection but had asset-path
+setup errors there. Those logs are archived separately; they are not passes.
+The harness now sets asset paths before importing the SDK and clears only its
+own stopped environments when recreating them.
+
+Fresh retries use explicit text-layer mode for the public text PDF, default OCR
+for the controlled scan, and eight CPU threads. The library default remains two
+threads. They run under invalid ambient proxy settings and Python network guards;
+only ports registered by owned process creation are permitted. Loopback proxy
+bypass follows https://www.python-httpx.org/environment_variables/ . Prepared
+model/font/llama.cpp assets are local; no paid or free-credit provider calls occur.
+
+The SDK's shared-process architecture requires private discovery files and exact
+Popen ownership. Only the pinned two spawn-module subprocess dependencies and
+local-generation function are replaced during the worker operation, then restored.
+No global subprocess module is patched. Each owned child is terminated/reaped in
+finally, including conversion/rendering failures; completed text survives a
+cleanup reporting failure through the core operational exception/CLI recovery.
+Abrupt external process termination is not claimed as automatic cleanup.

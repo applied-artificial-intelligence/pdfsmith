@@ -39,7 +39,7 @@ extractous = ["extractous>=0.3,<0.4", "pypdf>=4.0"]
 
 # Heavy backends (ML/deep learning)
 docling = ["docling>=2.139,<2.140", "pypdf>=4.0"]
-marker = ["marker-pdf>=1.0"]
+marker = ["marker-pdf==2.0.0", "surya-ocr==0.22.1", "pypdf>=4.0"]
 
 # Commercial backends (cloud OCR)
 aws = ["boto3>=1.34", "pymupdf>=1.24.3"]  # pymupdf for multi-page support

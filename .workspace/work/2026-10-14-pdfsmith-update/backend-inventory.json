@@ -356,25 +356,28 @@
     },
     {
       "name": "marker",
-      "description": "Deep learning PDF to markdown, great for academic",
+      "description": "Local document conversion with CPU model inference",
       "package": "marker-pdf",
       "weight": "heavy",
       "extra": "marker",
-      "source_disposition": "Source inspected; model E2E pending. Retain/repair preset constructor mismatch; verify current rendering API before changing result.markdown.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Repaired lazy options and owned SDK2 model processes. Controlled Python 3.12 digital/CPU-OCR diagnostics passed; complete installed matrix remains active and is not a verified closure.",
+      "current_evidence": "controlled-diagnostics; full installed verification pending",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
-      "system_requirements": "pending isolated runtime check",
+      "options_contract": "Constructor schema is authoritative: src/pdfsmith/backends/marker_backend.py. Fixed local CPU fast mode, optional local OCR, no remote LLM augmentation.",
+      "system_requirements": "Marker 2.0.0 / Surya 0.22.1, local model/font assets; compatible llama-server binary for OCR.",
       "execution_policy": "process",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible"
       ],
       "source_path": "src/pdfsmith/backends/marker_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/07-models/marker-initial-diagnostics.json"
     },
     {
       "name": "aws_textract",

@@ -1,0 +1,11 @@
+{
+  "evidence": "actual unsupported old SDK installation; expected pre-inference failure",
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/marker-unsupported-sdk/bin/python",
+    "-I",
+    "-c",
+    "import pdfsmith;pdfsmith.parse('/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/two-pages.pdf',backend=\"marker\")"
+  ],
+  "exit": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/marker-unsupported-sdk/lib/python3.12/site-packages/pdfsmith/api.py\", line 135, in parse\n    return _content(instance.parse(path))\n                    ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/marker-unsupported-sdk/lib/python3.12/site-packages/pdfsmith/backends/marker_backend.py\", line 48, in parse\n    return extract_in_process(self.name, path, self._options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/marker-unsupported-sdk/lib/python3.12/site-packages/pdfsmith/backends/_process.py\", line 45, in extract_in_process\n    raise error_types.get(error[\"type\"], RuntimeError)(error[\"message\"])\nImportError: Marker runtime requires marker-pdf==2.0.0\n"
+}

@@ -365,6 +365,14 @@ verified Docling 2.139 pipeline owns handle cleanup in its finally block; avoid
 double-unloading in the wrapper, and terminate worker-owned model memory. Apply
 OCR-language/table-mode settings through actual pipeline options. Marker remote
 LLM augmentation is unsupported and cannot be activated by defaults or files.
+Marker 2.0.0/Surya 0.22.1 require a local CPU llama-server binary for OCR.
+Use private per-conversion SDK discovery files and capture subprocess handles at
+the pinned SDK spawn sites; stop and reap only those owned processes, including
+conversion/rendering failures. Bind services to loopback and forbid external
+service reuse or LLM augmentation. Ordinary tests allow only ports added by an
+owned spawn and revoke them at cleanup. Local RPC bypasses ambient proxies.
+Check local-inference finish/refusal status before Surya drops those fields, and
+abort queued inference on failure. Cleanup failure retains completed text.
 Model-backed conversions run process-isolated. Real typed partial-conversion
 results must fail; model/system blockers leave verification open.
 

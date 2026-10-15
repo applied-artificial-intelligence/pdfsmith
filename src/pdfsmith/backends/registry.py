@@ -281,8 +281,9 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
     ),
     "marker": BackendInfo(
         name="marker",
-        description="Deep learning PDF to markdown, great for academic",
+        description="Local document conversion with CPU model inference",
         package="marker-pdf",
+        dependencies=("marker-pdf", "pypdf"),
         weight="heavy",
         loader=_load_marker,
     ),

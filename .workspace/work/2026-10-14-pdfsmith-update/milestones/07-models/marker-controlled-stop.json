@@ -1,0 +1,78 @@
+{
+  "evidence": "Controlled stop, not a failed or passing completed integration run",
+  "reason": "Use explicit text-layer mode for the public text PDF. Default OCR remains covered on the controlled scan. Controller stopped first; only exact verified owned VLM processes signaled so library workers can unwind and reap their other model servers.",
+  "processes": [
+    {
+      "pid": 2449262,
+      "parent": 333076,
+      "command": "python3 .workspace/work/2026-10-14-pdfsmith-update/runtime/verify_marker.py ",
+      "signal": "SIGTERM via verified pidfd"
+    },
+    {
+      "pid": 2452829,
+      "parent": 2449552,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/marker/llamacpp/llama-b11669/llama-server -m /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/huggingface/hub/models--datalab-to--surya-ocr-2-gguf/snapshots/6a3a4c30e5e74446d4f8b6afd05b2f2da970f470/surya-2.gguf --mmproj /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/huggingface/hub/models--datalab-to--surya-ocr-2-gguf/snapshots/6a3a4c30e5e74446d4f8b6afd05b2f2da970f470/surya-2-mmproj.gguf -ngl 0 --host 127.0.0.1 --port 58105 --parallel 1 --ctx-size 16384 --alias datalab-to/surya-ocr-2 --jinja --threads 2 --threads-batch 2 ",
+      "signal": "SIGTERM via verified pidfd"
+    },
+    {
+      "pid": 2453121,
+      "parent": 2449549,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/marker/llamacpp/llama-b11669/llama-server -m /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/huggingface/hub/models--datalab-to--surya-ocr-2-gguf/snapshots/6a3a4c30e5e74446d4f8b6afd05b2f2da970f470/surya-2.gguf --mmproj /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/huggingface/hub/models--datalab-to--surya-ocr-2-gguf/snapshots/6a3a4c30e5e74446d4f8b6afd05b2f2da970f470/surya-2-mmproj.gguf -ngl 0 --host 127.0.0.1 --port 43937 --parallel 1 --ctx-size 16384 --alias datalab-to/surya-ocr-2 --jinja --threads 2 --threads-batch 2 ",
+      "signal": "SIGTERM via verified pidfd"
+    }
+  ],
+  "manual_cleanup": [
+    {
+      "pid": 2451330,
+      "parent": 2449552,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.10/bin/python -I -m pdfsmith.backends._process --marker-server surya.fast_layout.server --host 127.0.0.1 --port 44467 --checkpoint hf://datalab-to/surya_layout2 ",
+      "manually_stopped": true
+    },
+    {
+      "pid": 2451403,
+      "parent": 2449549,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.11/bin/python -I -m pdfsmith.backends._process --marker-server surya.fast_layout.server --host 127.0.0.1 --port 42287 --checkpoint hf://datalab-to/surya_layout2 ",
+      "manually_stopped": true
+    },
+    {
+      "pid": 2452447,
+      "parent": 2449552,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.10/bin/python -I -m pdfsmith.backends._process --marker-server surya.ocr_error.server --host 127.0.0.1 --port 54203 --checkpoint s3://ocr_error_detection/2025_02_18 ",
+      "manually_stopped": true
+    },
+    {
+      "pid": 2452529,
+      "parent": 2449549,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.11/bin/python -I -m pdfsmith.backends._process --marker-server surya.ocr_error.server --host 127.0.0.1 --port 34669 --checkpoint s3://ocr_error_detection/2025_02_18 ",
+      "manually_stopped": true
+    },
+    {
+      "pid": 2449549,
+      "parent": 2449544,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.11/bin/python -I -m pdfsmith.backends._process ",
+      "manually_stopped": true
+    },
+    {
+      "pid": 2449552,
+      "parent": 2449550,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.10/bin/python -I -m pdfsmith.backends._process ",
+      "manually_stopped": true
+    },
+    {
+      "pid": 2449544,
+      "already_exited": true
+    },
+    {
+      "pid": 2449550,
+      "parent": 4486,
+      "command": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.10/bin/python -I /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/marker_probe.py --document /home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf --fixtures /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures --assets /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/marker --binary /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/marker/llamacpp/llama-b11669/llama-server --output /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/marker-outputs-3.10 ",
+      "manually_stopped": true
+    }
+  ],
+  "diagnostic_archive_sha256": "ff28f6d0d09367b299d2caa1bf3f3e96892d810dba60b15282f45cb5f607a28b",
+  "removed_owned_temporary_homes": [
+    "/tmp/pdfsmith-marker-3fiov7fv",
+    "/tmp/pdfsmith-marker-pjnp9ckm"
+  ],
+  "note": "SDK retries kept the interrupted workers alive. Remaining exact owned server/worker/probe processes were stopped manually; this is not counted as automatic SDK cleanup evidence."
+}

@@ -24,6 +24,16 @@ def extract_in_process(backend: str, path: Path, options: dict[str, Any]) -> str
         response = json.loads(result.stdout)
     except ValueError as exc:
         raise RuntimeError(f"{backend} worker returned an invalid response") from exc
+    if "operation_error" in response:
+        from pdfsmith.errors import BackendOperationError
+
+        error = response["operation_error"]
+        cause = error.pop("cause")
+        error["cleanup_errors"] = tuple(error["cleanup_errors"])
+        exception = BackendOperationError(**error)
+        if cause:
+            raise exception from RuntimeError(cause)
+        raise exception
     if "error" in response:
         error_types = {
             "ValueError": ValueError,
@@ -87,6 +97,8 @@ def _extract(backend: str, path: str, options: dict[str, Any]) -> str:
         from pdfsmith.backends.kreuzberg_backend import _extract as extract
     elif backend == "extractous":
         from pdfsmith.backends.extractous_backend import _extract as extract
+    elif backend == "marker":
+        from pdfsmith.backends.marker_backend import _extract as extract
     elif backend == "docling":
         from pdfsmith.backends.docling_backend import _extract as extract
     elif backend == "unstructured":
@@ -103,17 +115,57 @@ def _test_network_guard() -> None:
         return
     import socket
 
-    def denied(*args: Any, **kwargs: Any) -> Any:
-        raise RuntimeError("Outbound networking is disabled in PDFsmith test workers")
+    ports: set[int] = set()
+    socket._pdfsmith_test_local_ports = ports  # type: ignore[attr-defined]
+    original_connect = socket.socket.connect
+    original_connect_ex = socket.socket.connect_ex
+    original_create_connection = socket.create_connection
+    original_getaddrinfo = socket.getaddrinfo
 
-    for name in ("connect", "connect_ex"):
-        setattr(socket.socket, name, denied)
-    socket.create_connection = denied
-    socket.getaddrinfo = denied
+    def permitted(address: Any) -> bool:
+        return (
+            isinstance(address, tuple)
+            and len(address) >= 2
+            and address[0] == "127.0.0.1"
+            and address[1] in ports
+        )
+
+    def guard(original: Any) -> Any:
+        def guarded(*args: Any, **kwargs: Any) -> Any:
+            if original in (original_connect, original_connect_ex):
+                address = args[1]
+            elif original == original_getaddrinfo:
+                address = (args[0], args[1])
+            else:
+                address = args[0]
+            if not permitted(address):
+                raise RuntimeError(
+                    "Outbound networking is disabled in PDFsmith test workers"
+                )
+            return original(*args, **kwargs)
+
+        return guarded
+
+    for name, original in (
+        ("connect", original_connect),
+        ("connect_ex", original_connect_ex),
+    ):
+        setattr(socket.socket, name, guard(original))
+    socket.create_connection = guard(original_create_connection)
+    socket.getaddrinfo = guard(original_getaddrinfo)
 
 
 def main() -> None:
     _test_network_guard()
+    if sys.argv[1:2] == ["--marker-server"]:
+        import runpy
+
+        module = sys.argv[2]
+        if module not in {"surya.fast_layout.server", "surya.ocr_error.server"}:
+            raise ValueError("Unsupported Marker server")
+        sys.argv = sys.argv[2:]
+        runpy.run_module(module, run_name="__main__")
+        return
     request = json.load(sys.stdin)
     response: dict[str, Any]
     try:
@@ -121,7 +173,22 @@ def main() -> None:
             text = _extract(request["backend"], request["path"], request["options"])
         response = {"text": text}
     except Exception as exc:
-        response = {"error": {"type": type(exc).__name__, "message": str(exc)}}
+        from pdfsmith.errors import BackendOperationError
+
+        if isinstance(exc, BackendOperationError):
+            response = {
+                "operation_error": {
+                    "message": str(exc),
+                    "parse_completed": exc.parse_completed,
+                    "recovered_content": exc.recovered_content,
+                    "resource_ids": exc.resource_ids,
+                    "completion_unknown": exc.completion_unknown,
+                    "cleanup_errors": exc.cleanup_errors,
+                    "cause": str(exc.__cause__) if exc.__cause__ else None,
+                }
+            }
+        else:
+            response = {"error": {"type": type(exc).__name__, "message": str(exc)}}
     json.dump(response, sys.stdout)
 
 

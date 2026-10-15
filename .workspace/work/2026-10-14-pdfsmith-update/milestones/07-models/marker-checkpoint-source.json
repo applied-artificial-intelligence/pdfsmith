@@ -1,0 +1,10 @@
+{
+  "evidence": "Verified source checkpoint; complete installed model matrix remains active and unclosed",
+  "files": {
+    "src/pdfsmith/backends/marker_backend.py": "30563697624a005d3913c7036f88810d22a09a8b211d99ce214ebae5b7b3f374",
+    "src/pdfsmith/backends/_process.py": "5b959dd0840e0d50d99c611314400fb3a657581c041f0a19bb14e05d01eb6cca",
+    "src/pdfsmith/backends/registry.py": "470ec3d9a77f7b8d24fbd213f037ca501500a4172a42de5850d5f184411d67c7",
+    "pyproject.toml": "6d860a851a88b761ee55606dd195e730ab2666c19227ad6864a30a9bf1adcfe4",
+    "uv.lock": "22c786cab7f8bcec3ecb44604a1089f72ce08f2e13aae80381de182ebbbfff63"
+  }
+}

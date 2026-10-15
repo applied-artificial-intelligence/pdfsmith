@@ -33,8 +33,20 @@ Completed engineering checkpoints:
 Ten backends now have actual local E2E evidence. Nine lack actual E2E, including
 LlamaParse, which has offline contract evidence. Marker remains open: installed 2.0
 initialization tries a font download; its shared inference servers can persist past
-worker exit, so safe resource ownership must be resolved before conversion claims.
-Next owned work: Marker, the remaining provider contracts, then final package/CI/docs.
+worker exit, so full integration verification requires explicit server ownership and cleanup.
+Marker ownership/configuration repair is implemented with Marker 2.0.0 and Surya
+0.22.1 pinned. Controlled installed Python 3.12 digital and local CPU OCR calls
+returned their expected text and terminated the owned inference processes. Source
+suite: 247 passed, 51 skipped; focused model/ownership/network/recovery tests: 23
+passed after port revocation. Four-version public/fixture/CLI/async SDK runs are
+running with explicit text-layer mode for the public text PDF and default OCR
+for the controlled scan. Earlier runs were stopped or had harness setup failures;
+those logs are retained separately. Marker remains unverified until the fresh runs
+close. Real SDK transport checks reproduced ignored token-limit status and now
+reject incomplete inference before retry/fallback can publish it. Local RPC
+bypasses ambient proxies inside workers. No model servers from the stopped runs
+remain.
+Next owned work: finish Marker evidence, remaining providers, final package/CI/docs.
 
 No paid/free-credit provider calls, public-main merge/release, new agents/chats,
 PDF-Bench experiments or website/deployment changes have occurred or are authorized.
