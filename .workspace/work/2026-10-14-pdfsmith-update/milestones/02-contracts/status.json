@@ -1,0 +1,26 @@
+{
+  "milestone": "Static discovery, shared API/configuration and verified local baselines",
+  "parent_commit": "8af391073326b38d9dd4d84715cb2cc4cee6d7b8",
+  "source_sha256": {
+    "src/pdfsmith/api.py": "5e8ad0408884a7df0729ef4eb22af1ea6f3bb692b4c7ae0940fe4e6451f4636f",
+    "src/pdfsmith/__init__.py": "d40ed3d8570576828a4eec4709002ad5fee974ba3dadc5c2675a5b6590e00a64",
+    "src/pdfsmith/_inputs.py": "290e4e6445d991ef15c91c1ef4b5c9d78f55854e1280056c25f9fecab968dcde",
+    "src/pdfsmith/config.py": "19e569e7c294e02522e64254fba138cd533c597277289e07993f31e793f750ff",
+    "src/pdfsmith/backends/registry.py": "b3640363918c9e8318a7bce1aa572f39e3f35590986813945d5bd11f3c80b20b",
+    "src/pdfsmith/backends/pypdf_backend.py": "1345dec49436e2e34b7e1d74ffb3c2d123cb3715e12475a4541390b8a06009b0",
+    "src/pdfsmith/backends/pdfplumber_backend.py": "746c4c79b748780eb15189bd64aa25342b6f898d36af250e0abd852b01e6957f",
+    "tests/test_contracts.py": "879e10a24c621c8c1aa24f1e326369a69a0b6cf3c35eb2d28dfcc7227a3e681c",
+    "tests/test_config.py": "5d2db45d4bcd43768e8b2692273a274d9396691d7db0b5cfc732ab814a6bf520",
+    "tests/test_api.py": "08a165d7435b9eb268dd3562b7e695c88f237fcfb9a32295af644a8b39ea41a9"
+  },
+  "regressions_before": "23 failures in actual public/direct producing paths; 2 additional preserved-registry cache/equality failures",
+  "tests_after": "142 passed, 62 optional/live skips; no xfails",
+  "installed_package": "Eight extra-only non-editable environments: pypdf/pdfplumber on Python 3.10-3.13; each passed public/controlled PDF, options/direct/API/async/default CLI checks",
+  "identity": "Exact wheel SHA and installed module hashes recorded in each installed-*.json; inherited provider bytes in the wheel remain explicitly unverified",
+  "retired": "Unreleased preset/ocr removed; use validated backend_options. pdf_path keyword restored; input_path alias retained. Default get_backend reuse locked; parse uses fresh instances.",
+  "exclusions": [
+    "17 other integrations remain unverified",
+    "CLI option parity/output atomicity is the next milestone",
+    "Native-runtime execution and provider lifecycle remain gated in their owning milestones"
+  ]
+}

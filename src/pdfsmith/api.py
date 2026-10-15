@@ -1,30 +1,15 @@
-"""
-Core API for pdfsmith.
+"""Public parsing and static backend discovery."""
 
-Provides a simple interface to parse PDFs to markdown using various backends.
-"""
-
+import asyncio
+from copy import deepcopy
 from pathlib import Path
-from typing import Literal
+from typing import Any
 
+from pdfsmith._inputs import validate_input
 from pdfsmith.backends.registry import BACKEND_REGISTRY, BackendInfo
 
-# Backend preference order (best first, considering quality vs availability)
+BackendName = str
 DEFAULT_PREFERENCE = [
-    "docling",  # Best quality, heavy
-    "marker",  # Great for academic docs
-    "pymupdf4llm",  # Good balance
-    "kreuzberg",  # Fast, good quality
-    "unstructured",  # Versatile
-    "pdfplumber",  # Reliable for tables
-    "pymupdf",  # Fast, basic
-    "pypdf",  # Lightweight fallback
-    "pdfminer",  # Legacy but works
-    "pypdfium2",  # Alternative
-    "extractous",  # Rust-based
-]
-
-BackendName = Literal[
     "docling",
     "marker",
     "pymupdf4llm",
@@ -37,114 +22,136 @@ BackendName = Literal[
     "pypdfium2",
     "extractous",
 ]
+IMAGE_CAPABLE_BACKENDS: set[str] = set()
+
+
+def registered_backends() -> list[BackendInfo]:
+    """Return all registered metadata without initializing integrations."""
+    return list(BACKEND_REGISTRY.values())
 
 
 def available_backends() -> list[BackendInfo]:
-    """Return list of available (installed) backends with their info."""
-    available = []
-    for name in DEFAULT_PREFERENCE:
-        if name in BACKEND_REGISTRY:
-            info = BACKEND_REGISTRY[name]
-            if info.is_available():
-                available.append(info)
-    return available
+    """Return dependency-present local backends in the released preference order."""
+    return [
+        BACKEND_REGISTRY[name]
+        for name in DEFAULT_PREFERENCE
+        if name in BACKEND_REGISTRY and BACKEND_REGISTRY[name].is_available()
+    ]
 
 
-def get_backend(name: BackendName | None = None):
-    """
-    Get a backend instance by name, or auto-select the best available.
-
-    Args:
-        name: Backend name, or None to auto-select
-
-    Returns:
-        Backend instance ready to parse
-
-    Raises:
-        ImportError: If specified backend is not installed
-        RuntimeError: If no backends are available
-    """
+def _resolve_backend(
+    name: str | None = None, *, for_image: bool = False
+) -> BackendInfo:
     if name is not None:
         if name not in BACKEND_REGISTRY:
-            available = list(BACKEND_REGISTRY.keys())
-            raise ValueError(f"Unknown backend: {name}. Available: {available}")
+            raise ValueError(
+                f"Unknown backend: {name}. Registered: {list(BACKEND_REGISTRY)}"
+            )
         info = BACKEND_REGISTRY[name]
+        if for_image and all(fmt == "pdf" for fmt in info.input_formats):
+            raise ValueError(f"Backend '{name}' does not support image inputs")
         if not info.is_available():
             raise ImportError(
-                f"Backend '{name}' is not installed. "
-                f"Install with: pip install pdfsmith[{name}]"
+                f"Backend '{name}' dependencies are unavailable. "
+                f"Install with: pip install pdfsmith[{info.extra}]"
             )
-        return info.get_instance()
-
-    # Auto-select best available
-    for backend_name in DEFAULT_PREFERENCE:
-        if backend_name in BACKEND_REGISTRY:
-            info = BACKEND_REGISTRY[backend_name]
-            if info.is_available():
-                return info.get_instance()
-
+        return info
+    for info in available_backends():
+        if not for_image or any(fmt != "pdf" for fmt in info.input_formats):
+            return info
     raise RuntimeError(
-        "No PDF parsing backends are installed. "
-        "Install with: pip install pdfsmith[light] or pdfsmith[recommended]"
+        "No PDF parsing backends are installed for this input. "
+        "Install with: pip install pdfsmith[light]"
     )
 
 
-def parse(
-    pdf_path: str | Path,
+def get_backend(
+    name: str | None = None,
     *,
-    backend: BackendName | None = None,
+    backend_options: dict[str, Any] | None = None,
+    for_image: bool = False,
+) -> Any:
+    """Reuse a default instance; explicit options, including {}, create a fresh one."""
+    if backend_options is not None and not isinstance(backend_options, dict):
+        raise TypeError("backend_options must be a dictionary")
+    info = _resolve_backend(name, for_image=for_image)
+    try:
+        return info.get_instance(backend_options)
+    except (ImportError, OSError) as exc:
+        raise ImportError(
+            f"Backend '{info.name}' dependencies are present but failed to load: {exc}"
+        ) from exc
+
+
+def _prepare(
+    pdf_path: str | Path | None,
+    input_path: str | Path | None,
+    backend: str | None,
+    backend_options: dict[str, Any] | None,
+) -> tuple[Path, Any]:
+    if pdf_path is not None and input_path is not None:
+        raise TypeError("Specify pdf_path or input_path, not both")
+    selected_path = pdf_path if pdf_path is not None else input_path
+    if selected_path is None:
+        raise TypeError("A pdf_path is required")
+    path = Path(selected_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Input file not found: {path}")
+    if not path.is_file():
+        raise ValueError(f"Input must be a regular file: {path}")
+    suffix = path.suffix.lower().lstrip(".")
+    if backend is not None:
+        info = BACKEND_REGISTRY.get(backend)
+        if info is not None and suffix not in info.input_formats:
+            raise ValueError(f"Backend '{backend}' does not support '{suffix}' inputs")
+    formats = (
+        BACKEND_REGISTRY[backend].input_formats
+        if backend is not None and backend in BACKEND_REGISTRY
+        else ("pdf",)
+    )
+    path = validate_input(path, formats)
+    options = {} if backend_options is None else deepcopy(backend_options)
+    return path, get_backend(backend, backend_options=options)
+
+
+def _content(value: Any) -> str:
+    if not isinstance(value, str):
+        raise TypeError("Backend must return text, including an explicit empty string")
+    return value
+
+
+def parse(
+    pdf_path: str | Path | None = None,
+    *,
+    backend: str | None = None,
+    backend_options: dict[str, Any] | None = None,
+    input_path: str | Path | None = None,
 ) -> str:
-    """
-    Parse a PDF file to markdown.
+    """Parse one document with constructor-bound options and a fresh instance."""
+    path, instance = _prepare(pdf_path, input_path, backend, backend_options)
+    return _content(instance.parse(path))
 
-    Args:
-        pdf_path: Path to the PDF file
-        backend: Backend to use, or None to auto-select best available
 
-    Returns:
-        Markdown string extracted from the PDF
-
-    Examples:
-        # Auto-select backend
-        markdown = parse("document.pdf")
-
-        # Use specific backend
-        markdown = parse("document.pdf", backend="docling")
-    """
-    pdf_path = Path(pdf_path)
-    if not pdf_path.exists():
-        raise FileNotFoundError(f"PDF file not found: {pdf_path}")
-
-    backend_instance = get_backend(backend)
-    return backend_instance.parse(pdf_path)
+def _run_async(
+    pdf_path: str | Path | None,
+    input_path: str | Path | None,
+    backend: str | None,
+    backend_options: dict[str, Any] | None,
+) -> str:
+    path, instance = _prepare(pdf_path, input_path, backend, backend_options)
+    if callable(getattr(instance, "parse_async", None)):
+        return _content(asyncio.run(instance.parse_async(path)))
+    return _content(instance.parse(path))
 
 
 async def parse_async(
-    pdf_path: str | Path,
+    pdf_path: str | Path | None = None,
     *,
-    backend: BackendName | None = None,
+    backend: str | None = None,
+    backend_options: dict[str, Any] | None = None,
+    input_path: str | Path | None = None,
 ) -> str:
-    """
-    Parse a PDF file to markdown asynchronously.
-
-    Args:
-        pdf_path: Path to the PDF file
-        backend: Backend to use, or None to auto-select best available
-
-    Returns:
-        Markdown string extracted from the PDF
-    """
-    pdf_path = Path(pdf_path)
-    if not pdf_path.exists():
-        raise FileNotFoundError(f"PDF file not found: {pdf_path}")
-
-    backend_instance = get_backend(backend)
-
-    # Use async method if available, otherwise run sync in executor
-    if hasattr(backend_instance, "parse_async"):
-        return await backend_instance.parse_async(pdf_path)
-    else:
-        import asyncio
-
-        loop = asyncio.get_event_loop()
-        return await loop.run_in_executor(None, backend_instance.parse, pdf_path)
+    """Run resolution, initialization and extraction outside the calling loop."""
+    return await asyncio.to_thread(
+        _run_async, pdf_path, input_path, backend, deepcopy(backend_options)
+    )

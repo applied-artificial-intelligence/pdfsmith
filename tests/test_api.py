@@ -124,10 +124,6 @@ class TestWithBackend:
 class TestBackendSelection:
     """Tests for backend selection and registry behavior."""
 
-    @pytest.mark.xfail(
-        strict=True,
-        reason="Inherited instance-reuse regression; shared API milestone repairs it",
-    )
     def test_get_backend_returns_singleton(self):
         """get_backend should return same instance for repeated calls."""
         backends = available_backends()

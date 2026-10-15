@@ -1,0 +1,14 @@
+Command: ['.venv/bin/ruff', 'check', 'src/pdfsmith/api.py', 'src/pdfsmith/__init__.py', 'src/pdfsmith/_inputs.py', 'src/pdfsmith/config.py', 'src/pdfsmith/backends/registry.py', 'src/pdfsmith/backends/pypdf_backend.py', 'src/pdfsmith/backends/pdfplumber_backend.py', 'tests/test_contracts.py', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/local_probe.py', 'tests/test_config.py', 'tests/test_api.py']
+Exit: 0
+All checks passed!
+
+Command: ['.venv/bin/mypy', 'src/pdfsmith/api.py', 'src/pdfsmith/__init__.py', 'src/pdfsmith/_inputs.py', 'src/pdfsmith/config.py', 'src/pdfsmith/backends/registry.py', 'src/pdfsmith/backends/pypdf_backend.py', 'src/pdfsmith/backends/pdfplumber_backend.py', 'tests/test_contracts.py', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/local_probe.py']
+Exit: 0
+Success: no issues found in 9 source files
+
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', '-q', '--tb=short']
+Exit: 0
+ssssssssssss................................s...................ssssssss [ 35%]
+ss.ssssssss.sssssssssss.ssssssssss.ssssssssss........................... [ 70%]
+............................................................             [100%]
+142 passed, 62 skipped in 0.93s

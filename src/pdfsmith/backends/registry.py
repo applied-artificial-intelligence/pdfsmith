@@ -5,44 +5,55 @@ Each backend is only imported when actually used, keeping the base package light
 """
 
 from collections.abc import Callable
-from dataclasses import dataclass
+from copy import deepcopy
+from dataclasses import dataclass, field
+from importlib import metadata
 from pathlib import Path
+from threading import RLock
 from typing import Any
 
 
 @dataclass
 class BackendInfo:
-    """Information about a parsing backend."""
+    """Static integration metadata; dependency presence is not execution readiness."""
 
     name: str
     description: str
-    package: str  # PyPI package name for installation
-    weight: str  # "light", "medium", "heavy"
-    loader: Callable[[], Any]  # Function to load the backend class
+    package: str
+    weight: str
+    loader: Callable[[], Any]
+    extra: str = ""
+    dependencies: tuple[str, ...] = ()
+    input_formats: tuple[str, ...] = ("pdf",)
+    required_env: tuple[str, ...] = ()
+    execution_policy: str = "thread"
+    _instance: Any = field(default=None, init=False, repr=False, compare=False)
+    _available: bool | None = field(default=None, init=False, repr=False, compare=False)
+    _lock: Any = field(default_factory=RLock, init=False, repr=False, compare=False)
 
-    _instance: Any = None
-    _available: bool | None = None
+    def __post_init__(self) -> None:
+        if not self.extra:
+            self.extra = self.name
 
     def is_available(self) -> bool:
-        """Check if this backend's dependencies are installed."""
-        if self._available is None:
+        """Inspect distribution metadata without running backend or SDK code."""
+        if self._available is not None:
+            return self._available
+        for distribution in self.dependencies or (self.package,):
             try:
-                backend_class = self.loader()
-                # Check the AVAILABLE flag if it exists
-                import importlib
+                metadata.distribution(distribution)
+            except metadata.PackageNotFoundError:
+                return False
+        return True
 
-                mod = importlib.import_module(backend_class.__module__)
-                self._available = getattr(mod, "AVAILABLE", True)
-            except ImportError:
-                self._available = False
-        return self._available
-
-    def get_instance(self):
-        """Get or create a backend instance."""
-        if self._instance is None:
-            backend_class = self.loader()
-            self._instance = backend_class()
-        return self._instance
+    def get_instance(self, options: dict[str, Any] | None = None) -> Any:
+        if options is not None:
+            return self.loader()(**deepcopy(options))
+        with self._lock:
+            if self._instance is None:
+                instance = self.loader()()
+                self._instance = instance
+            return self._instance
 
 
 class BaseBackend:
@@ -182,7 +193,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
     ),
     "pdfplumber": BackendInfo(
         name="pdfplumber",
-        description="Detailed PDF parsing, excellent for tables",
+        description="PDF text and table extraction",
         package="pdfplumber",
         weight="light",
         loader=_load_pdfplumber,
@@ -238,7 +249,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
     ),
     "docling": BackendInfo(
         name="docling",
-        description="IBM's document understanding, best quality",
+        description="IBM document conversion",
         package="docling",
         weight="heavy",
         loader=_load_docling,
@@ -260,7 +271,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
     ),
     "azure_document_intelligence": BackendInfo(
         name="azure_document_intelligence",
-        description="Azure Document Intelligence, high-accuracy OCR",
+        description="Azure Document Intelligence OCR",
         package="azure-ai-documentintelligence",
         weight="commercial",
         loader=_load_azure_document_intelligence,
@@ -309,3 +320,29 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         loader=_load_gemini,
     ),
 }
+
+
+_EXTRA_NAMES = {
+    "aws_textract": "aws",
+    "azure_document_intelligence": "azure",
+    "google_document_ai": "google",
+}
+_REQUIRED_ENV = {
+    "azure_document_intelligence": (
+        "AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT",
+        "AZURE_DOCUMENT_INTELLIGENCE_KEY",
+    ),
+    "google_document_ai": ("GOOGLE_CLOUD_PROJECT", "GOOGLE_DOCUMENT_AI_PROCESSOR_ID"),
+    "databricks": ("DATABRICKS_HOST", "DATABRICKS_WAREHOUSE_ID"),
+    "llamaparse": ("LLAMA_CLOUD_API_KEY",),
+    "anthropic": ("ANTHROPIC_API_KEY",),
+    "openai": ("OPENAI_API_KEY",),
+    "gemini": ("GOOGLE_API_KEY or GEMINI_API_KEY",),
+}
+for _name, _info in BACKEND_REGISTRY.items():
+    _info.extra = _EXTRA_NAMES.get(_name, _name)
+    _info.required_env = _REQUIRED_ENV.get(_name, ())
+    if _name in {"pymupdf", "pymupdf4llm", "docling", "marker"}:
+        _info.execution_policy = "process"
+    elif _name == "pypdfium2":
+        _info.execution_policy = "serialized-pdfium"

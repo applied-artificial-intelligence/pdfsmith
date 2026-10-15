@@ -9,19 +9,30 @@
       "extra": "pypdf",
       "constructor_arguments": "self",
       "native_parse_async": false,
-      "source_disposition": "Fresh installed E2E works with defaults; options currently rejected by zero-argument constructor. Retain and extend validated extraction options.",
-      "current_evidence": "fresh-local-installed-E2E",
+      "source_disposition": "Retained and repaired; defaults, configured output, blank/corrupt/missing input verified. No quality comparison.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "extraction_mode: plain/layout"
+      ],
       "system_requirements": [],
-      "execution_policy": "thread-compatible-pending-runtime-check",
+      "execution_policy": "thread",
       "evidence_states": [
         "registered",
-        "local-e2e-defaults-only"
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/02-contracts/installed-pypdf-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
       ]
     },
     {
@@ -32,19 +43,32 @@
       "extra": "pdfplumber",
       "constructor_arguments": "self",
       "native_parse_async": false,
-      "source_disposition": "Fresh installed E2E works with defaults; inherited best preset raises TypeError(layout). Retain and repair option forwarding; table/text duplication remains explicit.",
-      "current_evidence": "fresh-local-installed-E2E",
+      "source_disposition": "Retained and repaired; defaults, configured output, blank/corrupt/missing input verified. No quality comparison.",
+      "current_evidence": "local-e2e",
       "input_formats": [
         "pdf"
       ],
       "requires_env_names": [],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "layout: bool",
+        "x_tolerance: finite nonnegative number",
+        "y_tolerance: finite nonnegative number"
+      ],
       "system_requirements": [],
-      "execution_policy": "thread-compatible-pending-runtime-check",
+      "execution_policy": "thread",
       "evidence_states": [
         "registered",
-        "local-e2e-defaults-only"
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/02-contracts/installed-pdfplumber-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
       ]
     },
     {
