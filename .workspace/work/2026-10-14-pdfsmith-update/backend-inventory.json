@@ -122,10 +122,10 @@
       "configuration_status": "not-checked",
       "options_contract": [
         "use_layout: bool (default false)",
-        "table_strategy: lines/lines_strict/text",
         "force_text: bool",
-        "ignore_images: bool",
-        "use_ocr: bool (false default; true requires layout and separately installed OCR engine, unverified)"
+        "table_strategy: lines/lines_strict/text; requires use_layout=False",
+        "ignore_images: bool; requires use_layout=False",
+        "use_ocr: bool; requires use_layout=True; default false, OCR runtime unverified"
       ],
       "system_requirements": [],
       "execution_policy": "process",

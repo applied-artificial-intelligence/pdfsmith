@@ -58,8 +58,6 @@ def _extract(backend: str, path: str, options: dict[str, Any]) -> str:
             options = dict(options)
             layout = options.pop("use_layout")
             pymupdf4llm.use_layout(layout)
-            if not layout:
-                options.pop("use_ocr")
             pages = pymupdf4llm.to_markdown(
                 document,
                 page_chunks=True,

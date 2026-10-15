@@ -1,0 +1,14 @@
+{
+  "milestone": "Reject mode-specific options the actual PyMuPDF4LLM SDK ignores",
+  "parent_commit": "dd7a64b9fa9cf2dcb634b7fc3dd7ea49dff16e62",
+  "source_sha256": {
+    "src/pdfsmith/backends/pymupdf4llm_backend.py": "d8099c436913e52ce8baa4ac3a33a8d9de1c672ba0e5612bb86347220de29666",
+    "src/pdfsmith/backends/_process.py": "113ee26033ea9b7fc833339fe7dc9e746c78336270e538df04a7921cfbcb6b45",
+    "tests/test_native_contracts.py": "189adad071de3eedee96bd2c0a782a195c63f2b57f3ceb4f0dd54789af450773"
+  },
+  "before": "3 actual constructor configurations silently accepted; new regression cases all failed",
+  "after": "23 native tests passed including actual MuPDF/PDFium extraction and resource checks",
+  "contract": "use_layout=True rejects explicit table_strategy/ignore_images; use_layout=False rejects explicit use_ocr. Effective options contain active mode options only. No ignored kwargs forwarded to SDK.",
+  "source": "Inspected pymupdf4llm 1.28.2 _layout_to_markdown signature and legacy kwargs; official API https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html",
+  "limits": "Previous 16 installed-wheel identities remain historical; current source correction tested through actual SDK on Python 3.12. Final wheel verification will include this correction."
+}

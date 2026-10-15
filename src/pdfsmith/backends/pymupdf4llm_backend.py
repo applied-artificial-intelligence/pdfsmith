@@ -26,8 +26,15 @@ class PyMuPDF4LLMBackend:
 
     def __init__(self, **options: Any) -> None:
         self._options = normalize_options(self.name, options, self.options_schema)
-        if self._options["use_ocr"] and not self._options["use_layout"]:
-            raise ValueError("pymupdf4llm.use_ocr requires use_layout=True")
+        if self._options["use_layout"]:
+            for key in ("ignore_images", "table_strategy"):
+                if key in options:
+                    raise ValueError(f"pymupdf4llm.{key} requires use_layout=False")
+                self._options.pop(key)
+        else:
+            if "use_ocr" in options:
+                raise ValueError("pymupdf4llm.use_ocr requires use_layout=True")
+            self._options.pop("use_ocr")
 
     @property
     def effective_options(self) -> dict[str, Any]:

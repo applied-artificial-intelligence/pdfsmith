@@ -168,3 +168,18 @@ def test_owner_only_encryption_stays_readable_and_user_password_is_rejected(
                 parse(path, backend=backend)
         else:
             assert "OWNER PERMISSIONS" in parse(path, backend=backend)
+
+
+@pytest.mark.parametrize(
+    "options",
+    [
+        {"use_layout": True, "ignore_images": True},
+        {"use_layout": True, "table_strategy": "text"},
+        {"use_layout": False, "use_ocr": False},
+    ],
+)
+def test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode(options):
+    from pdfsmith.backends.pymupdf4llm_backend import PyMuPDF4LLMBackend
+
+    with pytest.raises(ValueError, match="requires"):
+        PyMuPDF4LLMBackend(**options)
