@@ -18,7 +18,11 @@ wheel environments passed pypdf/pdfplumber public/fixture/API/async/default CLI
 checks on Python 3.10-3.13. Exact package/input/output hashes and command evidence:
 milestones/02-contracts/. These are capability checks, not quality rankings.
 
-Next: CLI options/atomic output, then independent remaining local/provider work.
+Checkpoint 3: CLI options and atomic output, 157 passed / 62 skips. Nine
+original failures reproduced; installed consoles passed Python 3.10-3.13. Exact
+commands, wheel/source/input/output identities: milestones/03-cli/.
+
+Next: independent remaining local/provider work.
 LlamaParse installed legacy inspection found a re-export from llama-cloud-services
 0.6.85, missing tier/version/disable_cache fields and ignore_errors=True. Actual
 request/error transport checks precede replacing that SDK path.

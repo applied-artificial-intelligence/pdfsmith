@@ -1,0 +1,77 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_cli_contracts.py', '-q', '--tb=short']
+Exit: 1
+FFFFF...FFFF.                                                            [100%]
+=================================== FAILURES ===================================
+______ test_console_rejects_output_aliases_without_destroying_input[same] ______
+tests/test_cli_contracts.py:33: in test_console_rejects_output_aliases_without_destroying_input
+    assert result.returncode == 1, result.stderr
+E   AssertionError: b''
+E   assert 0 == 1
+E    +  where 0 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...urncode=0, stdout=b'Written to /tmp/pytest-of-stefan/pytest-15/test_console_rejects_output_al0/test.pdf\n', stderr=b'').returncode
+____ test_console_rejects_output_aliases_without_destroying_input[symlink] _____
+tests/test_cli_contracts.py:33: in test_console_rejects_output_aliases_without_destroying_input
+    assert result.returncode == 1, result.stderr
+E   AssertionError: b''
+E   assert 0 == 1
+E    +  where 0 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...urncode=0, stdout=b'Written to /tmp/pytest-of-stefan/pytest-15/test_console_rejects_output_al1/alias.md\n', stderr=b'').returncode
+____ test_console_rejects_output_aliases_without_destroying_input[hardlink] ____
+tests/test_cli_contracts.py:33: in test_console_rejects_output_aliases_without_destroying_input
+    assert result.returncode == 1, result.stderr
+E   AssertionError: b''
+E   assert 0 == 1
+E    +  where 0 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...urncode=0, stdout=b'Written to /tmp/pytest-of-stefan/pytest-15/test_console_rejects_output_al2/alias.md\n', stderr=b'').returncode
+_____________ test_console_stdout_and_file_have_identical_content ______________
+tests/test_cli_contracts.py:43: in test_console_stdout_and_file_have_identical_content
+    assert stdout.stdout == output.read_bytes()
+E   AssertionError: assert b'Hello, pdfs...Page 1 of 1\n' == b'Hello, pdfs...\nPage 1 of 1'
+E
+E     Use -v to get more diff
+________________ test_console_backend_options_reach_the_parser _________________
+tests/test_cli_contracts.py:60: in test_console_backend_options_reach_the_parser
+    assert layout.returncode == 0, layout.stderr
+E   AssertionError: b'usage: pdfsmith [-h] [--version] {parse,backends} ...
+E     pdfsmith: error: unrecognized arguments: --backend-options {"layout": true}
+E     '
+E   assert 2 == 0
+E    +  where 2 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi... [-h] [--version] {parse,backends} ...\npdfsmith: error: unrecognized arguments: --backend-options {"layout": true}\n').returncode
+________ test_real_console_io_failure_preserves_existing_output[write] _________
+tests/test_cli_contracts.py:111: in test_real_console_io_failure_preserves_existing_output
+    assert output.read_bytes() == b"previous valid output"
+E   AssertionError: assert b'Hello, pdfsmith!\nThis is a' == b'previous valid output'
+E
+E     At index 0 diff: b'H' != b'p'
+E     Use -v to get more diff
+________ test_real_console_io_failure_preserves_existing_output[close] _________
+tests/test_cli_contracts.py:111: in test_real_console_io_failure_preserves_existing_output
+    assert output.read_bytes() == b"previous valid output"
+E   AssertionError: assert b'Hello, pdfs...\nPage 1 of 1' == b'previous valid output'
+E
+E     At index 0 diff: b'H' != b'p'
+E     Use -v to get more diff
+_________ test_unencodable_parser_output_does_not_truncate_destination _________
+tests/test_cli_contracts.py:121: in test_unencodable_parser_output_does_not_truncate_destination
+    assert output.read_bytes() == b"previous valid output"
+E   AssertionError: assert b'' == b'previous valid output'
+E
+E     Use -v to get more diff
+----------------------------- Captured stderr call -----------------------------
+Error parsing PDF: 'utf-8' codec can't encode character '\ud800' in position 0: surrogates not allowed
+________________ test_replacement_failure_preserves_destination ________________
+tests/test_cli_contracts.py:133: in test_replacement_failure_preserves_destination
+    assert cli.cmd_parse(args) == 1
+E   AssertionError: assert 0 == 1
+E    +  where 0 = <function cmd_parse at 0x79a31ecde5c0>(Namespace(pdf_file=PosixPath('/tmp/pytest-of-stefan/pytest-15/test_replacement_failure_prese0/test.pdf'), output=PosixPath('/tmp/pytest-of-stefan/pytest-15/test_replacement_failure_prese0/output.md'), backend='pypdf'))
+E    +    where <function cmd_parse at 0x79a31ecde5c0> = cli.cmd_parse
+----------------------------- Captured stdout call -----------------------------
+Written to /tmp/pytest-of-stefan/pytest-15/test_replacement_failure_prese0/output.md
+=========================== short test summary info ============================
+FAILED tests/test_cli_contracts.py::test_console_rejects_output_aliases_without_destroying_input[same]
+FAILED tests/test_cli_contracts.py::test_console_rejects_output_aliases_without_destroying_input[symlink]
+FAILED tests/test_cli_contracts.py::test_console_rejects_output_aliases_without_destroying_input[hardlink]
+FAILED tests/test_cli_contracts.py::test_console_stdout_and_file_have_identical_content
+FAILED tests/test_cli_contracts.py::test_console_backend_options_reach_the_parser
+FAILED tests/test_cli_contracts.py::test_real_console_io_failure_preserves_existing_output[write]
+FAILED tests/test_cli_contracts.py::test_real_console_io_failure_preserves_existing_output[close]
+FAILED tests/test_cli_contracts.py::test_unencodable_parser_output_does_not_truncate_destination
+FAILED tests/test_cli_contracts.py::test_replacement_failure_preserves_destination
+9 failed, 4 passed in 1.18s

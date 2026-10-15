@@ -1,7 +1,6 @@
 """Tests for the pdfsmith CLI."""
 
 import sys
-from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -24,9 +23,11 @@ class TestMain:
 
     def test_version_flag(self, capsys):
         """--version should print version and exit."""
-        with patch.object(sys, "argv", ["pdfsmith", "--version"]):
-            with pytest.raises(SystemExit) as exc_info:
-                main()
+        with (
+            patch.object(sys, "argv", ["pdfsmith", "--version"]),
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            main()
 
         assert exc_info.value.code == 0
         captured = capsys.readouterr()
@@ -34,18 +35,22 @@ class TestMain:
 
     def test_parse_command_routes_correctly(self, sample_pdf):
         """parse command should route to cmd_parse."""
-        with patch.object(sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]):
-            with patch("pdfsmith.cli.cmd_parse", return_value=0) as mock_cmd:
-                result = main()
+        with (
+            patch.object(sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]),
+            patch("pdfsmith.cli.cmd_parse", return_value=0) as mock_cmd,
+        ):
+            result = main()
 
         assert result == 0
         mock_cmd.assert_called_once()
 
     def test_backends_command_routes_correctly(self):
         """backends command should route to cmd_backends."""
-        with patch.object(sys, "argv", ["pdfsmith", "backends"]):
-            with patch("pdfsmith.cli.cmd_backends", return_value=0) as mock_cmd:
-                result = main()
+        with (
+            patch.object(sys, "argv", ["pdfsmith", "backends"]),
+            patch("pdfsmith.cli.cmd_backends", return_value=0) as mock_cmd,
+        ):
+            result = main()
 
         assert result == 0
         mock_cmd.assert_called_once()
@@ -58,11 +63,11 @@ class TestParseCommand:
         """Parse without -o should print to stdout."""
         mock_markdown = "# Test Document\n\nHello, pdfsmith!"
 
-        with patch("pdfsmith.cli.parse", return_value=mock_markdown):
-            with patch.object(
-                sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]
-            ):
-                result = main()
+        with (
+            patch("pdfsmith.cli.parse", return_value=mock_markdown),
+            patch.object(sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]),
+        ):
+            result = main()
 
         assert result == 0
         captured = capsys.readouterr()
@@ -73,27 +78,27 @@ class TestParseCommand:
         mock_markdown = "# Test Document\n\nHello, pdfsmith!"
         output_file = tmp_path / "output.md"
 
-        with patch("pdfsmith.cli.parse", return_value=mock_markdown):
-            with patch.object(
+        with (
+            patch("pdfsmith.cli.parse", return_value=mock_markdown),
+            patch.object(
                 sys,
                 "argv",
                 ["pdfsmith", "parse", str(sample_pdf), "-o", str(output_file)],
-            ):
-                result = main()
+            ),
+        ):
+            result = main()
 
         assert result == 0
         assert output_file.exists()
         assert output_file.read_text() == mock_markdown
         captured = capsys.readouterr()
-        assert f"Written to {output_file}" in captured.out
+        assert f"Written to {output_file}" in captured.err
 
     def test_parse_file_not_found(self, tmp_path, capsys):
         """Parse with non-existent file should error."""
         nonexistent = tmp_path / "nonexistent.pdf"
 
-        with patch.object(
-            sys, "argv", ["pdfsmith", "parse", str(nonexistent)]
-        ):
+        with patch.object(sys, "argv", ["pdfsmith", "parse", str(nonexistent)]):
             result = main()
 
         assert result == 1
@@ -102,13 +107,15 @@ class TestParseCommand:
 
     def test_parse_with_backend(self, sample_pdf):
         """Parse with -b should pass backend to parse()."""
-        with patch("pdfsmith.cli.parse", return_value="# Test") as mock_parse:
-            with patch.object(
+        with (
+            patch("pdfsmith.cli.parse", return_value="# Test") as mock_parse,
+            patch.object(
                 sys,
                 "argv",
                 ["pdfsmith", "parse", str(sample_pdf), "-b", "pypdf"],
-            ):
-                result = main()
+            ),
+        ):
+            result = main()
 
         assert result == 0
         mock_parse.assert_called_once()
@@ -117,14 +124,14 @@ class TestParseCommand:
 
     def test_parse_import_error(self, sample_pdf, capsys):
         """ImportError during parse should be handled gracefully."""
-        with patch(
-            "pdfsmith.cli.parse",
-            side_effect=ImportError("Backend 'marker' not installed"),
+        with (
+            patch(
+                "pdfsmith.cli.parse",
+                side_effect=ImportError("Backend 'marker' not installed"),
+            ),
+            patch.object(sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]),
         ):
-            with patch.object(
-                sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]
-            ):
-                result = main()
+            result = main()
 
         assert result == 1
         captured = capsys.readouterr()
@@ -133,14 +140,14 @@ class TestParseCommand:
 
     def test_parse_generic_error(self, sample_pdf, capsys):
         """Generic exception during parse should be handled gracefully."""
-        with patch(
-            "pdfsmith.cli.parse",
-            side_effect=Exception("PDF is corrupted"),
+        with (
+            patch(
+                "pdfsmith.cli.parse",
+                side_effect=Exception("PDF is corrupted"),
+            ),
+            patch.object(sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]),
         ):
-            with patch.object(
-                sys, "argv", ["pdfsmith", "parse", str(sample_pdf)]
-            ):
-                result = main()
+            result = main()
 
         assert result == 1
         captured = capsys.readouterr()
