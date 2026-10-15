@@ -349,6 +349,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="gemini",
         description="Google Gemini, frontier multimodal PDF parsing",
         package="google-genai",
+        dependencies=("google-genai", "pypdf"),
         weight="commercial",
         loader=_load_gemini,
     ),

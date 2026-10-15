@@ -1,0 +1,3 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/gemini-3.13-nc24s2ec/env/bin/python', '-I', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/gemini_probe.py', '--fixtures', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ocr-fixtures', '--transport', '/home/stefan/applied-ai/pdfsmith/tests/gemini_transport.py', '--output', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/gemini-3.13-nc24s2ec/outputs']
+Exit: 0
+{"python": "3.13.5", "sdk_contracts": "passed"}

@@ -1,0 +1,122 @@
+[
+  {
+    "case": "MAX_TOKENS",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL",
+      "cost_info": {
+        "backend": "gemini",
+        "model": "gemini-2.0-flash",
+        "pricing": {
+          "input": 0.1,
+          "output": 0.4
+        },
+        "last_parsing_cost": 4.1000000000000006e-06,
+        "total_cost": 4.1000000000000006e-06,
+        "pages_processed": 2,
+        "total_input_tokens": 13,
+        "total_output_tokens": 7
+      }
+    },
+    "client_closed": false,
+    "async_client_closed": false,
+    "calls": [
+      {
+        "path": "/v1beta/models/gemini-2.0-flash:generateContent",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "generation_config": {
+          "maxOutputTokens": 65536
+        }
+      }
+    ]
+  },
+  {
+    "case": "blocked",
+    "result": {
+      "returned": "",
+      "cost_info": {
+        "backend": "gemini",
+        "model": "gemini-2.0-flash",
+        "pricing": {
+          "input": 0.1,
+          "output": 0.4
+        },
+        "last_parsing_cost": 4.1000000000000006e-06,
+        "total_cost": 4.1000000000000006e-06,
+        "pages_processed": 2,
+        "total_input_tokens": 13,
+        "total_output_tokens": 7
+      }
+    },
+    "client_closed": false,
+    "async_client_closed": false,
+    "calls": [
+      {
+        "path": "/v1beta/models/gemini-2.0-flash:generateContent",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "generation_config": {
+          "maxOutputTokens": 65536
+        }
+      }
+    ]
+  },
+  {
+    "case": "missing-candidates",
+    "result": {
+      "returned": "",
+      "cost_info": {
+        "backend": "gemini",
+        "model": "gemini-2.0-flash",
+        "pricing": {
+          "input": 0.1,
+          "output": 0.4
+        },
+        "last_parsing_cost": 4.1000000000000006e-06,
+        "total_cost": 4.1000000000000006e-06,
+        "pages_processed": 2,
+        "total_input_tokens": 13,
+        "total_output_tokens": 7
+      }
+    },
+    "client_closed": false,
+    "async_client_closed": false,
+    "calls": [
+      {
+        "path": "/v1beta/models/gemini-2.0-flash:generateContent",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "generation_config": {
+          "maxOutputTokens": 65536
+        }
+      }
+    ]
+  },
+  {
+    "case": "zero-usage",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL",
+      "cost_info": {
+        "backend": "gemini",
+        "model": "gemini-2.0-flash",
+        "pricing": {
+          "input": 0.1,
+          "output": 0.4
+        },
+        "last_parsing_cost": 5.16e-05,
+        "total_cost": 5.16e-05,
+        "pages_processed": 2,
+        "total_input_tokens": 516,
+        "total_output_tokens": 0
+      }
+    },
+    "client_closed": false,
+    "async_client_closed": false,
+    "calls": [
+      {
+        "path": "/v1beta/models/gemini-2.0-flash:generateContent",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "generation_config": {
+          "maxOutputTokens": 65536
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "pyproject.toml": "2cf4af8465f7734f2a8cea9a65058b2cf4c8cbd375612bec200a2f621e018652",
+  "uv.lock": "f75aa64bb1b67cf2b4de29890511bd4d83a323a2b8dec3c7ad7a524ebc794de0",
+  "src/pdfsmith/backends/gemini_backend.py": "07fb8ff03f51e9abe182ffabbc209d355d950aaeff5325e9cc453d4d88c089a3",
+  "src/pdfsmith/backends/registry.py": "f15f6973c002816302ba605958cd3c7b009f2105ed5e5586ae245039808032e5",
+  "tests/gemini_transport.py": "3712a90e7e9098e6c133ceb40a721700b5798269887bafbcb45b7d2760a07754",
+  "tests/test_gemini_contracts.py": "7781c4e53102e8dd2d5d9844481b84c8a07899260f48c2c3964fdf16269306ec"
+}

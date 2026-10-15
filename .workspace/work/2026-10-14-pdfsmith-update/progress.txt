@@ -42,23 +42,24 @@ Latest source suite at 9acc1fc: 247 passed, 51 skipped; focused model suite: 23 
 Evidence, exact model/source/wheel/input/output hashes: milestones/07-models/.
 Earlier interrupted or harness-failed attempts remain labeled separately.
 
-Eight hosted backends lack actual live E2E. LlamaParse, AWS, Azure, Google, Databricks, Anthropic and OpenAI have real
-SDK offline contract evidence on Python 3.10-3.13. AWS/Azure: 32 focused checks;
-eight refreshed extra-only installed wheels passed API/direct/async/CLI and
-content-retaining cleanup failures, milestones/09-ocr/. Latest source suite: 384 passed, 12 skipped. Google adds complete batch status/shard checks, bounded cancellation and retained
-uncertain resources; four real-SDK offline installed environments passed,
-milestones/10-google/. Databricks adds actual SDK/schema/status checks; 27 focused checks and four
-installed extra-only wheels passed, milestones/11-databricks/. SQL engine and live
-service acceptance remain unverified. Anthropic adds strict completion/reported usage; 23 focused checks and four
-installed wheels passed, milestones/12-anthropic/. Marker requires a separate
-environment from the new Anthropic SDK. OpenAI adds strict completion and upload lifecycle; 25 focused checks and four
-installed wheels passed, milestones/13-openai/. Next owned work: Gemini SDK contracts, then final packaging/CI/README reconciliation.
+Eight hosted backends lack actual live E2E. All eight now have actual SDK offline
+contract evidence on Python 3.10-3.13, distinct from live service processing:
+LlamaParse (05), AWS/Azure (09), Google (10), Databricks (11), Anthropic (12),
+OpenAI (13) and Gemini (14). Each milestone records exact source/wheel/dependency/
+input/output identity, reproductions and installed API/direct/async/console results.
+Latest full source suite: 411 passed, 12 skipped; Ruff and repository mypy pass.
+Marker needs environments separate from Unstructured and the current Anthropic/
+OpenAI/frontier extras because of upstream dependency constraints.
+
+Next owned work: verify the remaining Unstructured corrupt-model repair concern,
+then final package/bundle/CI/README reconciliation and concrete live-run protocols.
+All inherited provider modifications have now been intentionally integrated and
+preserved in their owning source archives; unrelated untracked work remains intact.
 
 No paid/free-credit provider calls, public-main merge/release, new agents/chats,
 PDF-Bench experiments or website/deployment changes have occurred or are authorized.
 The active task owns codex/pdfsmith-update-2026-10-14 in the primary checkout;
-no temporary worktrees exist. The remaining inherited Gemini modification and unrelated
-untracked work remain deliberately unabsorbed, with preservation hashes recorded.
+no temporary worktrees exist. Unrelated inherited untracked work remains deliberately unabsorbed.
 
 Next actions
 No user decision is needed for continued unpaid engineering. Live provider inputs,

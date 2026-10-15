@@ -652,8 +652,8 @@
       "package": "google-genai",
       "weight": "commercial",
       "extra": "gemini",
-      "source_disposition": "Inherited model/usage changes inspected; offline SDK/live checks pending. Retain/repair ignored kwargs and unchecked candidate finish/block statuses.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Integrated inherited modification; repaired typed candidate/usage/client lifecycle with actual SDK offline verification. Live service remains unverified.",
+      "current_evidence": "offline-contract",
       "input_formats": [
         "pdf"
       ],
@@ -661,14 +661,26 @@
         "GOOGLE_API_KEY or GEMINI_API_KEY"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "model, max_output_tokens, request_timeout"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
       ],
       "source_path": "src/pdfsmith/backends/gemini_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/14-gemini/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     }
   ],
   "review_revision": "2026-10-15: static declarations are not SDK/live verification"

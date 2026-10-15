@@ -1,66 +1,200 @@
-"""Google Gemini backend for pdfsmith.
+"""Gemini PDF extraction with typed candidate status and owned client cleanup."""
 
-Google's frontier multimodal models for PDF parsing with native PDF vision.
-
-Requirements:
-    - google-genai
-
-Configuration:
-    Set GOOGLE_API_KEY or GEMINI_API_KEY environment variable.
-    Get your key from: https://aistudio.google.com/apikey
-
-Supported Models:
-    - gemini-3-pro-preview: Latest flagship (~$2/1M input, $12/1M output)
-    - gemini-2.5-pro-preview-06-05: Previous pro (~$1.25/1M input, $10/1M output)
-    - gemini-2.5-flash-preview-05-20: Fast, cheap (~$0.15/1M input, $0.60/1M output)
-    - gemini-2.0-flash: Stable flash (~$0.10/1M input, $0.40/1M output)
-    - gemini-1.5-pro: Legacy pro (~$1.25/1M input, $5/1M output)
-    - gemini-1.5-flash: Legacy flash (~$0.075/1M input, $0.30/1M output)
-
-Limits:
-    - Max file size: 50MB
-    - Max pages: 1000 pages per request
-    - Context window: 1M tokens (for 2.5 Pro)
-"""
-
-from __future__ import annotations
-
+import asyncio
+import hashlib
+import importlib.metadata
+import math
 import os
+import sys
+from concurrent.futures import ThreadPoolExecutor
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-try:
-    from google import genai
-    from google.genai import types
+from pdfsmith._documents import pdf_page_count
+from pdfsmith._inputs import validate_input
+from pdfsmith.config import Option, normalize_options
+from pdfsmith.errors import BackendOperationError
 
+try:
+    importlib.metadata.version("google-genai")
     AVAILABLE = True
-except ImportError:
+except importlib.metadata.PackageNotFoundError:
     AVAILABLE = False
-    genai = None  # type: ignore
-    types = None  # type: ignore
-
-try:
-    import fitz  # PyMuPDF for page counting
-
-    PYMUPDF_AVAILABLE = True
-except ImportError:
-    PYMUPDF_AVAILABLE = False
 
 
-# Pricing per 1M tokens (verified November 2025)
-MODEL_PRICING: dict[str, dict[str, float]] = {
-    "gemini-3-pro-preview": {"input": 2.00, "output": 12.00},
-    "gemini-3-pro-latest": {"input": 2.00, "output": 12.00},
-    "gemini-2.5-pro-preview-06-05": {"input": 1.25, "output": 10.00},
-    "gemini-2.5-flash-preview-05-20": {"input": 0.15, "output": 0.60},
-    "gemini-2.0-flash": {"input": 0.10, "output": 0.40},
-    "gemini-1.5-pro": {"input": 1.25, "output": 5.00},
-    "gemini-1.5-flash": {"input": 0.075, "output": 0.30},
-}
+class GeminiBackend:
+    name = "gemini"
+    options_schema = {
+        "model": Option("gemini-2.5-flash", str),
+        "max_output_tokens": Option(8192, int, minimum=1),
+        "request_timeout": Option(180.0, float, minimum=0.001),
+    }
 
-# Token estimates per page
-TOKENS_PER_PAGE_INPUT = 258  # Per Google docs
-TOKENS_PER_PAGE_OUTPUT = 800
+    def __init__(self, model: str = "gemini-2.5-flash", **options: Any) -> None:
+        self._options = normalize_options(
+            self.name, {"model": model, **options}, self.options_schema
+        )
+        if not self._options["model"].strip():
+            raise ValueError("gemini.model must be nonempty")
+        self._last_usage: dict[str, Any] | None = None
+
+    @property
+    def effective_options(self) -> dict[str, Any]:
+        return deepcopy(self._options)
+
+    def _create_client(self) -> Any:
+        from google import genai
+        from google.genai import types
+
+        key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        if not key:
+            raise RuntimeError(
+                "Set GOOGLE_API_KEY or GEMINI_API_KEY before Gemini parsing"
+            )
+        return genai.Client(
+            api_key=key,
+            enterprise=False,
+            http_options=types.HttpOptions(
+                timeout=max(1, math.ceil(self._options["request_timeout"] * 1000)),
+                retry_options=types.HttpRetryOptions(attempts=1),
+            ),
+        )
+
+    def get_cost_info(self) -> dict[str, Any]:
+        return {
+            "backend": self.name,
+            "model": self._options["model"],
+            "pricing": None,
+            "last_parsing_cost": None,
+            "total_cost": None,
+            "usage": deepcopy(self._last_usage),
+        }
+
+    def parse(self, pdf_path: Path) -> str:
+        self._last_usage = None
+        path = validate_input(pdf_path)
+        if path.stat().st_size > 50_000_000:
+            raise ValueError("Gemini PDF inputs support at most 50,000,000 bytes")
+        if pdf_page_count(path) > 1000:
+            raise ValueError("Gemini PDF inputs support at most 1000 pages")
+        raw = path.read_bytes()
+        client = self._create_client()
+        content = None
+        resources = {}
+        try:
+            from google.genai import types
+
+            response = client.models.generate_content(
+                model=self._options["model"],
+                contents=[
+                    types.Content(
+                        role="user",
+                        parts=[
+                            types.Part.from_bytes(
+                                data=raw, mime_type="application/pdf"
+                            ),
+                            types.Part.from_text(text=PDF_TO_MARKDOWN_PROMPT),
+                        ],
+                    )
+                ],
+                config=types.GenerateContentConfig(
+                    max_output_tokens=self._options["max_output_tokens"],
+                    candidate_count=1,
+                    response_modalities=["TEXT"],
+                ),
+            )
+            if response.response_id:
+                resources["response_id"] = response.response_id
+            self._last_usage = {
+                "input_sha256": hashlib.sha256(raw).hexdigest(),
+                "requested_model": self._options["model"],
+                "response_model": response.model_version,
+                "response_id": response.response_id,
+                "tokens": response.usage_metadata.model_dump(
+                    mode="json", exclude_none=True
+                )
+                if response.usage_metadata is not None
+                else None,
+            }
+            feedback = response.prompt_feedback
+            reason = feedback.block_reason if feedback else None
+            if getattr(reason, "value", reason) not in {
+                None,
+                "BLOCK_REASON_UNSPECIFIED",
+            }:
+                raise RuntimeError(f"Gemini blocked the document request: {reason}")
+            if not response.candidates or len(response.candidates) != 1:
+                raise RuntimeError("Gemini omitted a single complete candidate")
+            candidate = response.candidates[0]
+            if (
+                candidate.index not in {None, 0}
+                or candidate.finish_reason != types.FinishReason.STOP
+            ):
+                raise RuntimeError(
+                    f"Gemini extraction did not complete: {candidate.finish_reason}"
+                )
+            result = candidate.content
+            if result is None or result.role not in {None, "model"} or not result.parts:
+                raise RuntimeError("Gemini omitted candidate text content")
+            parts = []
+            for part in result.parts:
+                if part.thought:
+                    continue
+                extras = part.model_dump(
+                    exclude_none=True, exclude={"text", "thought", "thought_signature"}
+                )
+                if not isinstance(part.text, str) or extras:
+                    raise RuntimeError("Gemini returned non-text extraction content")
+                parts.append(part.text)
+            if not parts:
+                raise RuntimeError("Gemini omitted final text content")
+            content = "".join(parts)
+            return content
+        except Exception as exc:
+            import httpx
+            from google.genai import errors as genai_errors
+
+            if isinstance(exc, httpx.TransportError) or (
+                isinstance(exc, genai_errors.APIError)
+                and (exc.code >= 500 or exc.code == 408)
+            ):
+                raise BackendOperationError(
+                    "Gemini request completion is unknown; request was not retried",
+                    resource_ids=resources,
+                    completion_unknown=True,
+                ) from exc
+            raise
+        finally:
+            primary = sys.exc_info()[1]
+            errors = []
+            try:
+                client.close()
+            except Exception as exc:
+                errors.append(f"client.close: {type(exc).__name__}: {exc}")
+            try:
+                # Close the SDK async client on an owned loop.
+                # Direct synchronous callers can already have a running loop.
+                with ThreadPoolExecutor(max_workers=1) as executor:
+                    executor.submit(lambda: asyncio.run(client.aio.aclose())).result()
+            except Exception as exc:
+                errors.append(f"client.aio.aclose: {type(exc).__name__}: {exc}")
+            if errors:
+                uncertain = (
+                    isinstance(primary, BackendOperationError)
+                    and primary.completion_unknown
+                )
+                if isinstance(primary, BackendOperationError):
+                    errors = [*primary.cleanup_errors, *errors]
+                raise BackendOperationError(
+                    "Gemini resource cleanup failed",
+                    parse_completed=content is not None,
+                    recovered_content=content,
+                    resource_ids=resources,
+                    completion_unknown=uncertain,
+                    cleanup_errors=tuple(errors),
+                ) from primary
+
 
 PDF_TO_MARKDOWN_PROMPT = """Convert this PDF document to clean Markdown.
 
@@ -74,158 +208,3 @@ Instructions:
 7. Do not add any commentary or explanations - just output the converted content
 
 Output only the Markdown content, nothing else."""
-
-
-class GeminiBackend:
-    """PDF parser using Google's Gemini multimodal models."""
-
-    name = "gemini"
-
-    def __init__(
-        self,
-        model: str = "gemini-2.0-flash",
-        **kwargs: Any,
-    ) -> None:
-        """Initialize Gemini backend.
-
-        Args:
-            model: Gemini model to use. Options:
-                - "gemini-3-pro-preview": Latest flagship (most accurate)
-                - "gemini-2.5-flash-preview-05-20": Latest flash (fast, cheap)
-                - "gemini-2.0-flash": Stable flash model (recommended)
-                - "gemini-1.5-pro": Previous flagship
-            **kwargs: Additional options (ignored for compatibility)
-
-        Raises:
-            ImportError: If google-genai is not installed
-            ValueError: If API key not set or invalid model
-        """
-        if not AVAILABLE:
-            raise ImportError(
-                "google-genai is required. Install with: pip install pdfsmith[gemini]"
-            )
-
-        self.api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
-        if not self.api_key:
-            raise ValueError(
-                "GOOGLE_API_KEY or GEMINI_API_KEY environment variable must be set. "
-                "Get your key from https://aistudio.google.com/apikey"
-            )
-
-        if model not in MODEL_PRICING:
-            raise ValueError(
-                f"Invalid model '{model}'. "
-                f"Available models: {list(MODEL_PRICING.keys())}"
-            )
-
-        self.model = model
-        self.pricing = MODEL_PRICING[model]
-        self.client = genai.Client(api_key=self.api_key)
-
-        # Cost tracking
-        self.last_parsing_cost = 0.0
-        self.total_cost = 0.0
-        self.pages_processed = 0
-        self.total_input_tokens = 0
-        self.total_output_tokens = 0
-
-    def parse(self, pdf_path: Path) -> str:
-        """Parse PDF to markdown using Gemini vision.
-
-        Args:
-            pdf_path: Path to PDF file
-
-        Returns:
-            Markdown text
-
-        Raises:
-            FileNotFoundError: If PDF file doesn't exist
-            ValueError: If PDF exceeds limits
-            RuntimeError: If Gemini API call fails
-        """
-        if not pdf_path.exists():
-            raise FileNotFoundError(f"PDF not found: {pdf_path}")
-
-        # Check file size (50MB limit)
-        file_size_mb = pdf_path.stat().st_size / (1024 * 1024)
-        if file_size_mb > 50:
-            raise ValueError(f"PDF file too large ({file_size_mb:.1f}MB). Max: 50MB")
-
-        # Get page count
-        page_count = self._get_page_count(pdf_path)
-        if page_count > 1000:
-            raise ValueError(f"PDF has {page_count} pages. Max: 1000 pages")
-
-        try:
-            # Read PDF bytes
-            pdf_data = pdf_path.read_bytes()
-
-            # Call Gemini API with PDF
-            pdf_part = types.Part.from_bytes(
-                data=pdf_data,
-                mime_type="application/pdf",
-            )
-            response = self.client.models.generate_content(
-                model=self.model,
-                contents=[pdf_part, PDF_TO_MARKDOWN_PROMPT],  # type: ignore[arg-type]
-            )
-
-            # Extract markdown from response
-            markdown = response.text or ""
-
-            # Get token usage if available
-            input_tokens = page_count * TOKENS_PER_PAGE_INPUT
-            output_tokens = len(markdown) // 4
-
-            if response.usage_metadata is not None:
-                usage = response.usage_metadata
-                if hasattr(usage, "prompt_token_count") and usage.prompt_token_count:
-                    input_tokens = int(usage.prompt_token_count)
-                candidates_count = getattr(usage, "candidates_token_count", None)
-                if candidates_count is not None:
-                    output_tokens = int(candidates_count)
-
-        except Exception as e:
-            raise RuntimeError(f"Gemini API call failed: {e}") from e
-
-        # Track costs
-        input_cost = (input_tokens / 1_000_000) * self.pricing["input"]
-        output_cost = (output_tokens / 1_000_000) * self.pricing["output"]
-        cost = input_cost + output_cost
-
-        self.last_parsing_cost = cost
-        self.total_cost += cost
-        self.pages_processed += page_count
-        self.total_input_tokens += input_tokens
-        self.total_output_tokens += output_tokens
-
-        return markdown
-
-    def _get_page_count(self, pdf_path: Path) -> int:
-        """Get page count from PDF."""
-        if PYMUPDF_AVAILABLE:
-            try:
-                doc = fitz.open(pdf_path)
-                count = len(doc)
-                doc.close()
-                return count
-            except Exception:
-                pass
-        return max(1, pdf_path.stat().st_size // 75000)
-
-    def get_cost_info(self) -> dict[str, Any]:
-        """Get cost information for this backend.
-
-        Returns:
-            Dictionary with cost information
-        """
-        return {
-            "backend": self.name,
-            "model": self.model,
-            "pricing": self.pricing,
-            "last_parsing_cost": self.last_parsing_cost,
-            "total_cost": self.total_cost,
-            "pages_processed": self.pages_processed,
-            "total_input_tokens": self.total_input_tokens,
-            "total_output_tokens": self.total_output_tokens,
-        }
