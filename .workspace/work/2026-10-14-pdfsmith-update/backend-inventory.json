@@ -616,8 +616,8 @@
       "package": "openai",
       "weight": "commercial",
       "extra": "openai",
-      "source_disposition": "Inherited model changes inspected; offline SDK/live checks pending. Retain/repair upload cleanup on generation failure, ignored kwargs and unchecked completion state.",
-      "current_evidence": "source-inspection-only; runtime verification pending",
+      "source_disposition": "Integrated preserved inherited work; repaired terminal completion and owned upload cleanup with actual SDK offline verification. Live service remains unverified.",
+      "current_evidence": "offline-contract",
       "input_formats": [
         "pdf"
       ],
@@ -625,14 +625,26 @@
         "OPENAI_API_KEY"
       ],
       "configuration_status": "not-checked",
-      "options_contract": "constructor-bound; schema verification pending owning plan issue",
+      "options_contract": [
+        "model, max_completion_tokens, request_timeout"
+      ],
       "system_requirements": [],
       "execution_policy": "thread-compatible-pending-runtime-check",
       "evidence_states": [
-        "registered"
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
       ],
       "source_path": "src/pdfsmith/backends/openai_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "evidence_path": "milestones/13-openai/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
     },
     {
       "name": "gemini",

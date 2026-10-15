@@ -341,6 +341,7 @@ BACKEND_REGISTRY: dict[str, BackendInfo] = {
         name="openai",
         description="OpenAI GPT, frontier multimodal PDF parsing",
         package="openai",
+        dependencies=("openai", "pypdf"),
         weight="commercial",
         loader=_load_openai,
     ),

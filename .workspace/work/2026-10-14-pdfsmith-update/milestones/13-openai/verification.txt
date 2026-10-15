@@ -1,0 +1,54 @@
+OpenAI PDF upload/completion contracts - October 15, 2026
+
+inherited-source.tar.gz and inherited-sha256.txt preserve the inherited adapter.
+before.json replays that source through actual SDK 3.31.0 with a strict httpx2
+transport. Truncation/refusal returns successful text, missing content returns
+empty success, deletion errors are suppressed, clients are left open, and a
+post-upload HTTP 400 never attempts file deletion. No provider was called.
+
+The replacement preserves Chat Completions PDF file input; current official docs
+still support that endpoint and user_data uploads. Constructors bind validated
+model/max_completion_tokens/request_timeout without credentials or SDK creation.
+Models are not constrained by stale price tables. pypdf is a declared dependency;
+PDF/header/structural validation and the <50,000,000-byte input limit precede upload.
+The file tuple contains the actual input bytes and explicit application/pdf MIME.
+
+Only one identified assistant choice with index zero, finish_reason=stop, no
+refusal and present string content is successful. An explicitly present empty
+string is valid blank completion. Refusal, token truncation, tool/content-filter
+states and missing/extra choices raise. A terminal LLM completion does not establish
+semantic/page completeness or parsing quality. get_cost_info keeps the method but
+returns monetary fields as None and only actual reported usage/identity. Missing
+usage remains unknown; a failed next invocation clears the previous snapshot.
+
+One owned client per call, explicit timeout and max_retries=0. Uploads are deleted
+only after known terminal outcomes, including generation HTTP 4xx and unsuccessful
+terminal completions. Ambiguous upload/generation and server/connection errors
+raise BackendOperationError with completion_unknown=True and any known file ID;
+no automatic replay or deletion of a possibly active input occurs. Known terminal
+file deletion must be confirmed; an already missing file is acceptable. All owned
+clients close. Primary parse errors survive simultaneous cleanup errors, and
+completed content survives deletion/close failures with resource IDs and separate
+private CLI recovery JSON while the previous destination remains unchanged.
+
+Focused source checks: runtime/dev-env/bin/python -m pytest -q
+ tests/test_openai_contracts.py --tb=line: 25 passed. Tests include actual source
+client construction with only transport injection, one ambiguous upload attempt,
+whole input hashes/MIME/purpose, options, terminal/refusal/truncation/blank/usage,
+known versus uncertain cleanup, combined generation/deletion errors and usage reset.
+Fresh full source suite: 384 passed, 12 skipped in 60.45s. Ruff and repository mypy
+pass. Skips are not live provider passes.
+
+Four fresh noneditable extra-only wheel environments passed Python 3.10-3.13,
+API/direct/async/actual console, SDK failure cases and content-retaining recovery.
+Targets have no pytest/fixture generators. All actual SDK requests use the strict
+in-memory httpx2 transport and DNS/TCP is denied. installed-*.json, logs and
+raw-outputs.tar.gz identify exact wheel/source/dependencies/input/output hashes.
+OpenAI 3.31 uses httpx2 and conflicts with Marker 2.0's OpenAI <3 dependency;
+marker+openai is declared incompatible, as already established for marker+frontier.
+
+Official current contract:
+https://developers.openai.com/api/docs/guides/file-inputs
+The default gpt-4o-mini name is preserved; actual access, model compatibility,
+authentication, document inference, token usage and billing need an authorized
+live run. No paid/free-credit call has occurred.

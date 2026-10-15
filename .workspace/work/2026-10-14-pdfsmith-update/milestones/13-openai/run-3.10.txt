@@ -1,0 +1,3 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/openai-3.10-nyrd9bt4/env/bin/python', '-I', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/openai_probe.py', '--fixtures', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ocr-fixtures', '--transport', '/home/stefan/applied-ai/pdfsmith/tests/openai_transport.py', '--output', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/openai-3.10-nyrd9bt4/outputs']
+Exit: 0
+{"python": "3.10.20", "sdk_contracts": "passed"}

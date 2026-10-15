@@ -1,0 +1,8 @@
+{
+  "pyproject.toml": "b38fcbe11a523a345fd85985f725a9e69a16abdf66f0b5805854f2d43c4f471f",
+  "uv.lock": "05a96504aad24e6f4ddd5c10520afbe76672605cfa524842b551ec1c9a5edffb",
+  "src/pdfsmith/backends/openai_backend.py": "2b8f1c4e69b55e23ed979ef38a738b7dcc433b1e9e9a86d491b3045cee0e522d",
+  "src/pdfsmith/backends/registry.py": "ce0c196e6a80b5f0d604ea820bbd524cd8efc00ec8e8594dd0a318e856aecda4",
+  "tests/openai_transport.py": "f000b27d8c10e6d179e4b40f23fd36ff7453849064e9c4abb4dfcfce270a1629",
+  "tests/test_openai_contracts.py": "2b023b55033aa0da5ca16565de4efcf95b7999c86172962003170050d336f82a"
+}
