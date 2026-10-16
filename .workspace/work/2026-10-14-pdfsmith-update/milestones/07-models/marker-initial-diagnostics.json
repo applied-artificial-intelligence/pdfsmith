@@ -1,0 +1,24 @@
+[
+  {
+    "evidence": "initial controlled diagnostic; complete installed matrix still pending",
+    "python": "3.12.11",
+    "backend": "marker",
+    "document": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/two-pages.pdf",
+    "input_sha256": "61572d5efbe53066d06281a29ed8ec95969fb7fb8b92b636a98a54fe597c3789",
+    "observed_console_stdout": "LEFT COLUMN RIGHT COLUMN\n\nLEFT COLUMN RIGHT COLUMN\n",
+    "exit_code": 0,
+    "sdk_version": "2.0.0",
+    "notes": "Actual API called from a sanitized isolated interpreter; console stdout includes print newline. No model servers remained after return. Not a parsing quality assessment."
+  },
+  {
+    "evidence": "initial controlled diagnostic; complete installed matrix still pending",
+    "python": "3.12.11",
+    "backend": "marker",
+    "document": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/scanned.pdf",
+    "input_sha256": "0c0a9b8f711e237d65500fe4e8a2d6c6a9f1059bc869ac9996ebd28278748a8e",
+    "observed_console_stdout": "OCR READABLE SENTINEL 12345\n",
+    "exit_code": 0,
+    "sdk_version": "2.0.0",
+    "notes": "Actual API called from a sanitized isolated interpreter; console stdout includes print newline. No model servers remained after return. Not a parsing quality assessment."
+  }
+]

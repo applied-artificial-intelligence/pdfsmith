@@ -1,0 +1,60 @@
+{
+  "observations": {
+    "public": {
+      "distribution": "0.2.0",
+      "module": "0.2.0",
+      "public_parse": {
+        "pypdf": {
+          "characters": 22601,
+          "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd"
+        },
+        "pdfplumber": {
+          "characters": 42984,
+          "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5"
+        }
+      },
+      "sync_async_same": true,
+      "default_equals_explicit_pdfplumber": true,
+      "keyword_compatibility": "returned_string",
+      "singleton": true
+    },
+    "release": {
+      "distribution": "0.2.0",
+      "module": "0.2.0",
+      "public_parse": {
+        "pypdf": {
+          "characters": 22601,
+          "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd"
+        },
+        "pdfplumber": {
+          "characters": 42984,
+          "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5"
+        }
+      },
+      "sync_async_same": true,
+      "default_equals_explicit_pdfplumber": true,
+      "keyword_compatibility": "returned_string",
+      "singleton": true
+    },
+    "working": {
+      "distribution": "0.2.0",
+      "module": "0.3.0",
+      "public_parse": {
+        "pypdf": {
+          "characters": 22601,
+          "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd"
+        },
+        "pdfplumber": {
+          "characters": 42984,
+          "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5"
+        }
+      },
+      "sync_async_same": true,
+      "default_equals_explicit_pdfplumber": true,
+      "keyword_compatibility": "exception",
+      "singleton": false
+    }
+  },
+  "release_public_api_registry_ast_match": true,
+  "boundary": "Capability only, one public document; no quality or service verification."
+}

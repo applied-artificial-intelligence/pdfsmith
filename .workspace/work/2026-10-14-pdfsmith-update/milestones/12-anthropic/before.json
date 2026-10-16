@@ -1,0 +1,118 @@
+[
+  {
+    "case": "max_tokens",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL",
+      "cost_info": {
+        "backend": "anthropic",
+        "model": "claude-3-5-haiku",
+        "model_id": "claude-3-5-haiku-latest",
+        "pricing": {
+          "input": 0.8,
+          "output": 4.0
+        },
+        "last_parsing_cost": 3.84e-05,
+        "total_cost": 3.84e-05,
+        "pages_processed": 2,
+        "total_input_tokens": 13,
+        "total_output_tokens": 7
+      }
+    },
+    "client_closed": false,
+    "calls": [
+      {
+        "model": "claude-3-5-haiku-latest",
+        "max_tokens": 8192,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3213
+      }
+    ]
+  },
+  {
+    "case": "refusal",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL",
+      "cost_info": {
+        "backend": "anthropic",
+        "model": "claude-3-5-haiku",
+        "model_id": "claude-3-5-haiku-latest",
+        "pricing": {
+          "input": 0.8,
+          "output": 4.0
+        },
+        "last_parsing_cost": 3.84e-05,
+        "total_cost": 3.84e-05,
+        "pages_processed": 2,
+        "total_input_tokens": 13,
+        "total_output_tokens": 7
+      }
+    },
+    "client_closed": false,
+    "calls": [
+      {
+        "model": "claude-3-5-haiku-latest",
+        "max_tokens": 8192,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3213
+      }
+    ]
+  },
+  {
+    "case": "missing-content",
+    "result": {
+      "returned": "",
+      "cost_info": {
+        "backend": "anthropic",
+        "model": "claude-3-5-haiku",
+        "model_id": "claude-3-5-haiku-latest",
+        "pricing": {
+          "input": 0.8,
+          "output": 4.0
+        },
+        "last_parsing_cost": 3.84e-05,
+        "total_cost": 3.84e-05,
+        "pages_processed": 2,
+        "total_input_tokens": 13,
+        "total_output_tokens": 7
+      }
+    },
+    "client_closed": false,
+    "calls": [
+      {
+        "model": "claude-3-5-haiku-latest",
+        "max_tokens": 8192,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3213
+      }
+    ]
+  },
+  {
+    "case": "missing-usage",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL",
+      "cost_info": {
+        "backend": "anthropic",
+        "model": "claude-3-5-haiku",
+        "model_id": "claude-3-5-haiku-latest",
+        "pricing": {
+          "input": 0.8,
+          "output": 4.0
+        },
+        "last_parsing_cost": 0.003236,
+        "total_cost": 0.003236,
+        "pages_processed": 2,
+        "total_input_tokens": 4000,
+        "total_output_tokens": 9
+      }
+    },
+    "client_closed": false,
+    "calls": [
+      {
+        "model": "claude-3-5-haiku-latest",
+        "max_tokens": 8192,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3213
+      }
+    ]
+  }
+]

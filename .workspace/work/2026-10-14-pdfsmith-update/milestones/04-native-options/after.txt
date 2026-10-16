@@ -1,0 +1,4 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_native_contracts.py', '-q', '--tb=short']
+Exit: 0
+.......................                                                  [100%]
+23 passed in 5.74s

@@ -1,0 +1,47 @@
+[
+  {
+    "backend": "aws_textract",
+    "case": "missing-page-blocks",
+    "result": {
+      "returned_text": ""
+    },
+    "native_document_closed": [
+      true
+    ],
+    "client_closed": false,
+    "requests": 2
+  },
+  {
+    "backend": "aws_textract",
+    "case": "late-page-error",
+    "result": {
+      "error_type": "ValueError",
+      "error": "Invalid PDF: Controlled second-page rejection"
+    },
+    "native_document_closed": [
+      false
+    ],
+    "client_closed": false,
+    "requests": 2
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "missing-pages",
+    "result": {
+      "returned_text": ""
+    },
+    "client_closed": false,
+    "requests": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30",
+        "body_bytes": 1166
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30",
+        "body_bytes": 0
+      }
+    ]
+  }
+]

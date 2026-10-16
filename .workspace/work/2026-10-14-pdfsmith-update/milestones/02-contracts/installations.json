@@ -1,0 +1,42 @@
+[
+  {
+    "python": "3.10",
+    "backend": "pypdf",
+    "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd"
+  },
+  {
+    "python": "3.10",
+    "backend": "pdfplumber",
+    "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5"
+  },
+  {
+    "python": "3.11",
+    "backend": "pypdf",
+    "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd"
+  },
+  {
+    "python": "3.11",
+    "backend": "pdfplumber",
+    "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5"
+  },
+  {
+    "python": "3.12",
+    "backend": "pypdf",
+    "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd"
+  },
+  {
+    "python": "3.12",
+    "backend": "pdfplumber",
+    "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5"
+  },
+  {
+    "python": "3.13",
+    "backend": "pypdf",
+    "sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd"
+  },
+  {
+    "python": "3.13",
+    "backend": "pdfplumber",
+    "sha256": "a5281139d2dd8b666e5c063dc616b51cdfc25906093198cb0484c2cafd9f15d5"
+  }
+]

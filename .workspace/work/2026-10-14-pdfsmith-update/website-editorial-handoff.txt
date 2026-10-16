@@ -1,0 +1,76 @@
+PDFsmith source-owner handoff, October 16, 2026
+
+The reviewed library implementation is on codex/pdfsmith-update-2026-10-14.
+The unpublished 0.3.0.dev0 module, distribution and CLI identity agree. Public main
+is still fe66170231dd580d9f919662ed3b89947f091763; the released package remains
+separate. No public-main merge, package release, website write, publication or
+deployment has occurred. This file supplies evidence to the editorial owners;
+it does not authorize publication of development capabilities as released ones.
+
+Actual local E2E evidence covers pypdf, pdfplumber, PyMuPDF, PyMuPDF4LLM, PDFMiner,
+PDFium, Kreuzberg, Extractous, Unstructured, Docling and Marker. The owning
+milestones identify tested versions, public/controlled inputs, options and routes,
+source/wheel/dependency hashes and outputs. All tested Python versions are within
+3.10-3.13; Unstructured requires 3.11-3.13. Model/native prerequisites still apply.
+These runs establish the recorded execution capability, not comparative accuracy,
+OCR quality, reading-order correctness on every document, speed or a best parser.
+
+All eight hosted adapters have four-Python real-SDK offline contract evidence.
+After explicit USD 5 authorization, five passed actual API/CLI processing of the
+approved public eight-page and controlled two-page PDFs on Python 3.12: AWS,
+Azure Read, Google Document AI, LlamaParse Fast and Anthropic. OpenAI and Gemini
+passed model-access checks but generation was blocked by exhausted prepaid
+balances. On October 16 Stefan declined further funding and waived the remaining
+two live checks, accepting documentation and existing SDK offline evidence. The
+engineering/verification scope is closed with these declared limits. Databricks
+was explicitly excluded and received no calls. These facts do not establish all
+modes/models, OCR quality or comparative results.
+
+LlamaParse uses llama-cloud 2.18.x; the live check used Fast/2026-06-15. A live
+422 exposed an invalid zero failure ratio and unsupported tier/version pairing;
+both were repaired with producing regressions before the successful check.
+LlamaParse retains explicit tier and published version,
+disable_cache=true by default and complete ordered page checks. Requested
+settings and response echoes do not confirm runtime version or cache hits.
+LlamaIndex ParseBench is external evaluation work, not a PDFsmith result.
+Databricks SQL compatibility is documentation-backed plus SDK offline evidence,
+not validation by a live warehouse engine. Usage fields on the LLM wrappers
+retain reported counts; monetary fields are unknown, with no old-price estimates.
+
+All adapters are PDF-only. Controlled scanned-PDF OCR was exercised on selected
+local modes, as recorded in the matrix. Registration/dependency presence does not
+mean configured or operational. Discovery does not load models or credentials.
+Automatic selection retains a fixed local preference order and never chooses a
+hosted service. Output can be plain text or backend-produced Markdown; the
+pdfplumber wrapper does not separately convert tables to Markdown.
+
+Marker 2.0/Surya 0.22.1 uses owned local inference processes. Public text-PDF
+checks used text-layer mode; controlled scanned OCR used its default mode. It
+requires a compatible llama.cpp binary and model assets, and an environment
+separate from Unstructured/all and current Anthropic/OpenAI/frontier extras.
+Unstructured needs preinstalled loadable spaCy 3.8.0 assets and rejects a damaged
+installation before the SDK's implicit repair/download fallback.
+
+Core and the five documented bundles passed 24 fresh installed environments
+across Python 3.10-3.13; this does not mean all model combinations were rerun.
+Final exact-artifact core identity checks, README examples and four locked CI
+command sets passed. Each CI test environment reports 408 passed, 15 skipped;
+skips and SDK mocks are not live evidence. CLI atomic output, exact UTF-8 bytes
+and private recovery files preserve useful content when cleanup fails.
+
+Authoritative contracts and current status are README.md, spec.md, plan.md,
+backend-inventory.json, reviews/dispositions.txt and milestones/16-final/verification.txt.
+Actual usage, source/wheel identities and cost/receipt limitations are in
+milestones/17-live/report.txt and results.json. Settled bills remain unavailable;
+reservations are not charges. No account top-ups or new resources were purchased.
+The original external-review packet and the October 9 capability branch retain
+their historical identities. Existing user files were preserved.
+
+PDF-Bench owns corpus/reference design, comparisons, metrics and experiments.
+Website/content owners retain their CMS, manuscripts, calendars and deployment.
+The library owner supplies source contracts and execution evidence only.
+
+Next actions
+None required for verification closure. No website publication is requested.
+The live pass is closed and authorizes no further spending. A future release,
+public-main merge, provider call or Databricks access needs separate authorization.

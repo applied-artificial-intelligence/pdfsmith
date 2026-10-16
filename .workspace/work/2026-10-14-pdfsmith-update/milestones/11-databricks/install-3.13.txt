@@ -1,0 +1,18 @@
+Using Python 3.13.5 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/databricks-3.13-ozb4xcba/env
+Resolved 15 packages in 12ms
+Installed 15 packages in 5ms
+ + certifi==2026.7.22
+ + cffi==2.1.1
+ + charset-normalizer==3.5.2
+ + cryptography==50.0.2
+ + databricks-sdk==0.116.0
+ + google-auth==2.62.0
+ + idna==3.20
+ + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/databricks-wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl)
+ + protobuf==6.33.6
+ + pyasn1==0.6.4
+ + pyasn1-modules==0.4.2
+ + pycparser==3.11
+ + pypdf==6.20.1
+ + requests==2.34.2
+ + urllib3==2.8.0

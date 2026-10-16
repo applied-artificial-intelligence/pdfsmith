@@ -1,0 +1,9 @@
+{
+  "pyproject.toml": "b5506b1bd2e7be6d47efd722976c635ebd5454bc94f45474924c5759a84367db",
+  "uv.lock": "2614901a73033283adb83b63db69f8cf9470e857a2ebb791756020b592909551",
+  "src/pdfsmith/backends/databricks_backend.py": "d5517b630d38fcbe5c460414876167fde7bf9db0ada11f8e26ba047d6c767d3f",
+  "src/pdfsmith/backends/registry.py": "1e65d523b5d6b9990c0d4eb4e7a16de681223a6f804c2c6125234e2d900a540e",
+  "tests/test_commercial_backends.py": "22724ed5cc402d36765fc7bc6d1bae4c6ee698122b5f227f316f3f3539cc3e55",
+  "tests/databricks_transport.py": "405de6cc8f320c30e743fdeab6a060b1ed4f035d8e0d19297809c0cc349430eb",
+  "tests/test_databricks_contracts.py": "3dd56708407e1f8b263bbd3f54f7ef306f053e19b5d8959f8050250e40cceabf"
+}

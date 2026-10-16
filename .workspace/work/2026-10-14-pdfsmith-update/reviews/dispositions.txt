@@ -1,0 +1,145 @@
+PDFsmith external-review reconciliation - October 15, 2026
+
+Reports: gpt-01.md (GPT) and fable-01.md (Claude), attributed by Stefan.
+Exact model versions were not supplied and are not inferred from filenames.
+Original returned bytes and their initially staged empty versions are preserved
+in returned-reviews.tar.gz; readable Markdown copies gain only a final newline.
+identities.json records original and readable hashes.
+
+Decision: shared planning blockers are resolved in the revised specification/plan.
+User authorized implementation after reconciliation. Implementation evidence is mapped per finding below; five hosted
+integrations now have scoped live API/CLI evidence; OpenAI/Gemini are blocked on
+prepaid balances and Databricks remains explicitly excluded. No report is treated as a test result for this
+checkout, and no live-service verification or spending authority is inferred.
+
+GPT F1; Claude M5
+Plan ownership: 1,16
+Disposition: Accepted
+Ordinary tests unconditionally exclude live tests and deny outbound access; synthetic-credential subprocess tests cover every flag. Any temporary xfail is strict.
+Verification: Implemented and exercised in milestones/01-safety and all later ordinary suites; live-test flags remain ineffective.
+
+GPT F2; Claude B1,H3,H5,D1
+Plan ownership: 2,3,7-14
+Disposition: Accepted
+Static discovery, constructor-bound shared validation and lazy credential/client/model work resolve lifecycle ownership. Direct constructor path remains supported.
+Verification: Implemented in 02-contracts and the owning local/SDK milestones. Eleven actual local integrations passed; hosted evidence is offline only.
+
+GPT F3; Claude H4,D3
+Plan ownership: 3,7
+Disposition: Accepted with compatibility choice
+Exact typed precedence, deep copies, canonical/legacy aliases and whole nested-value replacement are specified. Preserve released Docling user/project layering, rather than deleting CWD lookup. Other wrappers get explicit options until schema documentation. YAML import is lazy.
+Verification: Implemented and tested in 02-contracts and 07-models, including real installed Docling CPU/OCR and frozen configuration.
+
+GPT F4; Claude H5,Low singleton
+Plan ownership: 2,3,6-10
+Disposition: Accepted
+Lock singleton initialization/retry. Spawn processes for fitz/Docling/Marker, global PDFium boundary, test native overlaps and heartbeat. Avoid fitz in cloud page counting.
+Verification: Implemented and exercised in 02-contracts, 04-native, 06-runtime-backends and 07-models; native process/handle checks are actual executions.
+
+GPT F5; Claude B2,H1,D2,D4
+Plan ownership: 2,3,7,8,15
+Disposition: Accepted, remove unreleased layer
+Drop preset/ocr rather than maintain broken quality aliases. Keep backend_options. No implicit Marker paid use. Start formats PDF-only and add image routes only after actual tests.
+Verification: Implemented in 02-contracts, 03-cli and 07-models. PDF-only surface and rejected paid augmentation are tested; no image-support claim.
+
+GPT F6; Claude H6,D7
+Plan ownership: 5
+Disposition: Accepted, provider-specific gate
+Inspect installed legacy distributions/re-export/serialization/error/cache before replacing. One SDK path; explicit pinned tier/version, reject legacy modes, disable_cache=true, unknown cache-hit state, complete ordered page/output checks.
+Verification: Legacy defects and four-Python real-SDK transports are in 05-llamaparse. Live milestone 17 caught and repaired zero-ratio, tier/version-pair and rejected-upload-cleanup defects. Fast/2026-06-15 then passed actual API/CLI processing. Runtime version/cache-hit confirmation remains unknown.
+
+GPT F7; Claude M1
+Plan ownership: 11
+Disposition: Accepted
+Require explicit warehouse, documented binary SQL/options and nested document schema, poll/chunk/cardinality checks and bounded cancellation. Offline transport is not live SQL validation.
+Verification: Actual SDK request/status/chunk/cleanup contracts passed in 11-databricks on four Python versions. Binary SQL acceptance is documentation-backed, not live-engine proof.
+
+GPT F8; Claude H2
+Plan ownership: 5,7-14
+Disposition: Accepted
+Per-wrapper terminal/blank/failure predicates; Docling partial status and Extractous truncation checks included. Google metadata plus shard coverage/order is mandatory.
+Verification: Producing failures and corrections recorded in 04-native, 06-runtime-backends, 07-models and 05/09-14 hosted milestones. Milestone 17 adds scoped live completion evidence for five providers; two are billing-blocked and Databricks is excluded.
+
+GPT F9; Claude M2,D6
+Plan ownership: 3,5-14
+Disposition: Accepted, strict operational-error choice
+Lazy owned resources, primary-error preservation and explicit uncertain-job state. Successful extraction with failed cleanup raises an exception retaining recovered text and resource IDs; do not delete active-job resources.
+Verification: Actual local cleanup checks and real-SDK offline resource/uncertainty/recovery checks passed in owning milestones. Milestone 17 exercised scoped live cleanup: Llama/OpenAI uploads were independently absent on retrieval; Azure wrapper deletion completed without error, with its operation IDs unavailable for an independent audit. Other modes and Databricks remain unverified.
+
+GPT F10; Claude M3
+Plan ownership: 15
+Disposition: Accepted, exact-output choice
+Same-directory staging before parse, aliases including hardlinks, encode/write/close then replace commit point. Preserve before commit; post-commit diagnostic errors separate. stdout/file emit returned UTF-8 exactly with no added newline.
+Verification: Implemented and exercised in 03-cli, including real console output and filesystem producing faults before/after replacement.
+
+GPT F11; Claude M7,D8
+Plan ownership: 1,2,10,16
+Disposition: Accepted
+Early dynamic module version and core-wheel probe, lazy optional YAML, declared pypdf page count, clean extra-only wheel environments and actual Python support checks. Test runner extras cannot mask packaging defects.
+Verification: One-source development identity and core installed checks passed in 01-safety; final wheel/sdist and all bundle checks are in 16-final. No release occurred.
+
+GPT F12; Claude missing evidence
+Plan ownership: 1,3-16
+Disposition: Accepted
+Replace old tests preserving defects, capture actual producing-code failing/passing evidence and inspect all release/public module ASTs. SDK fixtures need official source/date; skips never establish support.
+Verification: Each owning milestone records producing failures, fresh results and package/input/output hashes. Hosted SDK transport fixtures are explicitly offline; 5 scoped live integrations passed in milestone 17; OpenAI/Gemini need account funding and Databricks is excluded.
+
+Claude B3
+Plan ownership: 2,16
+Disposition: Accepted with terminology correction
+Evidence states are independent observations; dependency-present is the honest label for metadata/find_spec, not importable. Required credential names are static and configuration status is not-checked. Inventory columns added.
+Verification: Implemented in static registry/API/CLI and backend-inventory.json. Discovery tests and installed console checks passed; configuration status remains not-checked.
+
+Claude M4
+Plan ownership: 4,6
+Disposition: Accepted
+Close pypdf streams and PDFium native handles; verify current API and needs_pass behavior on owner-password-only input.
+Verification: Actual stream/native-handle and owner-password-only input checks passed in 02-contracts and 04-native.
+
+Claude M6
+Plan ownership: 12-14
+Disposition: Accepted
+Retain provider usage; remove undated USD and file-size page estimates from acceptance/limit decisions.
+Verification: Usage/zero/missing/reset and unpriced currency fields passed actual SDK offline checks in 12-anthropic, 13-openai and 14-gemini. No bill is estimated.
+
+Claude D5
+Plan ownership: 8
+Disposition: Resolved implementation choice
+Sync async-backed wrappers work inside running loops using dedicated thread/loop; native runtime policy still applies.
+Verification: Actual installed Kreuzberg sync-inside-loop and async checks passed in 06-runtime-backends; native process execution remains required.
+
+Claude D9
+Plan ownership: 2
+Disposition: Resolved compatibility choice
+Keep released local default preference, including Docling first if installed. No quality claim or model download occurs during discovery/constructor. Actual parsing can require explicit model acquisition.
+Verification: Discovery/constructors and fixed default tests passed in 02-contracts and 07-models. Actual parsing may acquire model assets; README names the prerequisites.
+
+Claude Low resolver/exception findings
+Plan ownership: 2,3,10
+Disposition: Accepted
+One resolver for selection and parse; runtime caches excluded from dataclass comparison; use typed provider exceptions rather than message substrings.
+Verification: Implemented and tested in 02-contracts, 03-cli and 09-ocr. SDK error predicates and owned cleanup use typed errors/status fields.
+
+Both simplification: remove repetitive premise/claim blocks
+Plan ownership: plan
+Disposition: Partially accepted
+Issue prose and schema duplication were pruned. Required machine-checked premise/claim/closure tables remain for compatibility with the existing workflow; they are not a second evidence database.
+Verification: Planning choice retained. plan.md remains the issue source; backend-inventory.json and milestone results record execution evidence.
+
+Claude simplification: merge issues
+Plan ownership: plan
+Disposition: Deferred, not a correctness blocker
+Keep 16 stable ownership IDs because both reports refer to them. Execute shared core as coherent checkpoints; no redundant architectures or reviewer-requested new agent workflow.
+Verification: Stable issue ownership IDs retained without creating redundant issue/agent workflows. This choice is not a runtime test claim.
+
+Both scope/prior-art suggestions
+Plan ownership: all
+Disposition: Accepted
+All 19 names remain required. PDF-Bench experiments/ParseBench reuse, LiteParse, timing, structured output and public release/deploy remain separate.
+Verification: All 19 remain in the matrix. Eleven have local E2E; eight have four-Python SDK offline evidence; five now have scoped live E2E, two are blocked by prepaid balances and Databricks is excluded. Other project/release/deployment boundaries remain separate.
+
+Next actions
+The seven-API USD 5 authorization was used for the bounded live pass. OpenAI and
+Gemini need funded balances; no top-up was performed. Exact invoice costs require
+provider billing visibility. Databricks remains excluded. No planning approval
+needs repeating, and public-main merge/release remain separate decisions.

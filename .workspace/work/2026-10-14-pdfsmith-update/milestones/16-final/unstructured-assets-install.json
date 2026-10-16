@@ -1,0 +1,28 @@
+[
+  {
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/bin/python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/gemini-wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[unstructured]"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Using Python 3.12.11 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env\nResolved 143 packages in 194ms\nDownloading cuda-bindings (6.8MiB)\nDownloading torch (528.9MiB)\nDownloading torchvision (7.1MiB)\n Downloaded torchvision\n Downloaded cuda-bindings\n Downloaded torch\nPrepared 4 packages in 10.91s\nInstalled 143 packages in 158ms\n + accelerate==1.15.0\n + aiofiles==25.1.0\n + annotated-doc==0.0.5\n + annotated-types==0.8.0\n + anyio==4.15.1\n + beautifulsoup4==4.15.0\n + blis==1.3.3\n + catalogue==2.0.10\n + certifi==2026.7.22\n + cffi==2.1.1\n + charset-normalizer==3.5.2\n + click==8.5.0\n + cloudpathlib==0.26.0\n + confection==1.3.3\n + contourpy==1.4.0\n + cryptography==50.0.2\n + cuda-bindings==13.4.4\n + cuda-pathfinder==1.8.3\n + cuda-toolkit==13.0.3.0\n + cycler==0.12.1\n + cymem==2.0.13\n + emoji==2.16.0\n + filelock==3.32.7\n + filetype==1.2.0\n + flatbuffers==25.12.19\n + fonttools==4.67.0\n + fsspec==2026.9.0\n + google-api-core==2.42.0\n + google-auth==2.62.0\n + google-cloud-vision==3.16.0\n + googleapis-common-protos==1.75.5\n + grpcio==1.84.0\n + grpcio-status==1.84.0\n + h11==0.16.0\n + hf-xet==1.7.0\n + html5lib==1.1\n + httpcore==1.0.9\n + httpcore2==2.13.1\n + httpx==0.28.1\n + httpx2==2.13.1\n + huggingface-hub==2.2.0\n + idna==3.20\n + installer==0.7.0\n + jinja2==3.1.6\n + kiwisolver==1.5.1\n + langdetect==1.0.9\n + llvmlite==0.50.0\n + lxml==6.1.3\n + markdown-it-py==4.2.0\n + markupsafe==3.0.4\n + matplotlib==3.11.2\n + mdurl==0.1.2\n + ml-dtypes==0.6.0\n + mpmath==1.3.0\n + murmurhash==1.0.15\n + networkx==3.7\n + nh3==0.3.7\n + numba==0.68.0\n + numpy==2.5.4\n + nvidia-cublas==13.1.1.3\n + nvidia-cuda-cupti==13.0.85\n + nvidia-cuda-nvrtc==13.0.88\n + nvidia-cuda-runtime==13.0.96\n + nvidia-cudnn-cu13==9.24.0.43\n + nvidia-cufft==12.0.0.61\n + nvidia-cufile==1.15.1.6\n + nvidia-curand==10.4.0.35\n + nvidia-cusolver==12.0.4.66\n + nvidia-cusparse==12.6.3.3\n + nvidia-cusparselt-cu13==0.8.1\n + nvidia-nccl-cu13==2.30.7\n + nvidia-nvjitlink==13.4.92\n + nvidia-nvshmem-cu13==3.4.5\n + nvidia-nvtx==13.0.85\n + olefile==0.47\n + onnx==1.23.2\n + onnxruntime==1.31.0\n + opencv-python==5.0.0.93\n + opentelemetry-api==1.45.1\n + packaging==26.3\n + pandas==3.0.6\n + pdf2image==1.17.0\n + pdfminer-six==20260107\n + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/gemini-wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl)\n + pi-heif==1.4.0\n + pikepdf==10.17.0\n + pillow==12.3.0\n + preshed==3.0.13\n + proto-plus==1.29.0\n + protobuf==7.36.2\n + psutil==7.2.2\n + pyasn1==0.6.4\n + pyasn1-modules==0.4.2\n + pycparser==3.11\n + pydantic==2.14.1\n + pydantic-core==2.50.1\n + pygments==2.21.0\n + pyparsing==3.3.3\n + pypdf==6.20.1\n + pypdfium2==5.14.0\n + python-dateutil==2.9.0.post0\n + python-iso639==2026.7.23\n + python-magic==0.4.27\n + python-oxmsg==0.0.2\n + pyyaml==6.0.3\n + rapidfuzz==3.14.6\n + regex==2026.9.29\n + requests==2.34.2\n + requests-toolbelt==1.0.0\n + rich==15.0.0\n + safetensors==0.8.0\n + scipy==1.18.1\n + setuptools==84.0.0\n + shellingham==1.5.4\n + six==1.17.0\n + smart-open==8.0.3\n + soupsieve==3.0.3\n + spacy==3.8.16\n + spacy-legacy==3.0.12\n + spacy-loggers==1.0.5\n + srsly==2.5.4\n + sympy==1.14.0\n + thinc==8.3.13\n + timm==1.0.30\n + tokenizers==0.23.3\n + torch==2.14.1\n + torchvision==0.29.1\n + tqdm==4.70.1\n + transformers==5.20.0\n + triton==3.8.0\n + truststore==0.10.5\n + typer==0.27.3\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n + unstructured==0.27.27\n + unstructured-client==0.46.2\n + unstructured-inference==1.6.13\n + unstructured-pytesseract==0.3.15\n + urllib3==2.8.0\n + wasabi==1.1.3\n + weasel==1.0.0\n + webencodings==0.6.1\n + wrapt==2.5.1\n"
+  },
+  {
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/bin/python",
+      "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl#sha256=1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Using Python 3.12.11 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env\nResolved 1 package in 125ms\nInstalled 1 package in 4ms\n + en-core-web-sm==3.8.0 (from https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl#sha256=1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85)\n"
+  }
+]

@@ -1,0 +1,201 @@
+Command: ['uv', 'pip', 'compile', '--python-version', '3.13', '--extra', 'all', '--extra', 'marker', 'pyproject.toml', '--quiet']
+Exit: 1
+  × No solution found when resolving dependencies:
+  ╰─▶ Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]==0.27.27 depends on pi-heif>=1.2.0 and
+      only the following versions of unstructured[pdf] are available:
+          unstructured[pdf]<0.27
+          unstructured[pdf]==0.27.1
+          unstructured[pdf]==0.27.5
+          unstructured[pdf]==0.27.6
+          unstructured[pdf]==0.27.8
+          unstructured[pdf]==0.27.9
+          unstructured[pdf]==0.27.10
+          unstructured[pdf]==0.27.16
+          unstructured[pdf]==0.27.22
+          unstructured[pdf]==0.27.25
+          unstructured[pdf]==0.27.27
+      we can conclude that unstructured[pdf]>0.27.25 depends on
+      pillow>=11.1.0. (1)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.25 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.25 depends on pillow>=11.1.0.
+      And because we know from (1) that unstructured[pdf]>0.27.25 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.22 depends
+      on pillow>=11.1.0. (2)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.22 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.22 depends on pillow>=11.1.0.
+      And because we know from (2) that unstructured[pdf]>0.27.22 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.16 depends
+      on pillow>=11.1.0. (3)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.16 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.16 depends on pillow>=11.1.0.
+      And because we know from (3) that unstructured[pdf]>0.27.16 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.10 depends
+      on pillow>=11.1.0. (4)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.10 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.10 depends on pillow>=11.1.0.
+      And because we know from (4) that unstructured[pdf]>0.27.10 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.9 depends on
+      pillow>=11.1.0. (5)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.9 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.9 depends on pillow>=11.1.0.
+      And because we know from (5) that unstructured[pdf]>0.27.9 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.8 depends on
+      pillow>=11.1.0. (6)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.8 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.8 depends on pillow>=11.1.0.
+      And because we know from (6) that unstructured[pdf]>0.27.8 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.6 depends on
+      pillow>=11.1.0. (7)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.6 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.6 depends on pillow>=11.1.0.
+      And because we know from (7) that unstructured[pdf]>0.27.6 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.5 depends on
+      pillow>=11.1.0. (8)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.5 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.5 depends on pillow>=11.1.0.
+      And because we know from (8) that unstructured[pdf]>0.27.5 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>0.27.1 depends on
+      pillow>=11.1.0. (9)
+
+      Because pi-heif>=1.2.0 depends on pillow>=11.1.0 and only the following
+      versions of pi-heif are available:
+          pi-heif<=1.2.0
+          pi-heif==1.2.1
+          pi-heif==1.3.0
+          pi-heif==1.4.0
+      we can conclude that pi-heif>=1.2.0 depends on pillow>=11.1.0.
+      And because unstructured[pdf]>=0.27.1 depends on pi-heif>=1.2.0, we can
+      conclude that unstructured[pdf]>=0.27.1 depends on pillow>=11.1.0.
+      And because we know from (9) that unstructured[pdf]>0.27.1 depends on
+      pillow>=11.1.0, we can conclude that unstructured[pdf]>=0.27 depends
+      on pillow>=11.1.0.
+      And because marker-pdf>=1.0.0 depends on pillow>=10.1.0,<11.0.0 and only
+      the following versions of marker-pdf are available:
+          marker-pdf<=1.0.0
+          marker-pdf==1.0.1
+          marker-pdf==1.0.2
+          marker-pdf==1.1.0
+          marker-pdf==1.2.0
+          marker-pdf==1.2.1
+          marker-pdf==1.2.2
+          marker-pdf==1.2.3
+          marker-pdf==1.2.4
+          marker-pdf==1.2.5
+          marker-pdf==1.2.6
+          marker-pdf==1.2.7
+          marker-pdf==1.3.0
+          marker-pdf==1.3.1
+          marker-pdf==1.3.2
+          marker-pdf==1.3.3
+          marker-pdf==1.3.4
+          marker-pdf==1.3.5
+          marker-pdf==1.4.0
+          marker-pdf==1.5.0
+          marker-pdf==1.5.1
+          marker-pdf==1.5.2
+          marker-pdf==1.5.3
+          marker-pdf==1.5.4
+          marker-pdf==1.5.5
+          marker-pdf==1.6.0
+          marker-pdf==1.6.1
+          marker-pdf==1.6.2
+          marker-pdf==1.7.0
+          marker-pdf==1.7.1
+          marker-pdf==1.7.2
+          marker-pdf==1.7.3
+          marker-pdf==1.7.4
+          marker-pdf==1.7.5
+          marker-pdf==1.8.0
+          marker-pdf==1.8.1
+          marker-pdf==1.8.2
+          marker-pdf==1.8.3
+          marker-pdf==1.8.4
+          marker-pdf==1.8.5
+          marker-pdf==1.9.0
+          marker-pdf==1.9.1
+          marker-pdf==1.9.2
+          marker-pdf==1.9.3
+          marker-pdf==1.10.0
+          marker-pdf==1.10.1
+          marker-pdf==1.10.2
+          marker-pdf==2.0.0
+      we can conclude that marker-pdf>=1.0.0 and unstructured[pdf]>=0.27 are
+      incompatible.
+      And because pdfsmith depends on marker-pdf>=1.0 and
+      unstructured[pdf]>=0.27, we can conclude that your requirements are
+      unsatisfiable.
+
+      hint: Pre-releases are available for `marker-pdf` in the requested
+      range (e.g., 1.7.0a3), but pre-releases weren't enabled (try:
+      `--prerelease=allow`)

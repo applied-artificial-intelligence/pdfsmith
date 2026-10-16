@@ -1,0 +1,13 @@
+{
+  "pyproject.toml": "55815bc9d4db91fddbf364ffbacd1c864b0a4bac4c329f4bd5ddf96627aba74b",
+  "src/pdfsmith/backends/_cleanup.py": "d90ecf5dee5d0e2d050d906a18e8632ff2b40b702fecaaec8d180dc2aacee1f0",
+  "src/pdfsmith/backends/_process.py": "6cf06fa391861bb2f32b72323286489ebc8f469cfdd3c8dc71dd1fb4873c788a",
+  "src/pdfsmith/backends/aws_textract_backend.py": "99d51fbbe4b6dd0939cc745a34cdc890942498eb04fa2a174c7998ebfe233bdd",
+  "src/pdfsmith/backends/azure_document_intelligence_backend.py": "a125fe13dfafd4536b5f2b6907207630dcaabd2a3fc2f57d0a4df6d2d9f150e8",
+  "src/pdfsmith/backends/registry.py": "cc50aedca98cb9c6daba2d111f7965c51e2ef6fafa3ea630a4b0df33ca82cd7a",
+  "tests/test_ocr_contracts.py": "64cc17fbdd16691f712c7cae050ae26004d7182f75f2b01cef5b816cc4e7f36c",
+  "tests/ocr_transport.py": "5083b4a927392d41479aed50827da1bd8f9a772a648a6981a995e6e58da8ab34",
+  "tests/test_commercial_backends.py": "afb0d1cdcb25722519b059610faf1eaada8876abfc368ce186e0babca10ad7fd",
+  "tests/test_async.py": "b41a41ab828168d723daa4261ac300d701c379fc32647c9cfe0b54c151091b73",
+  "uv.lock": "4c6899a297e92325b2f7bc9a0afcd4acc3cff6c694e6f83ef627e5a09d8da97e"
+}

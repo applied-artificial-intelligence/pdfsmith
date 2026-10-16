@@ -1,0 +1,34 @@
+{
+  "milestone": "MuPDF process isolation, PDFium runtime serialization and local PDFMiner configuration",
+  "parent_commit": "78aebaba04898e5946011478ef32c43d407608c1",
+  "source_sha256": {
+    "src/pdfsmith/backends/_process.py": "f882a0a65c3ed39febf47de791251e3fc39a7ff61c675399a0024c101ba121e5",
+    "src/pdfsmith/backends/pymupdf_backend.py": "dd935443a5cf9afdaf1cc253e10f6945d9a9ee526c432f1022e36ccc970e97bc",
+    "src/pdfsmith/backends/pymupdf4llm_backend.py": "e437821c39562cf5a354e4cdf4f9d31dd2edbd327a9951ec263f6575790f297b",
+    "src/pdfsmith/backends/pdfminer_backend.py": "b7f8c456c1ebcf3cd6ae7187c42df629f9ba32641eb80472468f963418b5b31c",
+    "src/pdfsmith/backends/pypdfium2_backend.py": "13c2cc8dd24349f9d47b26f1ed381f9748c5d89c33666c47a9e5d18413e425e7",
+    "tests/test_native_contracts.py": "fdc6a1e768bfc02bcbc6e7407c1aa286e8acdc533a89aabfbdbf90e9e123d3d0",
+    "pyproject.toml": "c849772c31a2dc614f8b0fa367b8cc1b1974058e37dc94375f0db7453bae2180",
+    "uv.lock": "ef52dbf9e02dbe8059adbb06127a18c994777060ab6bb95f86bb2782f860915f",
+    ".workspace/work/2026-10-14-pdfsmith-update/milestones/native_probe.py": "49d8b1978e420ecc966bfb89f1556eaae02c3b1cf7fa065f6ea6ccb3fe307e70"
+  },
+  "before": "13 failures, 2 passes: eager SDKs, direct parent native runtime, cross-instance PDFium overlap, input validation and option contract",
+  "after": "178 passed, 61 optional/live skips; 16 isolated extra-only installed-wheel environments on Python 3.10-3.13",
+  "verified": "Public PDF sync/direct/inside-loop/three-way async/CLI runs; explicit options alter real output except optionless PDFium; blank, corrupt, missing, owner-only encryption and user-password rejection; explicit PDFium handle closure on success and injected failure after real extraction",
+  "dependency_change": "pymupdf>=1.24.3 for canonical pymupdf import; pymupdf4llm>=1.28,<1.29 for inspected layout/legacy SDK contracts. Layout model is bundled by dependency. No model/network initialization in constructor.",
+  "sources": [
+    "https://pypdfium2.readthedocs.io/en/stable/python_api.html",
+    "https://pymupdf.readthedocs.io/en/latest/recipes-multiprocessing.html",
+    "https://pymupdf.readthedocs.io/en/latest/pymupdf4llm/api.html",
+    "https://pdfminersix.readthedocs.io/en/latest/reference/highlevel.html"
+  ],
+  "observed_sdk_details": "PDFium 5.14.0 PdfTextPage lacks context manager, explicitly close; PyMuPDF4LLM 1.28.2 legacy page metadata key page vs layout page_number; use_ocr omitted in legacy and true rejected unless layout enabled. Default OCR disabled.",
+  "limits": [
+    "No quality/ranking claim",
+    "Only current resolved SDK versions tested in installed matrix; ranges are not evidence that every older SDK passed",
+    "Other application libraries calling PDFium outside PDFsmith must use compatible synchronization",
+    "OCR and standalone images remain unverified and unsupported as capability claims",
+    "13 other registered integrations remain runtime-unverified",
+    "Inherited provider bytes in wheel remain explicitly unverified"
+  ]
+}

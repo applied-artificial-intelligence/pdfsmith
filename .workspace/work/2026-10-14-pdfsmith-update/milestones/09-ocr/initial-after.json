@@ -1,0 +1,452 @@
+[
+  {
+    "backend": "aws_textract",
+    "case": "complete",
+    "result": {
+      "returned_text": "FIRST PAGE SENTINEL\n\nFINAL PAGE SENTINEL"
+    },
+    "closed": true,
+    "calls": [
+      {
+        "color": [
+          255,
+          0,
+          0
+        ],
+        "byte_count": 5393
+      },
+      {
+        "color": [
+          0,
+          0,
+          255
+        ],
+        "byte_count": 5353
+      }
+    ]
+  },
+  {
+    "backend": "aws_textract",
+    "case": "missing-pages",
+    "result": {
+      "error_type": "RuntimeError",
+      "error": "Textract returned incomplete page coverage",
+      "cause": "None",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    "closed": true,
+    "calls": [
+      {
+        "color": [
+          255,
+          0,
+          0
+        ],
+        "byte_count": 5393
+      }
+    ]
+  },
+  {
+    "backend": "aws_textract",
+    "case": "missing-text",
+    "result": {
+      "error_type": "RuntimeError",
+      "error": "Textract omitted line text",
+      "cause": "None",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    "closed": true,
+    "calls": [
+      {
+        "color": [
+          255,
+          0,
+          0
+        ],
+        "byte_count": 5393
+      }
+    ]
+  },
+  {
+    "backend": "aws_textract",
+    "case": "late-error",
+    "result": {
+      "error_type": "ValueError",
+      "error": "Textract rejected the document: An error occurred (InvalidParameterException) when calling the DetectDocumentText operation: Controlled second-page rejection",
+      "cause": "An error occurred (InvalidParameterException) when calling the DetectDocumentText operation: Controlled second-page rejection",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    "closed": true,
+    "calls": [
+      {
+        "color": [
+          255,
+          0,
+          0
+        ],
+        "byte_count": 5393
+      },
+      {
+        "color": [
+          0,
+          0,
+          255
+        ],
+        "byte_count": 5353
+      }
+    ]
+  },
+  {
+    "backend": "aws_textract",
+    "case": "close-error",
+    "result": {
+      "error_type": "BackendOperationError",
+      "error": "aws_textract client cleanup failed",
+      "cause": "Controlled AWS close failure",
+      "completed": true,
+      "recovered_content": "FIRST PAGE SENTINEL\n\nFINAL PAGE SENTINEL",
+      "completion_unknown": false,
+      "resources": {
+        "page_1_request": "offline-request-1",
+        "page_2_request": "offline-request-2"
+      }
+    },
+    "closed": true,
+    "calls": [
+      {
+        "color": [
+          255,
+          0,
+          0
+        ],
+        "byte_count": 5393
+      },
+      {
+        "color": [
+          0,
+          0,
+          255
+        ],
+        "byte_count": 5353
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "complete",
+    "result": {
+      "returned_text": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "running",
+    "result": {
+      "returned_text": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "missing-pages",
+    "result": {
+      "error_type": "RuntimeError",
+      "error": "Azure returned incomplete page coverage",
+      "cause": "None",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "missing-text",
+    "result": {
+      "error_type": "RuntimeError",
+      "error": "Azure omitted document content",
+      "cause": "None",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "timeout",
+    "result": {
+      "error_type": "BackendOperationError",
+      "error": "Azure remote completion is unknown; result was retained",
+      "cause": "Azure analysis deadline exceeded; remote completion is unknown",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": true,
+      "resources": {
+        "operation_id": "offline-job",
+        "model_id": "prebuilt-read"
+      }
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "failed",
+    "result": {
+      "error_type": "RuntimeError",
+      "error": "Azure analysis terminated with failed",
+      "cause": "None",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "delete-error",
+    "result": {
+      "error_type": "BackendOperationError",
+      "error": "Azure resource cleanup failed",
+      "cause": "None",
+      "completed": true,
+      "recovered_content": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL",
+      "completion_unknown": false,
+      "resources": {
+        "operation_id": "offline-job",
+        "model_id": "prebuilt-read"
+      }
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "close-error",
+    "result": {
+      "error_type": "BackendOperationError",
+      "error": "Azure resource cleanup failed",
+      "cause": "None",
+      "completed": true,
+      "recovered_content": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL",
+      "completion_unknown": false,
+      "resources": {
+        "operation_id": "offline-job",
+        "model_id": "prebuilt-read"
+      }
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      },
+      {
+        "method": "GET",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      },
+      {
+        "method": "DELETE",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read/analyzeResults/offline-job?api-version=2024-11-30"
+      }
+    ]
+  },
+  {
+    "backend": "azure_document_intelligence",
+    "case": "wrong-location",
+    "result": {
+      "error_type": "BackendOperationError",
+      "error": "Azure remote completion is unknown; result was retained",
+      "cause": "Azure returned an unexpected operation destination",
+      "completed": false,
+      "recovered_content": null,
+      "completion_unknown": true,
+      "resources": {}
+    },
+    "closed": true,
+    "calls": [
+      {
+        "method": "POST",
+        "url": "https://offline.azure.invalid/documentintelligence/documentModels/prebuilt-read:analyze?api-version=2024-11-30&stringIndexType=unicodeCodePoint&outputContentFormat=text"
+      }
+    ]
+  }
+]

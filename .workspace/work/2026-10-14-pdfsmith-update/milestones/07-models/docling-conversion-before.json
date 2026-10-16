@@ -1,0 +1,20 @@
+[
+  {
+    "mode": "normal",
+    "returned_text": "LEFT COLUMN RIGHT COLUMN\n\nLEFT COLUMN RIGHT COLUMN",
+    "sdk_result": {
+      "status": "success",
+      "errors": 0,
+      "pages": 2
+    }
+  },
+  {
+    "mode": "second-page-failure",
+    "returned_text": "LEFT COLUMN RIGHT COLUMN",
+    "sdk_result": {
+      "status": "partial_success",
+      "errors": 1,
+      "pages": 1
+    }
+  }
+]

@@ -1,0 +1,43 @@
+Source: baa417d tests, same installed library wheel
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', '-q', '--tb=short']
+Exit: 1
+.....F...........s.......F..Fsss...                                      [100%]
+=================================== FAILURES ===================================
+__ test_direct_and_async_native_extraction_avoid_parent_runtime[pymupdf4llm] ___
+tests/test_native_contracts.py:48: in test_direct_and_async_native_extraction_avoid_parent_runtime
+    assert "pdfsmith" in parse(sample_pdf, backend=backend)
+../ci-light-3.10/lib/python3.10/site-packages/pdfsmith/api.py:134: in parse
+    path, instance = _prepare(pdf_path, input_path, backend, backend_options)
+../ci-light-3.10/lib/python3.10/site-packages/pdfsmith/api.py:117: in _prepare
+    return path, get_backend(backend, backend_options=options)
+../ci-light-3.10/lib/python3.10/site-packages/pdfsmith/api.py:80: in get_backend
+    info = _resolve_backend(name, for_image=for_image)
+../ci-light-3.10/lib/python3.10/site-packages/pdfsmith/api.py:57: in _resolve_backend
+    raise ImportError(
+E   ImportError: Backend 'pymupdf4llm' dependencies are unavailable. Install with: pip install pdfsmith[pymupdf4llm]
+_ test_runtime_constructor_does_not_initialize_sdk[unstructured-unstructured.partition.pdf] _
+tests/test_runtime_backends.py:30: in test_runtime_constructor_does_not_initialize_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E       File "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ci-light-3.10/lib/python3.10/site-packages/pdfsmith/backends/unstructured_backend.py", line 27, in __init__
+E         BACKEND_REGISTRY[self.name].require_python()
+E       File "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ci-light-3.10/lib/python3.10/site-packages/pdfsmith/backends/registry.py", line 52, in require_python
+E         raise ImportError(
+E     ImportError: Backend 'unstructured' requires Python >=3.11,<3.14
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ci-light-3...e 52, in require_python\n    raise ImportError(\nImportError: Backend \'unstructured\' requires Python >=3.11,<3.14\n').returncode
+____ test_runtime_wrapper_validates_input_before_loading_sdk[unstructured] _____
+tests/test_runtime_backends.py:36: in test_runtime_wrapper_validates_input_before_loading_sdk
+    BACKEND_REGISTRY[backend].loader()().parse(tmp_path / "missing.pdf")
+../ci-light-3.10/lib/python3.10/site-packages/pdfsmith/backends/unstructured_backend.py:27: in __init__
+    BACKEND_REGISTRY[self.name].require_python()
+../ci-light-3.10/lib/python3.10/site-packages/pdfsmith/backends/registry.py:52: in require_python
+    raise ImportError(
+E   ImportError: Backend 'unstructured' requires Python >=3.11,<3.14
+=========================== short test summary info ============================
+FAILED tests/test_native_contracts.py::test_direct_and_async_native_extraction_avoid_parent_runtime[pymupdf4llm]
+FAILED tests/test_runtime_backends.py::test_runtime_constructor_does_not_initialize_sdk[unstructured-unstructured.partition.pdf]
+FAILED tests/test_runtime_backends.py::test_runtime_wrapper_validates_input_before_loading_sdk[unstructured]
+3 failed, 28 passed, 4 skipped in 8.65s

@@ -1,0 +1,13 @@
+{
+  "milestone": "CLI constructor options, exact stdout and atomic file output",
+  "parent_commit": "603bfc8ec406f29cd1136220f6bedcc6779dc45b",
+  "source_sha256": {
+    "src/pdfsmith/cli.py": "874c446368c4157846ac5758dab5abd90fc5a9a92ad196219cc9e1cc9f74997f",
+    "tests/test_cli.py": "17229e4eafecf66d9196e2eb51d04b3215ea5b41441aba4a327952a0883f8a7a",
+    "tests/test_cli_contracts.py": "3a24db00fbf7b7ef41b6f932cc2237153ec25aec09f3342c98ec94cea446947b"
+  },
+  "regressions_before": "9 failures, 4 passes using real console and output fault injection",
+  "after": "157 passed, 62 optional/live skips. Installed non-editable pypdf wheel consoles passed on Python 3.10-3.13.",
+  "verified": "same/symlink/hardlink input protection; real partial write/close, encode and replacement failure preserve destination; pre-parse staging failure; stdout exactly matches file UTF-8 bytes; JSON constructor options; all 19 registered integrations listed with dependency/configuration distinction",
+  "limits": "stdout is not atomic; fsync/durability and hostile concurrent filesystem path changes are not promised; inherited provider changes in wheel remain unverified; complete source typing awaits provider milestone repairs"
+}

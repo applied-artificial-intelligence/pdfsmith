@@ -1,0 +1,74 @@
+PDFsmith update - closed October 16, 2026
+
+Current result: 16 integrations have actual execution evidence: 11 local and five
+hosted. On October 16 Stefan declined further funding and waived the remaining
+OpenAI/Gemini live checks, accepting documentation and existing real-SDK offline
+checks for this scope. Their observed billing failures remain in the evidence.
+Databricks stays excluded from live work. The library update's engineering and
+verification scope is closed with these declared limits; all 19 remain registered.
+
+Stefan authorized seven APIs within an aggregate USD 5 budget, credential checks,
+an OpenAI limit fix, and actual results/cost reporting. No Databricks credential
+was forwarded to a worker and no Databricks SDK, warehouse or billing call occurred.
+No top-ups, new subscriptions/resources, public-main merge, release, PDF-Bench or
+ParseBench experiments, website edits or deployment occurred. No agents/chats
+were launched. Codex account usage is separate and its dollar cost is not visible.
+
+Live checks, Python 3.12
+AWS Textract, Azure Read, Google Document AI, LlamaParse Fast and Anthropic passed
+both the identified public eight-page PDF through the installed public API and
+the controlled two-page PDF through the installed console. Page/document
+sentinels passed. These are scoped execution checks, not quality measurements.
+OpenAI returned HTTP 429 credit_balance_exhausted; Gemini returned HTTP 402 with
+depleted prepayment credits. Model access succeeded, but processing did not.
+
+Repairs from fresh evidence
+- c3480cc: GPT-4o mini validates its 16,384 output ceiling before upload. Two
+  regressions failed before repair; 28 focused OpenAI contracts passed afterward.
+- 0b3db8f: LlamaParse rejects unsupported tier/version pairs, uses a positive
+  service-valid failure threshold while rejecting every failed page locally,
+  and cleans owned uploads after definite HTTP 4xx rejections. Six regressions
+  failed before repair; 37 focused contracts passed. Fast/2026-06-15 then passed
+  a controlled live rerun and CLI call. Initial rejected upload was removed.
+- Final suite: 420 passed, 12 skipped. Ruff check/format and repository mypy passed.
+
+Costs
+Actual usage, source/wheel identities, hashes, sanitized receipts and cleanup are
+in milestones/17-live/results.json and report.txt. Anthropic returned 22,655 input
+and 7,258 output tokens, equivalent to USD 0.058945 at published rates. Actual
+pages processed total ten for each successful provider. Standard-rate equivalents
+for AWS/Azure/Llama/Anthropic total USD 0.101445, excluding Google. Google's
+processor tariff is unknown because metadata-read permission is denied and
+personal refresh credentials are expired. Do not call an OCR price its actual bill.
+Settled provider invoices/account discounts are not visible. Retained reservations
+are USD 3.515, including rejected calls and an enlarged Google tariff allowance,
+within USD 5; reservations are not spending. No further PDFs will be submitted in
+this pass. Raw operational records remain private under runtime/live-results/.
+
+Earlier reviewed engineering
+Core/API/CLI, optional extras, native/model execution and eight real-SDK offline
+contracts remain documented under milestones/01-16. The six documented install
+choices passed 24 fresh installations across Python 3.10-3.13; four locked CI
+command sets each passed 408 tests, 15 skipped before these focused live repairs.
+Original GPT/Claude reports and source archives are preserved. Historical artifacts
+keep their own hashes. README and inventory distinguish local/offline/live scope.
+
+Git and preservation
+Stefan authorized the final PR/merge on October 16. The integration record is
+https://github.com/applied-artificial-intelligence/pdfsmith/pull/1. Before merge,
+the task owns codex/pdfsmith-update-2026-10-14 in the sole primary checkout.
+The superseded README-only capability branch has a complete, independently
+recovered Git bundle under baseline/ and can be retired after integration.
+Unrelated inherited untracked files and credentials remain unabsorbed.
+
+Final merge preparation reran the offline suite: 420 passed, 12 skipped in 54.63s.
+Ruff 0.6 check/format and mypy (30 source files) passed. No provider call or
+benchmark run was made. The PR also runs the repository's GitHub CI matrix.
+
+No further provider calls or top-ups are authorized under the completed pass.
+The separate parser-feature guide work uses official documentation only. Historical
+cost uncertainty remains recorded; no billing investigation is needed for closure.
+
+Next actions
+None required for engineering/verification. PR merge is authorized; final state is
+recorded on PR 1. A package release or deployment remains separately unauthorized.

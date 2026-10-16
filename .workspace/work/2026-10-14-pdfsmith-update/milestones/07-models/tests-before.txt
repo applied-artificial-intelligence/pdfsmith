@@ -1,0 +1,73 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.venv/bin/python', '-m', 'pytest', '-q', 'tests/test_model_backends.py', '--tb=short']
+Original wheel: models-before.whl, before Docling changes
+Exit: 1
+FFFFFFFFFF.                                                              [100%]
+=================================== FAILURES ===================================
+_ test_model_constructor_does_not_initialize_sdk_or_change_thread_environment[docling] _
+tests/test_model_backends.py:39: in test_model_constructor_does_not_initialize_sdk_or_change_thread_environment
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 8, in <module>
+E         assert dict(os.environ) == before, "Constructor changed process environment"
+E                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     AssertionError: Constructor changed process environment
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.venv/bin/python', '-c', 'import os, sys, socket\ndef denied(...rocess environment"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Constructor changed process environment\n').returncode
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options0] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options1] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options2] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options3] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options4] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options5] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options6] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+__ test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options7] ___
+tests/test_model_backends.py:56: in test_docling_rejects_ignored_or_invalid_options_before_sdk_work
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_docling_freezes_typed_configuration_and_preserves_documented_none_aliases _
+/home/stefan/applied-ai/pdfsmith/tests/test_model_backends.py:69: in test_docling_freezes_typed_configuration_and_preserves_documented_none_aliases
+    options = backend.effective_options
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'DoclingBackend' object has no attribute 'effective_options'
+=========================== short test summary info ============================
+FAILED tests/test_model_backends.py::test_model_constructor_does_not_initialize_sdk_or_change_thread_environment[docling]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options0]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options1]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options2]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options3]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options4]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options5]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options6]
+FAILED tests/test_model_backends.py::test_docling_rejects_ignored_or_invalid_options_before_sdk_work[options7]
+FAILED tests/test_model_backends.py::test_docling_freezes_typed_configuration_and_preserves_documented_none_aliases
+10 failed, 1 passed in 7.29s

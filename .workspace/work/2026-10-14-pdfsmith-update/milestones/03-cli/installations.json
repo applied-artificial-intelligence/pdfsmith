@@ -1,0 +1,154 @@
+[
+  {
+    "python": "3.10",
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.10/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}"
+    ],
+    "file_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.10/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}",
+      "-o",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/cli-3.10.md"
+    ],
+    "install_command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.10/bin/python",
+      "--reinstall-package",
+      "pdfsmith",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[pypdf]"
+    ],
+    "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+    "output_sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd",
+    "output_bytes": 24132,
+    "wheel_sha256": "b4f8d4370967aa6000710dd58743bff7f56d28f2b38792dd62c33772600fa61b",
+    "inventory": "pypdf: registered; dependencies present; configuration not checked\npdfplumber: registered; dependencies missing; configuration not checked\npymupdf: registered; dependencies missing; configuration not checked\npymupdf4llm: registered; dependencies missing; configuration not checked\npdfminer: registered; dependencies missing; configuration not checked\npypdfium2: registered; dependencies missing; configuration not checked\nunstructured: registered; dependencies missing; configuration not checked\nkreuzberg: registered; dependencies missing; configuration not checked\nextractous: registered; dependencies missing; configuration not checked\ndocling: registered; dependencies missing; configuration not checked\nmarker: registered; dependencies missing; configuration not checked\naws_textract: registered; dependencies missing; configuration not checked\nazure_document_intelligence: registered; dependencies missing; configuration not checked\n  Required environment names: AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT, AZURE_DOCUMENT_INTELLIGENCE_KEY\ngoogle_document_ai: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_CLOUD_PROJECT, GOOGLE_DOCUMENT_AI_PROCESSOR_ID\ndatabricks: registered; dependencies missing; configuration not checked\n  Required environment names: DATABRICKS_HOST, DATABRICKS_WAREHOUSE_ID\nllamaparse: registered; dependencies missing; configuration not checked\n  Required environment names: LLAMA_CLOUD_API_KEY\nanthropic: registered; dependencies missing; configuration not checked\n  Required environment names: ANTHROPIC_API_KEY\nopenai: registered; dependencies missing; configuration not checked\n  Required environment names: OPENAI_API_KEY\ngemini: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_API_KEY or GEMINI_API_KEY\n"
+  },
+  {
+    "python": "3.11",
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.11/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}"
+    ],
+    "file_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.11/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}",
+      "-o",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/cli-3.11.md"
+    ],
+    "install_command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.11/bin/python",
+      "--reinstall-package",
+      "pdfsmith",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[pypdf]"
+    ],
+    "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+    "output_sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd",
+    "output_bytes": 24132,
+    "wheel_sha256": "b4f8d4370967aa6000710dd58743bff7f56d28f2b38792dd62c33772600fa61b",
+    "inventory": "pypdf: registered; dependencies present; configuration not checked\npdfplumber: registered; dependencies missing; configuration not checked\npymupdf: registered; dependencies missing; configuration not checked\npymupdf4llm: registered; dependencies missing; configuration not checked\npdfminer: registered; dependencies missing; configuration not checked\npypdfium2: registered; dependencies missing; configuration not checked\nunstructured: registered; dependencies missing; configuration not checked\nkreuzberg: registered; dependencies missing; configuration not checked\nextractous: registered; dependencies missing; configuration not checked\ndocling: registered; dependencies missing; configuration not checked\nmarker: registered; dependencies missing; configuration not checked\naws_textract: registered; dependencies missing; configuration not checked\nazure_document_intelligence: registered; dependencies missing; configuration not checked\n  Required environment names: AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT, AZURE_DOCUMENT_INTELLIGENCE_KEY\ngoogle_document_ai: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_CLOUD_PROJECT, GOOGLE_DOCUMENT_AI_PROCESSOR_ID\ndatabricks: registered; dependencies missing; configuration not checked\n  Required environment names: DATABRICKS_HOST, DATABRICKS_WAREHOUSE_ID\nllamaparse: registered; dependencies missing; configuration not checked\n  Required environment names: LLAMA_CLOUD_API_KEY\nanthropic: registered; dependencies missing; configuration not checked\n  Required environment names: ANTHROPIC_API_KEY\nopenai: registered; dependencies missing; configuration not checked\n  Required environment names: OPENAI_API_KEY\ngemini: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_API_KEY or GEMINI_API_KEY\n"
+  },
+  {
+    "python": "3.12",
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.12/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}"
+    ],
+    "file_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.12/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}",
+      "-o",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/cli-3.12.md"
+    ],
+    "install_command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.12/bin/python",
+      "--reinstall-package",
+      "pdfsmith",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[pypdf]"
+    ],
+    "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+    "output_sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd",
+    "output_bytes": 24132,
+    "wheel_sha256": "b4f8d4370967aa6000710dd58743bff7f56d28f2b38792dd62c33772600fa61b",
+    "inventory": "pypdf: registered; dependencies present; configuration not checked\npdfplumber: registered; dependencies missing; configuration not checked\npymupdf: registered; dependencies missing; configuration not checked\npymupdf4llm: registered; dependencies missing; configuration not checked\npdfminer: registered; dependencies missing; configuration not checked\npypdfium2: registered; dependencies missing; configuration not checked\nunstructured: registered; dependencies missing; configuration not checked\nkreuzberg: registered; dependencies missing; configuration not checked\nextractous: registered; dependencies missing; configuration not checked\ndocling: registered; dependencies missing; configuration not checked\nmarker: registered; dependencies missing; configuration not checked\naws_textract: registered; dependencies missing; configuration not checked\nazure_document_intelligence: registered; dependencies missing; configuration not checked\n  Required environment names: AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT, AZURE_DOCUMENT_INTELLIGENCE_KEY\ngoogle_document_ai: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_CLOUD_PROJECT, GOOGLE_DOCUMENT_AI_PROCESSOR_ID\ndatabricks: registered; dependencies missing; configuration not checked\n  Required environment names: DATABRICKS_HOST, DATABRICKS_WAREHOUSE_ID\nllamaparse: registered; dependencies missing; configuration not checked\n  Required environment names: LLAMA_CLOUD_API_KEY\nanthropic: registered; dependencies missing; configuration not checked\n  Required environment names: ANTHROPIC_API_KEY\nopenai: registered; dependencies missing; configuration not checked\n  Required environment names: OPENAI_API_KEY\ngemini: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_API_KEY or GEMINI_API_KEY\n"
+  },
+  {
+    "python": "3.13",
+    "command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.13/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}"
+    ],
+    "file_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.13/bin/pdfsmith",
+      "parse",
+      "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+      "-b",
+      "pypdf",
+      "--backend-options",
+      "{\"extraction_mode\":\"plain\"}",
+      "-o",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/cli-3.13.md"
+    ],
+    "install_command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-pypdf-3.13/bin/python",
+      "--reinstall-package",
+      "pdfsmith",
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[pypdf]"
+    ],
+    "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+    "output_sha256": "86ca854577dbeaffaedf775962b984cc15df67cf2bfc9f96e2d96fb0dcc5babd",
+    "output_bytes": 24132,
+    "wheel_sha256": "b4f8d4370967aa6000710dd58743bff7f56d28f2b38792dd62c33772600fa61b",
+    "inventory": "pypdf: registered; dependencies present; configuration not checked\npdfplumber: registered; dependencies missing; configuration not checked\npymupdf: registered; dependencies missing; configuration not checked\npymupdf4llm: registered; dependencies missing; configuration not checked\npdfminer: registered; dependencies missing; configuration not checked\npypdfium2: registered; dependencies missing; configuration not checked\nunstructured: registered; dependencies missing; configuration not checked\nkreuzberg: registered; dependencies missing; configuration not checked\nextractous: registered; dependencies missing; configuration not checked\ndocling: registered; dependencies missing; configuration not checked\nmarker: registered; dependencies missing; configuration not checked\naws_textract: registered; dependencies missing; configuration not checked\nazure_document_intelligence: registered; dependencies missing; configuration not checked\n  Required environment names: AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT, AZURE_DOCUMENT_INTELLIGENCE_KEY\ngoogle_document_ai: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_CLOUD_PROJECT, GOOGLE_DOCUMENT_AI_PROCESSOR_ID\ndatabricks: registered; dependencies missing; configuration not checked\n  Required environment names: DATABRICKS_HOST, DATABRICKS_WAREHOUSE_ID\nllamaparse: registered; dependencies missing; configuration not checked\n  Required environment names: LLAMA_CLOUD_API_KEY\nanthropic: registered; dependencies missing; configuration not checked\n  Required environment names: ANTHROPIC_API_KEY\nopenai: registered; dependencies missing; configuration not checked\n  Required environment names: OPENAI_API_KEY\ngemini: registered; dependencies missing; configuration not checked\n  Required environment names: GOOGLE_API_KEY or GEMINI_API_KEY\n"
+  }
+]

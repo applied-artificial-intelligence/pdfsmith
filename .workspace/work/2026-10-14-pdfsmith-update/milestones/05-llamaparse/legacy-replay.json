@@ -1,0 +1,38 @@
+{
+  "evidence": "offline legacy SDK regression; no service requests",
+  "wrapper_sha256": "c2f2bd8def4cf259a34b00d2d7870a36a84231ac8bfec2f9b5ea2b96e35b0512",
+  "requested_parsing_mode": "premium",
+  "sdk_parse_mode": null,
+  "sdk_ignore_errors": true,
+  "returned_output": "",
+  "events": [
+    {
+      "method": "POST",
+      "path": "/api/parsing/upload",
+      "selected_controls_present": {
+        "parse_mode": false,
+        "parsing_mode": false,
+        "tier": false,
+        "version": false,
+        "disable_cache": false,
+        "do_not_cache": false,
+        "invalidate_cache": false,
+        "target_pages": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/parsing/job/controlled-job",
+      "selected_controls_present": {
+        "parse_mode": false,
+        "parsing_mode": false,
+        "tier": false,
+        "version": false,
+        "disable_cache": false,
+        "do_not_cache": false,
+        "invalidate_cache": false,
+        "target_pages": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "python": "3.10",
+    "backend": "pymupdf",
+    "output_sha256": "74acb33bdf088f6d4392506005f40801c775b59dd025b5f5c64491130e3da44d"
+  },
+  {
+    "python": "3.10",
+    "backend": "pymupdf4llm",
+    "output_sha256": "82aa303f2453bff6d7251a3a2f64c0511569259df28c8c5668ccdb0fedadc407"
+  },
+  {
+    "python": "3.10",
+    "backend": "pdfminer",
+    "output_sha256": "8e130a078f821c4c90ff5ab5d84c94bf3e889aca0a29b40c6eed618ae8e5d2ef"
+  },
+  {
+    "python": "3.10",
+    "backend": "pypdfium2",
+    "output_sha256": "adcd3e271be102812029efdbac49e34189cbb9fbc07d5eb6997cbba30001cfe8"
+  },
+  {
+    "python": "3.11",
+    "backend": "pymupdf",
+    "output_sha256": "74acb33bdf088f6d4392506005f40801c775b59dd025b5f5c64491130e3da44d"
+  },
+  {
+    "python": "3.11",
+    "backend": "pymupdf4llm",
+    "output_sha256": "82aa303f2453bff6d7251a3a2f64c0511569259df28c8c5668ccdb0fedadc407"
+  },
+  {
+    "python": "3.11",
+    "backend": "pdfminer",
+    "output_sha256": "8e130a078f821c4c90ff5ab5d84c94bf3e889aca0a29b40c6eed618ae8e5d2ef"
+  },
+  {
+    "python": "3.11",
+    "backend": "pypdfium2",
+    "output_sha256": "adcd3e271be102812029efdbac49e34189cbb9fbc07d5eb6997cbba30001cfe8"
+  },
+  {
+    "python": "3.12",
+    "backend": "pymupdf",
+    "output_sha256": "74acb33bdf088f6d4392506005f40801c775b59dd025b5f5c64491130e3da44d"
+  },
+  {
+    "python": "3.12",
+    "backend": "pymupdf4llm",
+    "output_sha256": "82aa303f2453bff6d7251a3a2f64c0511569259df28c8c5668ccdb0fedadc407"
+  },
+  {
+    "python": "3.12",
+    "backend": "pdfminer",
+    "output_sha256": "8e130a078f821c4c90ff5ab5d84c94bf3e889aca0a29b40c6eed618ae8e5d2ef"
+  },
+  {
+    "python": "3.12",
+    "backend": "pypdfium2",
+    "output_sha256": "adcd3e271be102812029efdbac49e34189cbb9fbc07d5eb6997cbba30001cfe8"
+  },
+  {
+    "python": "3.13",
+    "backend": "pymupdf",
+    "output_sha256": "74acb33bdf088f6d4392506005f40801c775b59dd025b5f5c64491130e3da44d"
+  },
+  {
+    "python": "3.13",
+    "backend": "pymupdf4llm",
+    "output_sha256": "82aa303f2453bff6d7251a3a2f64c0511569259df28c8c5668ccdb0fedadc407"
+  },
+  {
+    "python": "3.13",
+    "backend": "pdfminer",
+    "output_sha256": "8e130a078f821c4c90ff5ab5d84c94bf3e889aca0a29b40c6eed618ae8e5d2ef"
+  },
+  {
+    "python": "3.13",
+    "backend": "pypdfium2",
+    "output_sha256": "adcd3e271be102812029efdbac49e34189cbb9fbc07d5eb6997cbba30001cfe8"
+  }
+]

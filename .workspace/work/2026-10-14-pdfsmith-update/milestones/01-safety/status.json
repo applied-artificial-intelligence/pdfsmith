@@ -1,0 +1,25 @@
+{
+  "milestone": "Test safety and unpublished development identity",
+  "source_parent": "48ebb1dbfb65eb8497adedfb04b97c2e93a599f9",
+  "source_sha256": {
+    "src/pdfsmith/__init__.py": "6369e64830317531fd3b8a3118d2df2f0be197f9c219c00ec043bdd8a6470918",
+    "src/pdfsmith/config.py": "a601b8073494feb10929e7c6a05c04cfc4949e570c21813485924c077d6bd73c",
+    "pyproject.toml": "87cc433f8cfb38419c3518719a3946cb8304cb8b1cdab35eecb308a1b10453fc",
+    "uv.lock": "6d3357cb925397d280dc5a9bbca4047d2981375c680a1d93078a8020ad17613a",
+    "tests/conftest.py": "1c36d66a2478f1dd857eebfe444e3111eb1334018f0ea7073c92e888f9a17236",
+    "tests/test_safety.py": "188c2cacf2e574f2ef28d3ac220eac4c3bc64bdeea38f89ff9d4fd73f9191db7",
+    "tests/test_api.py": "eecac99bd7575dff3f1fc60efb21a555efe08b427fc64f8e685016b453a5e973",
+    "tests/integration/test_commercial_integration.py": "f8eb6f34060f07d3af6c90e87904eb3be534ff108f8cea3ff3f4e923a8e2c37e",
+    ".pre-commit-config.yaml": "2e3e5cc904489ce7c59b6bdb5501fc803ea3ea015de2bfd329298c77fc499db1"
+  },
+  "before": "3 unsafe flag cases executed the tripwire; old installed build fails version equality",
+  "after": "108 passed, 62 skipped, 1 xfailed in 0.87s",
+  "core_wheel": "Python 3.10/3.11/3.12/3.13 clean no-extra installations passed; exact wheel hashes in core-wheel.json",
+  "release_comparison": "All 25 release/public module ASTs match; byte differences recorded individually",
+  "exclusions": [
+    "No live provider execution",
+    "Singleton repair belongs to shared API milestone",
+    "Broader source type check exposes inherited API, Azure and Google errors; owning milestones must repair them"
+  ],
+  "lock_hygiene": "Regenerated with uv; replaced yanked hf-xet 1.2.1 with 1.7.0"
+}

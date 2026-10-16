@@ -1,0 +1,48 @@
+{
+  "evidence": "offline real SDK protocol; not model E2E",
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-marker-3.13/bin/python",
+    "-I",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/marker_transport.py"
+  ],
+  "exit": 0,
+  "results": [
+    {
+      "case": "complete",
+      "before_error": false,
+      "before_raw": "<div>complete</div>",
+      "after": {
+        "raw": "<div>complete</div>",
+        "requests": 2
+      }
+    },
+    {
+      "case": "blank",
+      "before_error": false,
+      "before_raw": "",
+      "after": {
+        "raw": "",
+        "requests": 2
+      }
+    },
+    {
+      "case": "truncated",
+      "before_error": false,
+      "before_raw": "<div",
+      "after": {
+        "error": "Marker inference failed: Incomplete or refused Marker generation",
+        "requests": 1
+      }
+    },
+    {
+      "case": "unavailable",
+      "before_error": true,
+      "before_raw": "",
+      "after": {
+        "error": "Marker inference failed: Error code: 503 - {'error': {'message': 'Controlled local server failure', 'type': 'server_error', 'code': 'unavailable'}}",
+        "requests": 1
+      }
+    }
+  ],
+  "stderr": "Inference error: Incomplete or refused Marker generation\nInference error: Error code: 503 - {'error': {'message': 'Controlled local server failure', 'type': 'server_error', 'code': 'unavailable'}}\nInference error: Error code: 503 - {'error': {'message': 'Controlled local server failure', 'type': 'server_error', 'code': 'unavailable'}}"
+}

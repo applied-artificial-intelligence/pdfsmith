@@ -1,0 +1,435 @@
+{
+  "date": "2026-10-15",
+  "authorization": "Seven APIs, aggregate USD 5, Databricks excluded",
+  "document_processing_finished": true,
+  "successful_providers": 5,
+  "blocked_providers": [
+    "openai",
+    "gemini"
+  ],
+  "databricks": {
+    "attempted": false,
+    "credentials_passed_to_workers": false
+  },
+  "budget": {
+    "ceiling_usd": "5.00",
+    "initial_attempt_reservations_usd": "2.515",
+    "additional_google_unknown_tariff_allowance_usd": "1.00",
+    "retained_reservations_usd": "3.515",
+    "actual_settled_total_usd": null,
+    "known_standard_rate_equivalent_excluding_google_usd": "0.101445",
+    "total_if_google_ocr_standard_rate_usd": "0.116445",
+    "reason_not_an_invoice": "Provider billing/free allowances/regional rates are not confirmed. Google processor tariff is unknown. Reservations include rejected and uncertain charges and are not spending."
+  },
+  "providers": [
+    {
+      "provider": "aws_textract",
+      "status": "live-e2e",
+      "live_python": "3.12",
+      "attempts": [
+        {
+          "success": true,
+          "route": "public parse API",
+          "output_bytes": 22192,
+          "output_sha256": "407b3e358a21ab846533aeb529f604947e9d3d994917d5297fdc3970c5069379",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "key": "aws_textract-api",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "region": "us-east-1",
+            "request_timeout": 60
+          },
+          "command_sha256": "14d99dad7a41e8f619f03da90f22cf1f465b7db9daadc08d2577dc32f76e1fcc",
+          "content_checks": {
+            "premera_identity": true,
+            "last_page_hhs_phone": true
+          }
+        },
+        {
+          "success": true,
+          "route": "actual installed console",
+          "output_bytes": 40,
+          "output_sha256": "c012d9af0cc5d851e5053e783f34c00ddbfe16012cdacb2c8f5e2db1a8dd36af",
+          "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+          "key": "aws_textract-cli",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "region": "us-east-1",
+            "request_timeout": 60
+          },
+          "command_sha256": "6bbbf5a7df6bf6526357afc6dee2a3f3cd2f7ba9770cc03df90b54248a3552b0",
+          "content_checks": {
+            "first_page_sentinel": true,
+            "final_page_sentinel": true
+          }
+        }
+      ],
+      "settled_bill_usd": null,
+      "actual_pages_processed": 10,
+      "standard_rate_equivalent_usd": "0.015",
+      "cost_basis": "10 successfully validated pages at USD 1.50/1000. Azure uses the checked East US Read reference rate; invoice/resource-region discount not confirmed."
+    },
+    {
+      "provider": "azure_document_intelligence",
+      "status": "live-e2e",
+      "live_python": "3.12",
+      "attempts": [
+        {
+          "success": true,
+          "route": "public parse API",
+          "output_bytes": 22735,
+          "output_sha256": "d1d92d8921308eaf6bc56739e01b226dcb5c7ad43d26944d03b631c193e7efa4",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "key": "azure_document_intelligence-api",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "model_id": "prebuilt-read",
+            "output_format": "text",
+            "max_wait": 180,
+            "poll_interval": 1,
+            "request_timeout": 60
+          },
+          "command_sha256": "dbf5ee849c156cbdeaa79b95d38ee138466fba7e9d8599efabf2955a31b30405",
+          "content_checks": {
+            "premera_identity": true,
+            "last_page_hhs_phone": true
+          }
+        },
+        {
+          "success": true,
+          "route": "actual installed console",
+          "output_bytes": 39,
+          "output_sha256": "e7a0b5f4c864f598dea43edd1596cdaa23017744a802a1b45c342db7c54b8680",
+          "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+          "key": "azure_document_intelligence-cli",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "model_id": "prebuilt-read",
+            "output_format": "text",
+            "max_wait": 180,
+            "poll_interval": 1,
+            "request_timeout": 60
+          },
+          "command_sha256": "c5d78eb77b8f7cbc45fe19b985c874d13768766ecdebb7cf312c4c0b6b018f41",
+          "content_checks": {
+            "first_page_sentinel": true,
+            "final_page_sentinel": true
+          }
+        }
+      ],
+      "settled_bill_usd": null,
+      "actual_pages_processed": 10,
+      "standard_rate_equivalent_usd": "0.015",
+      "cost_basis": "10 successfully validated pages at USD 1.50/1000. Azure uses the checked East US Read reference rate; invoice/resource-region discount not confirmed."
+    },
+    {
+      "provider": "google_document_ai",
+      "status": "live-e2e",
+      "live_python": "3.12",
+      "attempts": [
+        {
+          "success": true,
+          "route": "public parse API",
+          "output_bytes": 22691,
+          "output_sha256": "3bd189c1a3cad10bb72fa219890c8815dc072116bff62baba395b9918dc74c5a",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "key": "google_document_ai-api",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "mode": "sync",
+            "max_wait": 600,
+            "poll_interval": 1,
+            "request_timeout": 60
+          },
+          "command_sha256": "213732208fc7fa954bbfd5f671aae67c86526e2c1a9295e480f7198820642e36",
+          "content_checks": {
+            "premera_identity": true,
+            "last_page_hhs_phone": true
+          }
+        },
+        {
+          "success": true,
+          "route": "actual installed console",
+          "output_bytes": 39,
+          "output_sha256": "e7a0b5f4c864f598dea43edd1596cdaa23017744a802a1b45c342db7c54b8680",
+          "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+          "key": "google_document_ai-cli",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "mode": "sync",
+            "max_wait": 600,
+            "poll_interval": 1,
+            "request_timeout": 60
+          },
+          "command_sha256": "aeb94690774121f3365de4e28b2c7eb02a5453be5d336813396ff566d28c00af",
+          "content_checks": {
+            "first_page_sentinel": true,
+            "final_page_sentinel": true
+          }
+        }
+      ],
+      "settled_bill_usd": null,
+      "actual_pages_processed": 10,
+      "rate_calculated_cost_usd": null,
+      "cost_basis": "Processing passed; processors.get denied and alternate existing ADC/CLI credentials could not refresh. The processor-specific tariff is unconfirmed.",
+      "ocr_rate_scenario_usd": "0.015",
+      "retained_tariff_allowance_usd": "1.50"
+    },
+    {
+      "provider": "llamaparse",
+      "status": "live-e2e",
+      "live_python": "3.12",
+      "attempts": [
+        {
+          "success": false,
+          "route": "public parse API",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "error_class": "BackendOperationError",
+          "completion_unknown": true,
+          "key": "llamaparse-api",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "tier": "fast",
+            "version": "2026-09-29",
+            "disable_cache": true,
+            "language": "en",
+            "max_wait_seconds": 180,
+            "poll_interval_seconds": 1,
+            "request_timeout_seconds": 60
+          },
+          "command_sha256": "23162dc28d205f7ef7304262c2b7c39da97df809568c804a55ccf911fb286a0e"
+        },
+        {
+          "success": true,
+          "route": "public parse API",
+          "output_bytes": 24958,
+          "output_sha256": "478f6d8d79a2bc78976f239f410dcd11361de8cc18f95424e391ede2ab16b9c5",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "key": "llamaparse-api-corrected",
+          "source_commit": "0b3db8fc213b62f9b60cee4cfba2ea3cd930cc88",
+          "wheel_sha256": "7bee0dd369f52fc16437409c54b3b8acd9bbfdd3ea1c51f817472fd83cf92c69",
+          "options": {
+            "tier": "fast",
+            "version": "2026-06-15",
+            "disable_cache": true,
+            "language": "en",
+            "max_wait_seconds": 180,
+            "poll_interval_seconds": 1,
+            "request_timeout_seconds": 60
+          },
+          "command_sha256": "dffd3a101706bd6c6292a06809b59b7d0aaf01c0ff8b85f56ca19ba4151546d3",
+          "content_checks": {
+            "premera_identity": true,
+            "last_page_hhs_phone": true
+          }
+        },
+        {
+          "success": true,
+          "route": "actual installed console",
+          "output_bytes": 40,
+          "output_sha256": "c012d9af0cc5d851e5053e783f34c00ddbfe16012cdacb2c8f5e2db1a8dd36af",
+          "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+          "key": "llamaparse-cli",
+          "source_commit": "0b3db8fc213b62f9b60cee4cfba2ea3cd930cc88",
+          "wheel_sha256": "7bee0dd369f52fc16437409c54b3b8acd9bbfdd3ea1c51f817472fd83cf92c69",
+          "options": {
+            "tier": "fast",
+            "version": "2026-06-15",
+            "disable_cache": true,
+            "language": "en",
+            "max_wait_seconds": 180,
+            "poll_interval_seconds": 1,
+            "request_timeout_seconds": 60
+          },
+          "command_sha256": "d29f2742e878beebfcd346d0d9ab2eed3cf0139c41913a742e5da9b34839ef3f",
+          "content_checks": {
+            "first_page_sentinel": true,
+            "final_page_sentinel": true
+          }
+        }
+      ],
+      "settled_bill_usd": null,
+      "actual_pages_processed": 10,
+      "requested_tier": "fast",
+      "requested_version": "2026-06-15",
+      "expected_credits_at_published_rate": 10,
+      "standard_rate_equivalent_usd": "0.0125",
+      "cost_basis": "Ten successfully processed pages at one Fast credit/page and USD 1.25/1000 credits. Job responses did not report a credit debit; settled bill unknown.",
+      "rejected_submission": "Original HTTP 422 before job creation; rejected upload deleted."
+    },
+    {
+      "provider": "anthropic",
+      "status": "live-e2e",
+      "live_python": "3.12",
+      "attempts": [
+        {
+          "success": true,
+          "route": "public parse API",
+          "output_bytes": 25567,
+          "output_sha256": "df2da5954eec3ad0b94eccea303187a657f4deb645a8415432884163056a11dc",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "key": "anthropic-api",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "model": "claude-haiku-4-5-20251001",
+            "max_tokens": 32768,
+            "request_timeout": 180
+          },
+          "command_sha256": "6a2a60954ffa546a06392b516ab36c30342c5602fc2890020ffb2eac9a66abb3",
+          "content_checks": {
+            "premera_identity": true,
+            "last_page_hhs_phone": true
+          },
+          "reported_usage": {
+            "input_tokens": 19408,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 7242,
+            "service_tier": "standard",
+            "inference_geo": "not_available",
+            "speed": "standard"
+          }
+        },
+        {
+          "success": true,
+          "route": "actual installed console",
+          "output_bytes": 44,
+          "output_sha256": "27e25d0e8bc9b92d49428b29bceffb20755994a419b7dabe962f9fa73462f417",
+          "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+          "key": "anthropic-cli",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "model": "claude-haiku-4-5-20251001",
+            "max_tokens": 32768,
+            "request_timeout": 180
+          },
+          "command_sha256": "42962722e2db5099272ef72f3fdee9d7227b8f694ce2e98dc37fe02653bcbdf2",
+          "content_checks": {
+            "first_page_sentinel": true,
+            "final_page_sentinel": true
+          },
+          "reported_usage": {
+            "input_tokens": 3247,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 16,
+            "service_tier": "standard",
+            "inference_geo": "not_available",
+            "speed": "standard"
+          }
+        }
+      ],
+      "settled_bill_usd": null,
+      "actual_input_tokens": 22655,
+      "actual_output_tokens": 7258,
+      "rate_calculated_cost_usd": "0.058945",
+      "cost_basis": "Actual SDK response token usage at Haiku 4.5 USD 1/M input and USD 5/M output; not a settled billing receipt."
+    },
+    {
+      "provider": "openai",
+      "status": "live-blocked",
+      "live_python": "3.12",
+      "attempts": [
+        {
+          "success": false,
+          "route": "public parse API",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "error_class": "RateLimitError",
+          "completion_unknown": false,
+          "key": "openai-api",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "model": "gpt-4o-mini",
+            "max_completion_tokens": 16384,
+            "request_timeout": 180
+          },
+          "command_sha256": "c1b9ff48f3fdfacac9bd8832b31d07e24c177ee5063abe216e650a29478ecfa5"
+        }
+      ],
+      "settled_bill_usd": null,
+      "actual_successful_generations": 0,
+      "returned_token_usage": null,
+      "rate_calculated_cost_usd": null,
+      "billing_block": "credit_balance_exhausted",
+      "cost_basis": "Generation rejected for depleted credits; no generated text or token usage returned. No top-up or retry. Settled debit not independently accessible."
+    },
+    {
+      "provider": "gemini",
+      "status": "live-blocked",
+      "live_python": "3.12",
+      "attempts": [
+        {
+          "success": false,
+          "route": "public parse API",
+          "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+          "error_class": "ClientError",
+          "completion_unknown": false,
+          "key": "gemini-api",
+          "source_commit": "c3480ccc44d331293e27d839dd179d328cbab88e",
+          "wheel_sha256": "14059636d972a88a81fb1fc8c68193cc9fcbe1ef34abc9c3ab6c94c75e57f173",
+          "options": {
+            "model": "gemini-2.5-flash",
+            "max_output_tokens": 32768,
+            "request_timeout": 180
+          },
+          "command_sha256": "8ae6c25f2877bc08e8d720616b8f6890ef5bfb8c136ad3fc46da2efe050072eb"
+        }
+      ],
+      "settled_bill_usd": null,
+      "actual_successful_generations": 0,
+      "returned_token_usage": null,
+      "rate_calculated_cost_usd": null,
+      "billing_block": "prepayment_credits_depleted",
+      "cost_basis": "Generation rejected for depleted credits; no generated text or token usage returned. No top-up or retry. Settled debit not independently accessible."
+    }
+  ],
+  "cleanup": [
+    {
+      "provider": "llamaparse",
+      "attempt": "llamaparse-api",
+      "retrieval_http_status": 404,
+      "error_class": "NotFoundError",
+      "confirmed_absent": true
+    },
+    {
+      "provider": "llamaparse",
+      "attempt": "llamaparse-api-corrected",
+      "retrieval_http_status": 404,
+      "error_class": "NotFoundError",
+      "confirmed_absent": true
+    },
+    {
+      "provider": "llamaparse",
+      "attempt": "llamaparse-cli",
+      "retrieval_http_status": 404,
+      "error_class": "NotFoundError",
+      "confirmed_absent": true
+    },
+    {
+      "provider": "openai",
+      "attempt": "openai-api",
+      "retrieval_http_status": 404,
+      "error_class": "NotFoundError",
+      "confirmed_absent": true
+    }
+  ],
+  "receipt_limitations": "Original Azure/Google calls did not have raw HTTP response telemetry captured. Their actual public API and console returned only after wrapper completion/page/cleanup checks; their operation IDs are unavailable in this audit. Initial Llama API job usage was not captured; the later CLI audit captured job state but no usage debit was returned."
+}

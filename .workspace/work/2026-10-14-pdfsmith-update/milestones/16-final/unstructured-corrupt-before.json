@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/bin/python",
+    "-I",
+    "-c",
+    "from pdfsmith import parse;parse('/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf',backend=\"unstructured\")"
+  ],
+  "exit": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/lib/python3.12/site-packages/pdfsmith/api.py\", line 135, in parse\n    return _content(instance.parse(path))\n                    ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/lib/python3.12/site-packages/pdfsmith/backends/unstructured_backend.py\", line 35, in parse\n    return extract_in_process(self.name, path, self._options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/unstructured-assets-3897ck1k/env/lib/python3.12/site-packages/pdfsmith/backends/_process.py\", line 45, in extract_in_process\n    raise error_types.get(error[\"type\"], RuntimeError)(error[\"message\"])\nRuntimeError: Unstructured returned incomplete page coverage; check local model assets and parser dependencies\n",
+  "input_path": "/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf",
+  "input_sha256": "d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80",
+  "model_config_sha256": "65c545ca2da5bd4b87b22d4917318605360b37dee6ed6b18516a036f87319f79",
+  "download_attempts": [
+    {
+      "url": "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
+    }
+  ]
+}

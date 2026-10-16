@@ -1,19 +1,20 @@
 """Tests for the pdfsmith API."""
 
+from importlib.metadata import version
 from pathlib import Path
 
 import pytest
+from packaging.version import Version
 
 from pdfsmith import __version__, available_backends, get_backend
 from pdfsmith.backends.registry import BACKEND_REGISTRY
 
 
 def test_version():
-    """Version should be a valid semver string."""
+    """Installed metadata and the public module must identify the same PEP 440 build."""
     assert __version__
-    parts = __version__.split(".")
-    assert len(parts) == 3
-    assert all(p.isdigit() for p in parts)
+    assert str(Version(__version__)) == __version__
+    assert __version__ == version("pdfsmith")
 
 
 def test_backend_registry_not_empty():

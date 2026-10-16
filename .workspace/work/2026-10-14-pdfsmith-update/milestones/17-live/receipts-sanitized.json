@@ -1,0 +1,311 @@
+[
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:19:49.986814+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:19:52.434236+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:19:54.476284+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:19:56.814389+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:19:59.005550+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:20:01.960368+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:20:04.477200+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:20:07.182987+00:00",
+    "attempt": "aws_textract-api"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:20:29.326463+00:00",
+    "attempt": "aws_textract-cli"
+  },
+  {
+    "kind": "aws",
+    "operation": "DetectDocumentText",
+    "http_status": 200,
+    "pages": 1,
+    "time": "2026-10-16T03:20:31.165722+00:00",
+    "attempt": "aws_textract-cli"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 201,
+    "time": "2026-10-16T03:20:51.754866+00:00",
+    "attempt": "llamaparse-api"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 422,
+    "time": "2026-10-16T03:20:51.803841+00:00",
+    "attempt": "llamaparse-api"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 201,
+    "time": "2026-10-16T03:25:19.856553+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 200,
+    "status": "PENDING",
+    "time": "2026-10-16T03:25:19.966357+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:25:20.048024+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:25:21.105654+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:25:22.158436+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:25:23.198686+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:25:24.325766+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:25:25.415010+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "DELETE",
+    "http_status": 200,
+    "time": "2026-10-16T03:25:26.014044+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "DELETE",
+    "http_status": 204,
+    "time": "2026-10-16T03:25:26.151119+00:00",
+    "attempt": "llamaparse-api-corrected"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 201,
+    "time": "2026-10-16T03:26:10.500342+00:00",
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 200,
+    "status": "PENDING",
+    "time": "2026-10-16T03:26:10.599705+00:00",
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:26:10.664260+00:00",
+    "job": {
+      "status": "PENDING",
+      "tier": "fast"
+    },
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:26:11.721180+00:00",
+    "job": {
+      "status": "RUNNING",
+      "tier": "fast"
+    },
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:26:12.769623+00:00",
+    "job": {
+      "status": "RUNNING",
+      "tier": "fast"
+    },
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "GET",
+    "http_status": 200,
+    "time": "2026-10-16T03:26:13.907976+00:00",
+    "job": {
+      "status": "COMPLETED",
+      "tier": "fast"
+    },
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "DELETE",
+    "http_status": 200,
+    "time": "2026-10-16T03:26:14.355107+00:00",
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "DELETE",
+    "http_status": 204,
+    "time": "2026-10-16T03:26:14.488208+00:00",
+    "attempt": "llamaparse-cli"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 200,
+    "stop_reason": "end_turn",
+    "usage": {
+      "input_tokens": 19408,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "output_tokens": 7242,
+      "service_tier": "standard",
+      "inference_geo": "not_available",
+      "speed": "standard"
+    },
+    "time": "2026-10-16T03:22:03.377853+00:00",
+    "attempt": "anthropic-api"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 200,
+    "stop_reason": "end_turn",
+    "usage": {
+      "input_tokens": 3247,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "output_tokens": 16,
+      "service_tier": "standard",
+      "inference_geo": "not_available",
+      "speed": "standard"
+    },
+    "time": "2026-10-16T03:22:05.260091+00:00",
+    "attempt": "anthropic-cli"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 200,
+    "status": "processed",
+    "time": "2026-10-16T03:22:07.236775+00:00",
+    "attempt": "openai-api"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 429,
+    "time": "2026-10-16T03:22:08.423250+00:00",
+    "attempt": "openai-api"
+  },
+  {
+    "kind": "http",
+    "method": "DELETE",
+    "http_status": 200,
+    "time": "2026-10-16T03:22:08.977433+00:00",
+    "attempt": "openai-api"
+  },
+  {
+    "kind": "http",
+    "method": "POST",
+    "http_status": 402,
+    "time": "2026-10-16T03:22:10.119944+00:00",
+    "attempt": "gemini-api"
+  }
+]

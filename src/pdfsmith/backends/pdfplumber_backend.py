@@ -1,34 +1,39 @@
 """pdfplumber backend for pdfsmith."""
 
+import importlib.util
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-try:
-    import pdfplumber
+from pdfsmith._inputs import validate_input
+from pdfsmith.config import Option, normalize_options
 
-    AVAILABLE = True
-except ImportError:
-    AVAILABLE = False
+AVAILABLE = importlib.util.find_spec("pdfplumber") is not None
 
 
 class PDFPlumberBackend:
-    """PDF parser using pdfplumber - excellent for tables.
-
-    pdfplumber uses visual layout analysis to detect and extract tables
-    with high accuracy. Good choice for documents with tabular data.
-    """
+    """Extract tables and text using explicit pdfplumber text-layout settings."""
 
     name = "pdfplumber"
+    options_schema = {
+        "layout": Option(False, bool),
+        "x_tolerance": Option(3.0, float, minimum=0),
+        "y_tolerance": Option(3.0, float, minimum=0),
+    }
 
-    def __init__(self) -> None:
-        if not AVAILABLE:
-            raise ImportError(
-                "pdfplumber is required. Install with: pip install pdfsmith[pdfplumber]"
-            )
+    def __init__(self, **options: Any) -> None:
+        self._options = normalize_options(self.name, options, self.options_schema)
+
+    @property
+    def effective_options(self) -> dict[str, Any]:
+        return deepcopy(self._options)
 
     def parse(self, pdf_path: Path) -> str:
         """Parse PDF to markdown string with table extraction."""
-        with pdfplumber.open(pdf_path) as pdf:
+        path = validate_input(pdf_path)
+        import pdfplumber
+
+        with pdfplumber.open(path) as pdf:
             if not pdf.pages:
                 return ""
 
@@ -53,7 +58,7 @@ class PDFPlumberBackend:
                     content_parts.append(table_md)
 
         # Extract text
-        text = page.extract_text()
+        text = page.extract_text(**self._options)
         if text and text.strip():
             content_parts.append(text.strip())
 

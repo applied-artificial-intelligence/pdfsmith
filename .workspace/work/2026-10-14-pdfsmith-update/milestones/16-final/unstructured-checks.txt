@@ -1,0 +1,1 @@
+Fresh source checks after model guard: python -m pytest -q --tb=line: 411 passed, 12 skipped in 47.38s. Repository mypy: 30 source files, no issues. Ruff 0.6 check and format: passed for changed source and archived probes. Actual installed corrupt/restore runs are recorded separately. Hosted service rows remain live-unverified.

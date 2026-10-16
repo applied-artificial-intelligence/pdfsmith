@@ -1,0 +1,24 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/original-env/bin/python', '-m', 'pytest', 'tests/test_contracts.py::test_simultaneous_default_requests_construct_one_instance', 'tests/test_contracts.py::test_instance_creation_does_not_change_metadata_equality', '-q', '--tb=short']
+Exit: 1
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_simultaneous_default_requests_construct_one_instance ___________
+tests/test_contracts.py:83: in test_simultaneous_default_requests_construct_one_instance
+    assert len(constructed) == 1
+E   assert 4 == 1
+E    +  where 4 = len([<tests.test_contracts.test_simultaneous_default_requests_construct_one_instance.<locals>.SlowBackend object at 0x7323...est_contracts.test_simultaneous_default_requests_construct_one_instance.<locals>.SlowBackend object at 0x73239bcca900>])
+___________ test_instance_creation_does_not_change_metadata_equality ___________
+tests/test_contracts.py:98: in test_instance_creation_does_not_change_metadata_equality
+    assert left == right
+E   AssertionError: assert BackendInfo(n...vailable=None) == BackendInfo(n...vailable=None)
+E
+E     Omitting 6 identical items, use -vv to show
+E     Differing attributes:
+E     ['_instance']
+E
+E     Drill down into differing attribute _instance:
+E       _instance: <tests.test_contracts.test_instance_creation_does_not_change_metadata_equality.<locals>.Backend object at 0x73239bcd7830> != None
+=========================== short test summary info ============================
+FAILED tests/test_contracts.py::test_simultaneous_default_requests_construct_one_instance
+FAILED tests/test_contracts.py::test_instance_creation_does_not_change_metadata_equality
+2 failed in 0.07s

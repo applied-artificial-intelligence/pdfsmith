@@ -1,0 +1,724 @@
+{
+  "scope": "All 19 registered backends were reviewed. Engineering/verification closed October 16, 2026 with 11 local and five hosted execution passes; Stefan waived further OpenAI/Gemini live checks and excluded Databricks. These three retain documentation and real-SDK offline evidence, not live passes.",
+  "backends": [
+    {
+      "name": "pypdf",
+      "description": "Pure Python PDF library, lightweight",
+      "package": "pypdf",
+      "weight": "light",
+      "extra": "pypdf",
+      "source_disposition": "Retained and repaired; defaults, configured output, blank/corrupt/missing input verified. No quality comparison.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "extraction_mode: plain/layout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/02-contracts/installed-pypdf-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "source_path": "src/pdfsmith/backends/pypdf_backend.py",
+      "direct_async_method": false
+    },
+    {
+      "name": "pdfplumber",
+      "description": "PDF text and table extraction",
+      "package": "pdfplumber",
+      "weight": "light",
+      "extra": "pdfplumber",
+      "source_disposition": "Retained and repaired; defaults, configured output, blank/corrupt/missing input verified. No quality comparison.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "layout: bool",
+        "x_tolerance: finite nonnegative number",
+        "y_tolerance: finite nonnegative number"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/02-contracts/installed-pdfplumber-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "source_path": "src/pdfsmith/backends/pdfplumber_backend.py",
+      "direct_async_method": false
+    },
+    {
+      "name": "pymupdf",
+      "description": "Fast MuPDF bindings, good general purpose",
+      "package": "pymupdf",
+      "weight": "light",
+      "extra": "pymupdf",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "sort: bool"
+      ],
+      "system_requirements": [],
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pymupdf-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "source_path": "src/pdfsmith/backends/pymupdf_backend.py",
+      "direct_async_method": false
+    },
+    {
+      "name": "pymupdf4llm",
+      "description": "PyMuPDF optimized for LLM consumption",
+      "package": "pymupdf4llm",
+      "weight": "medium",
+      "extra": "pymupdf4llm",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "use_layout: bool (default false)",
+        "force_text: bool",
+        "table_strategy: lines/lines_strict/text; requires use_layout=False",
+        "ignore_images: bool; requires use_layout=False",
+        "use_ocr: bool; requires use_layout=True; default false, OCR runtime unverified"
+      ],
+      "system_requirements": [],
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pymupdf4llm-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "source_path": "src/pdfsmith/backends/pymupdf4llm_backend.py",
+      "direct_async_method": false
+    },
+    {
+      "name": "pdfminer",
+      "description": "Mature PDF text extraction library",
+      "package": "pdfminer.six",
+      "weight": "light",
+      "extra": "pdfminer",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "char_margin/line_margin/word_margin: finite nonnegative number",
+        "detect_vertical/all_texts: bool"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pdfminer-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "source_path": "src/pdfsmith/backends/pdfminer_backend.py",
+      "direct_async_method": false
+    },
+    {
+      "name": "pypdfium2",
+      "description": "PDFium bindings, Chrome's PDF engine",
+      "package": "pypdfium2",
+      "weight": "light",
+      "extra": "pypdfium2",
+      "source_disposition": "Retained and repaired; actual public/controlled PDF runs and native policy verified. No quality comparison.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [],
+      "system_requirements": [],
+      "execution_policy": "serialized-pdfium",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/04-native/installed-pypdfium2-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "source_path": "src/pdfsmith/backends/pypdfium2_backend.py",
+      "direct_async_method": false
+    },
+    {
+      "name": "unstructured",
+      "description": "Document processing for LLMs",
+      "package": "unstructured",
+      "weight": "medium",
+      "extra": "unstructured",
+      "source_disposition": "Repaired and verified through isolated installed wheels, real public/controlled PDF/native/async/CLI routes; no quality ranking.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "strategy: fast/hi_res/ocr_only; additional assets/models required",
+        "include_page_breaks: bool"
+      ],
+      "system_requirements": [
+        "Python >=3.11,<3.14",
+        "Loadable en_core_web_sm 3.8.0 preinstalled; damaged assets raise before implicit repair",
+        "Poppler/Tesseract and preprovisioned YOLOX model for applicable strategies"
+      ],
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/06-runtime-backends/installed-unstructured-*.json",
+      "source_path": "src/pdfsmith/backends/unstructured_backend.py",
+      "direct_async_method": false,
+      "verified_python": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "ocr_evidence": "Controlled scanned PDF through installed wheel on Python 3.12; standalone image formats remain unsupported",
+      "asset_failure_evidence": "milestones/16-final/unstructured-assets.txt"
+    },
+    {
+      "name": "kreuzberg",
+      "description": "Fast Rust-based extraction with OCR",
+      "package": "kreuzberg",
+      "weight": "medium",
+      "extra": "kreuzberg",
+      "source_disposition": "Repaired and verified through isolated installed wheels, real public/controlled PDF/native/async/CLI routes; no quality ranking.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "force_ocr: bool, default false; explicit local Tesseract only",
+        "output_format: plain/markdown"
+      ],
+      "system_requirements": "pending isolated runtime check",
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/06-runtime-backends/installed-kreuzberg-*.json",
+      "source_path": "src/pdfsmith/backends/kreuzberg_backend.py",
+      "direct_async_method": true,
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "ocr_evidence": "Controlled scanned PDF through installed wheel on Python 3.12; standalone image formats remain unsupported"
+    },
+    {
+      "name": "extractous",
+      "description": "Rust-based text extraction",
+      "package": "extractous",
+      "weight": "medium",
+      "extra": "extractous",
+      "source_disposition": "Repaired and verified through isolated installed wheels, real public/controlled PDF/native/async/CLI routes; no quality ranking.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [],
+      "system_requirements": "pending isolated runtime check",
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "evidence_path": "milestones/06-runtime-backends/installed-extractous-*.json",
+      "source_path": "src/pdfsmith/backends/extractous_backend.py",
+      "direct_async_method": false,
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
+    },
+    {
+      "name": "docling",
+      "description": "IBM document conversion",
+      "package": "docling",
+      "weight": "heavy",
+      "extra": "docling",
+      "source_disposition": "Repaired; lazy typed frozen configuration, process-isolated CPU models, complete status/page checks and SDK finally cleanup verified. Image-asset options rejected because the string interface cannot return them.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "Authoritative constructor schema: src/pdfsmith/backends/docling_backend.py; OCR uses local Tesseract, en/de/fr/es aliases normalize to its codes; environment lists use JSON."
+      ],
+      "system_requirements": [
+        "Preinstalled local layout/TableFormer assets; Tesseract executable and selected language data for do_ocr=true."
+      ],
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "source_path": "src/pdfsmith/backends/docling_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/07-models/installed-docling-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
+    },
+    {
+      "name": "marker",
+      "description": "Local document conversion with CPU model inference",
+      "package": "marker-pdf",
+      "weight": "heavy",
+      "extra": "marker",
+      "source_disposition": "Repaired and verified: lazy typed options, fresh worker, owned local model servers, complete page metadata, inference finish/refusal checks, cleanup/recovery and proxy isolation. CPU fast mode only; no remote LLM augmentation or standalone-image claim.",
+      "current_evidence": "local-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [],
+      "configuration_status": "not-checked",
+      "options_contract": "Constructor schema is authoritative: src/pdfsmith/backends/marker_backend.py. Fixed local CPU fast mode, optional local OCR, no remote LLM augmentation.",
+      "system_requirements": "Marker 2.0.0 / Surya 0.22.1, local model/font assets; compatible llama-server binary for OCR.",
+      "execution_policy": "process",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "local-e2e"
+      ],
+      "source_path": "src/pdfsmith/backends/marker_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/07-models/installed-marker-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
+    },
+    {
+      "name": "aws_textract",
+      "description": "AWS Textract, commercial OCR and text extraction",
+      "package": "boto3",
+      "weight": "commercial",
+      "extra": "aws",
+      "source_disposition": "Repaired against installed real SDK transports. Live service execution remains unverified.",
+      "current_evidence": "live-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "AWS_REGION"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "region, profile, request_timeout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract",
+        "live-e2e"
+      ],
+      "source_path": "src/pdfsmith/backends/aws_textract_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/09-ocr/installed-aws-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
+    },
+    {
+      "name": "azure_document_intelligence",
+      "description": "Azure Document Intelligence OCR",
+      "package": "azure-ai-documentintelligence",
+      "weight": "commercial",
+      "extra": "azure",
+      "source_disposition": "Repaired against installed real SDK transports. Live service execution remains unverified.",
+      "current_evidence": "live-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT",
+        "AZURE_DOCUMENT_INTELLIGENCE_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "endpoint, model_id, output_format, max_wait, poll_interval, request_timeout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract",
+        "live-e2e"
+      ],
+      "source_path": "src/pdfsmith/backends/azure_document_intelligence_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/09-ocr/installed-azure-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
+    },
+    {
+      "name": "google_document_ai",
+      "description": "Google Document AI, advanced document understanding",
+      "package": "google-cloud-documentai",
+      "weight": "commercial",
+      "extra": "google",
+      "source_disposition": "Integrated preserved inherited batch proposal; repaired status/shard/resource ownership and verified real SDK offline contracts. Live service remains unverified.",
+      "current_evidence": "live-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "GOOGLE_CLOUD_PROJECT",
+        "GOOGLE_DOCUMENT_AI_PROCESSOR_ID"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "project_id, processor_id, location, processor_version, gcs_bucket, mode, max_wait, poll_interval, request_timeout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract",
+        "live-e2e"
+      ],
+      "source_path": "src/pdfsmith/backends/google_document_ai_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/10-google/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
+    },
+    {
+      "name": "databricks",
+      "description": "Databricks ai_parse_document via SQL warehouse",
+      "package": "databricks-sdk",
+      "weight": "commercial",
+      "extra": "databricks",
+      "source_disposition": "Repaired against current documented binary/schema contract and real SDK transports; SQL engine and live service remain unverified.",
+      "current_evidence": "offline-contract",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "DATABRICKS_HOST",
+        "DATABRICKS_WAREHOUSE_ID"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "host, warehouse_id, max_wait, poll_interval, request_timeout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
+      ],
+      "source_path": "src/pdfsmith/backends/databricks_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/11-databricks/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "live_state": "explicitly-excluded-by-Stefan; no calls"
+    },
+    {
+      "name": "llamaparse",
+      "description": "LlamaIndex LlamaParse, GenAI-native document parsing",
+      "package": "llama-cloud",
+      "weight": "commercial",
+      "extra": "llamaparse",
+      "source_disposition": "Replaced legacy SDK after actual offline failure/serialization inspection. Modern real-SDK transports and isolated installed wheels passed; live parsing remains unauthorized/unverified.",
+      "current_evidence": "live-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "LLAMA_CLOUD_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "tier: explicit fast/cost_effective/agentic/agentic_plus",
+        "version: explicit 2026-06-15/2026-09-28/2026-09-29; no latest",
+        "disable_cache: bool, default true",
+        "language: SDK 2.18 documented language code; en default, en/de serialized in tests",
+        "max_wait_seconds/request_timeout_seconds: finite positive",
+        "poll_interval_seconds: finite nonnegative"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract",
+        "live-e2e"
+      ],
+      "evidence_path": "milestones/05-llamaparse/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "source_path": "src/pdfsmith/backends/llamaparse_backend.py",
+      "direct_async_method": false,
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
+    },
+    {
+      "name": "anthropic",
+      "description": "Anthropic Claude, frontier multimodal PDF parsing",
+      "package": "anthropic",
+      "weight": "commercial",
+      "extra": "anthropic",
+      "source_disposition": "Integrated preserved inherited work; repaired completion/usage/limits and verified actual SDK offline contracts. Live service remains unverified.",
+      "current_evidence": "live-e2e",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "ANTHROPIC_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "model, max_tokens, request_timeout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract",
+        "live-e2e"
+      ],
+      "source_path": "src/pdfsmith/backends/anthropic_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/12-anthropic/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
+    },
+    {
+      "name": "openai",
+      "description": "OpenAI GPT, frontier multimodal PDF parsing",
+      "package": "openai",
+      "weight": "commercial",
+      "extra": "openai",
+      "source_disposition": "Integrated preserved inherited work; repaired terminal completion and owned upload cleanup with actual SDK offline verification. Live service remains unverified.",
+      "current_evidence": "offline-contract",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "OPENAI_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "model, max_completion_tokens, request_timeout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
+      ],
+      "source_path": "src/pdfsmith/backends/openai_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/13-openai/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_state": "generation-blocked-by-exhausted-prepaid-balance",
+      "live_verified_python": []
+    },
+    {
+      "name": "gemini",
+      "description": "Google Gemini, frontier multimodal PDF parsing",
+      "package": "google-genai",
+      "weight": "commercial",
+      "extra": "gemini",
+      "source_disposition": "Integrated inherited modification; repaired typed candidate/usage/client lifecycle with actual SDK offline verification. Live service remains unverified.",
+      "current_evidence": "offline-contract",
+      "input_formats": [
+        "pdf"
+      ],
+      "requires_env_names": [
+        "GOOGLE_API_KEY or GEMINI_API_KEY"
+      ],
+      "configuration_status": "not-checked",
+      "options_contract": [
+        "model, max_output_tokens, request_timeout"
+      ],
+      "system_requirements": [],
+      "execution_policy": "thread-compatible-pending-runtime-check",
+      "evidence_states": [
+        "registered",
+        "dependency-present",
+        "constructible",
+        "offline-contract"
+      ],
+      "source_path": "src/pdfsmith/backends/gemini_backend.py",
+      "direct_async_method": false,
+      "evidence_path": "milestones/14-gemini/installed-*.json",
+      "verified_python": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_state": "generation-blocked-by-exhausted-prepaid-balance",
+      "live_verified_python": []
+    }
+  ],
+  "review_revision": "2026-10-15: static declarations are not SDK/live verification"
+}

@@ -1,0 +1,4 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_runtime_backends.py', '-q', '--tb=short']
+Exit: 0
+............                                                             [100%]
+12 passed in 17.63s

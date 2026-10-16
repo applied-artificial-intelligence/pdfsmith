@@ -1,0 +1,289 @@
+{
+  "evidence": "offline actual SDK contracts; no live model or service proof",
+  "python": "3.10.20",
+  "version": "0.3.0.dev0",
+  "options": {
+    "model": "future-pdf-model",
+    "max_tokens": 1234,
+    "request_timeout": 180.0
+  },
+  "package_path": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/anthropic-3.10-gyzr65b1/env/lib/python3.10/site-packages/pdfsmith",
+  "dependencies": {
+    "pdfsmith": "0.3.0.dev0",
+    "opentelemetry-api": "1.45.1",
+    "anyio": "4.15.1",
+    "h11": "0.16.0",
+    "idna": "3.20",
+    "anthropic": "1.15.0",
+    "pypdf": "6.20.1",
+    "httpx2": "2.13.1",
+    "jiter": "0.17.0",
+    "pydantic": "2.14.1",
+    "truststore": "0.10.5",
+    "typing_extensions": "4.16.0",
+    "typing-inspection": "0.4.4",
+    "docstring_parser": "0.18.0",
+    "pydantic_core": "2.50.1",
+    "sniffio": "1.3.1",
+    "httpcore2": "2.13.1",
+    "annotated-types": "0.8.0",
+    "exceptiongroup": "1.3.1"
+  },
+  "source_hashes": {
+    "_documents.py": "b39cb73aa71abbe9f9fbc30a4a3c4273f59571df6ff949ca4abe7f51a51c0128",
+    "cli.py": "d8895db341df23586d8f44d3255a55195db2fbbfeb57d5177d385f8aeab10bce",
+    "__init__.py": "0e80deb8f7ce0f3d1ec0e7d101c4fde9bbe2c8d6765fe70b91c3e1581b7f0c85",
+    "_inputs.py": "290e4e6445d991ef15c91c1ef4b5c9d78f55854e1280056c25f9fecab968dcde",
+    "api.py": "1d02da4ec120a6d165b79df7b52f80ae0e42b6873bd00e7609fd35ef91f39b04",
+    "errors.py": "ccab96b4200637d55e7ec9fb4d65986e159b0a035c717061afb6bd234b07524d",
+    "config.py": "19e569e7c294e02522e64254fba138cd533c597277289e07993f31e793f750ff",
+    "backends/databricks_backend.py": "d5517b630d38fcbe5c460414876167fde7bf9db0ada11f8e26ba047d6c767d3f",
+    "backends/marker_backend.py": "30563697624a005d3913c7036f88810d22a09a8b211d99ce214ebae5b7b3f374",
+    "backends/extractous_backend.py": "6a7e6d91a2f271d56c843d09081a7ccd80cf49bde855badf790cf0d3cdd54a02",
+    "backends/registry.py": "5e53a6a4a5e6acb4023043663d5ce8d66738f4937d3cc534b0625d22e3e475cf",
+    "backends/pymupdf4llm_backend.py": "d8099c436913e52ce8baa4ac3a33a8d9de1c672ba0e5612bb86347220de29666",
+    "backends/openai_backend.py": "4cf26b601b73ece9776b4254cb4ab0ed100373b515c812d9a749524dc35ba9b6",
+    "backends/__init__.py": "725c9d317d633bd11bfaa51369ccc8cb4aef0dbc1443cc0e68566394182761ae",
+    "backends/gemini_backend.py": "11b8f62437f04208ab5f5ded5aabc308584f215ad1f7a7c96270e3012868a38c",
+    "backends/azure_document_intelligence_backend.py": "a125fe13dfafd4536b5f2b6907207630dcaabd2a3fc2f57d0a4df6d2d9f150e8",
+    "backends/llamaparse_backend.py": "95d71466f19dcac49b16430d79bc9dcbb6852c8a67470b266f59beace6bec875",
+    "backends/docling_backend.py": "ec5b6174dd0c327096095e9a025eb3fa2e8db7cb1f58f17f0c96683f1cfab259",
+    "backends/anthropic_backend.py": "cf77871df872a806270f74a88889bc6b6b966fc0b6822ad9b41be1099cc7fd76",
+    "backends/google_document_ai_backend.py": "77a3211c3ffa91157f1852b13abe9d81aceed8b42205e223b81536f1511d6845",
+    "backends/pymupdf_backend.py": "dd935443a5cf9afdaf1cc253e10f6945d9a9ee526c432f1022e36ccc970e97bc",
+    "backends/pdfplumber_backend.py": "746c4c79b748780eb15189bd64aa25342b6f898d36af250e0abd852b01e6957f",
+    "backends/pypdf_backend.py": "1345dec49436e2e34b7e1d74ffb3c2d123cb3715e12475a4541390b8a06009b0",
+    "backends/aws_textract_backend.py": "99d51fbbe4b6dd0939cc745a34cdc890942498eb04fa2a174c7998ebfe233bdd",
+    "backends/pdfminer_backend.py": "b7f8c456c1ebcf3cd6ae7187c42df629f9ba32641eb80472468f963418b5b31c",
+    "backends/pypdfium2_backend.py": "13c2cc8dd24349f9d47b26f1ed381f9748c5d89c33666c47a9e5d18413e425e7",
+    "backends/kreuzberg_backend.py": "787e9db8fa4d68d01ff8a85a8193ad997380558fa1aec23861a48d4679c6335e",
+    "backends/unstructured_backend.py": "0d0f350334aa59d9e1033d946580fa3811130031766546bf73bf0ecb87fcab71",
+    "backends/_cleanup.py": "d90ecf5dee5d0e2d050d906a18e8632ff2b40b702fecaaec8d180dc2aacee1f0",
+    "backends/_process.py": "6cf06fa391861bb2f32b72323286489ebc8f469cfdd3c8dc71dd1fb4873c788a"
+  },
+  "inputs": {
+    "two-pages.pdf": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5"
+  },
+  "output_sha256": "e7a0b5f4c864f598dea43edd1596cdaa23017744a802a1b45c342db7c54b8680",
+  "errors": [
+    {
+      "case": "max_tokens",
+      "type": "RuntimeError",
+      "message": "Anthropic did not complete extraction: max_tokens",
+      "cause": "None",
+      "parse_completed": false,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    {
+      "case": "refusal",
+      "type": "RuntimeError",
+      "message": "Anthropic did not complete extraction: refusal",
+      "cause": "None",
+      "parse_completed": false,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    {
+      "case": "tool_use",
+      "type": "RuntimeError",
+      "message": "Anthropic did not complete extraction: tool_use",
+      "cause": "None",
+      "parse_completed": false,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    {
+      "case": "pause_turn",
+      "type": "RuntimeError",
+      "message": "Anthropic did not complete extraction: pause_turn",
+      "cause": "None",
+      "parse_completed": false,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    {
+      "case": "missing-stop",
+      "type": "RuntimeError",
+      "message": "Anthropic did not complete extraction: None",
+      "cause": "None",
+      "parse_completed": false,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    {
+      "case": "missing-content",
+      "type": "RuntimeError",
+      "message": "Anthropic omitted message identity or text content",
+      "cause": "None",
+      "parse_completed": false,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    {
+      "case": "wrong-role",
+      "type": "RuntimeError",
+      "message": "Anthropic did not complete extraction: end_turn",
+      "cause": "None",
+      "parse_completed": false,
+      "completion_unknown": false,
+      "resources": {}
+    },
+    {
+      "case": "server-error",
+      "type": "BackendOperationError",
+      "message": "Anthropic response completion is unknown; request was not retried",
+      "cause": "Error code: 500 - {'type': 'error', 'error': {'type': 'api_error', 'message': 'Controlled server failure'}}",
+      "parse_completed": false,
+      "completion_unknown": true,
+      "resources": {}
+    },
+    {
+      "case": "close-error",
+      "type": "BackendOperationError",
+      "message": "anthropic client cleanup failed",
+      "cause": "Controlled Anthropic transport close error",
+      "parse_completed": true,
+      "completion_unknown": false,
+      "resources": {
+        "message_id": "msg-owned"
+      }
+    }
+  ],
+  "console_returncode": 0,
+  "recovery_returncode": 1,
+  "wire_calls": [
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ],
+    [
+      {
+        "model": "future-pdf-model",
+        "max_tokens": 1234,
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5",
+        "request_bytes": 3206
+      }
+    ]
+  ],
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/anthropic-3.10-gyzr65b1/env/bin/python",
+    "-I",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/anthropic_probe.py",
+    "--fixtures",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ocr-fixtures",
+    "--transport",
+    "/home/stefan/applied-ai/pdfsmith/tests/anthropic_transport.py",
+    "--output",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/anthropic-3.10-gyzr65b1/outputs"
+  ],
+  "install_command": [
+    "uv",
+    "pip",
+    "install",
+    "--python",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/anthropic-3.10-gyzr65b1/env/bin/python",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/anthropic-wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[anthropic]"
+  ],
+  "wheel_sha256": "cef9676c2aaaf620b0e2242ab5e352a57aa6815c7a51649ab374be54059a996d"
+}

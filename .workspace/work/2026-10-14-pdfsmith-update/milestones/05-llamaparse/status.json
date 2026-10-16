@@ -1,0 +1,38 @@
+{
+  "milestone": "LlamaParse modern SDK offline contracts and recovered CLI output",
+  "parent_commit": "ae1c37c11f6f936178f8a816b8a453f2dfe78f93",
+  "source_sha256": {
+    "pyproject.toml": "fbd8482089ea082198438bf916ca879087961aa04e956af4b4b340835855bb18",
+    "uv.lock": "3556dd6d58d010f4fc1dcdc71713b2dd21db1541b777cee3ff052b2b960b91d2",
+    "src/pdfsmith/__init__.py": "0e80deb8f7ce0f3d1ec0e7d101c4fde9bbe2c8d6765fe70b91c3e1581b7f0c85",
+    "src/pdfsmith/_documents.py": "b39cb73aa71abbe9f9fbc30a4a3c4273f59571df6ff949ca4abe7f51a51c0128",
+    "src/pdfsmith/errors.py": "ccab96b4200637d55e7ec9fb4d65986e159b0a035c717061afb6bd234b07524d",
+    "src/pdfsmith/cli.py": "d8895db341df23586d8f44d3255a55195db2fbbfeb57d5177d385f8aeab10bce",
+    "src/pdfsmith/backends/registry.py": "e5aa12786670516a45a6d70fee617acab1af55314a81c20f3d65b0e108c47ef3",
+    "src/pdfsmith/backends/llamaparse_backend.py": "95d71466f19dcac49b16430d79bc9dcbb6852c8a67470b266f59beace6bec875",
+    "tests/test_llamaparse_contracts.py": "d2d1a40bbe4965db44595ac59cc7f43212112ec80f0ec74d9e3582b65c227eeb",
+    "tests/test_commercial_backends.py": "7b143fa8c1227d64e1ffebc09d7ab0e898d611833a8cd58daaeb9a9e1e125658",
+    "tests/test_cli_contracts.py": "db332ea3ebf4dd14895a97e2abe3bd77f24f23c495f31c32a8d796bdbc1fb5c9",
+    ".workspace/work/2026-10-14-pdfsmith-update/milestones/llama_probe.py": "005f30b96135b735eeda927c94e060af939c68db6a8ca5977df0835f6e67b7ff",
+    ".workspace/work/2026-10-14-pdfsmith-update/milestones/llama_transport.py": "f5b853aa4602b08316e4b55e3f58d31dfeb6fa6fe02094eb241ebb0a0466c682"
+  },
+  "before": "Actual legacy SDK 0.6.85 re-export inspected. Requested premium omitted from serialized upload; explicit ERROR became empty success. tier/version/disable_cache ignored by legacy SDK. CLI separately lost completed content on cleanup failure.",
+  "after": "212 passed, 51 optional/live skips. Four fresh extra-only installed wheel SDK/API/async/CLI offline runs passed Python 3.10-3.13; strict HTTP whitelist and DNS/TCP denial. Native corrected mode installed-wheel probes also passed all four Python versions.",
+  "classification": "offline-contract only. Real SDK serialization/decoding and wrapper control flow tested; no service authentication, upload, parsing, credits or workspace permissions verified. Six local backends remain local-e2e; LlamaParse is live-unverified.",
+  "sdk": "llama-cloud>=2.18,<2.19, observed 2.18.0; pypdf declared for page counting; one SDK path replaces llama-parse and its framework dependency tree",
+  "identity": "Explicit tier + selected published version required; legacy parsing_mode/latest rejected; disable_cache defaults true. Provider job tier reported separately. Confirmed runtime version/cache hit unknown; provider version-parameter echoes separate.",
+  "coverage": "Ordered 1-based complete markdown pages, page success predicates, empty complete result, missing expansion/text, job failure/cancel/timeout, wrong tier/version echo, no duplicate ambiguous submission; cancellation identity and terminal confirmation before deletion; owned handle/client cleanup; cleanup exceptions preserve primary cause or recovered completed content and IDs.",
+  "cli_recovery": "Cleanup failure after completed parsing returns error and preserves existing destination; private recovery JSON beside output (temporary directory for stdout), path/IDs printed. Recovery write failure reported separately.",
+  "sources": [
+    "https://developers.llamaindex.ai/llamaparse/parse/getting_started/",
+    "https://developers.llamaindex.ai/llamaparse/parse/guides/migration-v1-to-v2/",
+    "https://developers.llamaindex.ai/llamaparse/parse/guides/response-format/"
+  ],
+  "limits": [
+    "No live-provider calls or quality claims",
+    "Image formats/OCR quality unverified",
+    "Only listed SDK-published versions accepted; support outside pinned SDK minor requires fresh inspection",
+    "Inherited four provider changes remain untouched and unverified",
+    "Recovery storage can fail; no successful save is claimed on that path"
+  ]
+}

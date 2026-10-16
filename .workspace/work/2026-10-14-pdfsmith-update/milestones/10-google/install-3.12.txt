@@ -1,0 +1,29 @@
+Using Python 3.12.11 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/google-3.12-ake5y0j6/env
+Resolved 26 packages in 25ms
+Installed 26 packages in 23ms
+ + certifi==2026.7.22
+ + cffi==2.1.1
+ + charset-normalizer==3.5.2
+ + cryptography==50.0.2
+ + google-api-core==2.42.0
+ + google-auth==2.62.0
+ + google-cloud-core==2.8.0
+ + google-cloud-documentai==3.16.0
+ + google-cloud-storage==3.17.1
+ + google-crc32c==1.9.0
+ + google-resumable-media==2.11.0
+ + googleapis-common-protos==1.75.5
+ + grpcio==1.84.0
+ + grpcio-status==1.84.0
+ + idna==3.20
+ + opentelemetry-api==1.45.1
+ + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/google-wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl)
+ + proto-plus==1.29.0
+ + protobuf==7.36.2
+ + pyasn1==0.6.4
+ + pyasn1-modules==0.4.2
+ + pycparser==3.11
+ + pypdf==6.20.1
+ + requests==2.34.2
+ + typing-extensions==4.16.0
+ + urllib3==2.8.0

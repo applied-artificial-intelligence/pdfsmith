@@ -1,0 +1,122 @@
+{
+  "original_wrapper_characters": 499998,
+  "original_tail_present": false,
+  "stream_characters": 774645,
+  "stream_tail_present": true,
+  "stream_type": "<class 'builtins.StreamReader'>",
+  "stream_attributes": [
+    "read",
+    "readinto"
+  ],
+  "metadata": {
+    "access_permission:extract_for_accessibility": [
+      "true"
+    ],
+    "pdf:hasMarkedContent": [
+      "false"
+    ],
+    "pdf:docinfo:modified": [
+      "2000-01-01T00:00:00Z"
+    ],
+    "dc:format": [
+      "application/pdf; version=1.3"
+    ],
+    "pdf:docinfo:creator": [
+      "anonymous"
+    ],
+    "dcterms:created": [
+      "2000-01-01T00:00:00Z"
+    ],
+    "dc:subject": [
+      "unspecified"
+    ],
+    "pdf:docinfo:producer": [
+      "ReportLab PDF Library - (opensource)"
+    ],
+    "access_permission:can_modify": [
+      "true"
+    ],
+    "pdf:hasXFA": [
+      "false"
+    ],
+    "pdf:docinfo:subject": [
+      "unspecified"
+    ],
+    "pdf:PDFVersion": [
+      "1.3"
+    ],
+    "pdf:docinfo:creator_tool": [
+      "anonymous"
+    ],
+    "pdf:producer": [
+      "ReportLab PDF Library - (opensource)"
+    ],
+    "access_permission:assemble_document": [
+      "true"
+    ],
+    "X-TIKA:Parsed-By": [
+      "org.apache.tika.parser.DefaultParser",
+      "org.apache.tika.parser.pdf.PDFParser"
+    ],
+    "pdf:encrypted": [
+      "false"
+    ],
+    "xmpTPg:NPages": [
+      "110"
+    ],
+    "pdf:docinfo:created": [
+      "2000-01-01T00:00:00Z"
+    ],
+    "pdf:docinfo:title": [
+      "untitled"
+    ],
+    "access_permission:can_print": [
+      "true"
+    ],
+    "pdf:hasXMP": [
+      "false"
+    ],
+    "dcterms:modified": [
+      "2000-01-01T00:00:00Z"
+    ],
+    "Content-Length": [
+      "89844"
+    ],
+    "pdf:hasCollection": [
+      "false"
+    ],
+    "dc:title": [
+      "untitled"
+    ],
+    "access_permission:can_print_degraded": [
+      "true"
+    ],
+    "access_permission:modify_annotations": [
+      "true"
+    ],
+    "access_permission:fill_in_form": [
+      "true"
+    ],
+    "Content-Type": [
+      "application/pdf"
+    ],
+    "resourceName": [
+      "long.pdf"
+    ],
+    "dc:creator": [
+      "anonymous"
+    ],
+    "xmp:CreatorTool": [
+      "anonymous"
+    ],
+    "access_permission:extract_content": [
+      "true"
+    ],
+    "pdf:docinfo:trapped": [
+      "False"
+    ]
+  },
+  "input_sha256": "42375212edebdedd25f27ba5281070efaea7f7055b47163dc9fff4b379628bc1",
+  "stream_method": "readinto with copied chunks; read returns reusable mutable buffers",
+  "stream_sha256": "82c77ac6dc972aaa5581a0d98e220f9ef4c7a1afbf2f3c463f76fa8978ecd66f"
+}

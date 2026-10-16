@@ -80,15 +80,19 @@ class TestAsyncParsing:
 
     async def test_parse_async_backend_not_installed(self, sample_pdf):
         """parse_async should raise ImportError for missing backend."""
-        with patch(
-            "pdfsmith.api.get_backend",
-            side_effect=ImportError("Backend not installed"),
+        with (
+            patch(
+                "pdfsmith.api.get_backend",
+                side_effect=ImportError("Backend not installed"),
+            ),
+            pytest.raises(ImportError),
         ):
-            with pytest.raises(ImportError):
-                await parse_async(sample_pdf, backend="nonexistent")
+            await parse_async(sample_pdf, backend="nonexistent")
 
     @requires_backend
-    async def test_parse_async_concurrent_multiple_files(self, sample_pdf, multipage_pdf):
+    async def test_parse_async_concurrent_multiple_files(
+        self, sample_pdf, multipage_pdf
+    ):
         """parse_async should handle concurrent parsing."""
         results = await asyncio.gather(
             parse_async(sample_pdf),
@@ -129,15 +133,19 @@ class TestAsyncEdgeCases:
         mock_backend.parse.side_effect = RuntimeError("Parse failed")
         del mock_backend.parse_async
 
-        with patch("pdfsmith.api.get_backend", return_value=mock_backend):
-            with pytest.raises(RuntimeError, match="Parse failed"):
-                await parse_async(sample_pdf)
+        with (
+            patch("pdfsmith.api.get_backend", return_value=mock_backend),
+            pytest.raises(RuntimeError, match="Parse failed"),
+        ):
+            await parse_async(sample_pdf)
 
     async def test_parse_async_async_error_propagation(self, sample_pdf):
         """Errors from async backend should propagate correctly."""
         mock_backend = MagicMock()
         mock_backend.parse_async = AsyncMock(side_effect=RuntimeError("Async failed"))
 
-        with patch("pdfsmith.api.get_backend", return_value=mock_backend):
-            with pytest.raises(RuntimeError, match="Async failed"):
-                await parse_async(sample_pdf)
+        with (
+            patch("pdfsmith.api.get_backend", return_value=mock_backend),
+            pytest.raises(RuntimeError, match="Async failed"),
+        ):
+            await parse_async(sample_pdf)

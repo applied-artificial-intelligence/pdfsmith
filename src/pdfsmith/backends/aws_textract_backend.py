@@ -1,143 +1,143 @@
-"""AWS Textract backend for pdfsmith.
+"""Textract synchronous requests over isolated, individually validated PDF pages."""
 
-AWS Textract provides commercial-grade OCR and text extraction using machine learning.
-
-Requirements:
-    - boto3
-    - pymupdf (for multi-page support)
-
-Configuration:
-    Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables,
-    or use AWS_PROFILE for profile-based authentication.
-
-Cost: $1.50 per 1,000 pages (DetectDocumentText API)
-Limits: 10 MB file size, 3,000 pages (synchronous API)
-"""
-
+import base64
+import importlib.util
+import os
+import re
+import sys
+from copy import deepcopy
 from pathlib import Path
+from typing import Any
 
-try:
-    import boto3
-    from botocore.exceptions import BotoCoreError, ClientError
+from pdfsmith._documents import pdf_page_count
+from pdfsmith._inputs import validate_input
+from pdfsmith.backends._cleanup import close_client
+from pdfsmith.backends._process import extract_in_process
+from pdfsmith.config import Option, normalize_options
 
-    AVAILABLE = True
-except ImportError:
-    AVAILABLE = False
-
-from pdfsmith.backends.registry import BaseBackend
+AVAILABLE = importlib.util.find_spec("boto3") is not None
+MAX_PAGE_BYTES = 10_000_000
 
 
-class AWSTextractBackend(BaseBackend):
-    """AWS Textract backend for pdfsmith."""
-
+class AWSTextractBackend:
     name = "aws_textract"
+    options_schema = {
+        "region": Option("us-east-1", str),
+        "profile": Option(None, str, allow_none=True),
+        "request_timeout": Option(60.0, float, minimum=0.001),
+    }
 
-    def __init__(self) -> None:
-        """Initialize AWS Textract backend."""
-        if not AVAILABLE:
-            raise ImportError(
-                "boto3 is required for AWS Textract. Install with: pip install boto3"
-            )
+    def __init__(
+        self, region: str | None = None, profile: str | None = None, **options: Any
+    ) -> None:
+        explicit = {
+            **options,
+            "region": region
+            if region is not None
+            else (
+                os.getenv("AWS_REGION") or os.getenv("AWS_DEFAULT_REGION", "us-east-1")
+            ),
+            "profile": profile if profile is not None else os.getenv("AWS_PROFILE"),
+        }
+        self._options = normalize_options(self.name, explicit, self.options_schema)
+        if not re.fullmatch(r"[a-z0-9-]+", self._options["region"]):
+            raise ValueError("aws_textract.region must be an AWS region name")
+        if (
+            self._options["profile"] is not None
+            and not self._options["profile"].strip()
+        ):
+            raise ValueError("aws_textract.profile must be nonempty")
 
-        import os
+    @property
+    def effective_options(self) -> dict[str, Any]:
+        return deepcopy(self._options)
 
-        # Initialize boto3 client
-        aws_profile = os.getenv("AWS_PROFILE")
-        region = os.getenv("AWS_REGION", "us-east-1")
+    def _create_client(self) -> Any:
+        import boto3
+        from botocore.config import Config
 
-        try:
-            if aws_profile:
-                session = boto3.Session(profile_name=aws_profile, region_name=region)
-                self.client = session.client("textract")
-            else:
-                self.client = boto3.client("textract", region_name=region)
-        except BotoCoreError as e:
-            raise RuntimeError(f"Failed to initialize AWS Textract client: {e}") from e
+        timeout = self._options["request_timeout"]
+        return boto3.Session(
+            profile_name=self._options["profile"], region_name=self._options["region"]
+        ).client(
+            "textract",
+            config=Config(
+                connect_timeout=min(10.0, timeout),
+                read_timeout=timeout,
+                retries={"max_attempts": 0, "mode": "standard"},
+            ),
+        )
 
     def parse(self, pdf_path: Path) -> str:
-        """Parse PDF to markdown using AWS Textract.
-
-        Args:
-            pdf_path: Path to PDF file
-
-        Returns:
-            Markdown text
-
-        Raises:
-            ValueError: If PDF exceeds size limits
-            RuntimeError: If API call fails
-        """
-        if not pdf_path.exists():
-            raise FileNotFoundError(f"PDF not found: {pdf_path}")
-
-        # Check file size (10 MB limit)
-        file_size_mb = pdf_path.stat().st_size / (1024 * 1024)
-        if file_size_mb > 10:
-            raise ValueError(
-                f"PDF too large ({file_size_mb:.1f} MB). "
-                "AWS Textract has 10 MB limit for synchronous API."
-            )
-
+        path = validate_input(pdf_path)
+        count = pdf_page_count(path)
+        client: Any = None
+        content = None
+        resources: dict[str, str] = {}
         try:
-            # Load PDF
-            try:
-                import fitz  # PyMuPDF
-            except ImportError as err:
-                raise ImportError(
-                    "PyMuPDF (fitz) required for multi-page support. "
-                    "Install with: pip install pymupdf"
-                ) from err
+            parts = []
+            for page in range(count):
+                encoded = extract_in_process(
+                    "_aws_page", path, {"page": page, "page_count": count}
+                )
+                data = base64.b64decode(encoded, validate=True)
+                if (
+                    not data.startswith(b"\x89PNG\r\n\x1a\n")
+                    or len(data) > MAX_PAGE_BYTES
+                ):
+                    raise ValueError(
+                        "AWS page must be PNG and at most 10,000,000 bytes"
+                    )
+                if client is None:
+                    client = self._create_client()
+                response = client.detect_document_text(Document={"Bytes": data})
+                request_id = response.get("ResponseMetadata", {}).get("RequestId")
+                if request_id:
+                    resources[f"page_{page + 1}_request"] = request_id
+                parts.extend(self._extract_blocks(response))
+            content = "\n\n".join(parts).strip()
+            return content
+        except Exception as exc:
+            if client is None:
+                raise
+            from botocore.exceptions import ClientError
 
-            pdf_bytes = pdf_path.read_bytes()
-            pdf_doc = fitz.open(stream=pdf_bytes, filetype="pdf")
-            page_count = len(pdf_doc)
+            if isinstance(exc, ClientError) and exc.response.get("Error", {}).get(
+                "Code"
+            ) in {
+                "InvalidParameterException",
+                "BadDocumentException",
+                "DocumentTooLargeException",
+                "UnsupportedDocumentException",
+            }:
+                raise ValueError(f"Textract rejected the document: {exc}") from exc
+            raise
+        finally:
+            if client is not None:
+                close_client(
+                    client,
+                    self.name,
+                    content=content,
+                    resource_ids=resources,
+                    primary=sys.exc_info()[1],
+                )
 
-            all_text_blocks = []
-
-            if page_count == 1:
-                # Single page - send PDF directly
-                pdf_doc.close()
-                doc = {"Bytes": pdf_bytes}
-                response = self.client.detect_document_text(Document=doc)
-                all_text_blocks = self._extract_blocks(response)
-            else:
-                # Multi-page - convert to PNG per page
-                for page_num in range(page_count):
-                    page = pdf_doc[page_num]
-                    pix = page.get_pixmap(dpi=150)
-                    png_bytes = pix.tobytes("png")
-
-                    doc = {"Bytes": png_bytes}
-                    response = self.client.detect_document_text(Document=doc)
-                    page_blocks = self._extract_blocks(response)
-                    all_text_blocks.extend(page_blocks)
-
-                pdf_doc.close()
-
-            # Join with paragraph breaks
-            return "\n\n".join(all_text_blocks).strip()
-
-        except ClientError as e:
-            error_code = e.response.get("Error", {}).get("Code", "Unknown")
-            error_msg = e.response.get("Error", {}).get("Message", str(e))
-
-            if error_code == "ThrottlingException":
-                raise RuntimeError(f"AWS Textract rate limit: {error_msg}") from e
-            elif error_code == "InvalidParameterException":
-                raise ValueError(f"Invalid PDF: {error_msg}") from e
-            else:
-                msg = f"AWS Textract error ({error_code}): {error_msg}"
-                raise RuntimeError(msg) from e
-
-        except BotoCoreError as e:
-            raise RuntimeError(f"AWS SDK error: {e}") from e
-
-    def _extract_blocks(self, response: dict) -> list[str]:
-        """Extract text blocks from Textract response."""
-        text_blocks = []
-        for block in response.get("Blocks", []):
-            if block["BlockType"] == "LINE":
-                text = block.get("Text", "").strip()
-                if text:
-                    text_blocks.append(text)
-        return text_blocks
+    def _extract_blocks(self, response: dict[str, Any]) -> list[str]:
+        metadata = response.get("DocumentMetadata", {})
+        if type(metadata.get("Pages")) is not int or metadata["Pages"] != 1:
+            raise RuntimeError("Textract did not confirm one complete rendered page")
+        blocks = response.get("Blocks")
+        if not isinstance(blocks, list):
+            raise RuntimeError("Textract omitted page blocks")
+        pages = [block for block in blocks if block.get("BlockType") == "PAGE"]
+        if len(pages) != 1:
+            raise RuntimeError("Textract returned incomplete page coverage")
+        text = []
+        for block in blocks:
+            if block.get("BlockType") == "LINE":
+                value = block.get("Text")
+                if not isinstance(value, str):
+                    raise RuntimeError("Textract omitted line text")
+                if value.strip():
+                    text.append(value.strip())
+        return text

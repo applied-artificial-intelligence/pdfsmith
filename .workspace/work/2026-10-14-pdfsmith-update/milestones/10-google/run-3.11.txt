@@ -1,0 +1,3 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/google-3.11-j05kzmob/env/bin/python', '-I', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/google_probe.py', '--fixtures', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/google-fixtures', '--transport', '/home/stefan/applied-ai/pdfsmith/tests/google_transport.py', '--output', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/google-3.11-j05kzmob/outputs']
+Exit: 0
+{"python": "3.11.13", "sdk_contracts": "passed"}

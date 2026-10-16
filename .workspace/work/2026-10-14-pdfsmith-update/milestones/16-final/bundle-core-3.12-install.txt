@@ -1,0 +1,4 @@
+Using Python 3.12.3 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/final-core-3.12-3900cli6/env
+Resolved 1 package in 2ms
+Installed 1 package in 5ms
+ + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/final-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl)

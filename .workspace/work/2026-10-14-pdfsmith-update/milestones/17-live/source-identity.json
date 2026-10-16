@@ -1,0 +1,8 @@
+{
+  "src/pdfsmith/backends/openai_backend.py": "b1b783311b71c0ae09c8a6d0c81c548f4af3e083d846f053bdf6a6fd34c7c493",
+  "src/pdfsmith/backends/llamaparse_backend.py": "e870e0e66f4db0e9484f92f04985b39a9c813ed1b34464f316ca6fb3bd65c920",
+  "tests/test_openai_contracts.py": "58cf3cb67f9681e94dfaeb64d394388c3ae885e1b79246129d66f65461bbbc3b",
+  "tests/test_llamaparse_contracts.py": "9c45d71754b7c201406c2f063a048c8a222b219ba53adcba1310377daaee3ae9",
+  "tests/verify_distribution.py": "14c71b70f096cc9f1a8e1b33c4dae35a5f6ab58229a8a4064d94918ad02796b4",
+  "README.md": "73d41520e57205f5af2e11fd29b0758bf3eb609dad4053c2bd12c674b1122648"
+}

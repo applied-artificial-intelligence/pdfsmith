@@ -1,0 +1,45 @@
+Marker ownership checkpoint, October 15, 2026
+
+The installed E2E matrix is complete on Python 3.10-3.13. Exact package/source/
+input/output identity, dependencies and commands are in installed-marker-*.json.
+Actual public API, direct, async and CLI calls passed; explicit text-layer mode
+was used for the retained public text PDF, and default OCR for the controlled
+scan. Eight CPU threads were requested in these four runs; library default is two.
+The Python 3.12 initial diagnostics also used the default two threads. Blank,
+missing/corrupt inputs, complete metadata, producing-SDK missing-page and renderer
+failure paths passed. Private SDK inspection sets asset locations before imports;
+public calls leave the caller environment unchanged. All owned processes were
+terminated/reaped after both injected failures. The wheel matches every current
+source module at 9acc1fc, including preserved inherited provider source bytes.
+No hosted provider or parsing-quality comparison is validated by these runs.
+
+Fresh source suite: 247 passed, 51 skipped (marker-source-suite.txt). Focused
+model/ownership/network/recovery suite: 23 passed. Scoped Ruff/mypy passed.
+The standalone real-SDK transport fixture proves that Surya accepts a length-
+limited reply as error=False before the guard; the guarded path rejects it and
+queued work after one request. Complete text and complete blank replies still
+work. These are offline protocol checks, not model/service/quality results.
+
+Two initial public-PDF runs used default OCR and were stopped deliberately.
+Only exact owned PIDs were signaled, with executable/parent checks and pidfds.
+Their remaining resources were explicitly stopped and temporary homes archived
+then removed. This is manual cleanup evidence, not automatic-cleanup success.
+Two later probes reached their private-SDK fault injection but had asset-path
+setup errors there. Those logs are archived separately; they are not passes.
+The harness now sets asset paths before importing the SDK and clears only its
+own stopped environments when recreating them.
+
+Successful final runs use explicit text-layer mode for the public text PDF, default OCR
+for the controlled scan, and eight CPU threads. The library default remains two
+threads. They run under invalid ambient proxy settings and Python network guards;
+only ports registered by owned process creation are permitted. Loopback proxy
+bypass follows https://www.python-httpx.org/environment_variables/ . Prepared
+model/font/llama.cpp asset identities are in marker-model-assets.json; no paid or free-credit provider calls occur.
+
+The SDK's shared-process architecture requires private discovery files and exact
+Popen ownership. Only the pinned two spawn-module subprocess dependencies and
+local-generation function are replaced during the worker operation, then restored.
+No global subprocess module is patched. Each owned child is terminated/reaped in
+finally, including conversion/rendering failures; completed text survives a
+cleanup reporting failure through the core operational exception/CLI recovery.
+Abrupt external process termination is not claimed as automatic cleanup.

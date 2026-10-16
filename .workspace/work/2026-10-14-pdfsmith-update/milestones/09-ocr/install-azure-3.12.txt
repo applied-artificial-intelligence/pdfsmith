@@ -1,0 +1,14 @@
+Using Python 3.12.11 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/offline-azure-3.12
+Resolved 11 packages in 15ms
+Installed 11 packages in 22ms
+ + azure-ai-documentintelligence==1.0.2
+ + azure-core==1.41.0
+ + certifi==2026.7.22
+ + charset-normalizer==3.5.2
+ + idna==3.20
+ + isodate==0.7.2
+ + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ocr-wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl)
+ + pypdf==6.20.1
+ + requests==2.34.2
+ + typing-extensions==4.16.0
+ + urllib3==2.8.0

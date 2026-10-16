@@ -1,90 +1,35 @@
-"""Docling backend for pdfsmith.
+"""Docling PDF conversion with frozen configuration and isolated model execution."""
 
-IBM Docling provides high-quality PDF to markdown conversion with
-optional OCR support and table structure extraction.
-
-IMPORTANT - Resource Requirements:
-    - Fast mode (no OCR): ~8-12GB RAM per instance, ~2-5 sec/doc
-    - Accurate mode (with OCR): ~12-16GB RAM per instance, ~30-60 sec/doc
-    - GPU recommended for OCR mode (CUDA or MPS)
-    - KNOWN MEMORY LEAK: Docling accumulates memory over conversions
-      (see https://github.com/docling-project/docling/issues/2209)
-
-Configuration (in order of precedence):
-    1. Constructor arguments: DoclingBackend(do_ocr=True)
-    2. Environment variables: DOCLING_OCR=true
-    3. Config file: .pdfsmith/docling.yaml or ~/.config/pdfsmith/docling.yaml
-    4. Built-in defaults
-
-Example config file (.pdfsmith/docling.yaml):
-    do_ocr: false
-    do_table_structure: true
-    num_threads: 2  # Lower value recommended to limit memory
-    device: auto  # auto, cpu, cuda, mps
-"""
-
-import gc
-import os
+import importlib.util
+import json
+import re
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-# Set thread limits BEFORE importing docling (affects MKL, OpenMP, etc.)
-# See: https://github.com/docling-project/docling-serve/issues/366
-_num_threads = os.environ.get("DOCLING_NUM_THREADS", "2")
-os.environ.setdefault("OMP_NUM_THREADS", _num_threads)
-os.environ.setdefault("MKL_NUM_THREADS", _num_threads)
-os.environ.setdefault("OPENBLAS_NUM_THREADS", _num_threads)
+from pdfsmith._inputs import validate_input
+from pdfsmith.backends._process import extract_in_process
+from pdfsmith.config import (
+    Option,
+    get_backend_defaults,
+    load_backend_config,
+    normalize_options,
+)
 
-try:
-    import docling  # noqa: F401
-
-    AVAILABLE = True
-except ImportError:
-    AVAILABLE = False
-
-from pdfsmith.config import get_backend_defaults, load_backend_config  # noqa: E402
-
-# Recreate converter every N documents to mitigate memory leaks
-# See: https://github.com/docling-project/docling/issues/2209
-CONVERTER_RESET_INTERVAL = 10
-
-# Known configuration options for environment variable lookup
-KNOWN_OPTIONS = [
-    "do_ocr",
-    "do_table_structure",
-    "num_threads",
-    "device",
-    "ocr_languages",
-    "table_mode",
-    "generate_page_images",
-    "generate_picture_images",
-    "images_scale",
-]
+AVAILABLE = importlib.util.find_spec("docling") is not None
 
 
 class DoclingBackend:
-    """PDF parser using IBM Docling - highest quality extraction.
-
-    Docling uses deep learning models for document understanding.
-    Best quality output but requires significant resources.
-
-    Configuration sources (in precedence order):
-        1. Constructor arguments
-        2. Environment variables (DOCLING_<OPTION>)
-        3. Config files (.pdfsmith/docling.yaml, ~/.config/pdfsmith/docling.yaml)
-        4. Built-in defaults
-
-    By default, OCR is DISABLED for performance. Enable via:
-        - Constructor: DoclingBackend(do_ocr=True)
-        - Environment: DOCLING_OCR=true
-        - Config file: do_ocr: true
-
-    Resource estimates:
-        - Fast mode (no OCR): 2-4GB RAM, 2-5 sec/doc
-        - Accurate mode (OCR): 8-12GB RAM, 30-60 sec/doc, GPU recommended
-    """
-
     name = "docling"
+    options_schema = {
+        "do_ocr": Option(False, bool),
+        "do_table_structure": Option(True, bool),
+        "num_threads": Option(4, int, minimum=1),
+        "device": Option("auto", str, ("auto", "cpu", "cuda", "mps")),
+        "ocr_languages": Option(["en"], list),
+        "table_mode": Option("accurate", str, ("fast", "accurate")),
+        "artifacts_path": Option(None, str, allow_none=True),
+    }
 
     def __init__(
         self,
@@ -92,140 +37,102 @@ class DoclingBackend:
         do_table_structure: bool | None = None,
         num_threads: int | None = None,
         device: str | None = None,
-        **kwargs: Any,
+        **options: Any,
     ) -> None:
-        """Initialize the DoclingBackend.
-
-        Args:
-            do_ocr: Enable OCR for scanned documents. Default: False
-            do_table_structure: Enable table structure extraction. Default: True
-            num_threads: Number of CPU threads. Default: 4
-            device: Device selection ("auto", "cpu", "cuda", "mps"). Default: "auto"
-            **kwargs: Additional options
-        """
-        if not AVAILABLE:
-            raise ImportError(
-                "docling is required. Install with: pip install pdfsmith[docling]"
+        explicit = dict(options)
+        for key, value in (
+            ("do_ocr", do_ocr),
+            ("do_table_structure", do_table_structure),
+            ("num_threads", num_threads),
+            ("device", device),
+        ):
+            if value is not None:
+                explicit[key] = value
+        config = load_backend_config(self.name, explicit, list(self.options_schema))
+        merged = {**get_backend_defaults(self.name), **config.options}
+        if isinstance(merged.get("ocr_languages"), str):
+            try:
+                merged["ocr_languages"] = json.loads(merged["ocr_languages"])
+            except ValueError as exc:
+                raise ValueError("docling.ocr_languages must be a JSON list") from exc
+        self._options = normalize_options(self.name, merged, self.options_schema)
+        languages = self._options["ocr_languages"]
+        if not languages or any(
+            not isinstance(lang, str) or not re.fullmatch(r"[a-zA-Z0-9_]+", lang)
+            for lang in languages
+        ):
+            raise ValueError("docling.ocr_languages requires nonempty language codes")
+        aliases = {"en": "eng", "de": "deu", "fr": "fra", "es": "spa"}
+        self._options["ocr_languages"] = [aliases.get(lang, lang) for lang in languages]
+        if self._options["artifacts_path"] is not None:
+            if not self._options["artifacts_path"].strip():
+                raise ValueError("docling.artifacts_path must be a nonempty path")
+            self._options["artifacts_path"] = str(
+                Path(self._options["artifacts_path"]).expanduser().absolute()
             )
 
-        # Build explicit options from constructor args
-        explicit_options = {k: v for k, v in kwargs.items() if v is not None}
-        if do_ocr is not None:
-            explicit_options["do_ocr"] = do_ocr
-        if do_table_structure is not None:
-            explicit_options["do_table_structure"] = do_table_structure
-        if num_threads is not None:
-            explicit_options["num_threads"] = num_threads
-        if device is not None:
-            explicit_options["device"] = device
-
-        # Load configuration from all sources
-        defaults = get_backend_defaults("docling")
-        config = load_backend_config("docling", explicit_options, KNOWN_OPTIONS)
-
-        # Apply defaults, then loaded config
-        self._config = {**defaults, **config.options}
-        self._config_source = config.source
-
-        # Extract commonly used options
-        self._do_ocr = self._config.get("do_ocr", False)
-        self._do_table_structure = self._config.get("do_table_structure", True)
-        self._num_threads = self._config.get("num_threads", 2)  # Lower for memory
-        self._device = self._config.get("device", "auto")
-
-        # Lazy-loaded converter (created on first use)
-        self._converter: Any = None
-        # Counter for memory leak mitigation
-        self._conversion_count = 0
-
-    def _get_converter(self) -> Any:
-        """Get or create the document converter with configured options."""
-        if self._converter is not None:
-            return self._converter
-
-        from docling.datamodel.base_models import InputFormat
-        from docling.datamodel.pipeline_options import PdfPipelineOptions
-        from docling.document_converter import DocumentConverter, PdfFormatOption
-
-        # Configure pipeline options
-        pipeline_options = PdfPipelineOptions()
-        pipeline_options.do_ocr = self._do_ocr
-        pipeline_options.do_table_structure = self._do_table_structure
-
-        # Configure additional options from config
-        if self._config.get("generate_page_images"):
-            pipeline_options.generate_page_images = True
-        if self._config.get("generate_picture_images"):
-            pipeline_options.generate_picture_images = True
-        if self._config.get("images_scale"):
-            pipeline_options.images_scale = float(self._config["images_scale"])
-
-        # Configure accelerator options
-        try:
-            from docling.datamodel.accelerator_options import (
-                AcceleratorDevice,
-                AcceleratorOptions,
-            )
-
-            device_map = {
-                "auto": AcceleratorDevice.AUTO,
-                "cpu": AcceleratorDevice.CPU,
-                "cuda": AcceleratorDevice.CUDA,
-                "mps": AcceleratorDevice.MPS,
-            }
-            device = device_map.get(self._device.lower(), AcceleratorDevice.AUTO)
-
-            pipeline_options.accelerator_options = AcceleratorOptions(
-                num_threads=self._num_threads,
-                device=device,
-            )
-        except ImportError:
-            pass  # Older docling version
-
-        self._converter = DocumentConverter(
-            format_options={
-                InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)
-            }
-        )
-
-        return self._converter
+    @property
+    def effective_options(self) -> dict[str, Any]:
+        return deepcopy(self._options)
 
     def parse(self, pdf_path: Path) -> str:
-        """Parse PDF to markdown string.
+        path = validate_input(pdf_path)
+        return extract_in_process(self.name, path, self._options)
 
-        Includes memory cleanup to mitigate known docling memory leaks.
-        See: https://github.com/docling-project/docling/issues/2209
-        """
-        # Reset converter periodically to mitigate memory leaks
-        if self._conversion_count >= CONVERTER_RESET_INTERVAL:
-            self._converter = None
-            gc.collect()
-            self._conversion_count = 0
 
-        converter = self._get_converter()
-        result = converter.convert(pdf_path)
-        markdown_text = result.document.export_to_markdown()
+def _get_converter(options: dict[str, Any]) -> Any:
+    from docling.datamodel.accelerator_options import AcceleratorOptions
+    from docling.datamodel.base_models import InputFormat
+    from docling.datamodel.pipeline_options import (
+        PdfPipelineOptions,
+        TableFormerMode,
+        TableStructureOptions,
+        TesseractCliOcrOptions,
+    )
+    from docling.document_converter import DocumentConverter, PdfFormatOption
 
-        # Memory cleanup: call unload() on backends to release resources
-        # See: https://github.com/docling-project/docling-serve/issues/366
-        try:
-            # Primary cleanup path: result.input._backend.unload()
-            if hasattr(result, "input") and hasattr(result.input, "_backend"):
-                backend = result.input._backend
-                if hasattr(backend, "unload"):
-                    backend.unload()
-            # Fallback: try document._backend
-            elif hasattr(result, "document") and hasattr(result.document, "_backend"):
-                backend = result.document._backend
-                if hasattr(backend, "unload"):
-                    backend.unload()
-            # Also try result-level unload
-            if hasattr(result, "unload"):
-                result.unload()
-        except Exception:
-            pass  # Best effort cleanup
+    artifacts = options["artifacts_path"]
+    if artifacts is not None and not Path(artifacts).is_dir():
+        raise ValueError("docling.artifacts_path must be an existing model directory")
+    pipeline = PdfPipelineOptions(
+        do_ocr=options["do_ocr"],
+        do_table_structure=options["do_table_structure"],
+        accelerator_options=AcceleratorOptions(
+            num_threads=options["num_threads"], device=options["device"]
+        ),
+        ocr_options=TesseractCliOcrOptions(lang=options["ocr_languages"]),
+        table_structure_options=TableStructureOptions(
+            mode=TableFormerMode(options["table_mode"])
+        ),
+        artifacts_path=Path(artifacts) if artifacts else None,
+        enable_remote_services=False,
+        generate_page_images=False,
+        generate_picture_images=False,
+    )
+    return DocumentConverter(
+        allowed_formats=[InputFormat.PDF],
+        format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline)},
+    )
 
-        self._conversion_count += 1
-        gc.collect()
 
-        return markdown_text
+def _extract(path: Path, options: dict[str, Any]) -> str:
+    from pdfsmith._documents import pdf_page_count
+
+    count = pdf_page_count(path)
+    from docling.datamodel.base_models import ConversionStatus
+
+    converter = _get_converter(options)
+    # The SDK's pipeline unloads input and page handles in its own finally block.
+    # The fresh worker owns model memory, including conversion/export failures.
+    result = converter.convert(path)
+    if result.status != ConversionStatus.SUCCESS or result.errors:
+        raise RuntimeError(f"Docling conversion did not complete: {result.status}")
+    expected = list(range(1, count + 1))
+    if [page.page_no for page in result.pages] != expected or sorted(
+        result.document.pages
+    ) != expected:
+        raise RuntimeError("Docling returned incomplete page coverage")
+    text = result.document.export_to_markdown()
+    if not isinstance(text, str):
+        raise RuntimeError("Docling did not return Markdown text")
+    return text

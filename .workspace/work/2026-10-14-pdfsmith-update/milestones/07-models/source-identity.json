@@ -1,0 +1,12 @@
+{
+  "parent_commit": "4b68d0bbc2e732f5046589fdd15f2076870c2915",
+  "before_wheel_sha256": "c5bdc0e8b07577c7b5be0d29f595e0fbe9a7a5397dd172b09b25b59b9289bdf0",
+  "wheel_sha256": "eedd42ad2cdbc0ae45637ab126fbdb58a2b32216d524ba02a8c33c89ffc31c1a",
+  "source_hashes": {
+    "src/pdfsmith/backends/docling_backend.py": "ec5b6174dd0c327096095e9a025eb3fa2e8db7cb1f58f17f0c96683f1cfab259",
+    "src/pdfsmith/backends/_process.py": "b2cb6645f4412ed522313907195ee5652040b869160b99c1cc1f98b058b5ae12",
+    "src/pdfsmith/backends/registry.py": "f9089a2168eb27475ba5eb65d82046925cad5198f56666caaf30f48bc7af0e73",
+    "pyproject.toml": "798b43c1b83b19a294e10230b93becd2c5c103522315bba7c134e1a6de08013d",
+    "uv.lock": "a3087976c16f55fe1e5a037cdcc4715ddd22adf4c34384756c715f43d42e9aeb"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "case": "complete",
+    "before_error": false,
+    "before_raw": "<div>complete</div>",
+    "after": {
+      "raw": "<div>complete</div>",
+      "requests": 2
+    }
+  },
+  {
+    "case": "blank",
+    "before_error": false,
+    "before_raw": "",
+    "after": {
+      "raw": "",
+      "requests": 2
+    }
+  },
+  {
+    "case": "truncated",
+    "before_error": false,
+    "before_raw": "<div",
+    "after": {
+      "error": "Marker inference failed: Incomplete or refused Marker generation",
+      "requests": 1
+    }
+  },
+  {
+    "case": "unavailable",
+    "before_error": true,
+    "before_raw": "",
+    "after": {
+      "error": "Marker inference failed: Error code: 503 - {'error': {'message': 'Controlled local server failure', 'type': 'server_error', 'code': 'unavailable'}}",
+      "requests": 1
+    }
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "evidence": "offline SDK request serialization; no provider calls",
+  "wrapper_requested_mode": "premium",
+  "actual_sdk_parse_mode": null,
+  "actual_sdk_ignore_errors": true,
+  "provider_error_returned_as": "''",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/parsing/upload",
+      "selected_controls_present": {
+        "parse_mode": false,
+        "parsing_mode": false,
+        "tier": false,
+        "version": false,
+        "disable_cache": false,
+        "do_not_cache": false,
+        "invalidate_cache": false,
+        "target_pages": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/parsing/job/controlled-job",
+      "selected_controls_present": {
+        "parse_mode": false,
+        "parsing_mode": false,
+        "tier": false,
+        "version": false,
+        "disable_cache": false,
+        "do_not_cache": false,
+        "invalidate_cache": false,
+        "target_pages": false
+      }
+    }
+  ],
+  "modern_controls_accepted_but_absent_from_fields": [
+    "tier",
+    "version",
+    "disable_cache"
+  ],
+  "legacy_target_pages_index": "0-based as documented by installed field metadata",
+  "new_path_justification": "installed legacy model cannot express required tier, published version and disable_cache; wrapper silently omits requested parsing mode and drops explicit service failure"
+}

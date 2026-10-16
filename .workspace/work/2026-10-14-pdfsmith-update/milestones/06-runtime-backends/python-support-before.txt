@@ -1,0 +1,27 @@
+Command: ['uv', 'lock']
+Exit: 1
+  × No solution found when resolving dependencies for split (markers:
+  │ python_full_version == '3.10.*'; included: pdfsmith[unstructured];
+  │ excluded: pdfsmith[marker]):
+  ╰─▶ Because only the following versions of unstructured[pdf] are available:
+          unstructured[pdf]<0.27
+          unstructured[pdf]==0.27.1
+          unstructured[pdf]==0.27.5
+          unstructured[pdf]==0.27.6
+          unstructured[pdf]==0.27.8
+          unstructured[pdf]==0.27.9
+          unstructured[pdf]==0.27.10
+          unstructured[pdf]==0.27.16
+          unstructured[pdf]==0.27.22
+          unstructured[pdf]==0.27.25
+          unstructured[pdf]==0.27.27
+      and the requested Python version (>=3.10) does not satisfy
+      Python>=3.11,<3.14, we can conclude that unstructured[pdf]>=0.27 cannot
+      be used.
+      And because pdfsmith[all] depends on unstructured[pdf]>=0.27 and your
+      project requires pdfsmith[all], we can conclude that your project's
+      requirements are unsatisfiable.
+
+      hint: While the active Python version is 3.13, the resolution failed for
+      other Python versions supported by your project. Consider limiting your
+      project's supported Python versions using `requires-python`.

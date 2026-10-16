@@ -1,0 +1,60 @@
+Gemini offline SDK contracts - October 15, 2026
+
+inherited-source.tar.gz and inherited-sha256.txt retain the inherited modification.
+before.json runs it through actual Google GenAI SDK 2.31.0 and offline HTTPX:
+MAX_TOKENS returns truncated content, blocked/missing candidates return empty
+success, zero reported input usage is replaced by an estimate, unknown options
+are accepted, and neither SDK client closes. Initial harness assumptions about
+mimeType/standard-base64 were corrected before the recorded reproduction. This
+SDK sends mime_type and URL-safe base64, valid protobuf JSON representations.
+
+Constructors are now pure, with model/max_output_tokens/request_timeout schema
+and no stale pricing-based model restriction. Credentials resolve at parse time;
+explicit enterprise=False selects the Gemini API. Declared pypdf performs actual
+PDF validation/page counting. The wrapper supports <=50,000,000-byte PDFs and
+<=1000 pages. Current inline documentation allows 100MB, so the old generic 20MB
+restriction is not imposed. One supported PDF plus its fixed prompt remains under
+that request limit after base64 expansion. The gemini-2.5-flash default is retained;
+its current official deprecation page announces no shutdown date.
+
+The actual SDK receives application/pdf bytes, explicit text response modality,
+one candidate and the configured token limit. Prompt block reasons and candidate
+finish reason are checked before text is read. One STOP candidate with visible
+string text is required; explicit blank text is valid. Missing candidates/content,
+non-text content, thoughts-only output, MAX_TOKENS/SAFETY/RECITATION and absent
+finish status raise. Thought parts are excluded from extracted content. A terminal
+LLM completion does not prove semantic/page completeness or extraction quality.
+
+Only actual reported usage is retained, including zero counters; absent usage
+is unknown. Monetary fields in get_cost_info are None. Failed next calls clear
+prior usage. HTTP retries are disabled with attempts=1, timeout uses SDK
+milliseconds, and ambiguous server/transport completion is surfaced explicitly.
+
+The SDK eagerly constructs both sync and async clients. Both public close methods
+are invoked; async closure runs on an owned loop so direct sync calls inside a
+running caller loop work. Cleanup errors preserve primary failure diagnostics,
+completed content and response identity in BackendOperationError and separate
+private CLI recovery JSON without replacing previous output.
+
+Focused source suite: runtime/dev-env/bin/python -m pytest -q
+ tests/test_gemini_contracts.py --tb=line: 27 passed. Actual SDK MIME/config/bytes,
+prompt/candidate statuses, zero/absent usage, both client closures, real source
+factory one-attempt server failure, direct sync inside a loop, actual 1001-page
+rejection and usage reset are exercised. Fresh full source suite: 411 passed,
+12 skipped in 58.22s. Ruff and repository mypy pass; skips are not provider proof.
+
+Four fresh extra-only, noneditable installed wheels passed Python 3.10-3.13:
+API/direct/async/console, typed status/error/usage cases, source factory/no-retry,
+and content-retaining cleanup recovery. Targets contain no pytest/fixture tools.
+All provider HTTP is handled in-memory and DNS/TCP is denied. installed-*.json,
+logs and raw-outputs.tar.gz identify exact package/wheel/source/dependency/input/
+output hashes. The previous Marker 3.12 E2E already used GenAI 2.31.0/Pydantic
+2.14.1, so these transitive versions do not invalidate its recorded environment.
+
+Official current contracts consulted:
+https://ai.google.dev/gemini-api/docs/document-processing
+https://ai.google.dev/gemini-api/docs/file-input-methods
+https://ai.google.dev/gemini-api/docs/deprecations.md
+https://ai.google.dev/api/generate-content
+Actual authentication, model access, document processing, usage and billing remain
+live-unverified. No paid or free-credit service call has occurred.

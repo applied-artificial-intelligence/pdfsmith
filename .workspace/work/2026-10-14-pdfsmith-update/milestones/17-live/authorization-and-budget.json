@@ -1,0 +1,39 @@
+{
+  "authorization": "Stefan: Go ahead with the seven APIs within the $5 budget. Check which credentials are already configured, fix the OpenAI limit first, and leave Databricks out for now. Report actual costs and results.",
+  "currency": "USD",
+  "aggregate_ceiling": "5.00",
+  "databricks_excluded": true,
+  "automatic_retries": false,
+  "documents_per_provider": 2,
+  "pages_per_provider_maximum": 10,
+  "conservative_reservations_usd": {
+    "aws_textract": "0.10",
+    "azure_document_intelligence": "0.50",
+    "google_document_ai": "0.50",
+    "llamaparse": "0.05",
+    "anthropic": "0.80",
+    "openai": "0.08",
+    "gemini": "1.00"
+  },
+  "total_reserved_if_all_attempts_run": "3.03",
+  "uncertain_call_policy": "Retain the full reservation; do not retry automatically.",
+  "cost_reporting": "Record actual returned usage/credits/page receipts. Rate-calculated charges are distinct from provider-settled billing. Unknown actual cost remains unknown with the reservation retained.",
+  "rate_basis_checked_2026_10_15": {
+    "aws_textract": "US region DetectDocumentText listed at USD 0.0015/page; reserve USD 0.01/page.",
+    "azure_document_intelligence": "Read, no premium/layout features; reserve USD 0.05/page, above the checked USD 0.0015/page East US retail Read rate. No resource creation/subscriptions.",
+    "google_document_ai": "Sync processor only; reserve USD 0.05/page above listed OCR/Layout/Form/Custom per-page processing rates. No GCS or batch writes.",
+    "llamaparse": "Fast, no optional enrichment: 1 credit/page, USD 1.25/1000 credits. Reserve USD 0.025 per job.",
+    "anthropic": "Haiku 4.5: USD 1 input/5 output per million tokens. Per call <=200k input and <=32768 output gives <=USD 0.36384; reserve USD 0.40.",
+    "openai": "GPT-4o-mini: USD 0.15 input/0.60 output per million tokens. Per call <=128k input and <=16384 output gives <=USD 0.0290304; reserve USD 0.04. No file search or container features.",
+    "gemini": "Gemini 2.5 Flash: USD 0.30 input/2.50 output per million tokens including thinking. Reserve USD 0.50 per call against <=1048576 input and <=32768 configured output; still covers an extra 24576 thought tokens if separately counted. No grounding/caches."
+  },
+  "sources": [
+    "https://aws.amazon.com/textract/pricing/",
+    "https://prices.azure.com/api/retail/prices",
+    "https://cloud.google.com/document-ai/pricing",
+    "https://developers.llamaindex.ai/llamaparse/general/pricing/",
+    "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+    "https://developers.openai.com/api/docs/models/gpt-4o-mini",
+    "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash"
+  ]
+}

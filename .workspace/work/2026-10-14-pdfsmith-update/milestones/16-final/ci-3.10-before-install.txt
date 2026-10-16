@@ -1,0 +1,8 @@
+Command: ['uv', 'sync', '--locked', '--no-editable', '--python', '3.10', '--extra', 'dev', '--extra', 'light', '--extra', 'pymupdf4llm', '--extra', 'pdfminer', '--extra', 'pypdfium2', '--extra', 'commercial', '--extra', 'frontier']
+Exit: 2
+Using CPython 3.10.20 interpreter at: /home/stefan/.local/bin/python3.10
+Creating virtual environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/final-ci-3.10-0gjnmmm7/env
+Resolved 294 packages in 1ms
+error: Distribution `onnxruntime==1.24.3 @ registry+https://pypi.org/simple` can't be installed because it doesn't have a source distribution or wheel for the current platform
+
+hint: You're using CPython 3.10 (`cp310`), but `onnxruntime` (v1.24.3) only has wheels with the following Python implementation tags: `cp311`, `cp312`, `cp313`, `cp314`

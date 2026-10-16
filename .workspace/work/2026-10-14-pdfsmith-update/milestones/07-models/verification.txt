@@ -1,0 +1,41 @@
+Docling milestone, October 15, 2026
+
+Exact installed package, input/output/source hashes, effective configuration and
+resolved dependencies: installed-docling-3.10.json through installed-docling-3.13.json.
+Each environment contains only wheel[docling] and its declared runtime dependencies;
+no pytest/ReportLab/fixture generator is installed in those target environments.
+Public retained Premera PDF and controlled fixtures are identified in each result.
+
+The standalone milestones/docling_probe.py runs API, direct, async, CLI, blank,
+missing/corrupt PDF and scanned-PDF local Tesseract OCR checks without network.
+It also converts real two-page input through the real SDK with the producing
+page backend reporting page 2 invalid: the typed pipeline returns PARTIAL_SUCCESS,
+which is rejected before export. It injects a Markdown export error and confirms
+that the SDK has already unloaded the input. Public parsing leaves the caller's
+environment unchanged. Direct SDK inspection changes LD_LIBRARY_PATH and
+TORCHINDUCTOR_CACHE_DIR, recorded separately; public calls isolate those changes.
+Models are local CPU layout/TableFormer; hashes and preparation are recorded in
+docling-model-assets.json. Tesseract is a required system dependency for OCR.
+The effective language/table/device/thread settings are checked on typed SDK
+pipeline options; the actual OCR result contains its controlled sentinel.
+
+Before/after regressions: tests-before.txt and tests-after.txt; actual old partial
+output and SDK status in docling-conversion-before.json. Reproduction archive
+contains the exact before wheel, original baseline/preparation/orchestration
+scripts and two-page input. Current installed raw text/fixtures: docling-raw-outputs.tar.gz.
+The run commands are recorded verbatim in each installed result and run log.
+
+Latest full source dev suite: 235 passed, 51 optional/live skips in 30.09 seconds
+using runtime/dev-env with uv run --active --no-sync pytest -q --tb=short.
+Focused mypy on Docling and process helpers passed; scoped Ruff passed. Repository
+provider type/lint debt remains owned by the pending provider milestones.
+
+A controlled source-build canary reproduced default Hatch inclusion of an unrelated
+private file. Explicit only-include selection excluded it, sdist-selection.json.
+No actual credentials were read or packaged by this reproduction. Successful
+source/wheel builds remain local artifacts, with no publication or release.
+
+The source tree still includes four preserved inherited provider modifications;
+their presence in a wheel is not verification of their integrations. Marker 2.0
+constructor downloads and detached shared-server ownership remain open. This
+milestone verifies Docling, not Marker or any hosted service.

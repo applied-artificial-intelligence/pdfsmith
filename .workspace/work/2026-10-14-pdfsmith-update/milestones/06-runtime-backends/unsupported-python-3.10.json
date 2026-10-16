@@ -1,0 +1,22 @@
+{
+  "evidence": "unsupported-runtime; not a working-integration pass",
+  "command": [
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/bin/python",
+    "-I",
+    "-c",
+    "import pdfsmith;pdfsmith.parse('/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf',backend='unstructured')"
+  ],
+  "install_command": [
+    "uv",
+    "pip",
+    "install",
+    "--python",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/bin/python",
+    "--torch-backend",
+    "cpu",
+    "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[unstructured]"
+  ],
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/lib/python3.10/site-packages/pdfsmith/api.py\", line 134, in parse\n    path, instance = _prepare(pdf_path, input_path, backend, backend_options)\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/lib/python3.10/site-packages/pdfsmith/api.py\", line 117, in _prepare\n    return path, get_backend(backend, backend_options=options)\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/lib/python3.10/site-packages/pdfsmith/api.py\", line 80, in get_backend\n    info = _resolve_backend(name, for_image=for_image)\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/lib/python3.10/site-packages/pdfsmith/api.py\", line 53, in _resolve_backend\n    info.require_python()\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/lib/python3.10/site-packages/pdfsmith/backends/registry.py\", line 52, in require_python\n    raise ImportError(\nImportError: Backend 'unstructured' requires Python >=3.11,<3.14\n",
+  "direct_stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/lib/python3.10/site-packages/pdfsmith/backends/unstructured_backend.py\", line 27, in __init__\n    BACKEND_REGISTRY[self.name].require_python()\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-unstructured-3.10/lib/python3.10/site-packages/pdfsmith/backends/registry.py\", line 52, in require_python\n    raise ImportError(\nImportError: Backend 'unstructured' requires Python >=3.11,<3.14\n",
+  "wheel_sha256": "c5bdc0e8b07577c7b5be0d29f595e0fbe9a7a5397dd172b09b25b59b9289bdf0"
+}

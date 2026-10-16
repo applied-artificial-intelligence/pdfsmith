@@ -1,0 +1,136 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_runtime_backends.py', '-q', '--tb=short']
+Exit: 1
+FFFFFFFFFFFF                                                             [100%]
+=================================== FAILURES ===================================
+____ test_runtime_constructor_does_not_initialize_sdk[kreuzberg-kreuzberg] _____
+tests/test_runtime_backends.py:30: in test_runtime_constructor_does_not_initialize_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E     AssertionError: SDK initialized before parse
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...back (most recent call last):\n  File "<string>", line 1, in <module>\nAssertionError: SDK initialized before parse\n').returncode
+___ test_runtime_constructor_does_not_initialize_sdk[extractous-extractous] ____
+tests/test_runtime_backends.py:30: in test_runtime_constructor_does_not_initialize_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E     AssertionError: SDK initialized before parse
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...back (most recent call last):\n  File "<string>", line 1, in <module>\nAssertionError: SDK initialized before parse\n').returncode
+_ test_runtime_constructor_does_not_initialize_sdk[unstructured-unstructured.partition.pdf] _
+tests/test_runtime_backends.py:30: in test_runtime_constructor_does_not_initialize_sdk
+    assert result.returncode == 0, result.stderr
+E   AssertionError: Traceback (most recent call last):
+E       File "<string>", line 1, in <module>
+E     AssertionError: SDK initialized before parse
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...back (most recent call last):\n  File "<string>", line 1, in <module>\nAssertionError: SDK initialized before parse\n').returncode
+______ test_runtime_wrapper_validates_input_before_loading_sdk[kreuzberg] ______
+tests/test_runtime_backends.py:36: in test_runtime_wrapper_validates_input_before_loading_sdk
+    BACKEND_REGISTRY[backend].loader()().parse(tmp_path / "missing.pdf")
+src/pdfsmith/backends/kreuzberg_backend.py:50: in parse
+    return asyncio.run(self._parse_async(pdf_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+src/pdfsmith/backends/kreuzberg_backend.py:61: in _parse_async
+    config = self._get_config()
+             ^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/kreuzberg_backend.py:57: in _get_config
+    return ExtractionConfig(ocr_backend=None, force_ocr=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: ExtractionConfig.__new__() got an unexpected keyword argument 'ocr_backend'
+_____ test_runtime_wrapper_validates_input_before_loading_sdk[extractous] ______
+tests/test_runtime_backends.py:36: in test_runtime_wrapper_validates_input_before_loading_sdk
+    BACKEND_REGISTRY[backend].loader()().parse(tmp_path / "missing.pdf")
+src/pdfsmith/backends/extractous_backend.py:32: in parse
+    content, _metadata = self._extractor.extract_file_to_string(str(pdf_path))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: IoError("Could not open file: /tmp/pytest-of-stefan/pytest-30/test_runtime_wrapper_validates1/missing.pdf")
+____ test_runtime_wrapper_validates_input_before_loading_sdk[unstructured] _____
+tests/test_runtime_backends.py:35: in test_runtime_wrapper_validates_input_before_loading_sdk
+    with pytest.raises(FileNotFoundError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE FileNotFoundError
+------------------------------ Captured log call -------------------------------
+WARNING  unstructured:pdf.py:369 No languages specified, defaulting to English.
+______ test_current_kreuzberg_sdk_parses_and_sync_works_inside_event_loop ______
+tests/test_runtime_backends.py:47: in test_current_kreuzberg_sdk_parses_and_sync_works_inside_event_loop
+    asyncio.run(run())
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests/test_runtime_backends.py:44: in run
+    assert "pdfsmith" in cls().parse(sample_pdf)
+                         ^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/kreuzberg_backend.py:50: in parse
+    return asyncio.run(self._parse_async(pdf_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py:191: in run
+    raise RuntimeError(
+E   RuntimeError: asyncio.run() cannot be called from a running event loop
+_______ test_extractous_preserves_text_beyond_default_half_million_limit _______
+tests/test_runtime_backends.py:70: in test_extractous_preserves_text_beyond_default_half_million_limit
+    assert len(result) > 500_000
+E   AssertionError: assert 499998 > 500000
+E    +  where 499998 = len('PAGE 000 ROW 000 complete document content must be retained in every extraction route.\n\nPAGE 000 ROW 001 complete d...ute.\n\nPAGE 070 ROW 079 complete document content must be retained in every extraction route.\n\n\n\nPAGE 071 ROW 000')
+_____ test_unstructured_font_failure_cannot_become_successful_empty_output _____
+tests/test_runtime_backends.py:91: in test_unstructured_font_failure_cannot_become_successful_empty_output
+    with pytest.raises(RuntimeError, match="coverage"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE RuntimeError
+------------------------------ Captured log call -------------------------------
+WARNING  unstructured:pdf.py:369 No languages specified, defaulting to English.
+_ test_runtime_invalid_options_are_rejected_before_initialization[kreuzberg-options0] _
+tests/test_runtime_backends.py:104: in test_runtime_invalid_options_are_rejected_before_initialization
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_ test_runtime_invalid_options_are_rejected_before_initialization[extractous-options1] _
+tests/test_runtime_backends.py:105: in test_runtime_invalid_options_are_rejected_before_initialization
+    BACKEND_REGISTRY[backend].loader()(**options)
+E   TypeError: ExtractousBackend.__init__() got an unexpected keyword argument 'unknown'
+_ test_runtime_invalid_options_are_rejected_before_initialization[unstructured-options2] _
+tests/test_runtime_backends.py:104: in test_runtime_invalid_options_are_rejected_before_initialization
+    with pytest.raises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+=============================== warnings summary ===============================
+tests/test_runtime_backends.py::test_extractous_preserves_text_beyond_default_half_million_limit
+  /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/lib/python3.12/site-packages/reportlab/pdfbase/pdfdoc.py:675: RuntimeWarning: coroutine 'KreuzbergBackend._parse_async' was never awaited
+    keys = list(dict.keys())
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_runtime_backends.py::test_runtime_constructor_does_not_initialize_sdk[kreuzberg-kreuzberg]
+FAILED tests/test_runtime_backends.py::test_runtime_constructor_does_not_initialize_sdk[extractous-extractous]
+FAILED tests/test_runtime_backends.py::test_runtime_constructor_does_not_initialize_sdk[unstructured-unstructured.partition.pdf]
+FAILED tests/test_runtime_backends.py::test_runtime_wrapper_validates_input_before_loading_sdk[kreuzberg]
+FAILED tests/test_runtime_backends.py::test_runtime_wrapper_validates_input_before_loading_sdk[extractous]
+FAILED tests/test_runtime_backends.py::test_runtime_wrapper_validates_input_before_loading_sdk[unstructured]
+FAILED tests/test_runtime_backends.py::test_current_kreuzberg_sdk_parses_and_sync_works_inside_event_loop
+FAILED tests/test_runtime_backends.py::test_extractous_preserves_text_beyond_default_half_million_limit
+FAILED tests/test_runtime_backends.py::test_unstructured_font_failure_cannot_become_successful_empty_output
+FAILED tests/test_runtime_backends.py::test_runtime_invalid_options_are_rejected_before_initialization[kreuzberg-options0]
+FAILED tests/test_runtime_backends.py::test_runtime_invalid_options_are_rejected_before_initialization[extractous-options1]
+FAILED tests/test_runtime_backends.py::test_runtime_invalid_options_are_rejected_before_initialization[unstructured-options2]
+12 failed, 1 warning in 12.71s

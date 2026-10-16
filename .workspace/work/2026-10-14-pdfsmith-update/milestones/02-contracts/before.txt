@@ -1,0 +1,273 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_contracts.py', '-q', '--tb=short']
+Exit: 1
+FFFFFFFFFFFFFFF.F.......FFFFFF.F                                         [100%]
+=================================== FAILURES ===================================
+________ test_discovery_does_not_import_wrappers_or_change_environment _________
+tests/test_contracts.py:34: in test_discovery_does_not_import_wrappers_or_change_environment
+    assert observed == {"loaded": [], "changed": False}
+E   AssertionError: assert {'loaded': ['...hanged': True} == {'loaded': []...anged': False}
+E
+E     Differing items:
+E     {'loaded': ['pdfsmith.backends.docling_backend', 'pdfsmith.backends.marker_backend', 'pdfsmith.backends.pymupdf4llm_ba...th.backends.kreuzberg_backend', 'pdfsmith.backends.unstructured_backend', 'pdfsmith.backends.pdfplumber_backend', ...]} != {'loaded': []}
+E     {'changed': True} != {'changed': False}
+E     Use -v to get more diff
+___________ test_dependency_detection_never_executes_a_broken_loader ___________
+tests/test_contracts.py:42: in test_dependency_detection_never_executes_a_broken_loader
+    assert info.is_available() is True
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:39: in broken
+    raise OSError("installed native library cannot load")
+E   OSError: installed native library cannot load
+______________ test_released_pdf_path_keyword_and_alias_conflict _______________
+tests/test_contracts.py:46: in test_released_pdf_path_keyword_and_alias_conflict
+    assert parse(pdf_path=sample_pdf, backend="pypdf") == parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: parse() got an unexpected keyword argument 'pdf_path'
+_____________________ test_async_released_pdf_path_keyword _____________________
+tests/test_contracts.py:54: in test_async_released_pdf_path_keyword
+    assert await parse_async(pdf_path=sample_pdf, backend="pypdf") == parse(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: parse_async() got an unexpected keyword argument 'pdf_path'
+________ test_no_option_instances_reuse_but_configured_instances_do_not ________
+tests/test_contracts.py:60: in test_no_option_instances_reuse_but_configured_instances_do_not
+    assert get_backend("pypdf") is get_backend("pypdf")
+E   AssertionError: assert <pdfsmith.backends.pypdf_backend.PyPDFBackend object at 0x74479bbf5bb0> is <pdfsmith.backends.pypdf_backend.PyPDFBackend object at 0x74479bbf4170>
+E    +  where <pdfsmith.backends.pypdf_backend.PyPDFBackend object at 0x74479bbf5bb0> = get_backend('pypdf')
+E    +  and   <pdfsmith.backends.pypdf_backend.PyPDFBackend object at 0x74479bbf4170> = get_backend('pypdf')
+_________ test_unsupported_image_is_rejected_before_loading[anthropic] _________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+_______ test_unsupported_image_is_rejected_before_loading[aws_textract] ________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+_ test_unsupported_image_is_rejected_before_loading[azure_document_intelligence] _
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+________ test_unsupported_image_is_rejected_before_loading[databricks] _________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+__________ test_unsupported_image_is_rejected_before_loading[docling] __________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+________ test_unsupported_image_is_rejected_before_loading[extractous] _________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+__________ test_unsupported_image_is_rejected_before_loading[gemini] ___________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+____ test_unsupported_image_is_rejected_before_loading[google_document_ai] _____
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+_________ test_unsupported_image_is_rejected_before_loading[kreuzberg] _________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+________ test_unsupported_image_is_rejected_before_loading[llamaparse] _________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+__________ test_unsupported_image_is_rejected_before_loading[openai] ___________
+tests/test_contracts.py:79: in test_unsupported_image_is_rejected_before_loading
+    parse(path, backend=name)
+src/pdfsmith/api.py:333: in parse
+    backend_instance = get_backend(backend, backend_options=merged_options, for_image=is_image)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/api.py:170: in get_backend
+    if not info.is_available():
+           ^^^^^^^^^^^^^^^^^^^
+src/pdfsmith/backends/registry.py:30: in is_available
+    backend_class = self.loader()
+                    ^^^^^^^^^^^^^
+tests/test_contracts.py:75: in reached_loader
+    raise AssertionError("unsupported image reached backend initialization")
+E   AssertionError: unsupported image reached backend initialization
+___________ test_pdfplumber_constructor_layout_changes_actual_output ___________
+tests/test_contracts.py:92: in test_pdfplumber_constructor_layout_changes_actual_output
+    layout = backend(layout=True).parse(path)
+             ^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PDFPlumberBackend.__init__() got an unexpected keyword argument 'layout'
+______ test_nested_defaults_are_not_shared_between_backend_configurations ______
+tests/test_contracts.py:102: in test_nested_defaults_are_not_shared_between_backend_configurations
+    assert get_backend_defaults("docling")["ocr_languages"] == ["en"]
+E   AssertionError: assert ['en', 'de'] == ['en']
+E
+E     Left contains one more item: 'de'
+E     Use -v to get more diff
+________________ test_documented_docling_ocr_environment_alias _________________
+/home/stefan/applied-ai/pdfsmith/tests/test_contracts.py:112: in test_documented_docling_ocr_environment_alias
+    assert config.get_bool("do_ocr") is True
+E   AssertionError: assert False is True
+E    +  where False = get_bool('do_ocr')
+E    +    where get_bool = BackendConfig(backend_name='docling', options={}, source='defaults').get_bool
+_________ test_project_configuration_preserves_unrelated_user_options __________
+/home/stefan/applied-ai/pdfsmith/tests/test_contracts.py:129: in test_project_configuration_preserves_unrelated_user_options
+    assert config.get_int("num_threads") == 7
+E   AssertionError: assert 0 == 7
+E    +  where 0 = get_int('num_threads')
+E    +    where get_int = BackendConfig(backend_name='docling', options={'do_ocr': False}, source='.pdfsmith/docling.yaml').get_int
+____________ test_invalid_boolean_is_not_silently_coerced_to_false _____________
+tests/test_contracts.py:134: in test_invalid_boolean_is_not_silently_coerced_to_false
+    with pytest.raises(ValueError, match="boolean"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+__________________ test_async_initialization_allows_loop_work __________________
+tests/test_contracts.py:161: in test_async_initialization_allows_loop_work
+    assert parsed == "True"
+E   AssertionError: assert 'False' == 'True'
+E
+E     - True
+E     + False
+_______________ test_configured_options_are_a_defensive_snapshot _______________
+tests/test_contracts.py:182: in test_configured_options_are_a_defensive_snapshot
+    assert config.options == expected
+E   AssertionError: assert {'nested': {'...['en', 'de']}} == {'nested': {'...ges': ['en']}}
+E
+E     Differing items:
+E     {'nested': {'languages': ['en', 'de']}} != {'nested': {'languages': ['en']}}
+E     Use -v to get more diff
+=========================== short test summary info ============================
+FAILED tests/test_contracts.py::test_discovery_does_not_import_wrappers_or_change_environment
+FAILED tests/test_contracts.py::test_dependency_detection_never_executes_a_broken_loader
+FAILED tests/test_contracts.py::test_released_pdf_path_keyword_and_alias_conflict
+FAILED tests/test_contracts.py::test_async_released_pdf_path_keyword - TypeEr...
+FAILED tests/test_contracts.py::test_no_option_instances_reuse_but_configured_instances_do_not
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[anthropic]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[aws_textract]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[azure_document_intelligence]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[databricks]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[docling]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[extractous]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[gemini]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[google_document_ai]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[kreuzberg]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[llamaparse]
+FAILED tests/test_contracts.py::test_unsupported_image_is_rejected_before_loading[openai]
+FAILED tests/test_contracts.py::test_pdfplumber_constructor_layout_changes_actual_output
+FAILED tests/test_contracts.py::test_nested_defaults_are_not_shared_between_backend_configurations
+FAILED tests/test_contracts.py::test_documented_docling_ocr_environment_alias
+FAILED tests/test_contracts.py::test_project_configuration_preserves_unrelated_user_options
+FAILED tests/test_contracts.py::test_invalid_boolean_is_not_silently_coerced_to_false
+FAILED tests/test_contracts.py::test_async_initialization_allows_loop_work - ...
+FAILED tests/test_contracts.py::test_configured_options_are_a_defensive_snapshot
+23 failed, 9 passed in 0.50s

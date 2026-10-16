@@ -1,0 +1,66 @@
+[
+  {
+    "python": "3.10",
+    "probe_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.10/bin/python",
+      "-I",
+      "-c",
+      "import pdfsmith,pdfsmith.config,importlib.metadata,json; assert pdfsmith.__version__ == importlib.metadata.version(\"pdfsmith\") == \"0.3.0.dev0\"; assert pdfsmith.available_backends() == []; print(json.dumps({\"version\":pdfsmith.__version__,\"file\":pdfsmith.__file__}))"
+    ],
+    "result": {
+      "version": "0.3.0.dev0",
+      "file": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.10/lib/python3.10/site-packages/pdfsmith/__init__.py"
+    },
+    "cli_version": "pdfsmith 0.3.0.dev0",
+    "wheel_sha256": "1095cc0b54cff0261e7c2a11181f8ba67b90dd3725063a797d0e3fa10d6c773e",
+    "installation": "non-editable wheel, no extras or test helpers"
+  },
+  {
+    "python": "3.11",
+    "probe_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.11/bin/python",
+      "-I",
+      "-c",
+      "import pdfsmith,pdfsmith.config,importlib.metadata,json; assert pdfsmith.__version__ == importlib.metadata.version(\"pdfsmith\") == \"0.3.0.dev0\"; assert pdfsmith.available_backends() == []; print(json.dumps({\"version\":pdfsmith.__version__,\"file\":pdfsmith.__file__}))"
+    ],
+    "result": {
+      "version": "0.3.0.dev0",
+      "file": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.11/lib/python3.11/site-packages/pdfsmith/__init__.py"
+    },
+    "cli_version": "pdfsmith 0.3.0.dev0",
+    "wheel_sha256": "1095cc0b54cff0261e7c2a11181f8ba67b90dd3725063a797d0e3fa10d6c773e",
+    "installation": "non-editable wheel, no extras or test helpers"
+  },
+  {
+    "python": "3.12",
+    "probe_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.12/bin/python",
+      "-I",
+      "-c",
+      "import pdfsmith,pdfsmith.config,importlib.metadata,json; assert pdfsmith.__version__ == importlib.metadata.version(\"pdfsmith\") == \"0.3.0.dev0\"; assert pdfsmith.available_backends() == []; print(json.dumps({\"version\":pdfsmith.__version__,\"file\":pdfsmith.__file__}))"
+    ],
+    "result": {
+      "version": "0.3.0.dev0",
+      "file": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.12/lib/python3.12/site-packages/pdfsmith/__init__.py"
+    },
+    "cli_version": "pdfsmith 0.3.0.dev0",
+    "wheel_sha256": "1095cc0b54cff0261e7c2a11181f8ba67b90dd3725063a797d0e3fa10d6c773e",
+    "installation": "non-editable wheel, no extras or test helpers"
+  },
+  {
+    "python": "3.13",
+    "probe_command": [
+      "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.13/bin/python",
+      "-I",
+      "-c",
+      "import pdfsmith,pdfsmith.config,importlib.metadata,json; assert pdfsmith.__version__ == importlib.metadata.version(\"pdfsmith\") == \"0.3.0.dev0\"; assert pdfsmith.available_backends() == []; print(json.dumps({\"version\":pdfsmith.__version__,\"file\":pdfsmith.__file__}))"
+    ],
+    "result": {
+      "version": "0.3.0.dev0",
+      "file": "/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/core-3.13/lib/python3.13/site-packages/pdfsmith/__init__.py"
+    },
+    "cli_version": "pdfsmith 0.3.0.dev0",
+    "wheel_sha256": "1095cc0b54cff0261e7c2a11181f8ba67b90dd3725063a797d0e3fa10d6c773e",
+    "installation": "non-editable wheel, no extras or test helpers"
+  }
+]

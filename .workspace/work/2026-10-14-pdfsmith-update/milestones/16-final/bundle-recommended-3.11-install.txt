@@ -1,0 +1,31 @@
+Using Python 3.11.13 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/final-recommended-3.11-1pdi9y1o/env
+Resolved 23 packages in 54ms
+Downloading networkx (2.0MiB)
+Downloading numpy (16.1MiB)
+ Downloaded networkx
+ Downloaded numpy
+Prepared 2 packages in 377ms
+Installed 23 packages in 22ms
+ + cffi==2.1.1
+ + charset-normalizer==3.5.2
+ + cryptography==50.0.2
+ + flatbuffers==25.12.19
+ + kreuzberg==4.10.4
+ + networkx==3.6.1
+ + numpy==2.4.6
+ + onnxruntime==1.31.0
+ + packaging==26.3
+ + pdfminer-six==20260107
+ + pdfplumber==0.11.10
+ + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/final-distributions/pdfsmith-0.3.0.dev0-py3-none-any.whl)
+ + pillow==12.3.0
+ + protobuf==7.36.2
+ + psutil==7.2.2
+ + pycparser==3.11
+ + pymupdf==1.28.2
+ + pymupdf-layout==1.28.2
+ + pymupdf4llm==1.28.2
+ + pypdf==6.20.1
+ + pypdfium2==5.14.0
+ + pyyaml==6.0.3
+ + tabulate==0.10.0

@@ -1,0 +1,93 @@
+Authorized hosted verification, October 15, 2026
+
+AUTHORIZED by Stefan in this conversation: proceed with the seven APIs within
+an aggregate USD 5 budget; inspect existing credentials, fix the OpenAI limit
+first, exclude Databricks, and report actual costs/results. No top-ups, new paid
+subscriptions or newly provisioned compute are included.
+The seven approved adapters remain live-unverified until actual results are
+recorded; Databricks stays excluded and live-unverified.
+The local checks and SDK transports do not establish service acceptance.
+
+Inputs and routes
+- Public input: retained Premera eight-page PDF, source
+  https://www.premera.com/documents/045632_2025.pdf
+  SHA-256 d93b3432fee068291117ba8d057233c5e1e70a7415be3052f88ccb5204872e80.
+  Route: installed public Python parse API, once per approved provider.
+- Controlled input: two-page PDF from milestones/09-ocr/raw-outputs.tar.gz,
+  member fixtures/two-pages.pdf, SHA-256
+  257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5.
+  Route: installed pdfsmith parse CLI, once per approved provider, to a new file.
+  Verify the retained bytes against this hash before execution. No private
+  document is needed for this proposal.
+- No request is repeated automatically after failure or uncertain completion.
+  Stop a provider's pass at its first operational failure, record identifiers and
+  inspect residual resources before proposing any retry.
+
+Proposed options
+aws_textract: region and profile supplied by Stefan; request_timeout=60.
+  Synchronous detection once per rendered page. With these inputs, at most ten
+  detection submissions; no S3 uploads or asynchronous Textract jobs.
+azure_document_intelligence: endpoint supplied by Stefan; model_id=prebuilt-read,
+  output_format=text, max_wait=180, poll_interval=1, request_timeout=60.
+  At most two analyze submissions, bounded polling and terminal-result deletion.
+google_document_ai: project_id, processor_id, location and processor_version
+  supplied by Stefan; mode=sync, max_wait=600, request_timeout=60.
+  At most two synchronous process calls; no GCS writes in this first pass.
+  Batch/GCS verification needs its own explicit additional scope.
+databricks: EXCLUDED by Stefan. No credential validation, metadata queries,
+  statement submissions, warehouse creation/start or other Databricks calls.
+llamaparse: tier=fast, version=2026-06-15, disable_cache=true, language=en,
+  max_wait_seconds=180, poll_interval_seconds=1, request_timeout_seconds=60.
+  At most two uploads and two parse-job submissions, plus bounded polling,
+  cancellation where needed and terminal-owned-input/result cleanup.
+anthropic: model=claude-haiku-4-5-20251001, max_tokens=32768,
+  request_timeout=180; at most two message submissions, ten PDF pages total.
+openai: model=gpt-4o-mini, max_completion_tokens=16384,
+  request_timeout=180; at most two uploads and two completion submissions,
+  followed by confirmed safe file deletion. Ten PDF pages total.
+gemini: model=gemini-2.5-flash, max_output_tokens=32768,
+  request_timeout=180; at most two inline generation submissions,
+  ten PDF pages total. No Files API uploads or managed caches.
+
+Credential and budget controls
+Use only the seven approved provider configurations already present. Inspect
+credential presence without displaying values; never import Databricks settings
+into the live run environment. No unrelated stored prompt or secret is needed.
+
+Reserve a conservative charge before each submission; uncertain calls retain
+their full reservation. Do not automatically retry, switch models/tiers, top up
+accounts or increase the USD 5 aggregate ceiling. Record actual reported usage
+and distinguish rate-calculated cost from settled billing. Published rates and
+model context/output ceilings bound the LLM reservations; page-based APIs use
+the approved ten-page maximum and processor-specific rate. Stop if the selected
+region/model/processor cannot be bounded within the remaining ceiling.
+
+Execution evidence after authorization
+Create a per-provider, immutable run manifest with the approved input hashes,
+options, account resource identifiers excluding secrets, source revision, wheel
+hash, installed module hashes and complete dependency snapshot. Use a fresh
+non-editable environment for the selected extra, with no offline test hook.
+Do not run pytest or remove its network protections to invoke live services.
+
+Run the public API invocation once, then the actual console invocation once if
+the first succeeded. Record start/end time, exit/exception class, actual returned
+usage, requested and confirmed settings, operation identifiers, output byte/hash
+and retained recovery files. Inspect content for the identified document/page
+sentinels without claiming comparative accuracy. Confirm terminal cleanup using
+service resource identifiers. An unknown terminal state remains open, and no
+retry is launched. Keep raw document content and operational identifiers in the
+ignored work runtime until reviewed for safe public evidence.
+
+Acceptance and exclusions
+A live pass proves the selected account, endpoint, model/processor version,
+options and inputs on that date. It does not prove all modes, models, image
+formats, quality, pricing stability or future availability. Record API and CLI
+outcomes separately. Refusal, truncation, missing/incomplete results, unresolved
+cleanup or uncertain completion fail the pass even if some useful text exists.
+Preserve recovered content and the primary error.
+
+Next actions
+Closed October 16: Stefan declined funding and waived remaining OpenAI/Gemini live
+checks. This protocol is retained as historical execution scope and does not
+authorize further provider calls. Databricks remains excluded. Public-main merge
+and package release remain separate decisions.

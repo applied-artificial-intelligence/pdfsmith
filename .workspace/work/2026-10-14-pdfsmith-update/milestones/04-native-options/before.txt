@@ -1,0 +1,24 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_native_contracts.py', '-k', 'ignored_by_selected_sdk_mode', '-q', '--tb=short']
+Exit: 1
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+___ test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode[options0] ____
+tests/test_native_contracts.py:184: in test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode
+    with pytest.raises(ValueError, match="requires"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+___ test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode[options1] ____
+tests/test_native_contracts.py:184: in test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode
+    with pytest.raises(ValueError, match="requires"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+___ test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode[options2] ____
+tests/test_native_contracts.py:184: in test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode
+    with pytest.raises(ValueError, match="requires"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+=========================== short test summary info ============================
+FAILED tests/test_native_contracts.py::test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode[options0]
+FAILED tests/test_native_contracts.py::test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode[options1]
+FAILED tests/test_native_contracts.py::test_pymupdf4llm_rejects_options_ignored_by_selected_sdk_mode[options2]
+3 failed, 20 deselected in 0.03s

@@ -1,6 +1,5 @@
 """Tests for the pdfsmith configuration system."""
 
-import os
 from pathlib import Path
 
 import pytest
@@ -49,7 +48,7 @@ class TestBackendConfig:
         config = BackendConfig(backend_name="test", options={"flag": value})
         assert config.get_bool("flag") is True
 
-    @pytest.mark.parametrize("value", ["false", "False", "FALSE", "0", "no", "off", "anything"])
+    @pytest.mark.parametrize("value", ["false", "False", "FALSE", "0", "no", "off"])
     def test_get_bool_false_strings(self, value):
         """get_bool() should parse falsy strings."""
         config = BackendConfig(backend_name="test", options={"flag": value})
@@ -310,7 +309,8 @@ class TestConfigLoading:
         local_dir = tmp_path / ".pdfsmith"
         local_dir.mkdir()
         (local_dir / "test.yaml").write_text(
-            "file_only: from_file\nenv_override: from_file\nexplicit_override: from_file"
+            "file_only: from_file\nenv_override: from_file\n"
+            "explicit_override: from_file"
         )
 
         # Set env var for one option

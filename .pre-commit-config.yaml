@@ -20,5 +20,8 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies:
+          - types-requests>=2.32
           - types-PyYAML
+          - pytest>=7.0
+          - packaging>=24.0
         args: [--ignore-missing-imports]

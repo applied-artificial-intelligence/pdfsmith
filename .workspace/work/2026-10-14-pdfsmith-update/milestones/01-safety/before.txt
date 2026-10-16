@@ -1,0 +1,63 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bin/python', '-m', 'pytest', 'tests/test_safety.py', '-q', '--tb=short']
+Exit: 1
+.FFF                                                                     [100%]
+=================================== FAILURES ===================================
+_____________ test_live_tests_never_run_from_environment_flags[0] ______________
+tests/test_safety.py:52: in test_live_tests_never_run_from_environment_flags
+    assert result.returncode == 0, result.stdout + result.stderr
+E   AssertionError: F                                                                        [100%]
+E     =================================== FAILURES ===================================
+E     ________________ TestAWSTextractIntegration.test_parse_real_pdf ________________
+E     tests/integration/test_commercial_integration.py:65: in test_parse_real_pdf
+E         backend = AWSTextractBackend()
+E                   ^^^^^^^^^^^^^^^^^^^^
+E     /tmp/pytest-of-stefan/pytest-2/test_live_tests_never_run_from1/live_tripwire.py:6: in __init__
+E         raise AssertionError('LIVE_TEST_BODY_EXECUTED')
+E     E   AssertionError: LIVE_TEST_BODY_EXECUTED
+E     =========================== short test summary info ============================
+E     FAILED tests/integration/test_commercial_integration.py::TestAWSTextractIntegration::test_parse_real_pdf
+E     1 failed in 0.13s
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...ation/test_commercial_integration.py::TestAWSTextractIntegration::test_parse_real_pdf\n1 failed in 0.13s\n", stderr='').returncode
+___________ test_live_tests_never_run_from_environment_flags[false] ____________
+tests/test_safety.py:52: in test_live_tests_never_run_from_environment_flags
+    assert result.returncode == 0, result.stdout + result.stderr
+E   AssertionError: F                                                                        [100%]
+E     =================================== FAILURES ===================================
+E     ________________ TestAWSTextractIntegration.test_parse_real_pdf ________________
+E     tests/integration/test_commercial_integration.py:65: in test_parse_real_pdf
+E         backend = AWSTextractBackend()
+E                   ^^^^^^^^^^^^^^^^^^^^
+E     /tmp/pytest-of-stefan/pytest-2/test_live_tests_never_run_from2/live_tripwire.py:6: in __init__
+E         raise AssertionError('LIVE_TEST_BODY_EXECUTED')
+E     E   AssertionError: LIVE_TEST_BODY_EXECUTED
+E     =========================== short test summary info ============================
+E     FAILED tests/integration/test_commercial_integration.py::TestAWSTextractIntegration::test_parse_real_pdf
+E     1 failed in 0.10s
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...ation/test_commercial_integration.py::TestAWSTextractIntegration::test_parse_real_pdf\n1 failed in 0.10s\n", stderr='').returncode
+_____________ test_live_tests_never_run_from_environment_flags[1] ______________
+tests/test_safety.py:52: in test_live_tests_never_run_from_environment_flags
+    assert result.returncode == 0, result.stdout + result.stderr
+E   AssertionError: F                                                                        [100%]
+E     =================================== FAILURES ===================================
+E     ________________ TestAWSTextractIntegration.test_parse_real_pdf ________________
+E     tests/integration/test_commercial_integration.py:65: in test_parse_real_pdf
+E         backend = AWSTextractBackend()
+E                   ^^^^^^^^^^^^^^^^^^^^
+E     /tmp/pytest-of-stefan/pytest-2/test_live_tests_never_run_from3/live_tripwire.py:6: in __init__
+E         raise AssertionError('LIVE_TEST_BODY_EXECUTED')
+E     E   AssertionError: LIVE_TEST_BODY_EXECUTED
+E     =========================== short test summary info ============================
+E     FAILED tests/integration/test_commercial_integration.py::TestAWSTextractIntegration::test_parse_real_pdf
+E     1 failed in 0.10s
+E
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/dev-env/bi...ation/test_commercial_integration.py::TestAWSTextractIntegration::test_parse_real_pdf\n1 failed in 0.10s\n", stderr='').returncode
+=========================== short test summary info ============================
+FAILED tests/test_safety.py::test_live_tests_never_run_from_environment_flags[0]
+FAILED tests/test_safety.py::test_live_tests_never_run_from_environment_flags[false]
+FAILED tests/test_safety.py::test_live_tests_never_run_from_environment_flags[1]
+3 failed, 1 passed in 1.52s

@@ -1,0 +1,16 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', '-q', '--tb=short']
+Install: ['uv', 'pip', 'install', '--python', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ci-light-3.10/bin/python', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl[dev,light]']
+Exit: 1
+ssssssssssss...........................................................F [ 26%]
+........ssssssssss.ssssssss.sssssssssss.ssssssssss...................... [ 52%]
+............................................................ssssssssssss [ 78%]
+ssssss.......sssss......s...........s...........sss........              [100%]
+=================================== FAILURES ===================================
+________ test_real_console_io_failure_preserves_existing_output[write] _________
+tests/test_cli_contracts.py:122: in test_real_console_io_failure_preserves_existing_output
+    assert b"controlled" in result.stderr
+E   assert b'controlled' in b"Error parsing PDF: open() argument 'mode' must be str, not PosixPath\n"
+E    +  where b"Error parsing PDF: open() argument 'mode' must be str, not PosixPath\n" = CompletedProcess(args=['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/ci-light-3...utput.md'], returncode=1, stdout=b'', stderr=b"Error parsing PDF: open() argument 'mode' must be str, not PosixPath\n").stderr
+=========================== short test summary info ============================
+FAILED tests/test_cli_contracts.py::test_real_console_io_failure_preserves_existing_output[write]
+1 failed, 195 passed, 79 skipped in 11.72s

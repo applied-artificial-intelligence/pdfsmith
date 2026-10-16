@@ -1,0 +1,27 @@
+Command: ['/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-docling-3.12/bin/python', '-I', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/milestones/docling_probe.py', '--document', '/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf', '--fixtures', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures', '--assets', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/assets/docling', '--output', '/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/docling-outputs-3.12']
+Exit: 0
+{
+  "outputs": {
+    "controlled.md": "ed083d98da6674e5d7186fe81900d2edb6fc6cfc5ceb7061151f4bcb7bfb0e95",
+    "ocr.md": "3e271fb15d376f25f11932c273c8b6f42d536af95534914c06df9a4ef42e967f",
+    "public.md": "06a88d5bbc6d234cbe96149ad7f400a055271ff4b0a06288726277e90a2d0472"
+  },
+  "errors": {
+    "missing": {
+      "type": "FileNotFoundError",
+      "message": "Input file not found: /home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/local-fixtures/missing.pdf"
+    },
+    "corrupt": {
+      "type": "RuntimeError",
+      "message": "Stream has ended unexpectedly"
+    },
+    "partial": "Docling conversion did not complete: ConversionStatus.PARTIAL_SUCCESS",
+    "export": "Controlled Markdown export failure"
+  }
+}
+
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 770/770 [00:00<00:00, 10590.08it/s]
+
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 770/770 [00:00<00:00, 11288.77it/s]

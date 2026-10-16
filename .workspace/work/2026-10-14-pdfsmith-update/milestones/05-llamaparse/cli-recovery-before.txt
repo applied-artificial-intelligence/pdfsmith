@@ -1,0 +1,14 @@
+Command: ['uv', 'run', '--active', '--no-sync', 'pytest', 'tests/test_cli_contracts.py', '-k', 'completed_content_survives', '-q', '--tb=short']
+Exit: 1
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_completed_content_survives_provider_cleanup_failure ___________
+tests/test_cli_contracts.py:207: in test_completed_content_survives_provider_cleanup_failure
+    assert len(recoveries) == 1
+E   assert 0 == 1
+E    +  where 0 = len([])
+----------------------------- Captured stderr call -----------------------------
+Error parsing PDF: controlled provider cleanup failure
+=========================== short test summary info ============================
+FAILED tests/test_cli_contracts.py::test_completed_content_survives_provider_cleanup_failure
+1 failed, 15 deselected in 0.07s

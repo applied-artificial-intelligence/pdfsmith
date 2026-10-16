@@ -1,0 +1,15 @@
+[
+  {
+    "backend": "kreuzberg",
+    "outcome": "raised",
+    "type": "TypeError",
+    "message": "ExtractionConfig.__new__() got an unexpected keyword argument 'ocr_backend'",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/runtime_baseline.py\", line 13, in <module>\n    result=pdfsmith.parse('/home/stefan/agents/document-evidence/data/raw/AK_38344_38344AK1060001-01.pdf',backend=name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/runtime-backends/lib/python3.12/site-packages/pdfsmith/api.py\", line 132, in parse\n    return _content(instance.parse(path))\n                    ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/runtime-backends/lib/python3.12/site-packages/pdfsmith/backends/kreuzberg_backend.py\", line 50, in parse\n    return asyncio.run(self._parse_async(pdf_path))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n           ^^^^^^^^^^^^^^^^\n  File \"/home/stefan/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/.local/share/uv/python/cpython-3.12-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py\", line 691, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/runtime-backends/lib/python3.12/site-packages/pdfsmith/backends/kreuzberg_backend.py\", line 61, in _parse_async\n    config = self._get_config()\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/runtime-backends/lib/python3.12/site-packages/pdfsmith/backends/kreuzberg_backend.py\", line 57, in _get_config\n    return ExtractionConfig(ocr_backend=None, force_ocr=False)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: ExtractionConfig.__new__() got an unexpected keyword argument 'ocr_backend'\n"
+  },
+  {
+    "backend": "extractous",
+    "outcome": "returned",
+    "characters": 23227,
+    "output_sha256": "4d56a606f6130275e588e17757cdc0e537de18dabf5043aeceada69ac036b1e7"
+  }
+]

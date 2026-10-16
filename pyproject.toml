@@ -1,6 +1,6 @@
 [project]
 name = "pdfsmith"
-version = "0.2.0"
+dynamic = ["version"]
 description = "PDF to Markdown conversion with multiple backend support"
 readme = "README.md"
 license = { text = "MIT" }
@@ -23,64 +23,66 @@ keywords = ["pdf", "markdown", "text extraction", "document processing", "ocr"]
 dependencies = []
 
 [project.optional-dependencies]
+config = ["PyYAML>=6.0"]
 # Lightweight backends (no ML dependencies)
 pypdf = ["pypdf>=4.0"]
 pdfplumber = ["pdfplumber>=0.10"]
-pymupdf = ["pymupdf>=1.23"]
+pymupdf = ["pymupdf>=1.24.3"]
 pdfminer = ["pdfminer.six>=20221105"]
 pypdfium2 = ["pypdfium2>=4.0"]
 
 # Medium-weight backends
-pymupdf4llm = ["pymupdf4llm>=0.0.10"]
-unstructured = ["unstructured>=0.10", "pikepdf>=9.0"]  # pikepdf required for fast strategy
-kreuzberg = ["kreuzberg>=3.0"]
-extractous = ["extractous>=0.1"]
+pymupdf4llm = ["pymupdf4llm>=1.28,<1.29"]
+unstructured = ["unstructured[pdf]>=0.27.27,<0.28; python_version >= '3.11' and python_version < '3.14'", "pypdf>=4.0"]
+kreuzberg = ["kreuzberg>=4.10.4,<4.11", "pypdf>=4.0"]
+extractous = ["extractous>=0.3,<0.4", "pypdf>=4.0"]
 
 # Heavy backends (ML/deep learning)
-docling = ["docling>=2.0"]
-marker = ["marker-pdf>=1.0"]
+docling = ["docling>=2.139,<2.140", "pypdf>=4.0"]
+marker = ["marker-pdf==2.0.0", "surya-ocr==0.22.1", "pypdf>=4.0"]
 
 # Commercial backends (cloud OCR)
-aws = ["boto3>=1.34", "pymupdf>=1.23"]  # pymupdf for multi-page support
-azure = ["azure-ai-documentintelligence>=1.0"]
-google = ["google-cloud-documentai>=2.0", "google-cloud-storage>=2.0"]
-databricks = ["databricks-sdk>=0.20"]
-llamaparse = ["llama-parse>=0.6"]
+aws = ["boto3>=1.43,<1.44", "pymupdf>=1.24.3", "pypdf>=4.0"]
+azure = ["azure-ai-documentintelligence>=1.0.2,<1.1", "pypdf>=4.0"]
+google = ["google-cloud-documentai>=3.16,<3.17", "google-cloud-storage>=3.17,<3.18", "pypdf>=4.0"]
+databricks = ["databricks-sdk>=0.116,<0.117", "pypdf>=4.0"]
+llamaparse = ["llama-cloud>=2.18,<2.19", "pypdf>=4.0"]
 
 # Frontier LLM backends
-anthropic = ["anthropic>=0.40"]
-openai = ["openai>=1.50"]
-gemini = ["google-genai>=1.0"]
-frontier = ["anthropic>=0.40", "openai>=1.50", "google-genai>=1.0"]
+anthropic = ["anthropic>=1.15,<1.16", "pypdf>=4.0"]
+openai = ["openai>=3.31,<3.32", "pypdf>=4.0"]
+gemini = ["google-genai>=2.31,<2.32", "pypdf>=4.0"]
+frontier = ["pypdf>=4.0", "anthropic>=1.15,<1.16", "openai>=3.31,<3.32", "google-genai>=2.31,<2.32"]
 
 # Bundles
-light = ["pypdf>=4.0", "pdfplumber>=0.10", "pymupdf>=1.23"]
+light = ["pypdf>=4.0", "pdfplumber>=0.10", "pymupdf>=1.24.3"]
 recommended = [
     "pypdf>=4.0",
     "pdfplumber>=0.10",
-    "pymupdf4llm>=0.0.10",
-    "kreuzberg>=3.0",
+    "pymupdf4llm>=1.28,<1.29",
+    "kreuzberg>=4.10.4,<4.11",
 ]
 commercial = [
-    "boto3>=1.34",
-    "pymupdf>=1.23",
-    "azure-ai-documentintelligence>=1.0",
-    "google-cloud-documentai>=2.0",
-    "google-cloud-storage>=2.0",
-    "databricks-sdk>=0.20",
-    "llama-parse>=0.6",
+    "boto3>=1.43,<1.44",
+    "pymupdf>=1.24.3",
+    "azure-ai-documentintelligence>=1.0.2,<1.1",
+    "google-cloud-documentai>=3.16,<3.17",
+    "google-cloud-storage>=3.17,<3.18",
+    "databricks-sdk>=0.116,<0.117",
+    "llama-cloud>=2.18,<2.19",
+    "pypdf>=4.0",
 ]
 all = [
     "pypdf>=4.0",
     "pdfplumber>=0.10",
-    "pymupdf>=1.23",
+    "pymupdf>=1.24.3",
     "pdfminer.six>=20221105",
     "pypdfium2>=4.0",
-    "pymupdf4llm>=0.0.10",
-    "unstructured>=0.10",
-    "kreuzberg>=3.0",
-    "extractous>=0.1",
-    "docling>=2.0",
+    "pymupdf4llm>=1.28,<1.29",
+    "unstructured[pdf]>=0.27.27,<0.28; python_version >= '3.11' and python_version < '3.14'",
+    "kreuzberg>=4.10.4,<4.11",
+    "extractous>=0.3,<0.4",
+    "docling>=2.139,<2.140",
     # Note: Commercial backends excluded from 'all' due to credential requirements
 ]
 
@@ -89,9 +91,12 @@ dev = [
     "pytest>=7.0",
     "pytest-asyncio>=0.21",
     "pytest-cov>=4.0",
-    "ruff>=0.6",
+    "ruff==0.6.0",
     "mypy>=1.11",
+    "types-requests>=2.32",
     "types-PyYAML>=6.0",  # Type stubs for mypy
+    "PyYAML>=6.0",
+    "packaging>=24.0",
     "pre-commit>=3.0",
     "reportlab>=4.0",  # For creating test PDFs
 ]
@@ -111,6 +116,12 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pdfsmith"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src/pdfsmith", "tests", "README.md", "LICENSE", "pyproject.toml", "uv.lock"]
+
+[tool.hatch.version]
+path = "src/pdfsmith/__init__.py"
 
 [tool.ruff]
 line-length = 88
@@ -157,4 +168,15 @@ exclude_lines = [
     "except ImportError:",
     "AVAILABLE = False",
     "raise ImportError",
+]
+
+[tool.uv]
+# 1.24.x has neither a CPython 3.10 wheel nor an sdist.
+constraint-dependencies = ["onnxruntime<1.24; python_version < '3.11'"]
+conflicts = [
+    [{ extra = "marker" }, { extra = "unstructured" }],
+    [{ extra = "marker" }, { extra = "all" }],
+    [{ extra = "marker" }, { extra = "anthropic" }],
+    [{ extra = "marker" }, { extra = "openai" }],
+    [{ extra = "marker" }, { extra = "frontier" }],
 ]

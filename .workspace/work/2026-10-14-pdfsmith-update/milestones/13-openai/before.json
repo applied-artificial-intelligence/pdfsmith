@@ -1,0 +1,119 @@
+[
+  {
+    "case": "length",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "calls": [
+      {
+        "method": "POST",
+        "path": "/v1/files",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "model": "gpt-4o-mini",
+        "max_completion_tokens": 100000
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/files/file-owned"
+      }
+    ],
+    "client_closed": false
+  },
+  {
+    "case": "refusal",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "calls": [
+      {
+        "method": "POST",
+        "path": "/v1/files",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "model": "gpt-4o-mini",
+        "max_completion_tokens": 100000
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/files/file-owned"
+      }
+    ],
+    "client_closed": false
+  },
+  {
+    "case": "delete-error",
+    "result": {
+      "returned": "FIRST PAGE SENTINEL\nFINAL PAGE SENTINEL"
+    },
+    "calls": [
+      {
+        "method": "POST",
+        "path": "/v1/files",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "model": "gpt-4o-mini",
+        "max_completion_tokens": 100000
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/files/file-owned"
+      }
+    ],
+    "client_closed": false
+  },
+  {
+    "case": "generation-error",
+    "result": {
+      "error": "RuntimeError",
+      "message": "OpenAI API call failed: Error code: 400 - {'error': {'message': 'Controlled generation error', 'type': 'invalid_request_error'}}"
+    },
+    "calls": [
+      {
+        "method": "POST",
+        "path": "/v1/files",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "model": "gpt-4o-mini",
+        "max_completion_tokens": 100000
+      }
+    ],
+    "client_closed": false
+  },
+  {
+    "case": "missing-content",
+    "result": {
+      "returned": ""
+    },
+    "calls": [
+      {
+        "method": "POST",
+        "path": "/v1/files",
+        "input_sha256": "257f446840157085e46a4f0832c7a3ed7fcf96727148352879182ddfcc9dbbe5"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "model": "gpt-4o-mini",
+        "max_completion_tokens": 100000
+      },
+      {
+        "method": "DELETE",
+        "path": "/v1/files/file-owned"
+      }
+    ],
+    "client_closed": false
+  }
+]

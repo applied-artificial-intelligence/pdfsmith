@@ -1,0 +1,32 @@
+Using Python 3.10.20 environment at: .workspace/work/2026-10-14-pdfsmith-update/runtime/gemini-3.10-mjuw8oqd/env
+Resolved 28 packages in 118ms
+Prepared 1 package in 4ms
+Installed 28 packages in 12ms
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + certifi==2026.7.22
+ + cffi==2.1.1
+ + charset-normalizer==3.5.2
+ + cryptography==50.0.2
+ + distro==1.9.0
+ + exceptiongroup==1.3.1
+ + google-auth==2.62.0
+ + google-genai==2.31.0
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + pdfsmith==0.3.0.dev0 (from file:///home/stefan/applied-ai/pdfsmith/.workspace/work/2026-10-14-pdfsmith-update/runtime/gemini-wheels/pdfsmith-0.3.0.dev0-py3-none-any.whl)
+ + pyasn1==0.6.4
+ + pyasn1-modules==0.4.2
+ + pycparser==3.11
+ + pydantic==2.14.1
+ + pydantic-core==2.50.1
+ + pypdf==6.20.1
+ + requests==2.34.2
+ + sniffio==1.3.1
+ + tenacity==9.1.4
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + urllib3==2.8.0
+ + websockets==16.1.1
