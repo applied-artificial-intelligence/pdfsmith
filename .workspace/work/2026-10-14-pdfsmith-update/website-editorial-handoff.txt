@@ -1,11 +1,34 @@
 PDFsmith source-owner handoff, October 16, 2026
 
-The reviewed library implementation is on codex/pdfsmith-update-2026-10-14.
-The unpublished 0.3.0.dev0 module, distribution and CLI identity agree. Public main
-is still fe66170231dd580d9f919662ed3b89947f091763; the released package remains
-separate. No public-main merge, package release, website write, publication or
-deployment has occurred. This file supplies evidence to the editorial owners;
-it does not authorize publication of development capabilities as released ones.
+Merged public source and published package
+PR 1 merged into main as 9b6ecb298581ed910ccfd010989c0dcffb9ad8e9:
+https://github.com/applied-artificial-intelligence/pdfsmith/pull/1
+The merged source builds as 0.3.0.dev0; module, distribution and CLI identity agree.
+Its nine post-merge CI jobs passed, covering lint/types, offline contracts and
+distribution checks on Python 3.10-3.13. The update branch was deleted. The older
+README-only branch was independently archived and retired; its complete history
+is in baseline/superseded-capability-branch.bundle.
+
+PyPI and the latest GitHub release remain 0.2.0 / v0.2.0, published December 2,
+2025. On October 16 the actual PyPI wheel was inspected without installing or
+executing it: distribution and module versions both report 0.2.0. Wheel identity:
+pdfsmith-0.2.0-py3-none-any.whl
+SHA256 5c9ff402fa7af7688f9183c7441df49a0b375dde8daff8332aa92bdc94804b13
+https://pypi.org/project/pdfsmith/0.2.0/
+https://github.com/applied-artificial-intelligence/pdfsmith/releases/tag/v0.2.0
+The new contracts, verification and guide below apply to merged public source,
+not automatically to this older wheel. No 0.3.0 package release, website edit,
+website publication or deployment occurred. This handoff does not authorize one.
+
+Parser feature guide
+PARSER_GUIDE.md is part of the merged source and linked from README.md:
+https://github.com/applied-artificial-intelligence/pdfsmith/blob/9b6ecb298581ed910ccfd010989c0dcffb9ad8e9/PARSER_GUIDE.md
+It covers all 19 registered adapters with 30 official source URLs, comparing OCR,
+tables, reading order, geometry, output forms, configuration and operating needs.
+It distinguishes documented upstream features from the PDFsmith subset and actual
+execution evidence. It is a feature/selection explanation, not a new benchmark,
+independent feature verification or a universal quality ranking. Its documentation
+research date is October 16; upstream features can exceed the tested versions.
 
 Actual local E2E evidence covers pypdf, pdfplumber, PyMuPDF, PyMuPDF4LLM, PDFMiner,
 PDFium, Kreuzberg, Extractous, Unstructured, Docling and Marker. The owning
@@ -54,23 +77,50 @@ installation before the SDK's implicit repair/download fallback.
 Core and the five documented bundles passed 24 fresh installed environments
 across Python 3.10-3.13; this does not mean all model combinations were rerun.
 Final exact-artifact core identity checks, README examples and four locked CI
-command sets passed. Each CI test environment reports 408 passed, 15 skipped;
-skips and SDK mocks are not live evidence. CLI atomic output, exact UTF-8 bytes
-and private recovery files preserve useful content when cleanup fails.
+command sets passed. The merge-preparation local suite passed 420 tests with 12
+skips; all nine post-merge CI jobs passed on the merged source above. Historical
+milestone 16 counts precede the last OpenAI/LlamaParse repairs. Skips and SDK mocks
+are not live evidence. CLI atomic output, exact UTF-8 bytes and private recovery
+files preserve useful content when cleanup fails.
+
+Supported source examples
+The merged README is the authoritative installation/API/CLI reference:
+https://github.com/applied-artificial-intelligence/pdfsmith/blob/9b6ecb298581ed910ccfd010989c0dcffb9ad8e9/README.md
+Its documented checkout installation selects .[pypdf,pdfplumber]. The actual
+installed-source README example is recorded in milestones/16-final/readme-example.json;
+the unchanged local API/CLI behavior also has installed and regression evidence.
+Examples that may be quoted with the merged-source qualification:
+  from pdfsmith import parse
+  text = parse("document.pdf", backend="pypdf",
+               backend_options={"extraction_mode": "layout"})
+  text = parse("document.pdf", backend="pdfplumber")
+  pdfsmith parse document.pdf -b pypdf
+  pdfsmith backends --all
+The two console lines are separate CLI examples, not Python statements. The PDF
+must exist and the selected extra must be installed. Do not pair these examples
+or the 0.3.0 contract with an unqualified install of the released PyPI 0.2.0 wheel.
 
 Authoritative contracts and current status are README.md, spec.md, plan.md,
 backend-inventory.json, reviews/dispositions.txt and milestones/16-final/verification.txt.
 Actual usage, source/wheel identities and cost/receipt limitations are in
 milestones/17-live/report.txt and results.json. Settled bills remain unavailable;
 reservations are not charges. No account top-ups or new resources were purchased.
-The original external-review packet and the October 9 capability branch retain
-their historical identities. Existing user files were preserved.
+The original external-review packet and archived October 9 capability branch
+retain their historical identities. Existing user files were preserved.
+
+Issue closure
+GitHub has no issues or milestones for this work; the 16 plan entries were tracked
+in repository evidence rather than materialized as GitHub issue numbers. There
+are therefore no GitHub issues to auto-close. PR 1 is merged and its implementation
+scope is closed with the explicit live-verification waivers above. This handoff
+refresh changes documentation only; it does not reopen engineering or spending.
 
 PDF-Bench owns corpus/reference design, comparisons, metrics and experiments.
 Website/content owners retain their CMS, manuscripts, calendars and deployment.
 The library owner supplies source contracts and execution evidence only.
 
 Next actions
-None required for verification closure. No website publication is requested.
-The live pass is closed and authorizes no further spending. A future release,
-public-main merge, provider call or Databricks access needs separate authorization.
+None required for library/verification closure. Editorial owners can use the
+merged-source guide and qualified examples above as source material. Website
+publication, a package release, provider calls, Databricks access and deployment
+remain separate actions and are not authorized by this handoff.
