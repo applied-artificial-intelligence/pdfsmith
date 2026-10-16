@@ -15,6 +15,12 @@ from pdfsmith.errors import BackendOperationError
 
 AVAILABLE = importlib.util.find_spec("llama_cloud") is not None
 PUBLISHED_VERSIONS = ("2026-06-15", "2026-09-28", "2026-09-29")
+TIER_VERSIONS = {
+    "fast": ("2026-06-15",),
+    "cost_effective": ("2026-09-28",),
+    "agentic": ("2026-09-28", "2026-09-29"),
+    "agentic_plus": ("2026-09-28",),
+}
 LANGUAGES = (
     "abq",
     "ady",
@@ -128,6 +134,10 @@ class LlamaParseBackend:
         if "tier" not in options or "version" not in options:
             raise ValueError("LlamaParse requires explicit tier and published version")
         self._options = normalize_options(self.name, options, self.options_schema)
+        if self._options["version"] not in TIER_VERSIONS[self._options["tier"]]:
+            raise ValueError(
+                "LlamaParse version is not supported for the selected tier"
+            )
         self._lock = RLock()
         self._last_result_identity: dict[str, Any] | None = None
 
@@ -198,7 +208,8 @@ class LlamaParseBackend:
                     "ocr_parameters": {"languages": [self._options["language"]]}
                 },
                 processing_control={
-                    "job_failure_conditions": {"allowed_page_failure_ratio": 0.0}
+                    # Zero is excluded by the service; reject failed pages locally.
+                    "job_failure_conditions": {"allowed_page_failure_ratio": 0.000001}
                 },
             )
             resources["job_id"] = job.id
@@ -253,6 +264,14 @@ class LlamaParseBackend:
                 parts.append(page.markdown.strip())
             content = "\n\n".join(part for part in parts if part)
         except Exception as exc:
+            from llama_cloud import APIStatusError
+
+            if (
+                "job_id" not in resources
+                and isinstance(exc, APIStatusError)
+                and exc.status_code in {400, 401, 403, 404, 413, 415, 422, 429}
+            ):
+                terminal = True
             primary = exc
         finally:
             if "job_id" in resources and not terminal:
@@ -282,7 +301,7 @@ class LlamaParseBackend:
             except Exception as exc:
                 cleanup_errors.append(f"Client close failed: {type(exc).__name__}")
         completion_unknown = (submission_attempted and not terminal) or (
-            upload_attempted and "file_id" not in resources
+            upload_attempted and "file_id" not in resources and not terminal
         )
         if primary is not None or cleanup_errors:
             error = BackendOperationError(

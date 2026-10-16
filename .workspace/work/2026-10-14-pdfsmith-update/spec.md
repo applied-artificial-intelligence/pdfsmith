@@ -175,9 +175,10 @@ establish the behavior or quality of a PDFsmith integration.
     and provider-confirmed version/tier remain distinct. The inspected llama-cloud
     2.18.x response exposes no resolved runtime version or cache-hit guarantee;
     confirmed_version/cache_hit stay unknown, and raw request-version echoes are
-    recorded separately. Accept the SDK-published 2026-06-15, 2026-09-28 and
-    2026-09-29 versions with fast/cost_effective/agentic/agentic_plus tiers; these
-    versions support markdown on fast. Validate job/page status,
+    recorded separately. Validate published versions by tier using the service-confirmed mapping:
+    fast/2026-06-15, cost_effective/2026-09-28, agentic/2026-09-28 or 2026-09-29,
+    agentic_plus/2026-09-28. A global SDK literal list does not establish that
+    every tier/version combination is accepted. Validate job/page status,
     coverage/order/duplicates, output expansions and tier/version compatibility.
 18. Preserve original source/unrelated files and the earlier README correction.
     Keep PDF-Bench experiments, website/editorial changes, release/public-main

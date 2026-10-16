@@ -159,8 +159,9 @@ work and cleanup. Databricks SDK metadata/authentication discovery precedes its
 statement deadline. Models and account capabilities can change; an accepted
 model string does not establish provider availability.
 
-LlamaParse accepts `fast`, `cost_effective`, `agentic`, `agentic_plus` and the
-SDK-published versions `2026-06-15`, `2026-09-28`, `2026-09-29`. Moving `latest`
+LlamaParse supports the verified tier/version pairs `fast/2026-06-15`,
+`cost_effective/2026-09-28`, `agentic/2026-09-28`, `agentic/2026-09-29` and
+`agentic_plus/2026-09-28`. Moving `latest`
 aliases and legacy `parsing_mode` are rejected. Requested settings are recorded;
 resolved runtime version and cache-hit status remain unknown unless the service
 confirms them. The [ParseBench announcement](https://www.llamaindex.ai/blog/parsebench)

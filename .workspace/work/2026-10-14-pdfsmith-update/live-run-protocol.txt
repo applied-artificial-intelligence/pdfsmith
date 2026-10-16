@@ -36,7 +36,7 @@ google_document_ai: project_id, processor_id, location and processor_version
   Batch/GCS verification needs its own explicit additional scope.
 databricks: EXCLUDED by Stefan. No credential validation, metadata queries,
   statement submissions, warehouse creation/start or other Databricks calls.
-llamaparse: tier=fast, version=2026-09-29, disable_cache=true, language=en,
+llamaparse: tier=fast, version=2026-06-15, disable_cache=true, language=en,
   max_wait_seconds=180, poll_interval_seconds=1, request_timeout_seconds=60.
   At most two uploads and two parse-job submissions, plus bounded polling,
   cancellation where needed and terminal-owned-input/result cleanup.

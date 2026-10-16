@@ -48,6 +48,22 @@ def offline_llama(monkeypatch):
             )
         if route == ("POST", "/api/v2/parse"):
             state["submitted"] = json.loads(request.read())
+            ratio = state["submitted"]["processing_control"]["job_failure_conditions"][
+                "allowed_page_failure_ratio"
+            ]
+            if not 0 < ratio <= 1 or state.get("reject_submission"):
+                return httpx.Response(
+                    422,
+                    json={
+                        "detail": [
+                            {
+                                "type": "greater_than",
+                                "input": ratio,
+                                "msg": "Input should be greater than 0",
+                            }
+                        ]
+                    },
+                )
             return httpx.Response(
                 200,
                 json={
@@ -111,10 +127,11 @@ def test_explicit_identity_and_cache_controls_reach_real_sdk(
     assert request["tier"] == "agentic" and request["version"] == "2026-09-29"
     assert request["disable_cache"] is True
     assert (
-        request["processing_control"]["job_failure_conditions"][
+        0
+        < request["processing_control"]["job_failure_conditions"][
             "allowed_page_failure_ratio"
         ]
-        == 0
+        <= 1
     )
     assert request["processing_options"]["ocr_parameters"]["languages"] == [language]
     identity = backend.last_result_identity
@@ -345,3 +362,46 @@ def test_structurally_corrupt_pdf_fails_before_credentials(tmp_path, monkeypatch
     path.write_bytes(b"%PDF-1.7\nnot a complete PDF\n")
     with pytest.raises(PdfReadError):
         LlamaParseBackend(**OPTIONS).parse(path)
+
+
+def test_service_rejected_submission_releases_owned_upload(sample_pdf, offline_llama):
+    offline_llama["reject_submission"] = True
+    with pytest.raises(BackendOperationError) as error:
+        parse(sample_pdf, backend="llamaparse", backend_options=OPTIONS)
+    assert error.value.__cause__.status_code == 422
+    assert not error.value.completion_unknown
+    assert offline_llama["requests"][-1] == (
+        "DELETE",
+        "/api/v1/beta/files/file-controlled",
+    )
+    assert offline_llama["requests"].count(("POST", "/api/v2/parse")) == 1
+
+
+def test_unsupported_tier_version_pair_cannot_reach_upload(sample_pdf, offline_llama):
+    with pytest.raises(ValueError, match="version"):
+        parse(
+            sample_pdf,
+            backend="llamaparse",
+            backend_options={"tier": "fast", "version": "2026-09-29"},
+        )
+    assert not offline_llama["requests"]
+
+
+@pytest.mark.parametrize(
+    "tier,version",
+    [
+        ("fast", "2026-06-15"),
+        ("cost_effective", "2026-09-28"),
+        ("agentic", "2026-09-29"),
+        ("agentic_plus", "2026-09-28"),
+    ],
+)
+def test_supported_tier_version_pair_and_positive_ratio_reach_service(
+    sample_pdf, offline_llama, tier, version
+):
+    offline_llama["tier"] = tier
+    assert "Controlled page" in parse(
+        sample_pdf,
+        backend="llamaparse",
+        backend_options={"tier": tier, "version": version},
+    )

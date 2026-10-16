@@ -69,7 +69,8 @@ path, explicit pinned version/tier, disable_cache=true by default, rejected lega
 parsing_mode and provider-confirmed identity are specified. The exact accepted
 published versions were selected from current official documentation and SDK
 inspection in Issue 5: llama-cloud 2.18.x, 2026-06-15/2026-09-28/2026-09-29,
-with fast/cost_effective/agentic/agentic_plus. Runtime-version confirmation and
+with per-tier pairing verified against the service versions endpoint in milestone
+17 (Fast supports 2026-06-15). Runtime-version confirmation and
 cache-hit status remain unknown; provider parameter echoes are separate.
 
 Keep existing issue IDs for traceability. Execute Issue 1 (test safety plus early

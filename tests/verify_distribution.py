@@ -42,7 +42,7 @@ def verify(
     )
     for name in expected_backends:
         options = (
-            {"tier": "fast", "version": "2026-09-29"} if name == "llamaparse" else {}
+            {"tier": "fast", "version": "2026-06-15"} if name == "llamaparse" else {}
         )
         instance = pdfsmith.get_backend(name, backend_options=options)
         assert instance.name == name
