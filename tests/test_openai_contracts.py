@@ -171,3 +171,41 @@ def test_openai_usage_snapshot_clears_before_a_failed_next_call(
     with pytest.raises(FileNotFoundError):
         backend.parse(tmp_path / "missing.pdf")
     assert backend.get_cost_info()["usage"] is None
+
+
+@pytest.mark.parametrize("model", ["gpt-4o-mini", "gpt-4o-mini-2024-07-18"])
+def test_openai_rejects_model_output_limit_before_upload(model, sample_pdf):
+    pytest.importorskip("openai", minversion="3.31")
+    pytest.importorskip("pypdf")
+    from tests.openai_transport import openai_client
+
+    client, wire = openai_client("complete")
+    with (
+        patch.object(OpenAIBackend, "_create_client", return_value=client),
+        pytest.raises(ValueError, match="16,384"),
+    ):
+        parse(
+            sample_pdf,
+            backend="openai",
+            backend_options={"model": model, "max_completion_tokens": 32768},
+        )
+    assert (
+        not wire.calls
+    ), "Invalid output limit reached the paid upload/generation path"
+    client.close()
+
+
+def test_openai_accepts_its_documented_output_limit(sample_pdf):
+    pytest.importorskip("openai", minversion="3.31")
+    pytest.importorskip("pypdf")
+    from tests.openai_transport import openai_client
+
+    client, wire = openai_client("complete")
+    with patch.object(OpenAIBackend, "_create_client", return_value=client):
+        result = parse(
+            sample_pdf,
+            backend="openai",
+            backend_options={"max_completion_tokens": 16384},
+        )
+    assert "FINAL PAGE SENTINEL" in result
+    assert wire.calls[1]["max_completion_tokens"] == 16384

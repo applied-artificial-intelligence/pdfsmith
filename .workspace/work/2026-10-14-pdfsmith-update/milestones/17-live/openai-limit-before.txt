@@ -1,0 +1,1 @@
+Public parse API with actual OpenAI SDK offline transport, gpt-4o-mini and dated snapshot, max_completion_tokens=32768. Two new regression cases failed: DID NOT RAISE ValueError, while 26 other cases passed. Before repair the request reached the upload/generation path. No live API call occurred.

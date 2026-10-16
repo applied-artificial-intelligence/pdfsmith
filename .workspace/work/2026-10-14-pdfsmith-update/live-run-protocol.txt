@@ -1,8 +1,11 @@
-Hosted verification proposal, October 15, 2026
+Authorized hosted verification, October 15, 2026
 
-NOT AUTHORIZED. No paid or free-credit provider calls have run. This document
-proposes a bounded first live verification pass; it grants no spending authority.
-The eight adapters remain live-unverified until actual results are recorded.
+AUTHORIZED by Stefan in this conversation: proceed with the seven APIs within
+an aggregate USD 5 budget; inspect existing credentials, fix the OpenAI limit
+first, exclude Databricks, and report actual costs/results. No top-ups, new paid
+subscriptions or newly provisioned compute are included.
+The seven approved adapters remain live-unverified until actual results are
+recorded; Databricks stays excluded and live-unverified.
 The local checks and SDK transports do not establish service acceptance.
 
 Inputs and routes
@@ -31,36 +34,33 @@ google_document_ai: project_id, processor_id, location and processor_version
   supplied by Stefan; mode=sync, max_wait=600, request_timeout=60.
   At most two synchronous process calls; no GCS writes in this first pass.
   Batch/GCS verification needs its own explicit additional scope.
-databricks: host and existing running warehouse_id supplied by Stefan;
-  max_wait=180, poll_interval=1, request_timeout=60.
-  At most two SQL statement submissions. No warehouse creation or explicit start;
-  Stefan must authorize any warehouse compute the submissions can consume.
+databricks: EXCLUDED by Stefan. No credential validation, metadata queries,
+  statement submissions, warehouse creation/start or other Databricks calls.
 llamaparse: tier=fast, version=2026-09-29, disable_cache=true, language=en,
   max_wait_seconds=180, poll_interval_seconds=1, request_timeout_seconds=60.
   At most two uploads and two parse-job submissions, plus bounded polling,
   cancellation where needed and terminal-owned-input/result cleanup.
 anthropic: model=claude-haiku-4-5-20251001, max_tokens=32768,
   request_timeout=180; at most two message submissions, ten PDF pages total.
-openai: model=gpt-4o-mini, max_completion_tokens=32768,
+openai: model=gpt-4o-mini, max_completion_tokens=16384,
   request_timeout=180; at most two uploads and two completion submissions,
   followed by confirmed safe file deletion. Ten PDF pages total.
 gemini: model=gemini-2.5-flash, max_output_tokens=32768,
   request_timeout=180; at most two inline generation submissions,
   ten PDF pages total. No Files API uploads or managed caches.
 
-Approval information needed
-Stefan must select providers, approve these exact documents/routes/options,
-specify a monetary ceiling/currency per provider or an aggregate ceiling, and
-identify the authorized accounts, regions, processors, warehouse and credentials
-source. Never paste credential values into this document or a chat. Existing
-credentials or free credits do not themselves authorize use.
+Credential and budget controls
+Use only the seven approved provider configurations already present. Inspect
+credential presence without displaying values; never import Databricks settings
+into the live run environment. No unrelated stored prompt or secret is needed.
 
-The token ceilings above bound requested output, not the provider's final bill.
-The wrappers cannot enforce a universal monetary cap across unrelated billing
-systems. Before execution, use the selected accounts' current prices and billing
-controls to check a conservative bound against Stefan's ceiling. Stop for a
-revised decision if that bound cannot be established or exceeds the ceiling.
-Do not infer pricing from an old README, file size or missing SDK usage fields.
+Reserve a conservative charge before each submission; uncertain calls retain
+their full reservation. Do not automatically retry, switch models/tiers, top up
+accounts or increase the USD 5 aggregate ceiling. Record actual reported usage
+and distinguish rate-calculated cost from settled billing. Published rates and
+model context/output ceilings bound the LLM reservations; page-based APIs use
+the approved ten-page maximum and processor-specific rate. Stop if the selected
+region/model/processor cannot be bounded within the remaining ceiling.
 
 Execution evidence after authorization
 Create a per-provider, immutable run manifest with the approved input hashes,
@@ -87,5 +87,6 @@ cleanup or uncertain completion fail the pass even if some useful text exists.
 Preserve recovered content and the primary error.
 
 Next actions
-Live calls require Stefan's provider selection, configuration sources and spending
-approval. Public-main merge and package release require separate authorization.
+No further approval is needed for the seven named APIs within USD 5. Missing
+credentials or disabled accounts must be reported; do not purchase access.
+Databricks, public-main merge and package release remain separately unauthorized.

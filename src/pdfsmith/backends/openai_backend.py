@@ -35,6 +35,15 @@ class OpenAIBackend:
         )
         if not self._options["model"].strip():
             raise ValueError("openai.model must be nonempty")
+        if (
+            self._options["model"]
+            in {
+                "gpt-4o-mini",
+                "gpt-4o-mini-2024-07-18",
+            }
+            and self._options["max_completion_tokens"] > 16384
+        ):
+            raise ValueError("gpt-4o-mini supports at most 16,384 output tokens")
         self._last_usage: dict[str, Any] | None = None
 
     @property
