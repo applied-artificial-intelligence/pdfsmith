@@ -11,8 +11,11 @@ The original review packet and baseline remain immutable historical evidence.
 Core/API/CLI work and all 11 local adapters have installed execution evidence.
 All eight hosted adapters have actual SDK offline contract checks across Python
 3.10-3.13. Milestone 17 adds five scoped live API/CLI passes on Python 3.12;
-OpenAI/Gemini are blocked by depleted prepaid balances and Databricks is excluded. The detailed current
-matrix is backend-inventory.json and commands/results are under milestones/.
+OpenAI/Gemini processing stopped at depleted prepaid balances. Stefan waived their
+remaining live checks on October 16 and accepted documentation plus existing SDK
+offline evidence. Databricks remains excluded. The engineering/verification scope
+is closed with these explicit evidence limits. The detailed current matrix is
+backend-inventory.json and commands/results are under milestones/.
 A resolved review finding is not a live integration claim.
 
 Issue 16 additionally tests all six documented installation choices in fresh
@@ -807,8 +810,7 @@ Closes: package-evidence.record, package-evidence.absent-record, package-evidenc
 
 ## Next actions
 
-Stefan already authorized the seven APIs within USD 5. Five passed; OpenAI and
-Gemini need funded prepaid balances before their remaining live checks can run.
-No top-up was performed. Exact settled costs need provider billing visibility;
-Google's processor tariff is unconfirmed. Databricks remains explicitly excluded.
-Public-main merge and release remain separate decisions.
+None required for verification closure. Stefan waived further OpenAI/Gemini live
+checks on October 16; no top-up or further provider call is authorized under the
+closed pass. Historical cost uncertainty remains in milestone 17. Databricks
+stays excluded. Public-main merge and release remain separate decisions.

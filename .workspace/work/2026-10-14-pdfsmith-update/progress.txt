@@ -1,9 +1,11 @@
-PDFsmith update - October 15, 2026
+PDFsmith update - closed October 16, 2026
 
 Current result: 16 integrations have actual execution evidence: 11 local and five
-hosted. OpenAI and Gemini are blocked by depleted prepaid balances. Databricks
-is explicitly excluded from live work by Stefan. All 19 remain in the inventory;
-this is not a claim that the remaining three live integrations are complete.
+hosted. On October 16 Stefan declined further funding and waived the remaining
+OpenAI/Gemini live checks, accepting documentation and existing real-SDK offline
+checks for this scope. Their observed billing failures remain in the evidence.
+Databricks stays excluded from live work. The library update's engineering and
+verification scope is closed with these declared limits; all 19 remain registered.
 
 Stefan authorized seven APIs within an aggregate USD 5 budget, credential checks,
 an OpenAI limit fix, and actual results/cost reporting. No Databricks credential
@@ -57,7 +59,10 @@ codex/pdfsmith-update-2026-10-14 in the primary checkout; no temporary worktrees
 The old capability branch is retained. Unrelated inherited untracked files and
 credentials remain unabsorbed. Final reports/handoff are committed and pushed.
 
+No further provider calls or top-ups are authorized under the completed pass.
+The separate parser-feature guide work uses official documentation only. Historical
+cost uncertainty remains recorded; no billing investigation is needed for closure.
+
 Next actions
-OpenAI and Gemini need funded prepaid balances to complete their live checks;
-no top-up was performed. Databricks stays excluded. Exact settled charges require
-provider billing visibility; Google additionally needs processor tariff identity.
+None required to close verification. Public-main merge and release remain separate
+decisions; this completion does not publish the development branch.

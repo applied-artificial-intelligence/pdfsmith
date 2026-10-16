@@ -9,9 +9,11 @@ refer to this source revision, not the package currently published on PyPI.
 Eleven local adapters have actual installed-package parsing evidence. All eight
 hosted adapters have offline checks against their real SDKs. AWS, Azure, Google
 Document AI, LlamaParse and Anthropic also passed a bounded live API/CLI check.
-OpenAI and Gemini are blocked by depleted account balances; Databricks was excluded
-from live execution. Execution evidence does not
-establish extraction accuracy or comparative quality.
+OpenAI and Gemini processing stopped at depleted account balances; their remaining
+live checks were waived by the maintainer. Databricks was excluded from live
+execution. These three retain documentation-backed and real-SDK offline evidence,
+without a successful live processing claim. Execution evidence does not establish
+extraction accuracy or comparative quality.
 
 ## Installation
 

@@ -12,9 +12,12 @@ blockers; affected integrations still need their prescribed runtime evidence.
 
 Milestone 17 records the seven-API live pass Stefan authorized within USD 5,
 with Databricks excluded. AWS/Azure/Google/LlamaParse/Anthropic passed the two
-approved PDFs through installed API/CLI on Python 3.12. OpenAI/Gemini are blocked
-by exhausted prepaid balances. Scope remains all 19, with those three live rows
-unfinished. Settled cost is not inferred from a reservation or published tariff.
+approved PDFs through installed API/CLI on Python 3.12. OpenAI/Gemini processing
+stopped at exhausted prepaid balances. On October 16 Stefan declined funding and
+waived those remaining live checks, accepting documentation and existing real-SDK
+offline evidence. Databricks remains excluded from live execution. This closes
+the authorized engineering/verification scope without claiming successful live
+processing for these three. Settled cost is not inferred from a reservation or tariff.
 
 ## Objective
 
@@ -274,8 +277,7 @@ establish the behavior or quality of a PDFsmith integration.
 
 ## Next actions
 
-Stefan already authorized the seven APIs within USD 5. Five passed; OpenAI and
-Gemini need funded prepaid balances before their remaining live checks can run.
-No top-up was performed. Exact settled costs need provider billing visibility;
-Google's processor tariff is unconfirmed. Databricks remains explicitly excluded.
-Public-main merge and release remain separate decisions.
+None required for verification closure. Stefan waived further OpenAI/Gemini live
+checks on October 16; no top-up or further provider call is authorized under the
+closed pass. Historical cost uncertainty remains in milestone 17. Databricks
+stays excluded. Public-main merge and release remain separate decisions.

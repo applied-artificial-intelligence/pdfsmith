@@ -87,6 +87,7 @@ cleanup or uncertain completion fail the pass even if some useful text exists.
 Preserve recovered content and the primary error.
 
 Next actions
-No further approval is needed for the seven named APIs within USD 5. Missing
-credentials or disabled accounts must be reported; do not purchase access.
-Databricks, public-main merge and package release remain separately unauthorized.
+Closed October 16: Stefan declined funding and waived remaining OpenAI/Gemini live
+checks. This protocol is retained as historical execution scope and does not
+authorize further provider calls. Databricks remains excluded. Public-main merge
+and package release remain separate decisions.

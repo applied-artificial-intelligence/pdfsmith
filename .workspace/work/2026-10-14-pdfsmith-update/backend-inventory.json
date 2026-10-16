@@ -1,5 +1,5 @@
 {
-  "scope": "All 19 registered backends are required; incomplete rows are not passes.",
+  "scope": "All 19 registered backends were reviewed. Engineering/verification closed October 16, 2026 with 11 local and five hosted execution passes; Stefan waived further OpenAI/Gemini live checks and excluded Databricks. These three retain documentation and real-SDK offline evidence, not live passes.",
   "backends": [
     {
       "name": "pypdf",

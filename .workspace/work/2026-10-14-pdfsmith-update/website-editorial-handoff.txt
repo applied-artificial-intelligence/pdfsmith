@@ -1,4 +1,4 @@
-PDFsmith source-owner handoff, October 15, 2026
+PDFsmith source-owner handoff, October 16, 2026
 
 The reviewed library implementation is on codex/pdfsmith-update-2026-10-14.
 The unpublished 0.3.0.dev0 module, distribution and CLI identity agree. Public main
@@ -20,8 +20,11 @@ After explicit USD 5 authorization, five passed actual API/CLI processing of the
 approved public eight-page and controlled two-page PDFs on Python 3.12: AWS,
 Azure Read, Google Document AI, LlamaParse Fast and Anthropic. OpenAI and Gemini
 passed model-access checks but generation was blocked by exhausted prepaid
-balances. Databricks was explicitly excluded and received no calls. These facts
-do not establish all modes/models, OCR quality or comparative results.
+balances. On October 16 Stefan declined further funding and waived the remaining
+two live checks, accepting documentation and existing SDK offline evidence. The
+engineering/verification scope is closed with these declared limits. Databricks
+was explicitly excluded and received no calls. These facts do not establish all
+modes/models, OCR quality or comparative results.
 
 LlamaParse uses llama-cloud 2.18.x; the live check used Fast/2026-06-15. A live
 422 exposed an invalid zero failure ratio and unsupported tier/version pairing;
@@ -68,6 +71,6 @@ Website/content owners retain their CMS, manuscripts, calendars and deployment.
 The library owner supplies source contracts and execution evidence only.
 
 Next actions
-No website publication is requested. A future release/public-main decision and
-any additional spending outside the approved USD 5 or Databricks access require
-separate authorization from Stefan.
+None required for verification closure. No website publication is requested.
+The live pass is closed and authorizes no further spending. A future release,
+public-main merge, provider call or Databricks access needs separate authorization.
