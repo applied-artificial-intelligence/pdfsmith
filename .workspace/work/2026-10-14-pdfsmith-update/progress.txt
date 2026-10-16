@@ -54,15 +54,21 @@ Original GPT/Claude reports and source archives are preserved. Historical artifa
 keep their own hashes. README and inventory distinguish local/offline/live scope.
 
 Git and preservation
-Public main remains fe66170231dd580d9f919662ed3b89947f091763. The task owns
-codex/pdfsmith-update-2026-10-14 in the primary checkout; no temporary worktrees.
-The old capability branch is retained. Unrelated inherited untracked files and
-credentials remain unabsorbed. Final reports/handoff are committed and pushed.
+Stefan authorized the final PR/merge on October 16. The integration record is
+https://github.com/applied-artificial-intelligence/pdfsmith/pull/1. Before merge,
+the task owns codex/pdfsmith-update-2026-10-14 in the sole primary checkout.
+The superseded README-only capability branch has a complete, independently
+recovered Git bundle under baseline/ and can be retired after integration.
+Unrelated inherited untracked files and credentials remain unabsorbed.
+
+Final merge preparation reran the offline suite: 420 passed, 12 skipped in 54.63s.
+Ruff 0.6 check/format and mypy (30 source files) passed. No provider call or
+benchmark run was made. The PR also runs the repository's GitHub CI matrix.
 
 No further provider calls or top-ups are authorized under the completed pass.
 The separate parser-feature guide work uses official documentation only. Historical
 cost uncertainty remains recorded; no billing investigation is needed for closure.
 
 Next actions
-None required to close verification. Public-main merge and release remain separate
-decisions; this completion does not publish the development branch.
+None required for engineering/verification. PR merge is authorized; final state is
+recorded on PR 1. A package release or deployment remains separately unauthorized.

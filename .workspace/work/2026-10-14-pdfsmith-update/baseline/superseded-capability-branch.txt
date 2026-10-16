@@ -1,0 +1,28 @@
+Superseded branch preservation - October 16, 2026
+
+Remote branch: codex/public-capability-copy-2026-10-09
+Tip: cb5094e6b2690b50da748bcea4875adaa8c74dfc
+Only unique commit: docs: qualify parser selection and unvalidated integrations
+Only changed file relative to the original main: README.md
+
+Its intent is incorporated in the reviewed update: fixed preference selection,
+dependency presence versus readiness, explicit unvalidated integration states,
+and removal of unsupported quality and price claims. The old branch also describes
+then-current behavior that the implementation replaces. Merging that README over
+the new contracts would reintroduce obsolete descriptions. No second PR is needed.
+
+The app inventory showed only this active PDFsmith coding chat; there is one
+primary worktree. The branch had no PR and no additional code changes. The complete
+branch history is preserved in superseded-capability-branch.bundle before deletion.
+
+Bundle SHA256:
+4f40e5e00b92de7abef3e7cc4654330ff40243941299b90af3551132ca66cbd0
+
+git bundle verify passed. An independent temporary bare repository fetched the
+archived ref without network access, recovered the exact tip above and reproduced
+README.md byte for byte. The temporary verification repository was removed.
+
+Recovered README SHA256:
+188080c92af60b5dd347548454537fb5a51cd96925b87c7d794465dfba51bd2c
+
+Integration PR: https://github.com/applied-artificial-intelligence/pdfsmith/pull/1
