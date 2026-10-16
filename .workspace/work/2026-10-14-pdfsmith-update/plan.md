@@ -807,5 +807,8 @@ Closes: package-evidence.record, package-evidence.absent-record, package-evidenc
 
 ## Next actions
 
-No further planning approval is required. Provider spending, public-main merge and
-package release remain separate decisions once concrete requests are prepared.
+Stefan already authorized the seven APIs within USD 5. Five passed; OpenAI and
+Gemini need funded prepaid balances before their remaining live checks can run.
+No top-up was performed. Exact settled costs need provider billing visibility;
+Google's processor tariff is unconfirmed. Databricks remains explicitly excluded.
+Public-main merge and release remain separate decisions.

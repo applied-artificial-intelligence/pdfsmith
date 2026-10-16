@@ -274,5 +274,8 @@ establish the behavior or quality of a PDFsmith integration.
 
 ## Next actions
 
-No further planning approval is needed. Live-provider input/configuration/spending
-authorization remains a separate decision once concrete offline protocols exist.
+Stefan already authorized the seven APIs within USD 5. Five passed; OpenAI and
+Gemini need funded prepaid balances before their remaining live checks can run.
+No top-up was performed. Exact settled costs need provider billing visibility;
+Google's processor tariff is unconfirmed. Databricks remains explicitly excluded.
+Public-main merge and release remain separate decisions.

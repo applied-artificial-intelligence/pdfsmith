@@ -139,5 +139,7 @@ All 19 names remain required. PDF-Bench experiments/ParseBench reuse, LiteParse,
 Verification: All 19 remain in the matrix. Eleven have local E2E; eight have four-Python SDK offline evidence; five now have scoped live E2E, two are blocked by prepaid balances and Databricks is excluded. Other project/release/deployment boundaries remain separate.
 
 Next actions
-No further planning decision is needed. Live-provider authorization remains a separate
-request after exact inputs/configuration/spending protocols are prepared.
+The seven-API USD 5 authorization was used for the bounded live pass. OpenAI and
+Gemini need funded balances; no top-up was performed. Exact invoice costs require
+provider billing visibility. Databricks remains excluded. No planning approval
+needs repeating, and public-main merge/release remain separate decisions.
