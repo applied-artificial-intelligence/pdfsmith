@@ -1,0 +1,110 @@
+Authorized live verification results, October 15, 2026
+
+Five providers passed actual installed public API and console checks on both
+approved PDFs: AWS Textract, Azure Document Intelligence Read, Google Document AI,
+LlamaParse Fast and Anthropic Haiku 4.5. Every controlled CLI output contained
+both page sentinels; every public-PDF output contained the document identity and
+last-page HHS marker. These are execution checks, not benchmark scores or a
+claim about extraction accuracy. Live runs used Python 3.12 only.
+
+OpenAI and Gemini credentials passed read-only model access checks, but document
+generation was rejected for depleted prepaid balances. OpenAI returned HTTP 429,
+credit_balance_exhausted; Gemini returned HTTP 402, RESOURCE_EXHAUSTED, with a
+message that prepayment credits were depleted. Neither was retried or topped up.
+Their actual live processing remains unverified. Databricks was excluded from
+credential forwarding, SDK installation and every operation; no warehouse calls,
+start/create/query or Databricks billing operations occurred.
+
+Measured usage and cost reporting
+Actual settled billing is unavailable through these run receipts. Do not call a
+reservation or public-rate calculation a confirmed account debit. Free allowances,
+account rates, Azure resource region and billing lag may change the eventual bill.
+
+- AWS: ten successful page detections. Standard-rate equivalent USD 0.015.
+- Azure Read: ten completed/validated pages. USD 0.015 at the checked East US
+  reference rate; actual resource-region/account bill is not confirmed.
+- Google: ten completed/validated pages. Exact processor tariff is unconfirmed.
+  The processing credential lacks processors.get, while existing personal ADC
+  and active gcloud credentials could not refresh. No APIs were enabled, roles
+  changed or new processor/resources created. OCR would cost USD 0.015, but that
+  is a scenario, not an identified processor or actual charge. Hold USD 1.50 for
+  the two documents to cover Google's listed document-based parser tariffs.
+- LlamaParse: ten successfully processed Fast pages at version 2026-06-15.
+  Published rate implies ten credits, USD 0.0125. The job responses did not report
+  an actual credit debit, so the amount is calculated rather than billing-confirmed.
+- Anthropic: actual response usage was 22,655 input and 7,258 output tokens, with
+  zero cache tokens. At Haiku 4.5 USD 1/M input and USD 5/M output, USD 0.058945.
+- OpenAI/Gemini: no successful generations or returned token usage; provider
+  billing rejected generation. No top-up, retry or account-debit claim is made.
+
+The standard-rate equivalent excluding Google is USD 0.101445. If Google uses the
+OCR tariff, the corresponding total is USD 0.116445. Google metadata permissions
+and provider billing prevent an exact settled total, so it remains explicitly
+unknown rather than asserted to be twelve cents.
+
+The USD 5 ceiling was retained. Attempt reservations total USD 2.515, including
+rejected calls and one controlled Llama retry after repair. A further USD 1 hold
+increases Google's allowance to USD 1.50 because its processor type could not be
+read. Total retained reservations are USD 3.515. The original Google page-based
+allowance did not cover its document-based tariffs; the reconciliation increases
+that allowance without any additional processing. Reservations are not spending.
+No more document submissions will run in this pass.
+
+Repairs established by live behavior
+OpenAI's proposed 32,768 output ceiling exceeded GPT-4o mini's documented 16,384.
+The wrapper now validates both named mini variants before client/upload work.
+Two producing regression cases failed before repair; all 28 focused cases passed.
+The default 8,192 setting was already below the limit.
+
+LlamaParse's first submission returned HTTP 422 because the service excludes zero
+for allowed_page_failure_ratio. Read-only versions metadata also showed that Fast
+supports 2026-06-15, not the originally proposed 2026-09-29. The wrapper now binds
+supported tier/version pairs, sends a positive server-valid threshold and still
+rejects every failed/missing page locally. Definite upload/submission 4xx errors
+now release owned uploads instead of claiming uncertain completion. Six producing
+real-SDK regressions failed before repair; all 37 focused cases passed afterward.
+After that repair, one deliberate rerun and the controlled CLI call passed. No
+automatic SDK retries were enabled. The first request created no parse job.
+
+Cleanup and evidence limits
+All three Llama-created uploads, including the rejected submission's upload, and
+the OpenAI upload were independently checked absent with HTTP 404 after cleanup.
+Both successful Llama jobs received HTTP 200 delete confirmations and files 204.
+Azure returned success only after the wrapper's terminal-result deletion path;
+no cleanup errors were raised. The original Azure/Google requests lacked raw
+HTTP-response telemetry in this audit, so their operation IDs are not available
+for an independent post-delete query. Google sync creates no owned GCS/job data.
+Anthropic/Gemini inline input created no uploaded files.
+
+The first Llama upload absence probe used an unavailable SDK method and did not
+establish absence. A later actual files.retrieve confirmed HTTP 404 for every
+owned Llama/OpenAI file. The correction is reflected in results.json; historical
+raw diagnostics are retained privately.
+
+results.json records source/wheel identities, options excluding account details,
+input/output hashes, content checks, reported usage and per-attempt outcomes.
+receipts-sanitized.json excludes operation IDs and credentials. Public-document
+outputs are archived separately. execution-scripts.tar.gz preserves final helper
+state, including the manual correction path; earlier attempts used the original
+settings recorded in their manifests. The receipt hook records actual responses,
+never substitutes transports or data. Its Requests/nested-job coverage was added
+during collection; receipt completeness is not assumed for earlier calls.
+
+Exact raw commands/options, provider errors, resource identifiers and the ledger
+remain private under runtime/live-results/ (directory mode 0700). File names in
+public evidence identify those raw records through command hashes. Credentials
+were read from existing configuration and were never printed, copied to a public
+packet or passed to a Databricks client. No Databricks SDK was installed in the
+live environment. The temporary audit hook is removed after completion.
+
+Verification after repairs: 420 passed, 12 skipped; Ruff check/format and repository
+mypy passed. Ordinary pytest remains isolated and cannot make live calls. No
+PDF-Bench or ParseBench experiments, public-main merge, release, website edits or
+deployment occurred. Pricing and API references are recorded in
+ authorization-and-budget.json and the focused regression evidence.
+
+Next actions
+OpenAI and Gemini need funded prepaid balances before their live document checks
+can finish. No top-up was authorized or attempted. Databricks remains excluded.
+An exact Google charge requires processor tariff/billing visibility; no further
+processing is needed to establish that already-passing integration.

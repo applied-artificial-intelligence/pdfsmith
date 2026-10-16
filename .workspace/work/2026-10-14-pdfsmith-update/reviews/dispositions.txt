@@ -7,8 +7,9 @@ in returned-reviews.tar.gz; readable Markdown copies gain only a final newline.
 identities.json records original and readable hashes.
 
 Decision: shared planning blockers are resolved in the revised specification/plan.
-User authorized implementation after reconciliation. Implementation evidence is mapped per finding below; the eight hosted
-integrations remain open for separately authorized live processing. No report is treated as a test result for this
+User authorized implementation after reconciliation. Implementation evidence is mapped per finding below; five hosted
+integrations now have scoped live API/CLI evidence; OpenAI/Gemini are blocked on
+prepaid balances and Databricks remains explicitly excluded. No report is treated as a test result for this
 checkout, and no live-service verification or spending authority is inferred.
 
 GPT F1; Claude M5
@@ -45,7 +46,7 @@ GPT F6; Claude H6,D7
 Plan ownership: 5
 Disposition: Accepted, provider-specific gate
 Inspect installed legacy distributions/re-export/serialization/error/cache before replacing. One SDK path; explicit pinned tier/version, reject legacy modes, disable_cache=true, unknown cache-hit state, complete ordered page/output checks.
-Verification: Legacy producing defects replayed and modern real-SDK transport contracts passed on four Python versions in 05-llamaparse. Live service remains unverified.
+Verification: Legacy defects and four-Python real-SDK transports are in 05-llamaparse. Live milestone 17 caught and repaired zero-ratio, tier/version-pair and rejected-upload-cleanup defects. Fast/2026-06-15 then passed actual API/CLI processing. Runtime version/cache-hit confirmation remains unknown.
 
 GPT F7; Claude M1
 Plan ownership: 11
@@ -57,13 +58,13 @@ GPT F8; Claude H2
 Plan ownership: 5,7-14
 Disposition: Accepted
 Per-wrapper terminal/blank/failure predicates; Docling partial status and Extractous truncation checks included. Google metadata plus shard coverage/order is mandatory.
-Verification: Producing failures and corrections recorded in 04-native, 06-runtime-backends, 07-models and 05/09-14 hosted milestones. Hosted completion predicates have offline SDK evidence only.
+Verification: Producing failures and corrections recorded in 04-native, 06-runtime-backends, 07-models and 05/09-14 hosted milestones. Milestone 17 adds scoped live completion evidence for five providers; two are billing-blocked and Databricks is excluded.
 
 GPT F9; Claude M2,D6
 Plan ownership: 3,5-14
 Disposition: Accepted, strict operational-error choice
 Lazy owned resources, primary-error preservation and explicit uncertain-job state. Successful extraction with failed cleanup raises an exception retaining recovered text and resource IDs; do not delete active-job resources.
-Verification: Actual local cleanup checks and real-SDK offline resource/uncertainty/recovery checks passed in owning milestones. Live remote cleanup remains unverified.
+Verification: Actual local cleanup checks and real-SDK offline resource/uncertainty/recovery checks passed in owning milestones. Milestone 17 exercised scoped live cleanup: Llama/OpenAI uploads were independently absent on retrieval; Azure wrapper deletion completed without error, with its operation IDs unavailable for an independent audit. Other modes and Databricks remain unverified.
 
 GPT F10; Claude M3
 Plan ownership: 15
@@ -81,7 +82,7 @@ GPT F12; Claude missing evidence
 Plan ownership: 1,3-16
 Disposition: Accepted
 Replace old tests preserving defects, capture actual producing-code failing/passing evidence and inspect all release/public module ASTs. SDK fixtures need official source/date; skips never establish support.
-Verification: Each owning milestone records producing failures, fresh results and package/input/output hashes. Hosted SDK transport fixtures are explicitly offline; 8 live runs remain outstanding.
+Verification: Each owning milestone records producing failures, fresh results and package/input/output hashes. Hosted SDK transport fixtures are explicitly offline; 5 scoped live integrations passed in milestone 17; OpenAI/Gemini need account funding and Databricks is excluded.
 
 Claude B3
 Plan ownership: 2,16
@@ -135,7 +136,7 @@ Both scope/prior-art suggestions
 Plan ownership: all
 Disposition: Accepted
 All 19 names remain required. PDF-Bench experiments/ParseBench reuse, LiteParse, timing, structured output and public release/deploy remain separate.
-Verification: All 19 remain in the matrix. Eleven have local E2E; eight have four-Python SDK offline evidence and require separately authorized live E2E. Other project/release/deployment boundaries remain separate.
+Verification: All 19 remain in the matrix. Eleven have local E2E; eight have four-Python SDK offline evidence; five now have scoped live E2E, two are blocked by prepaid balances and Databricks is excluded. Other project/release/deployment boundaries remain separate.
 
 Next actions
 No further planning decision is needed. Live-provider authorization remains a separate

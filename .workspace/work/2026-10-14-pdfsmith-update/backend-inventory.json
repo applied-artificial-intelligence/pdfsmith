@@ -393,7 +393,7 @@
       "weight": "commercial",
       "extra": "aws",
       "source_disposition": "Repaired against installed real SDK transports. Live service execution remains unverified.",
-      "current_evidence": "offline-contract",
+      "current_evidence": "live-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -410,7 +410,8 @@
         "registered",
         "dependency-present",
         "constructible",
-        "offline-contract"
+        "offline-contract",
+        "live-e2e"
       ],
       "source_path": "src/pdfsmith/backends/aws_textract_backend.py",
       "direct_async_method": false,
@@ -420,7 +421,12 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
     },
     {
       "name": "azure_document_intelligence",
@@ -429,7 +435,7 @@
       "weight": "commercial",
       "extra": "azure",
       "source_disposition": "Repaired against installed real SDK transports. Live service execution remains unverified.",
-      "current_evidence": "offline-contract",
+      "current_evidence": "live-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -447,7 +453,8 @@
         "registered",
         "dependency-present",
         "constructible",
-        "offline-contract"
+        "offline-contract",
+        "live-e2e"
       ],
       "source_path": "src/pdfsmith/backends/azure_document_intelligence_backend.py",
       "direct_async_method": false,
@@ -457,7 +464,12 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
     },
     {
       "name": "google_document_ai",
@@ -466,7 +478,7 @@
       "weight": "commercial",
       "extra": "google",
       "source_disposition": "Integrated preserved inherited batch proposal; repaired status/shard/resource ownership and verified real SDK offline contracts. Live service remains unverified.",
-      "current_evidence": "offline-contract",
+      "current_evidence": "live-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -484,7 +496,8 @@
         "registered",
         "dependency-present",
         "constructible",
-        "offline-contract"
+        "offline-contract",
+        "live-e2e"
       ],
       "source_path": "src/pdfsmith/backends/google_document_ai_backend.py",
       "direct_async_method": false,
@@ -494,7 +507,12 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
     },
     {
       "name": "databricks",
@@ -531,7 +549,8 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "live_state": "explicitly-excluded-by-Stefan; no calls"
     },
     {
       "name": "llamaparse",
@@ -540,7 +559,7 @@
       "weight": "commercial",
       "extra": "llamaparse",
       "source_disposition": "Replaced legacy SDK after actual offline failure/serialization inspection. Modern real-SDK transports and isolated installed wheels passed; live parsing remains unauthorized/unverified.",
-      "current_evidence": "offline-contract; live-unverified",
+      "current_evidence": "live-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -562,7 +581,8 @@
         "registered",
         "dependency-present",
         "constructible",
-        "offline-contract"
+        "offline-contract",
+        "live-e2e"
       ],
       "evidence_path": "milestones/05-llamaparse/installed-*.json",
       "verified_python": [
@@ -572,7 +592,12 @@
         "3.13"
       ],
       "source_path": "src/pdfsmith/backends/llamaparse_backend.py",
-      "direct_async_method": false
+      "direct_async_method": false,
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
     },
     {
       "name": "anthropic",
@@ -581,7 +606,7 @@
       "weight": "commercial",
       "extra": "anthropic",
       "source_disposition": "Integrated preserved inherited work; repaired completion/usage/limits and verified actual SDK offline contracts. Live service remains unverified.",
-      "current_evidence": "offline-contract",
+      "current_evidence": "live-e2e",
       "input_formats": [
         "pdf"
       ],
@@ -598,7 +623,8 @@
         "registered",
         "dependency-present",
         "constructible",
-        "offline-contract"
+        "offline-contract",
+        "live-e2e"
       ],
       "source_path": "src/pdfsmith/backends/anthropic_backend.py",
       "direct_async_method": false,
@@ -608,7 +634,12 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_verified_python": [
+        "3.12"
+      ],
+      "live_scope": "Eight-page public PDF via installed parse API and controlled two-page PDF via installed console; no comparative quality claim."
     },
     {
       "name": "openai",
@@ -644,7 +675,10 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_state": "generation-blocked-by-exhausted-prepaid-balance",
+      "live_verified_python": []
     },
     {
       "name": "gemini",
@@ -680,7 +714,10 @@
         "3.11",
         "3.12",
         "3.13"
-      ]
+      ],
+      "live_evidence_path": "milestones/17-live/results.json",
+      "live_state": "generation-blocked-by-exhausted-prepaid-balance",
+      "live_verified_python": []
     }
   ],
   "review_revision": "2026-10-15: static declarations are not SDK/live verification"

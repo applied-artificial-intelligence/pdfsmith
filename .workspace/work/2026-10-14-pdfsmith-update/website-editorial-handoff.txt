@@ -15,14 +15,18 @@ source/wheel/dependency hashes and outputs. All tested Python versions are withi
 These runs establish the recorded execution capability, not comparative accuracy,
 OCR quality, reading-order correctness on every document, speed or a best parser.
 
-All eight hosted adapters have real-SDK offline contracts on Python 3.10-3.13:
-LlamaParse, AWS, Azure, Google Document AI, Databricks, Anthropic, OpenAI, Gemini.
-Those tests exercise actual SDK serialization/status/usage/cleanup through
-synthetic credentials and controlled transports. No hosted live processing has
-been run. Authentication, account permissions, service document processing and
-live cleanup remain unverified. No paid or free-credit calls are authorized.
+All eight hosted adapters have four-Python real-SDK offline contract evidence.
+After explicit USD 5 authorization, five passed actual API/CLI processing of the
+approved public eight-page and controlled two-page PDFs on Python 3.12: AWS,
+Azure Read, Google Document AI, LlamaParse Fast and Anthropic. OpenAI and Gemini
+passed model-access checks but generation was blocked by exhausted prepaid
+balances. Databricks was explicitly excluded and received no calls. These facts
+do not establish all modes/models, OCR quality or comparative results.
 
-LlamaParse uses llama-cloud 2.18.x with explicit tier and published version,
+LlamaParse uses llama-cloud 2.18.x; the live check used Fast/2026-06-15. A live
+422 exposed an invalid zero failure ratio and unsupported tier/version pairing;
+both were repaired with producing regressions before the successful check.
+LlamaParse retains explicit tier and published version,
 disable_cache=true by default and complete ordered page checks. Requested
 settings and response echoes do not confirm runtime version or cache hits.
 LlamaIndex ParseBench is external evaluation work, not a PDFsmith result.
@@ -53,6 +57,9 @@ and private recovery files preserve useful content when cleanup fails.
 
 Authoritative contracts and current status are README.md, spec.md, plan.md,
 backend-inventory.json, reviews/dispositions.txt and milestones/16-final/verification.txt.
+Actual usage, source/wheel identities and cost/receipt limitations are in
+milestones/17-live/report.txt and results.json. Settled bills remain unavailable;
+reservations are not charges. No account top-ups or new resources were purchased.
 The original external-review packet and the October 9 capability branch retain
 their historical identities. Existing user files were preserved.
 
@@ -62,4 +69,5 @@ The library owner supplies source contracts and execution evidence only.
 
 Next actions
 No website publication is requested. A future release/public-main decision and
-any hosted live-verification spending require separate authorization from Stefan.
+any additional spending outside the approved USD 5 or Databricks access require
+separate authorization from Stefan.

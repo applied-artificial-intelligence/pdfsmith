@@ -8,6 +8,14 @@ state. GPT and Claude reports were returned on October 15, 2026 and reconciled
 in reviews/dispositions.txt. Shared design decisions below resolve their planning
 blockers; affected integrations still need their prescribed runtime evidence.
 
+## Current execution state
+
+Milestone 17 records the seven-API live pass Stefan authorized within USD 5,
+with Databricks excluded. AWS/Azure/Google/LlamaParse/Anthropic passed the two
+approved PDFs through installed API/CLI on Python 3.12. OpenAI/Gemini are blocked
+by exhausted prepaid balances. Scope remains all 19, with those three live rows
+unfinished. Settled cost is not inferred from a reservation or published tariff.
+
 ## Objective
 
 A caller can install, discover, configure and invoke PDFsmith's registered

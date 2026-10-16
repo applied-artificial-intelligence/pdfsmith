@@ -10,7 +10,8 @@ The original review packet and baseline remain immutable historical evidence.
 
 Core/API/CLI work and all 11 local adapters have installed execution evidence.
 All eight hosted adapters have actual SDK offline contract checks across Python
-3.10-3.13; they remain open for live service verification. The detailed current
+3.10-3.13. Milestone 17 adds five scoped live API/CLI passes on Python 3.12;
+OpenAI/Gemini are blocked by depleted prepaid balances and Databricks is excluded. The detailed current
 matrix is backend-inventory.json and commands/results are under milestones/.
 A resolved review finding is not a live integration claim.
 

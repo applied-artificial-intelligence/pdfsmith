@@ -6,9 +6,11 @@ core package has no mandatory runtime dependencies.
 
 This branch contains the unpublished `0.3.0.dev0` update. The contracts below
 refer to this source revision, not the package currently published on PyPI.
-Eleven local adapters have actual installed-package parsing evidence. The eight
-hosted adapters have offline checks against their real SDKs; they still require
-separately authorized live service verification. Execution evidence does not
+Eleven local adapters have actual installed-package parsing evidence. All eight
+hosted adapters have offline checks against their real SDKs. AWS, Azure, Google
+Document AI, LlamaParse and Anthropic also passed a bounded live API/CLI check.
+OpenAI and Gemini are blocked by depleted account balances; Databricks was excluded
+from live execution. Execution evidence does not
 establish extraction accuracy or comparative quality.
 
 ## Installation
@@ -138,8 +140,11 @@ constructor options plus their documented provider credential/configuration sour
 ## Hosted backends
 
 These adapters have installed real-SDK offline contract evidence on Python
-3.10-3.13. Live authentication, permissions and document processing remain
-unverified. Selecting one explicitly can send document content to its provider
+3.10-3.13. AWS, Azure, Google Document AI, LlamaParse Fast and Anthropic passed
+actual API/CLI processing of the approved ten pages on Python 3.12. OpenAI and
+Gemini authenticated for model metadata but rejected generation for exhausted
+prepaid balances; Databricks was not called. Other models/modes remain unverified. Selecting one explicitly can send
+document content to its provider
 and incur charges. Installation and discovery do not submit documents.
 
 | Backend | Extra | Configuration and options |

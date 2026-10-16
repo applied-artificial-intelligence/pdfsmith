@@ -1,52 +1,63 @@
 PDFsmith update - October 15, 2026
 
-The actual GPT/Claude reviews are reconciled in spec.md, plan.md and
-reviews/dispositions.txt. Original review/report bytes remain preserved.
-All 19 backends remain required. The implementation and unpaid verification are
-complete for the reviewed scope; full integration verification remains incomplete
-because eight hosted adapters still require authorized live service runs.
+Current result: 16 integrations have actual execution evidence: 11 local and five
+hosted. OpenAI and Gemini are blocked by depleted prepaid balances. Databricks
+is explicitly excluded from live work by Stefan. All 19 remain in the inventory;
+this is not a claim that the remaining three live integrations are complete.
 
-Evidence
-- Eleven local adapters have actual installed-package E2E evidence on identified
-  public/controlled PDFs: pypdf, pdfplumber, PyMuPDF, PyMuPDF4LLM, PDFMiner, PDFium,
-  Kreuzberg, Extractous, Unstructured, Docling, Marker. Exact versions/options/
-  routes/prerequisites and hashes are in the owning milestones and inventory.
-- All eight hosted adapters have actual-SDK offline contract evidence across
-  Python 3.10-3.13: LlamaParse, AWS, Azure, Google Document AI, Databricks,
-  Anthropic, OpenAI and Gemini. No live processing/authentication claim follows.
-- Unstructured's corrupt-installed-model implicit download was reproduced and
-  guarded. The damaged asset now fails before download; restoring its original
-  config passed actual public-PDF CLI extraction offline, 24,044 output bytes.
-- Core plus five documented bundles passed 24 fresh non-editable installations
-  across Python 3.10-3.13. Four additional fresh core environments checked the
-  final review artifacts. Installed/wheel/sdist runtime source bytes match.
-- Four fresh locked CI environments each passed 408 tests, 15 skipped. Separate
-  actual model/native evidence covers their isolated dependency stacks; skips
-  never establish verification. Ruff format/check and repository mypy passed.
-- The Python 3.10 locked ONNX Runtime wheel failure was reproduced and corrected.
-  Actual producing version mismatch was rejected, then the corrected build and
-  synthetic private-file archive canary checks passed. README examples passed.
+Stefan authorized seven APIs within an aggregate USD 5 budget, credential checks,
+an OpenAI limit fix, and actual results/cost reporting. No Databricks credential
+was forwarded to a worker and no Databricks SDK, warehouse or billing call occurred.
+No top-ups, new subscriptions/resources, public-main merge, release, PDF-Bench or
+ParseBench experiments, website edits or deployment occurred. No agents/chats
+were launched. Codex account usage is separate and its dollar cost is not visible.
 
-Current artifacts
-Unpublished 0.3.0.dev0. Final artifacts are under runtime/review-distributions/;
-review-core-*.json records their hashes. Exact source hashes, fresh results and
-commands: milestones/16-final/. Earlier source/wheel identities remain explicit
-in owning milestones. README reconciles the preserved October 9 capability work.
-Website/content handoff: website-editorial-handoff.txt. Proposed bounded live
-inputs/options/submissions/cleanup and approval information: live-run-protocol.txt.
+Live checks, Python 3.12
+AWS Textract, Azure Read, Google Document AI, LlamaParse Fast and Anthropic passed
+both the identified public eight-page PDF through the installed public API and
+the controlled two-page PDF through the installed console. Page/document
+sentinels passed. These are scoped execution checks, not quality measurements.
+OpenAI returned HTTP 429 credit_balance_exhausted; Gemini returned HTTP 402 with
+depleted prepayment credits. Model access succeeded, but processing did not.
 
-Boundaries and preservation
-No paid or free-credit provider calls, public-main merge, package release,
-PDF-Bench experiments, website changes or deployment occurred. No agents or
-separate chats were launched. This chat consumes normal Codex account usage;
-no dollar amount for the conversation is visible to this task.
-Public main remains fe66170231dd580d9f919662ed3b89947f091763. The active library
-owner retains codex/pdfsmith-update-2026-10-14 in the primary checkout; no temporary
-worktrees exist. The older capability branch has unknown ownership and is retained.
-All inherited provider changes were intentionally integrated with originals
-archived. Unrelated user untracked files remain deliberately unabsorbed.
+Repairs from fresh evidence
+- c3480cc: GPT-4o mini validates its 16,384 output ceiling before upload. Two
+  regressions failed before repair; 28 focused OpenAI contracts passed afterward.
+- 0b3db8f: LlamaParse rejects unsupported tier/version pairs, uses a positive
+  service-valid failure threshold while rejecting every failed page locally,
+  and cleans owned uploads after definite HTTP 4xx rejections. Six regressions
+  failed before repair; 37 focused contracts passed. Fast/2026-06-15 then passed
+  a controlled live rerun and CLI call. Initial rejected upload was removed.
+- Final suite: 420 passed, 12 skipped. Ruff check/format and repository mypy passed.
+
+Costs
+Actual usage, source/wheel identities, hashes, sanitized receipts and cleanup are
+in milestones/17-live/results.json and report.txt. Anthropic returned 22,655 input
+and 7,258 output tokens, equivalent to USD 0.058945 at published rates. Actual
+pages processed total ten for each successful provider. Standard-rate equivalents
+for AWS/Azure/Llama/Anthropic total USD 0.101445, excluding Google. Google's
+processor tariff is unknown because metadata-read permission is denied and
+personal refresh credentials are expired. Do not call an OCR price its actual bill.
+Settled provider invoices/account discounts are not visible. Retained reservations
+are USD 3.515, including rejected calls and an enlarged Google tariff allowance,
+within USD 5; reservations are not spending. No further PDFs will be submitted in
+this pass. Raw operational records remain private under runtime/live-results/.
+
+Earlier reviewed engineering
+Core/API/CLI, optional extras, native/model execution and eight real-SDK offline
+contracts remain documented under milestones/01-16. The six documented install
+choices passed 24 fresh installations across Python 3.10-3.13; four locked CI
+command sets each passed 408 tests, 15 skipped before these focused live repairs.
+Original GPT/Claude reports and source archives are preserved. Historical artifacts
+keep their own hashes. README and inventory distinguish local/offline/live scope.
+
+Git and preservation
+Public main remains fe66170231dd580d9f919662ed3b89947f091763. The task owns
+codex/pdfsmith-update-2026-10-14 in the primary checkout; no temporary worktrees.
+The old capability branch is retained. Unrelated inherited untracked files and
+credentials remain unabsorbed. Final reports/handoff are committed and pushed.
 
 Next actions
-Stefan must separately authorize selected live providers, exact configuration
-sources, inputs/options and spending limits before hosted processing can run.
-Public-main merge and release require their own later authorization.
+OpenAI and Gemini need funded prepaid balances to complete their live checks;
+no top-up was performed. Databricks stays excluded. Exact settled charges require
+provider billing visibility; Google additionally needs processor tariff identity.
