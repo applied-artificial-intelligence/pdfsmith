@@ -4,6 +4,9 @@ PDFsmith provides one Python string API and CLI for PDF extraction through local
 libraries and hosted services. Install the extra for the backend you select. The
 core package has no mandatory runtime dependencies.
 
+For a comparison of upstream features, configuration tradeoffs and what the
+wrappers expose, read [How PDF parsers differ](PARSER_GUIDE.md).
+
 This branch contains the unpublished `0.3.0.dev0` update. The contracts below
 refer to this source revision, not the package currently published on PyPI.
 Eleven local adapters have actual installed-package parsing evidence. All eight
